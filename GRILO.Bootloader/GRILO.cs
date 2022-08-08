@@ -76,13 +76,13 @@ namespace GRILO.Bootloader
 
                                 // If we reached the beginning of the boot menu, go to the ending
                                 if (chosenBootEntry < 0)
-                                    chosenBootEntry = BootManager.GetBootApps().Count;
+                                    chosenBootEntry = BootManager.GetBootApps().Count - 1;
                                 break;
                             case ConsoleKey.DownArrow:
                                 chosenBootEntry++;
 
                                 // If we reached the ending of the boot menu, go to the beginning
-                                if (chosenBootEntry > BootManager.GetBootApps().Count)
+                                if (chosenBootEntry > BootManager.GetBootApps().Count - 1)
                                     chosenBootEntry = 0;
                                 break;
                             case ConsoleKey.Enter:
