@@ -6,5 +6,9 @@
     {
         "OverrideTitle": "GRILO Bootable App Demonstration (with arguments)",
         "Arguments": [ "hello", "hello world" ]
+    },
+    {
+        "OverrideTitle": "GRILO Bootable App Demonstration (test boot fail)",
+        "Arguments": [ "fail", "hello world" ]
     }
 ]

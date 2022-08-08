@@ -40,7 +40,8 @@ namespace GRILO.BootableAppDemo
             Console.WriteLine("Arguments passed: [{0}]", string.Join(", ", args));
             Console.WriteLine("Press any key to shutdown");
             Console.ReadKey(true);
-            ShutdownRequested = true;
+            if (args.Length > 0 && args[0] != "fail")
+                ShutdownRequested = true;
         }
     }
 }
