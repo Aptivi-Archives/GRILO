@@ -50,7 +50,8 @@ namespace GRILO.Bootloader.BootApps
         public static void PopulateBootApps()
         {
             // Custom boot apps usually have the .DLL extension for .NET 6.0 and the .EXE extension for .NET Framework
-            var bootDirs = Directory.EnumerateDirectories(GRILOPaths.GRILOBootablesPath);
+            var bootDirs = Directory.EnumerateDirectories(GRILOPaths.GRILOBootablesPath).ToList();
+            bootDirs.AddRange(additionalScanFolders);
             foreach (var bootDir in bootDirs)
             {
                 // Get the boot ID
