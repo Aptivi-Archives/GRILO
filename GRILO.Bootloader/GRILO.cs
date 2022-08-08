@@ -63,6 +63,10 @@ namespace GRILO.Bootloader
                 {
                     while (waitingForBootKey)
                     {
+                        // Reset console colors in case app or boot style didn't reset them
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.White;
+
                         // Render the menu
                         Console.Clear();
                         BootStyleManager.RenderMenu(chosenBootEntry);
@@ -94,6 +98,9 @@ namespace GRILO.Bootloader
                                 break;
                         }
                     }
+                    // Reset console colors
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.Clear();
                     waitingForBootKey = true;
 
@@ -115,10 +122,6 @@ namespace GRILO.Bootloader
                     // Check to see if we experienced boot failure
                     if (!shutdownRequested)
                         BootStyleManager.RenderDialog($"Encountered boot failure.\nReason: {bootFailureException.Message}");
-
-                    // Reset console colors in case app or boot style didn't reset them
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.ForegroundColor = ConsoleColor.White;
                 }
             }
             catch (Exception ex)
