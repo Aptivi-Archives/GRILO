@@ -97,7 +97,7 @@ namespace GRILO.Bootloader
                     waitingForBootKey = true;
 
                     // Boot the system
-                    Exception bootFailureException = null;
+                    Exception bootFailureException = new GRILOException("Boot program failed.");
                     try
                     {
                         string chosenBootName = BootManager.GetBootAppNameByIndex(chosenBootEntry);
