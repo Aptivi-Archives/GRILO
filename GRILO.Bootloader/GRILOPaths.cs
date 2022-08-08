@@ -85,6 +85,20 @@ namespace GRILO.Bootloader
         }
 
         /// <summary>
+        /// Path to GRILO debug file
+        /// </summary>
+        public static string GRILODebugPath
+        {
+            get
+            {
+                if (GRILOPlatform.IsOnWindows())
+                    return Path.Combine(Environment.GetEnvironmentVariable("LOCALAPPDATA"), "GRILO/BootloaderDebug.log");
+                else
+                    return Path.Combine(Environment.GetEnvironmentVariable("HOME"), ".config/GRILO/BootloaderDebug.log");
+            }
+        }
+
+        /// <summary>
         /// Makes directories for GRILO
         /// </summary>
         public static void MakePaths()
