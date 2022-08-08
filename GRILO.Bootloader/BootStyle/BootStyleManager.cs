@@ -114,5 +114,20 @@ namespace GRILO.Bootloader.BootStyle
             bootStyle.Render();
             bootStyle.RenderHighlight(chosenBootEntry);
         }
+
+        /// <summary>
+        /// Renders the modal dialog box
+        /// </summary>
+        public static void RenderDialog(string content)
+        {
+            // Get the base boot style from the current boot style name
+            var bootStyle = GetBootStyle(bootStyleStr);
+
+            // Render it.
+            bootStyle.RenderModalDialog(content);
+
+            // Wait for input
+            Console.ReadKey(true);
+        }
     }
 }

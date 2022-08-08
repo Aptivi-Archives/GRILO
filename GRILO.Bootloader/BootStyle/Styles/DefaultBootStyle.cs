@@ -154,8 +154,9 @@ namespace GRILO.Bootloader.BootStyle.Styles
                 Console.Write(contents[i]);
             }
 
-            // Wait for input
-            Console.ReadKey(true);
+            // Reset colors
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

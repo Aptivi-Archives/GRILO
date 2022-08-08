@@ -113,10 +113,11 @@ namespace GRILO.Bootloader
 
                     // Check to see if we experienced boot failure
                     if (!shutdownRequested)
-                    {
-                        var bootStyle = BootStyleManager.GetBootStyle(BootStyleManager.bootStyleStr);
-                        bootStyle.RenderModalDialog($"Encountered boot failure.\nReason: {bootFailureException.Message}");
-                    }
+                        BootStyleManager.RenderDialog($"Encountered boot failure.\nReason: {bootFailureException.Message}");
+
+                    // Reset console colors in case app or boot style didn't reset them
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
             }
             catch (Exception ex)
