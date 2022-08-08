@@ -94,6 +94,7 @@ namespace GRILO.Bootloader
                                 break;
                         }
                     }
+                    Console.Clear();
                     waitingForBootKey = true;
 
                     // Boot the system

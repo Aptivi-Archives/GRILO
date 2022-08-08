@@ -39,7 +39,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
 
             // Prompt the user for selection
             var bootApps = BootManager.GetBootApps();
-            Console.WriteLine("\n  Select boot entry:\n\n");
+            Console.WriteLine("\n  Select boot entry:\n");
             for (int i = 0; i < bootApps.Count; i++)
             {
                 string bootApp = BootManager.GetBootAppNameByIndex(i);
