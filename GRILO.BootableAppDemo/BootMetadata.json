@@ -1,0 +1,10 @@
+[
+    {
+        "OverrideTitle": "GRILO Bootable App Demonstration",
+        "Arguments": []
+    },
+    {
+        "OverrideTitle": "GRILO Bootable App Demonstration (with arguments)",
+        "Arguments": [ "hello", "hello world" ]
+    }
+]

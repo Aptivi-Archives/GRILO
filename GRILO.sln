@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GRILO.Bootloader", "GRILO.Bootloader\GRILO.Bootloader.csproj", "{BB9D219B-1E5E-4FB6-B2EF-26BA456784A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GRILO.Bootloader", "GRILO.Bootloader\GRILO.Bootloader.csproj", "{BB9D219B-1E5E-4FB6-B2EF-26BA456784A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GRILO.Boot", "GRILO.Boot\GRILO.Boot.csproj", "{63F314D9-E8EF-43A9-AA9D-3E7D9F6B523B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GRILO.Boot", "GRILO.Boot\GRILO.Boot.csproj", "{63F314D9-E8EF-43A9-AA9D-3E7D9F6B523B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GRILO.BootableAppDemo", "GRILO.BootableAppDemo\GRILO.BootableAppDemo.csproj", "{1D8A7870-C453-49F7-ADE0-A98E5F0E506C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{63F314D9-E8EF-43A9-AA9D-3E7D9F6B523B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63F314D9-E8EF-43A9-AA9D-3E7D9F6B523B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63F314D9-E8EF-43A9-AA9D-3E7D9F6B523B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D8A7870-C453-49F7-ADE0-A98E5F0E506C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D8A7870-C453-49F7-ADE0-A98E5F0E506C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D8A7870-C453-49F7-ADE0-A98E5F0E506C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D8A7870-C453-49F7-ADE0-A98E5F0E506C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,10 +2,6 @@
 
 GRILO is a bootloader simulator that can execute any console application supported by GRILO. It simulates the boot process of GRUB/LILO by showing the boot menu and displaying pre-boot messages.
 
-## WARNING
-
-This build is very buggy due to lack of resources and may not work properly.
-
 ### License
 
 ```

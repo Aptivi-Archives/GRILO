@@ -54,17 +54,21 @@ namespace GRILO.Bootloader.BootApps
             foreach (var bootDir in bootDirs)
             {
                 // Get the boot ID
-                string bootId = Path.GetDirectoryName(bootDir);
+                string bootId = Path.GetFileName(bootDir);
                 try
                 {
                     // Using the boot ID, check for executable files
 #if NETCOREAPP
-                    var bootFiles = Directory.EnumerateFiles(GRILOPaths.GRILOBootablesPath, "*.dll");
+                    var bootFiles = Directory.EnumerateFiles(bootDir, "*.dll");
 #else
-                    var bootFiles = Directory.EnumerateFiles(GRILOPaths.GRILOBootablesPath, "*.exe");
+                    var bootFiles = Directory.EnumerateFiles(bootDir, "*.exe");
 #endif
                     foreach (var bootFile in bootFiles)
                     {
+                        // Exclude GRILO.Boot since it's just a minimal library that contains interface IBootable
+                        if (Path.GetFileName(bootFile) == "GRILO.Boot.dll")
+                            continue;
+
                         try
                         {
                             // Load the boot assembly file and check to see if it implements IBootable.
@@ -99,15 +103,15 @@ namespace GRILO.Bootloader.BootApps
                                 if (File.Exists(metadataFile))
                                 {
                                     // Metadata file exists! Now, parse it.
-                                    var metadataToken = JArray.Parse(metadataFile);
+                                    var metadataToken = JArray.Parse(File.ReadAllText(metadataFile));
 
                                     // Enumerate through metadata array
                                     foreach (var metadata in metadataToken)
                                     {
                                         // Fill them
-                                        bootFilePath = metadata["BootFile"].ToString() ?? bootFile;
-                                        bootOverrideTitle = metadata["OverrideTitle"].ToString() ?? bootable.Title ?? asm.GetName().Name;
-                                        bootArgs = (string[])metadata["Arguments"].Values<string>() ?? Array.Empty<string>();
+                                        bootFilePath = metadata["BootFile"]?.ToString() ?? bootFile;
+                                        bootOverrideTitle = metadata["OverrideTitle"]?.ToString() ?? bootable.Title ?? asm.GetName().Name;
+                                        bootArgs = metadata["Arguments"]?.ToObject<string[]>() ?? Array.Empty<string>();
                                         bootApp = new(bootFilePath, bootOverrideTitle, bootArgs, bootable);
                                         bootApps.Add(bootOverrideTitle, bootApp);
                                     }
