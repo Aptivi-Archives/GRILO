@@ -1,4 +1,104 @@
 {
+  "api/GRILO.Boot.html": {
+    "href": "api/GRILO.Boot.html",
+    "title": "Namespace GRILO.Boot | GRILO API - Aptivi",
+    "keywords": "Namespace GRILO.Boot Interfaces IBootable Bootable instance of class to make it bootable by GRILO."
+  },
+  "api/GRILO.Boot.IBootable.html": {
+    "href": "api/GRILO.Boot.IBootable.html",
+    "title": "Interface IBootable | GRILO API - Aptivi",
+    "keywords": "Interface IBootable Bootable instance of class to make it bootable by GRILO. Namespace : GRILO.Boot Assembly : GRILO.Boot.dll Syntax public interface IBootable Properties | Improve this Doc View Source ShutdownRequested Detects whether the shutdown has been requested. If set, bootloader exits peacefully. Otherwise, GRILO will return to the boot menu with an error message indicating that the boot failed. Declaration bool ShutdownRequested { get; set; } Property Value Type Description System.Boolean | Improve this Doc View Source Title Title to show on boot menu screen. This will be overridden by the boot metadata json file if specified there. If not assigned by either, GRILO bootloader tries to get the title from assembly name. Declaration string Title { get; } Property Value Type Description System.String Methods | Improve this Doc View Source Boot(String[]) Boots the class up (usually executing the entry point of the application) Declaration void Boot(string[] args) Parameters Type Name Description System.String [] args"
+  },
+  "api/GRILO.BootableAppDemo.BootClass.html": {
+    "href": "api/GRILO.BootableAppDemo.BootClass.html",
+    "title": "Class BootClass | GRILO API - Aptivi",
+    "keywords": "Class BootClass Inheritance System.Object BootClass Implements IBootable Namespace : GRILO.BootableAppDemo Assembly : GRILO.BootableAppDemo.dll Syntax public class BootClass : object, IBootable Properties | Improve this Doc View Source ShutdownRequested Declaration public bool ShutdownRequested { get; set; } Property Value Type Description System.Boolean | Improve this Doc View Source Title Declaration public string Title { get; } Property Value Type Description System.String Methods | Improve this Doc View Source Boot(String[]) Declaration public void Boot(string[] args) Parameters Type Name Description System.String [] args Implements IBootable"
+  },
+  "api/GRILO.BootableAppDemo.html": {
+    "href": "api/GRILO.BootableAppDemo.html",
+    "title": "Namespace GRILO.BootableAppDemo | GRILO API - Aptivi",
+    "keywords": "Namespace GRILO.BootableAppDemo Classes BootClass"
+  },
+  "api/GRILO.Bootloader.BootApps.BootAppInfo.html": {
+    "href": "api/GRILO.Bootloader.BootApps.BootAppInfo.html",
+    "title": "Class BootAppInfo | GRILO API - Aptivi",
+    "keywords": "Class BootAppInfo Bootable application information Inheritance System.Object BootAppInfo Namespace : GRILO.Bootloader.BootApps Assembly : GRILO.Bootloader.dll Syntax public class BootAppInfo : object Properties | Improve this Doc View Source Arguments Arguments to inject to the boot file Declaration public string[] Arguments { get; } Property Value Type Description System.String [] | Improve this Doc View Source Bootable Gets the bootable Declaration public IBootable Bootable { get; } Property Value Type Description IBootable | Improve this Doc View Source BootFile Bootable file path Declaration public string BootFile { get; } Property Value Type Description System.String | Improve this Doc View Source OverriddenTitle Boot app title (overrides one found in IBootable) Declaration public string OverriddenTitle { get; } Property Value Type Description System.String"
+  },
+  "api/GRILO.Bootloader.BootApps.BootManager.html": {
+    "href": "api/GRILO.Bootloader.BootApps.BootManager.html",
+    "title": "Class BootManager | GRILO API - Aptivi",
+    "keywords": "Class BootManager Bootable application manager Inheritance System.Object BootManager Namespace : GRILO.Bootloader.BootApps Assembly : GRILO.Bootloader.dll Syntax public static class BootManager : object Methods | Improve this Doc View Source GetBootApp(String) Gets boot application by name Declaration public static BootAppInfo GetBootApp(string name) Parameters Type Name Description System.String name Returns Type Description BootAppInfo | Improve this Doc View Source GetBootAppNameByIndex(Int32) Gets boot application name by index Declaration public static string GetBootAppNameByIndex(int index) Parameters Type Name Description System.Int32 index Returns Type Description System.String | Improve this Doc View Source GetBootApps() Gets boot applications Declaration public static Dictionary<string, BootAppInfo> GetBootApps() Returns Type Description Dictionary < System.String , BootAppInfo > | Improve this Doc View Source PopulateBootApps() Adds all bootable applications to the bootloader Declaration public static void PopulateBootApps()"
+  },
+  "api/GRILO.Bootloader.BootApps.html": {
+    "href": "api/GRILO.Bootloader.BootApps.html",
+    "title": "Namespace GRILO.Bootloader.BootApps | GRILO API - Aptivi",
+    "keywords": "Namespace GRILO.Bootloader.BootApps Classes BootAppInfo Bootable application information BootManager Bootable application manager"
+  },
+  "api/GRILO.Bootloader.BootStyle.BaseBootStyle.html": {
+    "href": "api/GRILO.Bootloader.BootStyle.BaseBootStyle.html",
+    "title": "Class BaseBootStyle | GRILO API - Aptivi",
+    "keywords": "Class BaseBootStyle Inheritance System.Object BaseBootStyle Implements IBootStyle Namespace : GRILO.Bootloader.BootStyle Assembly : GRILO.Bootloader.dll Syntax public abstract class BaseBootStyle : object, IBootStyle Methods | Improve this Doc View Source Render() Declaration public abstract void Render() | Improve this Doc View Source RenderHighlight(Int32) Declaration public abstract void RenderHighlight(int chosenBootEntry) Parameters Type Name Description System.Int32 chosenBootEntry | Improve this Doc View Source RenderModalDialog(String) Declaration public abstract void RenderModalDialog(string content) Parameters Type Name Description System.String content Implements IBootStyle"
+  },
+  "api/GRILO.Bootloader.BootStyle.BootStyleManager.html": {
+    "href": "api/GRILO.Bootloader.BootStyle.BootStyleManager.html",
+    "title": "Class BootStyleManager | GRILO API - Aptivi",
+    "keywords": "Class BootStyleManager Bootloader style management class Inheritance System.Object BootStyleManager Namespace : GRILO.Bootloader.BootStyle Assembly : GRILO.Bootloader.dll Syntax public static class BootStyleManager : object Methods | Improve this Doc View Source GetBootStyle(String) Gets the boot style from the name Declaration public static BaseBootStyle GetBootStyle(string name) Parameters Type Name Description System.String name The name Returns Type Description BaseBootStyle The base boot style | Improve this Doc View Source PopulateCustomBootStyles() Installs custom boot styles to the bootloader Declaration public static void PopulateCustomBootStyles() | Improve this Doc View Source RenderDialog(String) Renders the modal dialog box Declaration public static void RenderDialog(string content) Parameters Type Name Description System.String content | Improve this Doc View Source RenderMenu(Int32) Renders the boot menu Declaration public static void RenderMenu(int chosenBootEntry) Parameters Type Name Description System.Int32 chosenBootEntry"
+  },
+  "api/GRILO.Bootloader.BootStyle.html": {
+    "href": "api/GRILO.Bootloader.BootStyle.html",
+    "title": "Namespace GRILO.Bootloader.BootStyle | GRILO API - Aptivi",
+    "keywords": "Namespace GRILO.Bootloader.BootStyle Classes BaseBootStyle BootStyleManager Bootloader style management class Interfaces IBootStyle Boot style interface to customize how the bootloader looks"
+  },
+  "api/GRILO.Bootloader.BootStyle.IBootStyle.html": {
+    "href": "api/GRILO.Bootloader.BootStyle.IBootStyle.html",
+    "title": "Interface IBootStyle | GRILO API - Aptivi",
+    "keywords": "Interface IBootStyle Boot style interface to customize how the bootloader looks Namespace : GRILO.Bootloader.BootStyle Assembly : GRILO.Bootloader.dll Syntax public interface IBootStyle Methods | Improve this Doc View Source Render() Renders the bootloader style Declaration void Render() | Improve this Doc View Source RenderHighlight(Int32) Renders the highlighted boot entry Declaration void RenderHighlight(int chosenBootEntry) Parameters Type Name Description System.Int32 chosenBootEntry | Improve this Doc View Source RenderModalDialog(String) Renders the modal dialog box with content Declaration void RenderModalDialog(string content) Parameters Type Name Description System.String content"
+  },
+  "api/GRILO.Bootloader.Configuration.Config.html": {
+    "href": "api/GRILO.Bootloader.Configuration.Config.html",
+    "title": "Class Config | GRILO API - Aptivi",
+    "keywords": "Class Config Configuration module Inheritance System.Object Config Namespace : GRILO.Bootloader.Configuration Assembly : GRILO.Bootloader.dll Syntax public static class Config : object Methods | Improve this Doc View Source GeneratePristineConfig(Boolean) Declaration public static JObject GeneratePristineConfig(bool default = false) Parameters Type Name Description System.Boolean default Returns Type Description JObject | Improve this Doc View Source ReadConfig() Reads configuration Declaration public static void ReadConfig() | Improve this Doc View Source SaveConfigFile() Saves configuration file Declaration public static void SaveConfigFile()"
+  },
+  "api/GRILO.Bootloader.Configuration.html": {
+    "href": "api/GRILO.Bootloader.Configuration.html",
+    "title": "Namespace GRILO.Bootloader.Configuration | GRILO API - Aptivi",
+    "keywords": "Namespace GRILO.Bootloader.Configuration Classes Config Configuration module"
+  },
+  "api/GRILO.Bootloader.Diagnostics.DiagnosticsLevel.html": {
+    "href": "api/GRILO.Bootloader.Diagnostics.DiagnosticsLevel.html",
+    "title": "Enum DiagnosticsLevel | GRILO API - Aptivi",
+    "keywords": "Enum DiagnosticsLevel Diagnostics level enumeration Namespace : GRILO.Bootloader.Diagnostics Assembly : GRILO.Bootloader.dll Syntax public enum DiagnosticsLevel : int Fields Name Description Error Error messages, usually indicating that something is wrong Info Informational diagnostic messages Warning Warning messages"
+  },
+  "api/GRILO.Bootloader.Diagnostics.DiagnosticsWriter.html": {
+    "href": "api/GRILO.Bootloader.Diagnostics.DiagnosticsWriter.html",
+    "title": "Class DiagnosticsWriter | GRILO API - Aptivi",
+    "keywords": "Class DiagnosticsWriter Stores functions needed to write diagnostic messages to the bootloader Inheritance System.Object DiagnosticsWriter Namespace : GRILO.Bootloader.Diagnostics Assembly : GRILO.Bootloader.dll Syntax public static class DiagnosticsWriter : object Methods | Improve this Doc View Source WriteDiag(DiagnosticsLevel, String, Object[]) Writes diagnostic messages Declaration public static void WriteDiag(DiagnosticsLevel level, string content, object[] args) Parameters Type Name Description DiagnosticsLevel level Diagnostics level System.String content Content to write System.Object [] args Arguments"
+  },
+  "api/GRILO.Bootloader.Diagnostics.html": {
+    "href": "api/GRILO.Bootloader.Diagnostics.html",
+    "title": "Namespace GRILO.Bootloader.Diagnostics | GRILO API - Aptivi",
+    "keywords": "Namespace GRILO.Bootloader.Diagnostics Classes DiagnosticsWriter Stores functions needed to write diagnostic messages to the bootloader Enums DiagnosticsLevel Diagnostics level enumeration"
+  },
+  "api/GRILO.Bootloader.GRILOException.html": {
+    "href": "api/GRILO.Bootloader.GRILOException.html",
+    "title": "Class GRILOException | GRILO API - Aptivi",
+    "keywords": "Class GRILOException Internal bootloader error Inheritance System.Object GRILOException Namespace : GRILO.Bootloader Assembly : GRILO.Bootloader.dll Syntax public class GRILOException : Exception Constructors | Improve this Doc View Source GRILOException() Declaration public GRILOException() | Improve this Doc View Source GRILOException(String) Declaration public GRILOException(string message) Parameters Type Name Description System.String message | Improve this Doc View Source GRILOException(String, Exception) Declaration public GRILOException(string message, Exception innerException) Parameters Type Name Description System.String message Exception innerException"
+  },
+  "api/GRILO.Bootloader.GRILOPaths.html": {
+    "href": "api/GRILO.Bootloader.GRILOPaths.html",
+    "title": "Class GRILOPaths | GRILO API - Aptivi",
+    "keywords": "Class GRILOPaths GRILO paths module Inheritance System.Object GRILOPaths Namespace : GRILO.Bootloader Assembly : GRILO.Bootloader.dll Syntax public static class GRILOPaths : object Properties | Improve this Doc View Source GRILOBootablesPath Path to GRILO bootable apps list folder Declaration public static string GRILOBootablesPath { get; } Property Value Type Description System.String | Improve this Doc View Source GRILOConfigPath Path to GRILO configuration file Declaration public static string GRILOConfigPath { get; } Property Value Type Description System.String | Improve this Doc View Source GRILODebugPath Path to GRILO debug file Declaration public static string GRILODebugPath { get; } Property Value Type Description System.String | Improve this Doc View Source GRILOPath Path to GRILO folder Declaration public static string GRILOPath { get; } Property Value Type Description System.String | Improve this Doc View Source GRILOStylesPath Path to GRILO boot styles folder Declaration public static string GRILOStylesPath { get; } Property Value Type Description System.String Methods | Improve this Doc View Source MakePaths() Makes directories for GRILO Declaration public static void MakePaths()"
+  },
+  "api/GRILO.Bootloader.GRILOPlatform.html": {
+    "href": "api/GRILO.Bootloader.GRILOPlatform.html",
+    "title": "Class GRILOPlatform | GRILO API - Aptivi",
+    "keywords": "Class GRILOPlatform Inheritance System.Object GRILOPlatform Namespace : GRILO.Bootloader Assembly : GRILO.Bootloader.dll Syntax public static class GRILOPlatform : object Methods | Improve this Doc View Source IsOnUnix() Is this system a Unix system? True for macOS, too! Declaration public static bool IsOnUnix() Returns Type Description System.Boolean | Improve this Doc View Source IsOnWindows() Is this system a Windows system? Declaration public static bool IsOnWindows() Returns Type Description System.Boolean"
+  },
+  "api/GRILO.Bootloader.html": {
+    "href": "api/GRILO.Bootloader.html",
+    "title": "Namespace GRILO.Bootloader | GRILO API - Aptivi",
+    "keywords": "Namespace GRILO.Bootloader Classes GRILOException Internal bootloader error GRILOPaths GRILO paths module GRILOPlatform"
+  },
   "index.html": {
     "href": "index.html",
     "title": "What is GRILO? | GRILO API - Aptivi",

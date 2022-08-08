@@ -13,6 +13,258 @@
       "is_incremental": false
     },
     {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Boot.IBootable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Boot.IBootable.html",
+          "hash": "C6UUcwnmOm614R1WwLZkeU1wTCMAWhnrCtMo1rWoSco="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Boot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Boot.html",
+          "hash": "1Q/ArRuxPgLwu53uqIM3hJ0OA+5FsymXuXi5ZAx7sS8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.BootableAppDemo.BootClass.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.BootableAppDemo.BootClass.html",
+          "hash": "i8unFTnbOlyT0Gz5I/7fufEXsYBeJd9oMfEFGgFOI4s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.BootableAppDemo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.BootableAppDemo.html",
+          "hash": "05+0UzMNz5nUyCiN5gtcyZ1/vA4z/n1Yg0+YIPwk6K0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.BootApps.BootAppInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.BootApps.BootAppInfo.html",
+          "hash": "la53ke4gB5gQDNt9fCC1xzEHfXQ0q6EV3RTF+eSF9Gk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.BootApps.BootManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.BootApps.BootManager.html",
+          "hash": "BoyNt4D5qLUEntR6ng9vA1iBwPxzTwHA7naOrXtEt94="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.BootApps.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.BootApps.html",
+          "hash": "eBckDitMHRjKmUgsdcTJgdvMKDG92nZvNHiWn/SNj4Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.BootStyle.BaseBootStyle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.BootStyle.BaseBootStyle.html",
+          "hash": "ga/Rm1Rgu2K/I+OwO2VJVzTnnSQXu4fFoWSoTDKZmG4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.BootStyle.BootStyleManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.BootStyle.BootStyleManager.html",
+          "hash": "zA7DvGhdNFeRNc176dq8SS9wZHP0M3FmUK8KLRhhN08="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.BootStyle.IBootStyle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.BootStyle.IBootStyle.html",
+          "hash": "GmQ8pBKpHTotL0jJJSUWhrqO5DdY+yT6dl3e5vDjOSM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.BootStyle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.BootStyle.html",
+          "hash": "FYnE/TN8gdmUr+ZhHDP2In7r20NCCPoRezP2Hlq+CFc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.Configuration.Config.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.Configuration.Config.html",
+          "hash": "JFCygdvdFUbcqGLe1bv7uH8GDgGjVmeBomBE6NaqCso="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.Configuration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.Configuration.html",
+          "hash": "E8fH0eZ6hdHfVUSn8myzRVgWtgA8QXU8XMdHqd/YMRs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.Diagnostics.DiagnosticsLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.Diagnostics.DiagnosticsLevel.html",
+          "hash": "jWhpO1P8kVD3roIbpuD12/5DT0Ecr0DD5erq9LcE1KY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.Diagnostics.DiagnosticsWriter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.Diagnostics.DiagnosticsWriter.html",
+          "hash": "dpuEwri5wAFFF9fC0AZw9yBwVWju5WWDX6bxLTuppsA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.Diagnostics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.Diagnostics.html",
+          "hash": "XkU66tlzWv6ysc3FD8ZnegdOWk9UYRW3O4fw9cyEycE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.GRILOException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.GRILOException.html",
+          "hash": "coCyr5wAK6tKtAMqnm8Tkr1xHPwwheDKBKXegFbEp5o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.GRILOPaths.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.GRILOPaths.html",
+          "hash": "ZbmJ4eCs9LEMfHUI4vEetSDQm1qBN01gR5Q1IKeXY4k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.GRILOPlatform.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.GRILOPlatform.html",
+          "hash": "+7M+AQpjzQyGZx/rej3fZEI6CJiWbVnem2cUvdz51gk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.html",
+          "hash": "QQWCUT2FEbPXYsEme5yBgjJzaFi689ENpBV6B6FF8RU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "/NL2WJpphxtuxejFllBsZyDRXE110dyQQZTtSS5/QTg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
@@ -30,7 +282,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "YRmnFoPaOxFl2evu6LXNr5JoBn/n1MdrdBX1LzjfM34="
+          "hash": "Spr6ptCgFRi5M8euQ//xAryH++8z3pvo5QMLjMCYFPg="
         }
       },
       "is_incremental": false,
@@ -52,6 +304,12 @@
           "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 1,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 20,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
