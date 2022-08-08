@@ -3,7 +3,7 @@
         {
             "src": [
                 {
-                    "files": [ "GRILO/**.csproj" ],
+                    "files": [ "GRILO.Boot*/**.csproj" ],
                     "src": ".."
                 }
             ],
