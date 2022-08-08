@@ -150,7 +150,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
             string[] contents = content.Replace(Convert.ToChar(13), default).Split(Convert.ToChar(10));
             for (int i = 0; i < contents.Length; i++)
             {
-                Console.SetCursorPosition(modalDialogBorderTopLeft.Item1 + 3, modalDialogBorderTopLeft.Item2 + 2 + i);
+                Console.SetCursorPosition(modalDialogBorderTopLeft.Item1 + 5, modalDialogBorderTopLeft.Item2 + 2 + i);
                 Console.Write(contents[i]);
             }
 
