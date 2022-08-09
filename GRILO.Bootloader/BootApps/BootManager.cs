@@ -122,7 +122,7 @@ namespace GRILO.Bootloader.BootApps
                                     break;
                             }
                             else
-                                break;
+                                continue;
                         }
                         catch (Exception ex)
                         {
