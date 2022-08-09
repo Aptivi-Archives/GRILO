@@ -22,7 +22,8 @@ artifacts:
   name: Development build of GRILO
 - path: devbuild-boot.zip
   name: Development build of GRILO - Boot
-- path: GRILO/bin/Debug/*.nupkg
+- path: GRILO.Boot/bin/Debug/*.nupkg
+- path: GRILO.Bootloader/bin/Debug/*.nupkg
 deploy:
 - provider: NuGet
   server: https://www.nuget.org/api/v2/package

@@ -25,9 +25,14 @@ jobs:
       run: msbuild "GRILO.sln" /p:Configuration=Release
     - name: NuGet Preparation
       run: nuget setApiKey ${{ secrets.NUGET_APIKEY }}
-    - name: Package Publication
+    - name: Package Publication (Boot)
       run: |
-        $path = "GRILO\bin\Release"
+        $path = "GRILO.Boot\bin\Release"
+        $FileName = Get-ChildItem -Path $path -Name -Filter "GRILO.*"
+        nuget push "$path\$FileName" -source "nuget.org"
+    - name: Package Publication (Bootloader)
+      run: |
+        $path = "GRILO.Bootloader\bin\Release"
         $FileName = Get-ChildItem -Path $path -Name -Filter "GRILO.*"
         nuget push "$path\$FileName" -source "nuget.org"
         
