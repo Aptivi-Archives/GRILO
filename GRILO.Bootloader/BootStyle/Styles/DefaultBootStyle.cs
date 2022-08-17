@@ -25,6 +25,7 @@
 using GRILO.Bootloader.BootApps;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace GRILO.Bootloader.BootStyle.Styles
 {
@@ -146,12 +147,40 @@ namespace GRILO.Bootloader.BootStyle.Styles
                 }
             }
 
-            // Print the message
+            // Split the contents to fit the dialog box
             string[] contents = content.Replace(Convert.ToChar(13), default).Split(Convert.ToChar(10));
+            List<string> finalContents = new();
             for (int i = 0; i < contents.Length; i++)
             {
+                string getContent = contents[i];
+                StringBuilder finalContentBuilder = new();
+
+                // Split it letter by letter until we reach the right dialog box boundary
+                int processedChars = 0;
+                for (int j = 0; j < getContent.Length; j++)
+                {
+                    // Append a character
+                    finalContentBuilder.Append(getContent[j]);
+                    processedChars += 1;
+
+                    // Check to see if we reached the boundary
+                    if (processedChars == modalDialogBorderTopRight.Item1 - 13)
+                    {
+                        processedChars = 0;
+                        finalContents.Add(finalContentBuilder.ToString());
+                        finalContentBuilder.Clear();
+                    }
+
+                }
+                finalContents.Add(finalContentBuilder.ToString());
+                finalContentBuilder.Clear();
+            }
+
+            // Print the message
+            for (int i = 0; i < finalContents.Count; i++)
+            {
                 Console.SetCursorPosition(modalDialogBorderTopLeft.Item1 + 5, modalDialogBorderTopLeft.Item2 + 2 + i);
-                Console.Write(contents[i]);
+                Console.Write(finalContents[i]);
             }
 
             // Reset colors
