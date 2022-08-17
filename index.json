@@ -72,7 +72,7 @@
   "api/GRILO.Bootloader.Diagnostics.DiagnosticsWriter.html": {
     "href": "api/GRILO.Bootloader.Diagnostics.DiagnosticsWriter.html",
     "title": "Class DiagnosticsWriter | GRILO API - Aptivi",
-    "keywords": "Class DiagnosticsWriter Stores functions needed to write diagnostic messages to the bootloader Inheritance System.Object DiagnosticsWriter Namespace : GRILO.Bootloader.Diagnostics Assembly : GRILO.Bootloader.dll Syntax public static class DiagnosticsWriter : object Methods | Improve this Doc View Source WriteDiag(DiagnosticsLevel, String, Object[]) Writes diagnostic messages Declaration public static void WriteDiag(DiagnosticsLevel level, string content, object[] args) Parameters Type Name Description DiagnosticsLevel level Diagnostics level System.String content Content to write System.Object [] args Arguments"
+    "keywords": "Class DiagnosticsWriter Stores functions needed to write diagnostic messages to the bootloader Inheritance System.Object DiagnosticsWriter Namespace : GRILO.Bootloader.Diagnostics Assembly : GRILO.Bootloader.dll Syntax public static class DiagnosticsWriter : object Methods | Improve this Doc View Source WriteDiag(DiagnosticsLevel, String, Object[]) Writes diagnostic messages Declaration public static void WriteDiag(DiagnosticsLevel level, string content, params object[] args) Parameters Type Name Description DiagnosticsLevel level Diagnostics level System.String content Content to write System.Object [] args Arguments"
   },
   "api/GRILO.Bootloader.Diagnostics.html": {
     "href": "api/GRILO.Bootloader.Diagnostics.html",

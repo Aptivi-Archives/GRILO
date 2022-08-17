@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.BootApps.BootAppInfo.html",
-          "hash": "la53ke4gB5gQDNt9fCC1xzEHfXQ0q6EV3RTF+eSF9Gk="
+          "hash": "gPjHkSZxsli8eg93SLygWUzroDXuJ+q2efjX52MZcaI="
         }
       },
       "is_incremental": false,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.BootApps.BootManager.html",
-          "hash": "BoyNt4D5qLUEntR6ng9vA1iBwPxzTwHA7naOrXtEt94="
+          "hash": "b3ym9RR1GW30gZCt218fqbpBbQQY3aTJwNeAvT0ro7U="
         }
       },
       "is_incremental": false,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.BootStyle.BootStyleManager.html",
-          "hash": "zA7DvGhdNFeRNc176dq8SS9wZHP0M3FmUK8KLRhhN08="
+          "hash": "hwSozI4mQjDCI76MhChCXxwI9DiLRxb8d8Ok4NHjn50="
         }
       },
       "is_incremental": false,
@@ -189,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.Diagnostics.DiagnosticsWriter.html",
-          "hash": "dpuEwri5wAFFF9fC0AZw9yBwVWju5WWDX6bxLTuppsA="
+          "hash": "aWVw6eJGMsXwopzo9yCazlnOadzkJjObgwYdCLa5WB8="
         }
       },
       "is_incremental": false,
