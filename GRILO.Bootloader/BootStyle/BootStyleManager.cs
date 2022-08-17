@@ -22,11 +22,12 @@
  * SOFTWARE.
  */
 
-using GRILO.Bootloader;
 using GRILO.Bootloader.BootStyle.Styles;
+using GRILO.Bootloader.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace GRILO.Bootloader.BootStyle
@@ -49,23 +50,28 @@ namespace GRILO.Bootloader.BootStyle
         public static void PopulateCustomBootStyles()
         {
             // Custom boot styles usually have a .DLL extension
-            var styles = Directory.EnumerateFiles(GRILOPaths.GRILOStylesPath, "*.dll");
+            List<string> styles = Directory.EnumerateFiles(GRILOPaths.GRILOStylesPath, "*.dll").ToList();
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Custom boot styles: {0}", styles.Count);
             foreach (var style in styles)
             {
                 string styleName = Path.GetFileName(style);
+                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Style name: {0}", styleName);
                 try
                 {
                     // Load the custom boot style assembly file and check to see if it implements IBootStyle.
+                    DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Loading assembly {0}...", style);
                     var asm = Assembly.LoadFrom(style);
                     BaseBootStyle bootStyle;
 
                     // Get the implemented types of the assembly so that we can check every type found in this assembly for implementation of the
                     // BaseBootStyle class.
+                    DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Parsing boot style {0}...", styleName);
                     foreach (Type t in asm.GetTypes())
                     {
                         if (t.GetInterface(typeof(BaseBootStyle).Name) != null)
                         {
                             // We found a boot style! Add it to the custom boot styles dictionary.
+                            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Boot style is valid! Adding...");
                             bootStyle = (BaseBootStyle)asm.CreateInstance(t.FullName);
                             customBootStyles.Add(styleName, bootStyle);
                             break;
@@ -75,6 +81,8 @@ namespace GRILO.Bootloader.BootStyle
                 catch (Exception ex)
                 {
                     // Either the boot style is invalid or can't be loaded.
+                    DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Can't load custom boot style. {0}", ex.Message);
+                    DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Stack trace:\n{0}", ex.StackTrace);
                     throw new GRILOException($"Can't load custom boot style {styleName}: {ex.Message}", ex);
                 }
             }
@@ -88,15 +96,22 @@ namespace GRILO.Bootloader.BootStyle
         public static BaseBootStyle GetBootStyle(string name)
         {
             // Use the base boot styles first
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Getting boot style {0} from base boot styles...", name);
             bootStyles.TryGetValue(name, out BaseBootStyle bootStyle);
 
             // If not found, use the custom one
             if (bootStyle == null)
+            {
+                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Getting boot style {0} from custom boot styles...", name);
                 customBootStyles.TryGetValue(name, out bootStyle);
+            }
 
             // If still not found, use Default
             if (bootStyle == null)
+            {
+                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Warning, "Still nothing. Using the default...");
                 customBootStyles.TryGetValue("Default", out bootStyle);
+            }
 
             // Return it.
             return bootStyle;
@@ -109,8 +124,10 @@ namespace GRILO.Bootloader.BootStyle
         {
             // Get the base boot style from the current boot style name
             var bootStyle = GetBootStyle(bootStyleStr);
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Got boot style from {0}...", bootStyleStr);
 
             // Render it.
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Rendering menu with chosen boot entry {0}...", chosenBootEntry);
             bootStyle.Render();
             bootStyle.RenderHighlight(chosenBootEntry);
         }
@@ -122,11 +139,14 @@ namespace GRILO.Bootloader.BootStyle
         {
             // Get the base boot style from the current boot style name
             var bootStyle = GetBootStyle(bootStyleStr);
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Got boot style from {0}...", bootStyleStr);
 
             // Render it.
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Rendering modal dialog with content: {0}...", content);
             bootStyle.RenderModalDialog(content);
 
             // Wait for input
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Waiting for user to press any key...");
             Console.ReadKey(true);
         }
     }

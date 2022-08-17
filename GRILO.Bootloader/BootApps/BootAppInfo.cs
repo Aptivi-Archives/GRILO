@@ -23,6 +23,7 @@
  */
 
 using GRILO.Boot;
+using GRILO.Bootloader.Diagnostics;
 
 namespace GRILO.Bootloader.BootApps
 {
@@ -55,6 +56,10 @@ namespace GRILO.Bootloader.BootApps
             OverriddenTitle = overriddenTitle;
             Arguments = arguments;
             Bootable = bootable;
+
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Boot file: {0}", BootFile);
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Overridden title: {0}", OverriddenTitle);
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Arguments: [ {0} ]", string.Join(", ", Arguments));
         }
     }
 }

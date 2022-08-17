@@ -30,6 +30,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Linq;
+using GRILO.Bootloader.Diagnostics;
 
 namespace GRILO.Bootloader.BootApps
 {
@@ -52,10 +53,13 @@ namespace GRILO.Bootloader.BootApps
             // Custom boot apps usually have the .DLL extension for .NET 6.0 and the .EXE extension for .NET Framework
             var bootDirs = Directory.EnumerateDirectories(GRILOPaths.GRILOBootablesPath).ToList();
             bootDirs.AddRange(additionalScanFolders);
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Boot directories to scan: {0}", bootDirs.Count);
+
             foreach (var bootDir in bootDirs)
             {
                 // Get the boot ID
                 string bootId = Path.GetFileName(bootDir);
+                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Boot ID: {0}", bootId);
                 try
                 {
                     // Using the boot ID, check for executable files
@@ -72,7 +76,10 @@ namespace GRILO.Bootloader.BootApps
 
                         try
                         {
+                            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Processing boot file {0}...", bootFile);
+
                             // Load the boot assembly file and check to see if it implements IBootable.
+                            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Loading assembly...");
                             var asm = Assembly.LoadFrom(bootFile);
                             BootAppInfo bootApp;
                             IBootable bootable = null;
@@ -83,7 +90,8 @@ namespace GRILO.Bootloader.BootApps
                             {
                                 if (t.GetInterface(typeof(IBootable).Name) != null)
                                 {
-                                    // We found a boot style! Add it to the custom boot styles dictionary.
+                                    // We found a boot app! Add it to the custom boot apps dictionary.
+                                    DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Found a boot app!");
                                     bootable = (IBootable)asm.CreateInstance(t.FullName);
                                     break;
                                 }
@@ -94,6 +102,7 @@ namespace GRILO.Bootloader.BootApps
                             {
                                 // We found it! Now, populate info from the metadata file
                                 string metadataFile = Path.Combine(GRILOPaths.GRILOBootablesPath, bootId, "BootMetadata.json");
+                                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Trying to find metadata file {0}...", metadataFile);
 
                                 // Let's put some variables here
                                 string bootFilePath = "";
@@ -104,11 +113,14 @@ namespace GRILO.Bootloader.BootApps
                                 if (File.Exists(metadataFile))
                                 {
                                     // Metadata file exists! Now, parse it.
+                                    DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Metadata found! Parsing JSON...");
                                     var metadataToken = JArray.Parse(File.ReadAllText(metadataFile));
 
                                     // Enumerate through metadata array
                                     foreach (var metadata in metadataToken)
                                     {
+                                        DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Filling entries...");
+
                                         // Fill them
                                         bootFilePath = metadata["BootFile"]?.ToString() ?? bootFile;
                                         bootOverrideTitle = metadata["OverrideTitle"]?.ToString() ?? bootable.Title ?? asm.GetName().Name;
@@ -118,15 +130,23 @@ namespace GRILO.Bootloader.BootApps
                                     }
                                 }
                                 else
+                                {
                                     // Skip boot ID as metadata is not found.
+                                    DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Warning, "Skipping boot ID {0} because {1} is not found...", bootFile, metadataFile);
                                     break;
+                                }
                             }
                             else
+                            {
+                                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Warning, "Skipping boot ID {0} because it is an invalid boot file...", bootFile);
                                 continue;
+                            }
                         }
                         catch (Exception ex)
                         {
                             // Either the boot file is invalid or can't be loaded.
+                            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Can't load boot app. {0}", ex.Message);
+                            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Stack trace:\n{0}", ex.StackTrace);
                             throw new GRILOException($"Failed to parse boot file {bootFile}: {ex.Message}", ex);
                         }
                     }
@@ -134,6 +154,8 @@ namespace GRILO.Bootloader.BootApps
                 catch (Exception ex)
                 {
                     // Boot ID invalid
+                    DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Unknown error when loading boot ID {0}: {1}", bootId, ex.Message);
+                    DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Stack trace:\n{0}", ex.StackTrace);
                     throw new GRILOException($"Unknown error when parsing boot ID {bootId}: {ex.Message}", ex);
                 }
             }
@@ -150,6 +172,7 @@ namespace GRILO.Bootloader.BootApps
         public static BootAppInfo GetBootApp(string name)
         {
             bootApps.TryGetValue(name, out var info);
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Got boot app {0}!", name);
             return info;
         }
 
@@ -161,8 +184,13 @@ namespace GRILO.Bootloader.BootApps
             for (int i = 0; i < bootApps.Count; i++)
             {
                 if (i == index)
+                {
+                    DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Got boot app at index {0}!", index);
                     return bootApps.ElementAt(index).Key;
+                }
             }
+
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Warning, "No boot app at index {0}. Returning empty string...", index);
             return "";
         }
     }

@@ -27,6 +27,7 @@ using GRILO.Bootloader.BootApps;
 using GRILO.Bootloader.Configuration;
 using System;
 using System.Reflection;
+using GRILO.Bootloader.Diagnostics;
 
 namespace GRILO.Bootloader
 {
@@ -48,14 +49,17 @@ namespace GRILO.Bootloader
                 // Populate GRILO folders (if any)
                 GRILOPaths.MakePaths();
 
+                // Read the configuration (or make one if not found)
+                Config.ReadConfig();
+                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Config read successfully.");
+
                 // Populate custom boot styles
                 BootStyleManager.PopulateCustomBootStyles();
+                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Custom boot styles read successfully.");
 
                 // Populate the bootable apps list
                 BootManager.PopulateBootApps();
-
-                // Read the configuration (or make one if not found)
-                Config.ReadConfig();
+                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Bootable apps read successfully.");
 
                 // Now, draw the boot menu. Note that the chosen boot entry counts from zero.
                 int chosenBootEntry = 0;
@@ -68,36 +72,48 @@ namespace GRILO.Bootloader
                         Console.ForegroundColor = ConsoleColor.White;
 
                         // Render the menu
+                        DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Rendering menu...");
                         Console.Clear();
                         BootStyleManager.RenderMenu(chosenBootEntry);
 
                         // Wait for a key and parse it
                         var cki = Console.ReadKey(true);
+                        DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Key pressed: {0}", cki.Key.ToString());
                         switch (cki.Key)
                         {
                             case ConsoleKey.UpArrow:
+                                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Decrementing boot entry...");
                                 chosenBootEntry--;
 
                                 // If we reached the beginning of the boot menu, go to the ending
                                 if (chosenBootEntry < 0)
+                                {
                                     chosenBootEntry = BootManager.GetBootApps().Count - 1;
+                                    DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "We're at the beginning! Chosen boot entry is now {0}", chosenBootEntry);
+                                }
                                 break;
                             case ConsoleKey.DownArrow:
+                                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Incrementing boot entry...");
                                 chosenBootEntry++;
 
                                 // If we reached the ending of the boot menu, go to the beginning
                                 if (chosenBootEntry > BootManager.GetBootApps().Count - 1)
+                                {
                                     chosenBootEntry = 0;
+                                    DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "We're at the ending! Chosen boot entry is now {0}", chosenBootEntry);
+                                }
                                 break;
                             case ConsoleKey.Enter:
                             case ConsoleKey.RightArrow: // to simulate GRUB
                                 // We're no longer waiting for boot key
+                                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Booting...");
                                 waitingForBootKey = false;
                                 break;
                             default:
                                 break;
                         }
                     }
+
                     // Reset console colors
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.ForegroundColor = ConsoleColor.White;
@@ -110,23 +126,34 @@ namespace GRILO.Bootloader
                     {
                         string chosenBootName = BootManager.GetBootAppNameByIndex(chosenBootEntry);
                         var chosenBootApp = BootManager.GetBootApp(chosenBootName);
-                        Console.WriteLine("Booting {0}", chosenBootName);
+                        DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Boot name {0} at index {1}", chosenBootName, chosenBootEntry);
+
+                        Console.WriteLine("Booting {0}...", chosenBootName);
                         chosenBootApp.Bootable.Boot(chosenBootApp.Arguments);
+
                         shutdownRequested = chosenBootApp.Bootable.ShutdownRequested;
+                        DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Boot app done and shutdown requested is {0}", shutdownRequested);
                     }
                     catch (Exception ex)
                     {
+                        DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Unknown boot failure: {0}", ex.Message);
+                        DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Stack trace:\n{0}", ex.StackTrace);
                         bootFailureException = ex;
                     }
 
                     // Check to see if we experienced boot failure
                     if (!shutdownRequested)
+                    {
+                        DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Warning, "Boot failed: {0}", bootFailureException.Message);
                         BootStyleManager.RenderDialog($"Encountered boot failure.\nReason: {bootFailureException.Message}");
+                    }
                 }
             }
             catch (Exception ex)
             {
                 // Failed trying to preload the bootloader
+                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Preload bootloader failed: {0}", ex.Message);
+                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Stack trace:\n{0}", ex.StackTrace);
                 Console.WriteLine("Failed to preload bootloader: {0}", ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 Console.WriteLine("Press any key to exit.");

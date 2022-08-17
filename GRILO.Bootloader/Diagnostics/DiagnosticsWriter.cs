@@ -38,7 +38,7 @@ namespace GRILO.Bootloader.Diagnostics
         /// <param name="level">Diagnostics level</param>
         /// <param name="content">Content to write</param>
         /// <param name="args">Arguments</param>
-        public static void WriteDiag(DiagnosticsLevel level, string content, object[] args)
+        public static void WriteDiag(DiagnosticsLevel level, string content, params object[] args)
         {
             if (GRILO.diagMessages)
             {
@@ -48,7 +48,9 @@ namespace GRILO.Bootloader.Diagnostics
 
                 // Print diagnostic messages to the debug file
                 var writer = File.AppendText(GRILOPaths.GRILODebugPath);
-                writer.WriteLine(string.Format(content, args));
+                writer.WriteLine(string.Format($"[{level.ToString()[0]}] {content}", args));
+                writer.Flush();
+                writer.Close();
             }
         }
     }
