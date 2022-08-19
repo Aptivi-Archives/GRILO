@@ -29,10 +29,10 @@ jobs:
       run: |
         $path = "GRILO.Boot\bin\Release"
         $FileName = Get-ChildItem -Path $path -Name -Filter "GRILO.*"
-        nuget push "$path\$FileName" -source "nuget.org"
+        nuget push "$path\$FileName" -source "nuget.org" -SkipDuplicate
     - name: Package Publication (Bootloader)
       run: |
         $path = "GRILO.Bootloader\bin\Release"
         $FileName = Get-ChildItem -Path $path -Name -Filter "GRILO.*"
-        nuget push "$path\$FileName" -source "nuget.org"
+        nuget push "$path\$FileName" -source "nuget.org" -SkipDuplicate
         
