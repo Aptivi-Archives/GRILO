@@ -140,6 +140,8 @@ namespace GRILO.Bootloader.BootStyle
         /// <param name="content">Message to display in the box</param>
         public static void RenderDialog(string content)
         {
+            Console.Clear();
+
             // Get the base boot style from the current boot style name
             var bootStyle = GetBootStyle(bootStyleStr);
             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Got boot style from {0}...", bootStyleStr);
