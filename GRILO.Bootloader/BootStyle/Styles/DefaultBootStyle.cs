@@ -138,14 +138,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
             }
 
             // Fill the entire box
-            for (int i = modalDialogBorderTopLeft.Item2 + 1; i < modalDialogBorderBottomLeft.Item2; i++)
-            {
-                for (int j = modalDialogBorderTopLeft.Item1 + 1; j < modalDialogBorderTopRight.Item1; j++)
-                {
-                    Console.SetCursorPosition(j, i);
-                    Console.Write(" ");
-                }
-            }
+            DrawBox(modalDialogBorderTopLeft, modalDialogBorderBottomLeft, modalDialogBorderTopRight);
 
             // Split the contents to fit the dialog box
             string[] contents = content.Replace(Convert.ToChar(13), default).Split(Convert.ToChar(10));
@@ -177,15 +170,40 @@ namespace GRILO.Bootloader.BootStyle.Styles
             }
 
             // Print the message
+            int dialogTop = 0;
             for (int i = 0; i < finalContents.Count; i++)
             {
-                Console.SetCursorPosition(modalDialogBorderTopLeft.Item1 + 5, modalDialogBorderTopLeft.Item2 + 2 + i);
+                Console.SetCursorPosition(modalDialogBorderTopLeft.Item1 + 5, modalDialogBorderTopLeft.Item2 + 2 + dialogTop);
                 Console.Write(finalContents[i]);
+
+                // Check to see if we're exceeding the dialog box limits
+                dialogTop++;
+                if (dialogTop >= modalDialogBorderBottomLeft.Item2 - modalDialogBorderTopLeft.Item2 - 3)
+                {
+                    dialogTop = 0;
+                    Console.ReadKey(true);
+
+                    // Fill the entire box
+                    DrawBox(modalDialogBorderTopLeft, modalDialogBorderBottomLeft, modalDialogBorderTopRight);
+                }
             }
 
             // Reset colors
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        private static void DrawBox((int, int) modalDialogBorderTopLeft, (int, int) modalDialogBorderBottomLeft, (int, int) modalDialogBorderTopRight)
+        {
+            // Fill the entire box
+            for (int i = modalDialogBorderTopLeft.Item2 + 1; i < modalDialogBorderBottomLeft.Item2; i++)
+            {
+                for (int j = modalDialogBorderTopLeft.Item1 + 1; j < modalDialogBorderTopRight.Item1; j++)
+                {
+                    Console.SetCursorPosition(j, i);
+                    Console.Write(" ");
+                }
+            }
         }
     }
 }
