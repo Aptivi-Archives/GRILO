@@ -262,6 +262,19 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.Render
   nameWithType: BaseBootStyle.Render
+- uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootingMessage(System.String)
+  name: RenderBootingMessage(String)
+  href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderBootingMessage_System_String_
+  commentId: M:GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootingMessage(System.String)
+  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootingMessage(System.String)
+  nameWithType: BaseBootStyle.RenderBootingMessage(String)
+- uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootingMessage*
+  name: RenderBootingMessage
+  href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderBootingMessage_
+  commentId: Overload:GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootingMessage
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootingMessage
+  nameWithType: BaseBootStyle.RenderBootingMessage
 - uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderHighlight(System.Int32)
   name: RenderHighlight(Int32)
   href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderHighlight_System_Int32_
@@ -320,6 +333,19 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootStyle.BootStyleManager.PopulateCustomBootStyles
   nameWithType: BootStyleManager.PopulateCustomBootStyles
+- uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootingMessage(System.String)
+  name: RenderBootingMessage(String)
+  href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderBootingMessage_System_String_
+  commentId: M:GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootingMessage(System.String)
+  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootingMessage(System.String)
+  nameWithType: BootStyleManager.RenderBootingMessage(String)
+- uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootingMessage*
+  name: RenderBootingMessage
+  href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderBootingMessage_
+  commentId: Overload:GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootingMessage
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootingMessage
+  nameWithType: BootStyleManager.RenderBootingMessage
 - uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderDialog(System.String)
   name: RenderDialog(String)
   href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderDialog_System_String_
@@ -365,6 +391,19 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootStyle.IBootStyle.Render
   nameWithType: IBootStyle.Render
+- uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootingMessage(System.String)
+  name: RenderBootingMessage(String)
+  href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderBootingMessage_System_String_
+  commentId: M:GRILO.Bootloader.BootStyle.IBootStyle.RenderBootingMessage(System.String)
+  fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootingMessage(System.String)
+  nameWithType: IBootStyle.RenderBootingMessage(String)
+- uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootingMessage*
+  name: RenderBootingMessage
+  href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderBootingMessage_
+  commentId: Overload:GRILO.Bootloader.BootStyle.IBootStyle.RenderBootingMessage
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootingMessage
+  nameWithType: IBootStyle.RenderBootingMessage
 - uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderHighlight(System.Int32)
   name: RenderHighlight(Int32)
   href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderHighlight_System_Int32_

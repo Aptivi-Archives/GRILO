@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.BootStyle.BaseBootStyle.html",
-          "hash": "ga/Rm1Rgu2K/I+OwO2VJVzTnnSQXu4fFoWSoTDKZmG4="
+          "hash": "p4mEK/VxYLxOufgBMVwTPEF8dgRQl6nhGmfGyv1SZzU="
         }
       },
       "is_incremental": false,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.BootStyle.BootStyleManager.html",
-          "hash": "UcHeLjAO8TuVevbi/bNreeWm+nNso7zqLCdt9bRB4dE="
+          "hash": "00stegHtNMNJ/Gl1evKzzezcy9mYDhkloSQl+5SNcFk="
         }
       },
       "is_incremental": false,
@@ -129,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.BootStyle.IBootStyle.html",
-          "hash": "GmQ8pBKpHTotL0jJJSUWhrqO5DdY+yT6dl3e5vDjOSM="
+          "hash": "f+Ljj26FKr7FKRaAd24soyaS6q2vLX/3FyZXm6uJido="
         }
       },
       "is_incremental": false,
