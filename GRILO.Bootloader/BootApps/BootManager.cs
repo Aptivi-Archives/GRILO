@@ -105,7 +105,6 @@ namespace GRILO.Bootloader.BootApps
                                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Trying to find metadata file {0}...", metadataFile);
 
                                 // Let's put some variables here
-                                string bootFilePath = "";
                                 string bootOverrideTitle = "";
                                 string[] bootArgs = Array.Empty<string>();
 
@@ -122,10 +121,9 @@ namespace GRILO.Bootloader.BootApps
                                         DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Filling entries...");
 
                                         // Fill them
-                                        bootFilePath = metadata["BootFile"]?.ToString() ?? bootFile;
                                         bootOverrideTitle = metadata["OverrideTitle"]?.ToString() ?? bootable.Title ?? asm.GetName().Name;
                                         bootArgs = metadata["Arguments"]?.ToObject<string[]>() ?? Array.Empty<string>();
-                                        bootApp = new(bootFilePath, bootOverrideTitle, bootArgs, bootable);
+                                        bootApp = new(bootFile, bootOverrideTitle, bootArgs, bootable);
                                         bootApps.Add(bootOverrideTitle, bootApp);
                                     }
                                 }
