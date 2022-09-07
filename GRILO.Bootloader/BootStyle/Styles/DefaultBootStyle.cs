@@ -193,6 +193,8 @@ namespace GRILO.Bootloader.BootStyle.Styles
             Console.ForegroundColor = ConsoleColor.White;
         }
 
+        public override void RenderBootingMessage(string chosenBootName) => Console.WriteLine("Booting {0}...", chosenBootName);
+
         private static void DrawBox((int, int) modalDialogBorderTopLeft, (int, int) modalDialogBorderBottomLeft, (int, int) modalDialogBorderTopRight)
         {
             // Fill the entire box

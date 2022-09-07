@@ -94,5 +94,7 @@ problem, choose Start Windows Normally.
             Console.ResetColor();
             Console.WriteLine("\nUse the up and down arrow keys to move the highlight to your choice.");
         }
+
+        public override void RenderBootingMessage(string chosenBootName) { }
     }
 }

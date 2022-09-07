@@ -128,7 +128,7 @@ namespace GRILO.Bootloader
                         var chosenBootApp = BootManager.GetBootApp(chosenBootName);
                         DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Boot name {0} at index {1}", chosenBootName, chosenBootEntry);
 
-                        Console.WriteLine("Booting {0}...", chosenBootName);
+                        BootStyleManager.RenderBootingMessage(chosenBootName);
                         chosenBootApp.Bootable.Boot(chosenBootApp.Arguments);
 
                         shutdownRequested = chosenBootApp.Bootable.ShutdownRequested;

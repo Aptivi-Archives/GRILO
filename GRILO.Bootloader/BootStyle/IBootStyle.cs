@@ -36,10 +36,17 @@ namespace GRILO.Bootloader.BootStyle
         /// <summary>
         /// Renders the highlighted boot entry
         /// </summary>
+        /// <param name="chosenBootEntry">Chosen boot entry index (from 0)</param>
         void RenderHighlight(int chosenBootEntry);
         /// <summary>
         /// Renders the modal dialog box with content
         /// </summary>
+        /// <param name="content">Message to display in the box</param>
         void RenderModalDialog(string content);
+        /// <summary>
+        /// Renders the booting message
+        /// </summary>
+        /// <param name="chosenBootName">Chosen boot name</param>
+        void RenderBootingMessage(string chosenBootName);
     }
 }

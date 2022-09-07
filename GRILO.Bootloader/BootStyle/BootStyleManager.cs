@@ -121,6 +121,7 @@ namespace GRILO.Bootloader.BootStyle
         /// <summary>
         /// Renders the boot menu
         /// </summary>
+        /// <param name="chosenBootEntry">Chosen boot entry index (from 0)</param>
         public static void RenderMenu(int chosenBootEntry)
         {
             // Get the base boot style from the current boot style name
@@ -136,6 +137,7 @@ namespace GRILO.Bootloader.BootStyle
         /// <summary>
         /// Renders the modal dialog box
         /// </summary>
+        /// <param name="content">Message to display in the box</param>
         public static void RenderDialog(string content)
         {
             // Get the base boot style from the current boot style name
@@ -149,6 +151,21 @@ namespace GRILO.Bootloader.BootStyle
             // Wait for input
             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Waiting for user to press any key...");
             Console.ReadKey(true);
+        }
+
+        /// <summary>
+        /// Renders the boot message
+        /// </summary>
+        /// <param name="chosenBootName">Chosen boot name</param>
+        public static void RenderBootingMessage(string chosenBootName)
+        {
+            // Get the base boot style from the current boot style name
+            var bootStyle = GetBootStyle(bootStyleStr);
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Got boot style from {0}...", bootStyleStr);
+
+            // Render it.
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Rendering booting message with chosen boot name {0}...", chosenBootName);
+            bootStyle.RenderBootingMessage(chosenBootName);
         }
     }
 }
