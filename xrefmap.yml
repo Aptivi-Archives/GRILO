@@ -249,6 +249,19 @@ references:
   commentId: T:GRILO.Bootloader.BootStyle.BaseBootStyle
   fullName: GRILO.Bootloader.BootStyle.BaseBootStyle
   nameWithType: BaseBootStyle
+- uid: GRILO.Bootloader.BootStyle.BaseBootStyle.CustomKeys
+  name: CustomKeys
+  href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_CustomKeys
+  commentId: P:GRILO.Bootloader.BootStyle.BaseBootStyle.CustomKeys
+  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.CustomKeys
+  nameWithType: BaseBootStyle.CustomKeys
+- uid: GRILO.Bootloader.BootStyle.BaseBootStyle.CustomKeys*
+  name: CustomKeys
+  href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_CustomKeys_
+  commentId: Overload:GRILO.Bootloader.BootStyle.BaseBootStyle.CustomKeys
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.CustomKeys
+  nameWithType: BaseBootStyle.CustomKeys
 - uid: GRILO.Bootloader.BootStyle.BaseBootStyle.Render
   name: Render()
   href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_Render
@@ -378,6 +391,19 @@ references:
   commentId: T:GRILO.Bootloader.BootStyle.IBootStyle
   fullName: GRILO.Bootloader.BootStyle.IBootStyle
   nameWithType: IBootStyle
+- uid: GRILO.Bootloader.BootStyle.IBootStyle.CustomKeys
+  name: CustomKeys
+  href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_CustomKeys
+  commentId: P:GRILO.Bootloader.BootStyle.IBootStyle.CustomKeys
+  fullName: GRILO.Bootloader.BootStyle.IBootStyle.CustomKeys
+  nameWithType: IBootStyle.CustomKeys
+- uid: GRILO.Bootloader.BootStyle.IBootStyle.CustomKeys*
+  name: CustomKeys
+  href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_CustomKeys_
+  commentId: Overload:GRILO.Bootloader.BootStyle.IBootStyle.CustomKeys
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootStyle.IBootStyle.CustomKeys
+  nameWithType: IBootStyle.CustomKeys
 - uid: GRILO.Bootloader.BootStyle.IBootStyle.Render
   name: Render()
   href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_Render

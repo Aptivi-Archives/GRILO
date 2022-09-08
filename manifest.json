@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.BootStyle.BaseBootStyle.html",
-          "hash": "p4mEK/VxYLxOufgBMVwTPEF8dgRQl6nhGmfGyv1SZzU="
+          "hash": "jmx1WXnM38yDFSZXT6OblSQ92kfLjP3izim4zzbAjGM="
         }
       },
       "is_incremental": false,
@@ -129,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.BootStyle.IBootStyle.html",
-          "hash": "f+Ljj26FKr7FKRaAd24soyaS6q2vLX/3FyZXm6uJido="
+          "hash": "8cNFtHSPMLULB+KnPRr+tVJQP5JhbmO+JK365B7pbvo="
         }
       },
       "is_incremental": false,
