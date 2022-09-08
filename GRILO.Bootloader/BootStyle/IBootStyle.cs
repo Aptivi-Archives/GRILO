@@ -22,6 +22,10 @@
  * SOFTWARE.
  */
 
+using GRILO.Bootloader.BootApps;
+using System.Collections.Generic;
+using System;
+
 namespace GRILO.Bootloader.BootStyle
 {
     /// <summary>
@@ -29,6 +33,10 @@ namespace GRILO.Bootloader.BootStyle
     /// </summary>
     public interface IBootStyle
     {
+        /// <summary>
+        /// Custom key assignments
+        /// </summary>
+        Dictionary<ConsoleKeyInfo, Action<BootAppInfo>> CustomKeys { get; }
         /// <summary>
         /// Renders the bootloader style
         /// </summary>

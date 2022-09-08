@@ -33,6 +33,8 @@ namespace GRILO.Bootloader.BootStyle.Styles
     {
         internal List<(int, int)> bootEntryPositions = new();
 
+        public override Dictionary<ConsoleKeyInfo, Action<BootAppInfo>> CustomKeys { get; }
+
         public override void Render()
         {
             // Populate colors

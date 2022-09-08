@@ -23,17 +23,27 @@
  */
 
 using GRILO.Bootloader.BootApps;
+using GRILO.Bootloader.BootStyle;
 using System;
 using System.Collections.Generic;
 
-namespace GRILO.Bootloader.BootStyle
+namespace GRILO.Bootloader.KeyHandler
 {
-    public abstract class BaseBootStyle : IBootStyle
+    /// <summary>
+    /// Key handling module
+    /// </summary>
+    internal static class Handler
     {
-        public abstract Dictionary<ConsoleKeyInfo, Action<BootAppInfo>> CustomKeys { get; }
-        public abstract void Render();
-        public abstract void RenderHighlight(int chosenBootEntry);
-        public abstract void RenderModalDialog(string content);
-        public abstract void RenderBootingMessage(string chosenBootName);
+        /// <summary>
+        /// Handles the key
+        /// </summary>
+        /// <param name="cki">Key information</param>
+        /// <param name="chosenBootApp">Chosen boot application information class</param>
+        internal static void HandleKey(ConsoleKeyInfo cki, BootAppInfo chosenBootApp)
+        {
+            var bootStyle = BootStyleManager.GetBootStyle(BootStyleManager.bootStyleStr);
+            if (bootStyle.CustomKeys.TryGetValue(cki, out var action))
+                action.Invoke(chosenBootApp);
+        }
     }
 }

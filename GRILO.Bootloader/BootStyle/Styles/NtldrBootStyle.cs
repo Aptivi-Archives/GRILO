@@ -25,13 +25,13 @@
 using GRILO.Bootloader.BootApps;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace GRILO.Bootloader.BootStyle.Styles
 {
     internal class NtldrBootStyle : BaseBootStyle, IBootStyle
     {
         internal List<(int, int)> bootEntryPositions = new();
+        public override Dictionary<ConsoleKeyInfo, Action<BootAppInfo>> CustomKeys { get; }
 
         public override void Render()
         {

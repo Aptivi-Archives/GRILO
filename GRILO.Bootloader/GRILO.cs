@@ -28,6 +28,7 @@ using GRILO.Bootloader.Configuration;
 using System;
 using System.Reflection;
 using GRILO.Bootloader.Diagnostics;
+using GRILO.Bootloader.KeyHandler;
 
 namespace GRILO.Bootloader
 {
@@ -104,12 +105,14 @@ namespace GRILO.Bootloader
                                 }
                                 break;
                             case ConsoleKey.Enter:
-                            case ConsoleKey.RightArrow: // to simulate GRUB
                                 // We're no longer waiting for boot key
                                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Booting...");
                                 waitingForBootKey = false;
                                 break;
                             default:
+                                string chosenBootName = BootManager.GetBootAppNameByIndex(chosenBootEntry);
+                                var chosenBootApp = BootManager.GetBootApp(chosenBootName);
+                                Handler.HandleKey(cki, chosenBootApp);
                                 break;
                         }
                     }
