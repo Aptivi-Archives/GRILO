@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Boot.IBootable.html",
-          "hash": "C6UUcwnmOm614R1WwLZkeU1wTCMAWhnrCtMo1rWoSco="
+          "hash": "cWW16IL/tXsOBPWBWg/t7PVwFPIe9dk1JPiBDY3eDig="
         }
       },
       "is_incremental": false,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.BootableAppDemo.BootClass.html",
-          "hash": "i8unFTnbOlyT0Gz5I/7fufEXsYBeJd9oMfEFGgFOI4s="
+          "hash": "XWsV9Doz6XXyLIoHUDQ9tZo6k7nrN7etisM2R3fqZPs="
         }
       },
       "is_incremental": false,
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.BootApps.BootAppInfo.html",
-          "hash": "gPjHkSZxsli8eg93SLygWUzroDXuJ+q2efjX52MZcaI="
+          "hash": "s/UE2c0Kelucm/Lap6azMy02lo+WrKvSgw6wkaXrQWE="
         }
       },
       "is_incremental": false,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.BootApps.BootManager.html",
-          "hash": "SxgPkBIVth45EBA4kg5lrrLVrx2ldeM+7n4Tc+eW+7E="
+          "hash": "9kIkdECjeNfAY2x869mu07ejy7qZ+QpTEWKexzfZooo="
         }
       },
       "is_incremental": false,
@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.BootStyle.BaseBootStyle.html",
-          "hash": "jmx1WXnM38yDFSZXT6OblSQ92kfLjP3izim4zzbAjGM="
+          "hash": "ks4Yg++oue1Mg0b3eBuK9al6UTQ4R60KFGnrf+SeQx0="
         }
       },
       "is_incremental": false,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.BootStyle.BootStyleManager.html",
-          "hash": "5f93DYtjlXza17If9XwCKyzvx9N4cgEO+W7H/99ozaY="
+          "hash": "hG8TygXUYEwiKicCBx0qadYXl2eIYiTOXE1Zds3L3BM="
         }
       },
       "is_incremental": false,
@@ -129,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.BootStyle.IBootStyle.html",
-          "hash": "8cNFtHSPMLULB+KnPRr+tVJQP5JhbmO+JK365B7pbvo="
+          "hash": "SEq9Z7pMYRWkK8i+F0b0MXyyPFfb1PNVDSa4MwXTgEI="
         }
       },
       "is_incremental": false,
@@ -153,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.Configuration.Config.html",
-          "hash": "JFCygdvdFUbcqGLe1bv7uH8GDgGjVmeBomBE6NaqCso="
+          "hash": "RRCia3BZzFOkr6Ur6WV97CKp41aVbAn1XHLfJHYN28k="
         }
       },
       "is_incremental": false,
@@ -177,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.Diagnostics.DiagnosticsLevel.html",
-          "hash": "jWhpO1P8kVD3roIbpuD12/5DT0Ecr0DD5erq9LcE1KY="
+          "hash": "bBXYz0X1WIlTblvr/n3K/zwVy2AIHPXRRsjrfIYk1Ao="
         }
       },
       "is_incremental": false,
@@ -189,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.Diagnostics.DiagnosticsWriter.html",
-          "hash": "aWVw6eJGMsXwopzo9yCazlnOadzkJjObgwYdCLa5WB8="
+          "hash": "ukYm2naa590opdrBSojv99JEumVEz+Yire2u82Y4UKY="
         }
       },
       "is_incremental": false,
@@ -213,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.GRILOException.html",
-          "hash": "coCyr5wAK6tKtAMqnm8Tkr1xHPwwheDKBKXegFbEp5o="
+          "hash": "LeI1L2XsqK6hFsfX+pfULqvke+AWdh2kyBe4iYcyVEA="
         }
       },
       "is_incremental": false,
@@ -225,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.GRILOPaths.html",
-          "hash": "ZbmJ4eCs9LEMfHUI4vEetSDQm1qBN01gR5Q1IKeXY4k="
+          "hash": "4vqVXwIRuT53OLNqeen8tNY9rGq9CqQQdURxF/CoZ+I="
         }
       },
       "is_incremental": false,
@@ -237,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.GRILOPlatform.html",
-          "hash": "+7M+AQpjzQyGZx/rej3fZEI6CJiWbVnem2cUvdz51gk="
+          "hash": "D6sXwnjN8KWfT76HiE2r0EWIaJvAzKBxFYd+RPP1Ca8="
         }
       },
       "is_incremental": false,
@@ -273,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "xlbMzozLutEqkBZDbyg2MKWPm+dMBQ1OmWm82pQ2wZI="
+          "hash": "kq1reKxU9pcdxWxUWbSlNy4+P2KYJrxqTGgReijP80s="
         }
       },
       "is_incremental": false,
