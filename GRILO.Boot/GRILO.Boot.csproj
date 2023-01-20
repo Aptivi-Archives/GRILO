@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.1;net48</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>0.1.0</Version>
-    <PackageVersion>0.1.0</PackageVersion>
+    <Version>0.1.0.1</Version>
+    <PackageVersion>0.1.0.1</PackageVersion>
     <Authors>Aptivi</Authors>
     <Product>GRILO</Product>
     <Description>Bootloader simulator for .NET</Description>
