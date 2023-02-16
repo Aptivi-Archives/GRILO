@@ -1,29 +1,70 @@
-## GRILO
 
-GRILO is a bootloader simulator that can execute any console application supported by GRILO. It simulates the boot process of GRUB/LILO by showing the boot menu and displaying pre-boot messages.
+<div align = center>
 
-### License
+<br>
+<br>
+    
+<img
+  src = 'https://cdn.jsdelivr.net/gh/Aptivi/GRILO@main/GRILO.Boot/OfficialAppIcon-GRILO-512.png'
+  width = 256
+  align = center
+/>
 
-```
-MIT License
+<br>
 
-Copyright (c) 2022 Aptivi
+# GRILO
+    
+*A bootloader simulator.*
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+<br>
+<br>
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+[![Badge Main]][Main]   
+[![Badge Main Linux]][Main Linux]
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+[![Badge Latest]][Latest]   
+[![Badge NuGet]][NuGet]
+
+![Badge Size]   
+[![Badge Downloads]][Releases]
+
+[![Button Manual]][Manual]   
+[![Button Install]][Install]   
+[![Button Libraries]][Libraries]
+
+</div>
+    
+<br>
+
+</div>
+
+
+<!----------------------------------------------------------------------------->
+
+[Releases]: https://github.com/Aptivi/GRILO/releases
+[Latest]: https://github.com/Aptivi/GRILO/releases/latest
+[NuGet]: https://www.nuget.org/packages/GRILO.Bootloader/
+
+[Main]: https://github.com/Aptivi/GRILO/actions/workflows/build-win.yml
+[Main Linux]: https://github.com/Aptivi/GRILO/actions/workflows/build-linux.yml
+
+[Libraries]: https://aptivi.gitbook.io/grilo-manual/project-dependencies
+[Install]: https://aptivi.gitbook.io/grilo-manual/installation/installing-grilo
+[Manual]: https://aptivi.gitbook.io/grilo-manual/
+
+<!----------------------------------[ Badges ]--------------------------------->
+
+[Badge Downloads]: https://img.shields.io/github/downloads/Aptivi/GRILO/total?color=217346&label=Downloads&style=for-the-badge&logoColor=white&logo=DocuSign&labelColor=2d9d5f
+[Badge Latest]: https://img.shields.io/github/v/release/Aptivi/GRILO?color=212121&include_prereleases&label=github&style=for-the-badge&logoColor=white&logo=AzureArtifacts&labelColor=303030
+[Badge NuGet]: https://img.shields.io/nuget/vpre/GRILO.Bootloader?color=012f52&style=for-the-badge&logoColor=white&logo=NuGet&labelColor=004880
+[Badge Size]: https://img.shields.io/github/repo-size/Aptivi/GRILO?color=bb4a28&label=size&logoColor=white&style=for-the-badge&logo=GoogleAnalytics&labelColor=E85C33
+
+[Badge Main]: https://github.com/Aptivi/GRILO/actions/workflows/build-win.yml/badge.svg
+[Badge Main Linux]: https://github.com/Aptivi/GRILO/actions/workflows/build-linux.yml/badge.svg
+
+
+<!---------------------------------[ Buttons ]--------------------------------->
+
+[Button Libraries]: https://img.shields.io/badge/Libraries-EA8220?style=for-the-badge&logoColor=white&logo=AzureArtifacts
+[Button Install]: https://img.shields.io/badge/Installation-2F8D46?style=for-the-badge&logoColor=white&logo=DocuSign
+[Button Manual]: https://img.shields.io/badge/Docs-blueviolet?style=for-the-badge&logoColor=white&logo=GitBook
