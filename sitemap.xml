@@ -2,127 +2,127 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Boot.IBootable.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Boot.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.BootableAppDemo.BootClass.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.BootableAppDemo.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Bootloader.BootApps.BootAppInfo.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Bootloader.BootApps.BootManager.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Bootloader.BootApps.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Bootloader.BootStyle.BaseBootStyle.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Bootloader.BootStyle.BootStyleManager.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Bootloader.BootStyle.IBootStyle.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Bootloader.BootStyle.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Bootloader.Configuration.Config.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Bootloader.Configuration.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Bootloader.Diagnostics.DiagnosticsLevel.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Bootloader.Diagnostics.DiagnosticsWriter.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Bootloader.Diagnostics.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Bootloader.GRILOException.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Bootloader.GRILOPaths.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Bootloader.GRILOPlatform.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/api/GRILO.Bootloader.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aptivi.github.io/GRILO/index.html</loc>
-    <lastmod>2023-07-14T12:49:22+00:00</lastmod>
+    <lastmod>2023-07-27T10:31:47+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
