@@ -26,7 +26,6 @@ using GRILO.Bootloader.BootApps;
 using GRILO.Bootloader.BootStyle;
 using GRILO.Bootloader.Configuration;
 using System;
-using System.Collections.Generic;
 
 namespace GRILO.Bootloader.KeyHandler
 {

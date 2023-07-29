@@ -22,12 +22,8 @@
  * SOFTWARE.
  */
 
-using GRILO.Bootloader.BootApps;
-using GRILO.Bootloader.BootStyle;
 using GRILO.Bootloader.Configuration.Instance;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
 using System.IO;
 
 namespace GRILO.Bootloader.Configuration
