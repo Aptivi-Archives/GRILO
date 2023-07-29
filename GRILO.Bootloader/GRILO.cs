@@ -34,8 +34,6 @@ namespace GRILO.Bootloader
 {
     internal class GRILO
     {
-        internal static bool diagMessages = false;
-        internal static bool printDiagMessages = false;
         internal static bool shutdownRequested = false;
         internal static bool waitingForBootKey = true;
 

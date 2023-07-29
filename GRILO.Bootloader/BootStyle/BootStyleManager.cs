@@ -23,6 +23,7 @@
  */
 
 using GRILO.Bootloader.BootStyle.Styles;
+using GRILO.Bootloader.Configuration;
 using GRILO.Bootloader.Diagnostics;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,6 @@ namespace GRILO.Bootloader.BootStyle
     /// </summary>
     public static class BootStyleManager
     {
-        internal static string bootStyleStr = "Default";
         private static readonly Dictionary<string, BaseBootStyle> bootStyles = new()
         {
             { "Default", new DefaultBootStyle() },
@@ -125,6 +125,7 @@ namespace GRILO.Bootloader.BootStyle
         public static void RenderMenu(int chosenBootEntry)
         {
             // Get the base boot style from the current boot style name
+            string bootStyleStr = Config.Instance.BootStyleName;
             var bootStyle = GetBootStyle(bootStyleStr);
             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Got boot style from {0}...", bootStyleStr);
 
@@ -143,6 +144,7 @@ namespace GRILO.Bootloader.BootStyle
             Console.Clear();
 
             // Get the base boot style from the current boot style name
+            string bootStyleStr = Config.Instance.BootStyleName;
             var bootStyle = GetBootStyle(bootStyleStr);
             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Got boot style from {0}...", bootStyleStr);
 
@@ -162,6 +164,7 @@ namespace GRILO.Bootloader.BootStyle
         public static void RenderBootingMessage(string chosenBootName)
         {
             // Get the base boot style from the current boot style name
+            string bootStyleStr = Config.Instance.BootStyleName;
             var bootStyle = GetBootStyle(bootStyleStr);
             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Got boot style from {0}...", bootStyleStr);
 
@@ -179,6 +182,7 @@ namespace GRILO.Bootloader.BootStyle
             Console.Clear();
 
             // Get the base boot style from the current boot style name
+            string bootStyleStr = Config.Instance.BootStyleName;
             var bootStyle = GetBootStyle(bootStyleStr);
             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Got boot style from {0}...", bootStyleStr);
 

@@ -22,6 +22,7 @@
  * SOFTWARE.
  */
 
+using GRILO.Bootloader.Configuration;
 using System;
 using System.IO;
 
@@ -40,10 +41,10 @@ namespace GRILO.Bootloader.Diagnostics
         /// <param name="args">Arguments</param>
         public static void WriteDiag(DiagnosticsLevel level, string content, params object[] args)
         {
-            if (GRILO.diagMessages)
+            if (Config.Instance.DiagnosticMessages)
             {
                 // Print diagnostic messages to the console
-                if (GRILO.printDiagMessages)
+                if (Config.Instance.PrintDiagnosticMessages)
                     Console.WriteLine($"[{level.ToString()[0]}] {content}", args);
 
                 // Print diagnostic messages to the debug file

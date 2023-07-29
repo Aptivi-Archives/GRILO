@@ -22,29 +22,23 @@
  * SOFTWARE.
  */
 
-using GRILO.Bootloader.BootApps;
-using GRILO.Bootloader.BootStyle;
-using GRILO.Bootloader.Configuration;
+using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 
-namespace GRILO.Bootloader.KeyHandler
+namespace GRILO.Bootloader.Configuration.Instance
 {
-    /// <summary>
-    /// Key handling module
-    /// </summary>
-    internal static class Handler
+    public class ConfigInstance
     {
-        /// <summary>
-        /// Handles the key
-        /// </summary>
-        /// <param name="cki">Key information</param>
-        /// <param name="chosenBootApp">Chosen boot application information class</param>
-        internal static void HandleKey(ConsoleKeyInfo cki, BootAppInfo chosenBootApp)
-        {
-            var bootStyle = BootStyleManager.GetBootStyle(Config.Instance.BootStyleName);
-            if (bootStyle.CustomKeys.TryGetValue(cki, out var action))
-                action.Invoke(chosenBootApp);
-        }
+        [JsonProperty("Boot style", Required = Required.Always)]
+        public string BootStyleName { get; set; } = "Default";
+
+        [JsonProperty("Diagnostic messages", Required = Required.Always)]
+        public bool DiagnosticMessages { get; set; }
+
+        [JsonProperty("Print diagnostic messages to console", Required = Required.Always)]
+        public bool PrintDiagnosticMessages { get; set; }
+
+        [JsonProperty("Additional bootable folders", Required = Required.Always)]
+        public string[] AdditionalScanFolders { get; set; } = Array.Empty<string>();
     }
 }

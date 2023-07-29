@@ -24,6 +24,7 @@
 
 using GRILO.Bootloader.BootApps;
 using GRILO.Bootloader.BootStyle;
+using GRILO.Bootloader.Configuration.Instance;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -36,27 +37,10 @@ namespace GRILO.Bootloader.Configuration
     /// </summary>
     public static class Config
     {
-        public static JObject GeneratePristineConfig(bool @default = false)
-        {
-            JObject pristineConfig = new();
+        internal static ConfigInstance instance;
 
-            // Populate these configuration entries
-            JArray bootFolders = new()
-            {
-                @default ? Array.Empty<string>() : BootManager.additionalScanFolders
-            };
-            JObject entries = new()
-            {
-                { "Boot style",                             @default ? "Default" : BootStyleManager.bootStyleStr },
-                { "Diagnostic messages",                    !@default && GRILO.diagMessages },
-                { "Print diagnostic messages to console",   !@default && GRILO.printDiagMessages },
-                { "Additional bootable folders",            bootFolders }
-            };
-
-            // Add the entries to the master object
-            pristineConfig.Add("GRILO", entries);
-            return pristineConfig;
-        }
+        public static ConfigInstance Instance =>
+            instance;
 
         /// <summary>
         /// Reads configuration
@@ -68,11 +52,8 @@ namespace GRILO.Bootloader.Configuration
                 SaveConfigFile();
 
             // Now, open the file and save the values from the config to the program
-            JToken config = JObject.Parse(File.ReadAllText(GRILOPaths.GRILOConfigPath)).SelectToken("GRILO");
-            BootStyleManager.bootStyleStr =     config["Boot style"].ToString();
-            GRILO.diagMessages =                (bool)config["Diagnostic messages"].ToObject(typeof(bool));
-            GRILO.printDiagMessages =           (bool)config["Print diagnostic messages to console"].ToObject(typeof(bool));
-            BootManager.additionalScanFolders = config["Additional bootable folders"].ToObject<string[]>();
+            string fileContents = File.ReadAllText(GRILOPaths.GRILOConfigPath);
+            instance = (ConfigInstance)JsonConvert.DeserializeObject(fileContents, typeof(ConfigInstance));
         }
 
         /// <summary>
@@ -80,11 +61,8 @@ namespace GRILO.Bootloader.Configuration
         /// </summary>
         public static void SaveConfigFile()
         {
-            // Get the pristine config
-            JObject pristineConfig = GeneratePristineConfig();
-
             // Save the configuration to the GRILO config path
-            string serializedConfig = JsonConvert.SerializeObject(pristineConfig, Formatting.Indented);
+            string serializedConfig = JsonConvert.SerializeObject(Instance, Formatting.Indented);
             File.WriteAllText(GRILOPaths.GRILOConfigPath, serializedConfig);
         }
     }

@@ -31,6 +31,7 @@ using System.IO;
 using System.Reflection;
 using System.Linq;
 using GRILO.Bootloader.Diagnostics;
+using GRILO.Bootloader.Configuration;
 
 namespace GRILO.Bootloader.BootApps
 {
@@ -39,7 +40,6 @@ namespace GRILO.Bootloader.BootApps
     /// </summary>
     public static class BootManager
     {
-        internal static string[] additionalScanFolders = Array.Empty<string>();
         private static readonly Dictionary<string, BootAppInfo> bootApps = new()
         {
             { "Shutdown the system", new BootAppInfo("", "", Array.Empty<string>(), new Shutdown()) }
@@ -52,7 +52,7 @@ namespace GRILO.Bootloader.BootApps
         {
             // Custom boot apps usually have the .DLL extension for .NET 6.0 and the .EXE extension for .NET Framework
             var bootDirs = Directory.EnumerateDirectories(GRILOPaths.GRILOBootablesPath).ToList();
-            bootDirs.AddRange(additionalScanFolders);
+            bootDirs.AddRange(Config.Instance.AdditionalScanFolders);
             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Boot directories to scan: {0}", bootDirs.Count);
 
             foreach (var bootDir in bootDirs)
