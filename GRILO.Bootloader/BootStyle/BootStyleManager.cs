@@ -41,6 +41,7 @@ namespace GRILO.Bootloader.BootStyle
         private static readonly Dictionary<string, BaseBootStyle> bootStyles = new()
         {
             { "Default", new DefaultBootStyle() },
+            { "Standard", new StandardBootStyle() },
             { "Ntldr", new NtldrBootStyle() }
         };
         private static readonly Dictionary<string, BaseBootStyle> customBootStyles = new();
