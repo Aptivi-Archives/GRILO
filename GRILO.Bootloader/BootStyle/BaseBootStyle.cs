@@ -35,5 +35,6 @@ namespace GRILO.Bootloader.BootStyle
         public abstract void RenderHighlight(int chosenBootEntry);
         public abstract void RenderModalDialog(string content);
         public abstract void RenderBootingMessage(string chosenBootName);
+        public abstract void RenderBootFailedMessage(string content);
     }
 }

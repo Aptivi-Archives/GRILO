@@ -29,7 +29,7 @@ using System.Text;
 
 namespace GRILO.Bootloader.BootStyle.Styles
 {
-    internal class DefaultBootStyle : BaseBootStyle, IBootStyle
+    internal class StandardBootStyle : BaseBootStyle, IBootStyle
     {
         internal List<(int, int)> bootEntryPositions = new();
 
@@ -197,7 +197,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
 
         public override void RenderBootingMessage(string chosenBootName) => Console.WriteLine("Booting {0}...", chosenBootName);
 
-        public override void RenderBootFailedMessage(string content) => Console.WriteLine(content);
+        public override void RenderBootFailedMessage(string content) => RenderModalDialog(content);
 
         private static void DrawBox((int, int) modalDialogBorderTopLeft, (int, int) modalDialogBorderBottomLeft, (int, int) modalDialogBorderTopRight)
         {

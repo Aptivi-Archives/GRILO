@@ -56,5 +56,10 @@ namespace GRILO.Bootloader.BootStyle
         /// </summary>
         /// <param name="chosenBootName">Chosen boot name</param>
         void RenderBootingMessage(string chosenBootName);
+        /// <summary>
+        /// Renders the boot failed message
+        /// </summary>
+        /// <param name="content">Message to display</param>
+        void RenderBootFailedMessage(string content);
     }
 }

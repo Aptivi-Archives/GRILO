@@ -148,7 +148,7 @@ namespace GRILO.Bootloader
                     if (!shutdownRequested)
                     {
                         DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Warning, "Boot failed: {0}", bootFailureException.Message);
-                        BootStyleManager.RenderDialog($"Encountered boot failure.\nReason: {bootFailureException.Message}");
+                        BootStyleManager.RenderBootFailedMessage($"Encountered boot failure.\nReason: {bootFailureException.Message}");
                     }
                 }
             }

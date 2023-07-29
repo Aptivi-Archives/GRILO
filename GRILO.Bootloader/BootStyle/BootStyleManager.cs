@@ -169,5 +169,27 @@ namespace GRILO.Bootloader.BootStyle
             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Rendering booting message with chosen boot name {0}...", chosenBootName);
             bootStyle.RenderBootingMessage(chosenBootName);
         }
+
+        /// <summary>
+        /// Renders the boot failed message
+        /// </summary>
+        /// <param name="content">Message to display</param>
+        public static void RenderBootFailedMessage(string content)
+        {
+            Console.Clear();
+
+            // Get the base boot style from the current boot style name
+            var bootStyle = GetBootStyle(bootStyleStr);
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Got boot style from {0}...", bootStyleStr);
+
+            // Render it.
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Rendering boot failed message with content: {0}...", content);
+            bootStyle.RenderBootFailedMessage(content);
+
+            // Wait for input
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Waiting for user to press any key...");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey(true);
+        }
     }
 }

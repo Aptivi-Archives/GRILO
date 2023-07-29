@@ -23,6 +23,7 @@
  */
 
 using GRILO.Bootloader.BootApps;
+using GRILO.Bootloader.Diagnostics;
 using System;
 using System.Collections.Generic;
 
@@ -70,31 +71,98 @@ namespace GRILO.Bootloader.BootStyle.Styles
             ConsoleColor highlightedEntryForeground = ConsoleColor.Black;
             ConsoleColor highlightedEntryBackground = ConsoleColor.Gray;
 
-            Console.WriteLine(@"
-We apologize for the inconvenience, but Windows did not start successfully.  A
-recent hardware or software change might have caused this.
-
-If your computer stopped responding, restarted unexpectedly, or was
-automatically shut down to protect your files or folders, choose Last Known
-Good Configuration to revert to the most recent settings that worked.
-
-If a previous startup attempt was interrupted due to a power failure or because
-the Power or Reset button was pressed, or if you aren't sure what caused the
-problem, choose Start Windows Normally.
-
-    Safe Mode
-    Safe Mode with Networking
-    Safe Mode with Command Prompt
-
-    Last Known Good Configuration (your most recent settings that worked)
-");
+            Console.WriteLine($"""
+                
+                {content}
+                """);
             Console.ForegroundColor = highlightedEntryForeground;
             Console.BackgroundColor = highlightedEntryBackground;
-            Console.WriteLine("    Start Windows Normally");
+            Console.WriteLine("    Continue");
             Console.ResetColor();
             Console.WriteLine("\nUse the up and down arrow keys to move the highlight to your choice.");
         }
 
         public override void RenderBootingMessage(string chosenBootName) { }
+
+        public override void RenderBootFailedMessage(string content)
+        {
+            bool exiting = false;
+            int choiceNum = 6;
+            int excludeChoice = 4;
+            while (!exiting)
+            {
+                ShowBootFailure(choiceNum);
+                var cki = Console.ReadKey(true);
+                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Key pressed: {0}", cki.Key.ToString());
+                switch (cki.Key)
+                {
+                    case ConsoleKey.Enter:
+                        exiting = true;
+                        break;
+                    case ConsoleKey.UpArrow:
+                        choiceNum--;
+                        if (choiceNum == excludeChoice)
+                            choiceNum--;
+                        if (choiceNum == 0)
+                            choiceNum = 6;
+                        break;
+                    case ConsoleKey.DownArrow:
+                        choiceNum++;
+                        if (choiceNum == excludeChoice)
+                            choiceNum++;
+                        if (choiceNum == 7)
+                            choiceNum = 0;
+                        break;
+                }
+            }
+        }
+
+        private void ShowBootFailure(int choiceNum)
+        {
+            // Populate colors
+            ConsoleColor highlightedEntryForeground = ConsoleColor.Black;
+            ConsoleColor highlightedEntryBackground = ConsoleColor.Gray;
+            Console.Clear();
+
+            // Populate choices
+            string[] choices = new[]
+            {
+                "Safe Mode",
+                "Safe Mode with Networking",
+                "Safe Mode with Command Prompt",
+                "",
+                "Last Known Good Configuration (your most recent settings that worked)",
+                "Start Windows Normally",
+            };
+
+            // Print the message
+            Console.WriteLine("""
+
+                We apologize for the inconvenience, but Windows did not start successfully.  A
+                recent hardware or software change might have caused this.
+
+                If your computer stopped responding, restarted unexpectedly, or was
+                automatically shut down to protect your files or folders, choose Last Known
+                Good Configuration to revert to the most recent settings that worked.
+
+                If a previous startup attempt was interrupted due to a power failure or because
+                the Power or Reset button was pressed, or if you aren't sure what caused the
+                problem, choose Start Windows Normally.
+
+                """);
+            for (int i = 0; i < choices.Length; i++)
+            {
+                string choice = choices[i];
+                if (i == choiceNum - 1)
+                {
+                    Console.ForegroundColor = highlightedEntryForeground;
+                    Console.BackgroundColor = highlightedEntryBackground;
+                }
+                Console.Write($"    {choice}");
+                Console.ResetColor();
+                Console.WriteLine();
+            }
+            Console.WriteLine("\nUse the up and down arrow keys to move the highlight to your choice.");
+        }
     }
 }
