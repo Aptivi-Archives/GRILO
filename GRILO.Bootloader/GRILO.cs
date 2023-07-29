@@ -29,6 +29,7 @@ using System;
 using System.Reflection;
 using GRILO.Bootloader.Diagnostics;
 using GRILO.Bootloader.KeyHandler;
+using System.Linq;
 
 namespace GRILO.Bootloader
 {
@@ -36,6 +37,7 @@ namespace GRILO.Bootloader
     {
         internal static bool shutdownRequested = false;
         internal static bool waitingForBootKey = true;
+        internal static string griloVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
         static void Main()
         {
@@ -58,6 +60,7 @@ namespace GRILO.Bootloader
 
                 // Populate the bootable apps list
                 BootManager.PopulateBootApps();
+                var bootApps = BootManager.GetBootApps();
                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Bootable apps read successfully.");
 
                 // Now, draw the boot menu. Note that the chosen boot entry counts from zero.
@@ -87,7 +90,7 @@ namespace GRILO.Bootloader
                                 // If we reached the beginning of the boot menu, go to the ending
                                 if (chosenBootEntry < 0)
                                 {
-                                    chosenBootEntry = BootManager.GetBootApps().Count - 1;
+                                    chosenBootEntry = bootApps.Count - 1;
                                     DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "We're at the beginning! Chosen boot entry is now {0}", chosenBootEntry);
                                 }
                                 break;
@@ -96,11 +99,45 @@ namespace GRILO.Bootloader
                                 chosenBootEntry++;
 
                                 // If we reached the ending of the boot menu, go to the beginning
-                                if (chosenBootEntry > BootManager.GetBootApps().Count - 1)
+                                if (chosenBootEntry > bootApps.Count - 1)
                                 {
                                     chosenBootEntry = 0;
                                     DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "We're at the ending! Chosen boot entry is now {0}", chosenBootEntry);
                                 }
+                                break;
+                            case ConsoleKey.Home:
+                                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Decrementing boot entry to the first entry...");
+                                chosenBootEntry = 0;
+                                break;
+                            case ConsoleKey.End:
+                                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Decrementing boot entry to the last entry...");
+                                chosenBootEntry = bootApps.Count - 1;
+                                break;
+                            case ConsoleKey.H:
+                                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Opening controls page...");
+                                var style = BootStyleManager.GetCurrentBootStyle();
+                                if (cki.Modifiers.HasFlag(ConsoleModifiers.Shift))
+                                    BootStyleManager.RenderDialog(
+                                        $"""
+                                        Standard controls
+                                        -----------------
+
+                                        [UP ARROW]   | Selects the previous boot entry
+                                        [DOWN ARROW] | Selects the next boot entry
+                                        [HOME]       | Selects the first boot entry
+                                        [END]        | Selects the last boot entry
+                                        [SHIFT + H]  | Opens this help page
+                                        [ENTER]      | Boots the selected entry
+
+                                        Controls defined by custom boot style
+                                        -------------------------------------
+
+                                        {(style.CustomKeys is not null && style.CustomKeys.Count > 0 ?
+                                          string.Join("\n", style.CustomKeys
+                                              .Select((cki) => $"[{string.Join(" + ", cki.Key.Modifiers)} + {cki.Key.Key}]")) :
+                                          "No controls defined by custom boot style")}
+                                        """
+                                    );
                                 break;
                             case ConsoleKey.Enter:
                                 // We're no longer waiting for boot key

@@ -73,6 +73,12 @@ namespace GRILO.Bootloader.BootStyle.Styles
                 Console.SetCursorPosition(upperRightCorner.Item1, y);
                 Console.Write('║');
             }
+
+            // Offer help for new users
+            string help = $"SHIFT + H for help. Version {GRILO.griloVersion}";
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(Console.WindowWidth - help.Length - 2, Console.WindowHeight - 2);
+            Console.Write(help);
         }
 
         public override void RenderHighlight(int chosenBootEntry)

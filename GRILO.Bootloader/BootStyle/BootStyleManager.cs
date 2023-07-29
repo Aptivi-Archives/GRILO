@@ -196,5 +196,17 @@ namespace GRILO.Bootloader.BootStyle
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey(true);
         }
+
+        /// <summary>
+        /// Gets the current boot style
+        /// </summary>
+        /// <returns>The current boot style instance</returns>
+        public static BaseBootStyle GetCurrentBootStyle()
+        {
+            string bootStyleStr = Config.Instance.BootStyleName;
+            var bootStyle = GetBootStyle(bootStyleStr);
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Got boot style from {0}...", bootStyleStr);
+            return bootStyle;
+        }
     }
 }
