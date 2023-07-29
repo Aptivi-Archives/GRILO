@@ -38,38 +38,85 @@ namespace GRILO.Bootloader.BootStyle.Styles
         public override void Render()
         {
             // Populate colors
-            ConsoleColor bootEntry = ConsoleColor.Blue;
+            ConsoleColor sectionTitle = ConsoleColor.Green;
+            ConsoleColor boxBorderColor = ConsoleColor.DarkGray;
 
-            // Prompt the user for selection
-            var bootApps = BootManager.GetBootApps();
-            Console.WriteLine("\n  Select boot entry:\n");
-            for (int i = 0; i < bootApps.Count; i++)
+            // Write the section title
+            string finalRenderedSection = "-- Select boot entry --";
+            int halfX = (Console.WindowWidth / 2) - (finalRenderedSection.Length / 2);
+            Console.ForegroundColor = sectionTitle;
+            Console.SetCursorPosition(halfX, 2);
+            Console.Write(finalRenderedSection);
+
+            // Now, render a box in the following order:
+            //
+            // 1. Upper left corner to upper right corner
+            // 2. Lower left corner to lower right corner
+            // 3. Left edge
+            // 4. Right edge
+            (int, int) upperLeftCorner = (2, 4);
+            (int, int) upperRightCorner = (Console.WindowWidth - 2, 4);
+            (int, int) lowerLeftCorner = (2, Console.WindowHeight - 4);
+            (int, int) lowerRightCorner = (Console.WindowWidth - 2, Console.WindowHeight - 4);
+            Console.ForegroundColor = boxBorderColor;
+            Console.SetCursorPosition(upperLeftCorner.Item1, upperLeftCorner.Item2);
+            Console.Write("╔" + new string('═', upperRightCorner.Item1 - upperLeftCorner.Item1 - 1) + "╗");
+            Console.SetCursorPosition(lowerLeftCorner.Item1, lowerLeftCorner.Item2);
+            Console.Write("╚" + new string('═', lowerRightCorner.Item1 - lowerLeftCorner.Item1 - 1) + "╝");
+            for (int y = upperLeftCorner.Item2 + 1; y < lowerLeftCorner.Item2; y++)
             {
-                string bootApp = BootManager.GetBootAppNameByIndex(i);
-                Console.ForegroundColor = bootEntry;
-                bootEntryPositions.Add((Console.CursorLeft, Console.CursorTop));
-                Console.WriteLine(" [{0}] {1}", i + 1, bootApp);
+                Console.SetCursorPosition(upperLeftCorner.Item1, y);
+                Console.Write('║');
+            }
+            for (int y = upperRightCorner.Item2 + 1; y < lowerRightCorner.Item2; y++)
+            {
+                Console.SetCursorPosition(upperRightCorner.Item1, y);
+                Console.Write('║');
             }
         }
 
         public override void RenderHighlight(int chosenBootEntry)
         {
             // Populate colors
-            ConsoleColor highlightedEntry = ConsoleColor.Cyan;
+            ConsoleColor highlightedEntry = ConsoleColor.DarkGreen;
+            ConsoleColor normalEntry = ConsoleColor.Gray;
+            ConsoleColor pageNumberColor = ConsoleColor.Gray;
 
-            // Highlight the chosen entry
-            string bootApp = BootManager.GetBootAppNameByIndex(chosenBootEntry);
-            Console.ForegroundColor = highlightedEntry;
-            Console.CursorLeft = bootEntryPositions[chosenBootEntry].Item1;
-            Console.CursorTop =  bootEntryPositions[chosenBootEntry].Item2;
-            Console.WriteLine(" [{0}] {1}", chosenBootEntry + 1, bootApp);
+            // Populate boot entries inside the box
+            var bootApps = BootManager.GetBootApps();
+            (int, int) upperLeftCornerInterior = (4, 6);
+            (int, int) lowerLeftCornerInterior = (4, Console.WindowHeight - 6);
+            int maxItemsPerPage = lowerLeftCornerInterior.Item2 - upperLeftCornerInterior.Item2;
+            int pages = (int)Math.Round(bootApps.Count / (double)maxItemsPerPage, MidpointRounding.AwayFromZero);
+            int currentPage = (int)Math.Round(chosenBootEntry / (double)maxItemsPerPage, MidpointRounding.AwayFromZero);
+            int startIndex = maxItemsPerPage * currentPage;
+            int endIndex = maxItemsPerPage * (currentPage + 1) - 1;
+            int renderedAnswers = 0;
+            for (int i = startIndex; i < endIndex; i++)
+            {
+                if (i + 1 > bootApps.Count)
+                    break;
+                string bootApp = BootManager.GetBootAppNameByIndex(i);
+                bootEntryPositions.Add((Console.CursorLeft, Console.CursorTop));
+                Console.ForegroundColor = i == chosenBootEntry ? highlightedEntry : normalEntry;
+                Console.SetCursorPosition(upperLeftCornerInterior.Item1, upperLeftCornerInterior.Item2 + renderedAnswers);
+                Console.Write(" >> {0}", bootApp);
+                renderedAnswers++;
+            }
+
+            // Populate page number
+            string renderedNumber = $"[{chosenBootEntry + 1}/{bootApps.Count}]═[{currentPage + 1}/{pages}]";
+            (int, int) lowerRightCornerToWrite = (Console.WindowWidth - renderedNumber.Length - 3, Console.WindowHeight - 4);
+            Console.ForegroundColor = pageNumberColor;
+            Console.SetCursorPosition(lowerRightCornerToWrite.Item1, lowerRightCornerToWrite.Item2);
+            Console.Write(renderedNumber);
         }
 
         public override void RenderModalDialog(string content)
         {
             // Populate colors
-            ConsoleColor dialogBG = ConsoleColor.Red;
-            ConsoleColor dialogFG = ConsoleColor.White;
+            ConsoleColor dialogBG = ConsoleColor.Black;
+            ConsoleColor dialogFG = ConsoleColor.DarkGray;
 
             // Get the corner positions
             (int, int) modalDialogBorderTopLeft =       (5, 5);
