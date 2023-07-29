@@ -275,6 +275,19 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.Render
   nameWithType: BaseBootStyle.Render
+- uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootFailedMessage(System.String)
+  name: RenderBootFailedMessage(String)
+  href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderBootFailedMessage_System_String_
+  commentId: M:GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootFailedMessage(System.String)
+  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootFailedMessage(System.String)
+  nameWithType: BaseBootStyle.RenderBootFailedMessage(String)
+- uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootFailedMessage*
+  name: RenderBootFailedMessage
+  href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderBootFailedMessage_
+  commentId: Overload:GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootFailedMessage
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootFailedMessage
+  nameWithType: BaseBootStyle.RenderBootFailedMessage
 - uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootingMessage(System.String)
   name: RenderBootingMessage(String)
   href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderBootingMessage_System_String_
@@ -333,6 +346,19 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootStyle.BootStyleManager.GetBootStyle
   nameWithType: BootStyleManager.GetBootStyle
+- uid: GRILO.Bootloader.BootStyle.BootStyleManager.GetCurrentBootStyle
+  name: GetCurrentBootStyle()
+  href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_GetCurrentBootStyle
+  commentId: M:GRILO.Bootloader.BootStyle.BootStyleManager.GetCurrentBootStyle
+  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.GetCurrentBootStyle()
+  nameWithType: BootStyleManager.GetCurrentBootStyle()
+- uid: GRILO.Bootloader.BootStyle.BootStyleManager.GetCurrentBootStyle*
+  name: GetCurrentBootStyle
+  href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_GetCurrentBootStyle_
+  commentId: Overload:GRILO.Bootloader.BootStyle.BootStyleManager.GetCurrentBootStyle
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.GetCurrentBootStyle
+  nameWithType: BootStyleManager.GetCurrentBootStyle
 - uid: GRILO.Bootloader.BootStyle.BootStyleManager.PopulateCustomBootStyles
   name: PopulateCustomBootStyles()
   href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_PopulateCustomBootStyles
@@ -346,6 +372,19 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootStyle.BootStyleManager.PopulateCustomBootStyles
   nameWithType: BootStyleManager.PopulateCustomBootStyles
+- uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootFailedMessage(System.String)
+  name: RenderBootFailedMessage(String)
+  href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderBootFailedMessage_System_String_
+  commentId: M:GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootFailedMessage(System.String)
+  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootFailedMessage(System.String)
+  nameWithType: BootStyleManager.RenderBootFailedMessage(String)
+- uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootFailedMessage*
+  name: RenderBootFailedMessage
+  href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderBootFailedMessage_
+  commentId: Overload:GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootFailedMessage
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootFailedMessage
+  nameWithType: BootStyleManager.RenderBootFailedMessage
 - uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootingMessage(System.String)
   name: RenderBootingMessage(String)
   href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderBootingMessage_System_String_
@@ -417,6 +456,19 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootStyle.IBootStyle.Render
   nameWithType: IBootStyle.Render
+- uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootFailedMessage(System.String)
+  name: RenderBootFailedMessage(String)
+  href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderBootFailedMessage_System_String_
+  commentId: M:GRILO.Bootloader.BootStyle.IBootStyle.RenderBootFailedMessage(System.String)
+  fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootFailedMessage(System.String)
+  nameWithType: IBootStyle.RenderBootFailedMessage(String)
+- uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootFailedMessage*
+  name: RenderBootFailedMessage
+  href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderBootFailedMessage_
+  commentId: Overload:GRILO.Bootloader.BootStyle.IBootStyle.RenderBootFailedMessage
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootFailedMessage
+  nameWithType: IBootStyle.RenderBootFailedMessage
 - uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootingMessage(System.String)
   name: RenderBootingMessage(String)
   href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderBootingMessage_System_String_
@@ -468,19 +520,19 @@ references:
   commentId: T:GRILO.Bootloader.Configuration.Config
   fullName: GRILO.Bootloader.Configuration.Config
   nameWithType: Config
-- uid: GRILO.Bootloader.Configuration.Config.GeneratePristineConfig(System.Boolean)
-  name: GeneratePristineConfig(Boolean)
-  href: api/GRILO.Bootloader.Configuration.Config.html#GRILO_Bootloader_Configuration_Config_GeneratePristineConfig_System_Boolean_
-  commentId: M:GRILO.Bootloader.Configuration.Config.GeneratePristineConfig(System.Boolean)
-  fullName: GRILO.Bootloader.Configuration.Config.GeneratePristineConfig(System.Boolean)
-  nameWithType: Config.GeneratePristineConfig(Boolean)
-- uid: GRILO.Bootloader.Configuration.Config.GeneratePristineConfig*
-  name: GeneratePristineConfig
-  href: api/GRILO.Bootloader.Configuration.Config.html#GRILO_Bootloader_Configuration_Config_GeneratePristineConfig_
-  commentId: Overload:GRILO.Bootloader.Configuration.Config.GeneratePristineConfig
+- uid: GRILO.Bootloader.Configuration.Config.Instance
+  name: Instance
+  href: api/GRILO.Bootloader.Configuration.Config.html#GRILO_Bootloader_Configuration_Config_Instance
+  commentId: P:GRILO.Bootloader.Configuration.Config.Instance
+  fullName: GRILO.Bootloader.Configuration.Config.Instance
+  nameWithType: Config.Instance
+- uid: GRILO.Bootloader.Configuration.Config.Instance*
+  name: Instance
+  href: api/GRILO.Bootloader.Configuration.Config.html#GRILO_Bootloader_Configuration_Config_Instance_
+  commentId: Overload:GRILO.Bootloader.Configuration.Config.Instance
   isSpec: "True"
-  fullName: GRILO.Bootloader.Configuration.Config.GeneratePristineConfig
-  nameWithType: Config.GeneratePristineConfig
+  fullName: GRILO.Bootloader.Configuration.Config.Instance
+  nameWithType: Config.Instance
 - uid: GRILO.Bootloader.Configuration.Config.ReadConfig
   name: ReadConfig()
   href: api/GRILO.Bootloader.Configuration.Config.html#GRILO_Bootloader_Configuration_Config_ReadConfig
@@ -507,6 +559,70 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.Configuration.Config.SaveConfigFile
   nameWithType: Config.SaveConfigFile
+- uid: GRILO.Bootloader.Configuration.Instance
+  name: GRILO.Bootloader.Configuration.Instance
+  href: api/GRILO.Bootloader.Configuration.Instance.html
+  commentId: N:GRILO.Bootloader.Configuration.Instance
+  fullName: GRILO.Bootloader.Configuration.Instance
+  nameWithType: GRILO.Bootloader.Configuration.Instance
+- uid: GRILO.Bootloader.Configuration.Instance.ConfigInstance
+  name: ConfigInstance
+  href: api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.html
+  commentId: T:GRILO.Bootloader.Configuration.Instance.ConfigInstance
+  fullName: GRILO.Bootloader.Configuration.Instance.ConfigInstance
+  nameWithType: ConfigInstance
+- uid: GRILO.Bootloader.Configuration.Instance.ConfigInstance.AdditionalScanFolders
+  name: AdditionalScanFolders
+  href: api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.html#GRILO_Bootloader_Configuration_Instance_ConfigInstance_AdditionalScanFolders
+  commentId: P:GRILO.Bootloader.Configuration.Instance.ConfigInstance.AdditionalScanFolders
+  fullName: GRILO.Bootloader.Configuration.Instance.ConfigInstance.AdditionalScanFolders
+  nameWithType: ConfigInstance.AdditionalScanFolders
+- uid: GRILO.Bootloader.Configuration.Instance.ConfigInstance.AdditionalScanFolders*
+  name: AdditionalScanFolders
+  href: api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.html#GRILO_Bootloader_Configuration_Instance_ConfigInstance_AdditionalScanFolders_
+  commentId: Overload:GRILO.Bootloader.Configuration.Instance.ConfigInstance.AdditionalScanFolders
+  isSpec: "True"
+  fullName: GRILO.Bootloader.Configuration.Instance.ConfigInstance.AdditionalScanFolders
+  nameWithType: ConfigInstance.AdditionalScanFolders
+- uid: GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootStyleName
+  name: BootStyleName
+  href: api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.html#GRILO_Bootloader_Configuration_Instance_ConfigInstance_BootStyleName
+  commentId: P:GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootStyleName
+  fullName: GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootStyleName
+  nameWithType: ConfigInstance.BootStyleName
+- uid: GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootStyleName*
+  name: BootStyleName
+  href: api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.html#GRILO_Bootloader_Configuration_Instance_ConfigInstance_BootStyleName_
+  commentId: Overload:GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootStyleName
+  isSpec: "True"
+  fullName: GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootStyleName
+  nameWithType: ConfigInstance.BootStyleName
+- uid: GRILO.Bootloader.Configuration.Instance.ConfigInstance.DiagnosticMessages
+  name: DiagnosticMessages
+  href: api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.html#GRILO_Bootloader_Configuration_Instance_ConfigInstance_DiagnosticMessages
+  commentId: P:GRILO.Bootloader.Configuration.Instance.ConfigInstance.DiagnosticMessages
+  fullName: GRILO.Bootloader.Configuration.Instance.ConfigInstance.DiagnosticMessages
+  nameWithType: ConfigInstance.DiagnosticMessages
+- uid: GRILO.Bootloader.Configuration.Instance.ConfigInstance.DiagnosticMessages*
+  name: DiagnosticMessages
+  href: api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.html#GRILO_Bootloader_Configuration_Instance_ConfigInstance_DiagnosticMessages_
+  commentId: Overload:GRILO.Bootloader.Configuration.Instance.ConfigInstance.DiagnosticMessages
+  isSpec: "True"
+  fullName: GRILO.Bootloader.Configuration.Instance.ConfigInstance.DiagnosticMessages
+  nameWithType: ConfigInstance.DiagnosticMessages
+- uid: GRILO.Bootloader.Configuration.Instance.ConfigInstance.PrintDiagnosticMessages
+  name: PrintDiagnosticMessages
+  href: api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.html#GRILO_Bootloader_Configuration_Instance_ConfigInstance_PrintDiagnosticMessages
+  commentId: P:GRILO.Bootloader.Configuration.Instance.ConfigInstance.PrintDiagnosticMessages
+  fullName: GRILO.Bootloader.Configuration.Instance.ConfigInstance.PrintDiagnosticMessages
+  nameWithType: ConfigInstance.PrintDiagnosticMessages
+- uid: GRILO.Bootloader.Configuration.Instance.ConfigInstance.PrintDiagnosticMessages*
+  name: PrintDiagnosticMessages
+  href: api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.html#GRILO_Bootloader_Configuration_Instance_ConfigInstance_PrintDiagnosticMessages_
+  commentId: Overload:GRILO.Bootloader.Configuration.Instance.ConfigInstance.PrintDiagnosticMessages
+  isSpec: "True"
+  fullName: GRILO.Bootloader.Configuration.Instance.ConfigInstance.PrintDiagnosticMessages
+  nameWithType: ConfigInstance.PrintDiagnosticMessages
 - uid: GRILO.Bootloader.Diagnostics
   name: GRILO.Bootloader.Diagnostics
   href: api/GRILO.Bootloader.Diagnostics.html

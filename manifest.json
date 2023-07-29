@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.BootStyle.BaseBootStyle.html",
-          "hash": "ks4Yg++oue1Mg0b3eBuK9al6UTQ4R60KFGnrf+SeQx0="
+          "hash": "7+xfG/dRkDuUiNTzS5QnQF8H3HCxO1eyp/0ZvL/cr1A="
         }
       },
       "is_incremental": false,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.BootStyle.BootStyleManager.html",
-          "hash": "hG8TygXUYEwiKicCBx0qadYXl2eIYiTOXE1Zds3L3BM="
+          "hash": "OYZBBB0Rt3vXHzwtxa9IxrGqjqUbsPmqDirgD51k//o="
         }
       },
       "is_incremental": false,
@@ -129,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.BootStyle.IBootStyle.html",
-          "hash": "SEq9Z7pMYRWkK8i+F0b0MXyyPFfb1PNVDSa4MwXTgEI="
+          "hash": "vS+ci7RTglEEH2SsEe9Yj4ebt0oPGDEoQ8opbUzOHfI="
         }
       },
       "is_incremental": false,
@@ -153,7 +153,31 @@
       "output": {
         ".html": {
           "relative_path": "api/GRILO.Bootloader.Configuration.Config.html",
-          "hash": "RRCia3BZzFOkr6Ur6WV97CKp41aVbAn1XHLfJHYN28k="
+          "hash": "MvyYJN9xAsSEYI8c9Yh3vOLmC4LAfXMxYY/CVdpQqkU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.html",
+          "hash": "OankJQeAMsCSs2iL6T+MN1TFd068uM7rBTA1QUuR4f0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.Configuration.Instance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.Configuration.Instance.html",
+          "hash": "rOAcPx+ICzhh+g0477j1WIWIH5ZdGyAqERCcQAysTLo="
         }
       },
       "is_incremental": false,
@@ -261,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "/NL2WJpphxtuxejFllBsZyDRXE110dyQQZTtSS5/QTg="
+          "hash": "Qn30QDDRG1rXoMPMHDQDmj1zKDAy0bIr8HKnwEMnn4Q="
         }
       },
       "is_incremental": false,
@@ -312,7 +336,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 20,
+          "total_file_count": 22,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
