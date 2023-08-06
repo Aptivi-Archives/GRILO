@@ -249,6 +249,19 @@ references:
   commentId: T:GRILO.Bootloader.BootStyle.BaseBootStyle
   fullName: GRILO.Bootloader.BootStyle.BaseBootStyle
   nameWithType: BaseBootStyle
+- uid: GRILO.Bootloader.BootStyle.BaseBootStyle.ClearSelectTimeout
+  name: ClearSelectTimeout()
+  href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_ClearSelectTimeout
+  commentId: M:GRILO.Bootloader.BootStyle.BaseBootStyle.ClearSelectTimeout
+  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.ClearSelectTimeout()
+  nameWithType: BaseBootStyle.ClearSelectTimeout()
+- uid: GRILO.Bootloader.BootStyle.BaseBootStyle.ClearSelectTimeout*
+  name: ClearSelectTimeout
+  href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_ClearSelectTimeout_
+  commentId: Overload:GRILO.Bootloader.BootStyle.BaseBootStyle.ClearSelectTimeout
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.ClearSelectTimeout
+  nameWithType: BaseBootStyle.ClearSelectTimeout
 - uid: GRILO.Bootloader.BootStyle.BaseBootStyle.CustomKeys
   name: CustomKeys
   href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_CustomKeys
@@ -327,6 +340,19 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderModalDialog
   nameWithType: BaseBootStyle.RenderModalDialog
+- uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderSelectTimeout(System.Int32)
+  name: RenderSelectTimeout(Int32)
+  href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderSelectTimeout_System_Int32_
+  commentId: M:GRILO.Bootloader.BootStyle.BaseBootStyle.RenderSelectTimeout(System.Int32)
+  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderSelectTimeout(System.Int32)
+  nameWithType: BaseBootStyle.RenderSelectTimeout(Int32)
+- uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderSelectTimeout*
+  name: RenderSelectTimeout
+  href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderSelectTimeout_
+  commentId: Overload:GRILO.Bootloader.BootStyle.BaseBootStyle.RenderSelectTimeout
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderSelectTimeout
+  nameWithType: BaseBootStyle.RenderSelectTimeout
 - uid: GRILO.Bootloader.BootStyle.BootStyleManager
   name: BootStyleManager
   href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html
@@ -424,12 +450,38 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderMenu
   nameWithType: BootStyleManager.RenderMenu
+- uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderSelectTimeout(System.Int32)
+  name: RenderSelectTimeout(Int32)
+  href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderSelectTimeout_System_Int32_
+  commentId: M:GRILO.Bootloader.BootStyle.BootStyleManager.RenderSelectTimeout(System.Int32)
+  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderSelectTimeout(System.Int32)
+  nameWithType: BootStyleManager.RenderSelectTimeout(Int32)
+- uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderSelectTimeout*
+  name: RenderSelectTimeout
+  href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderSelectTimeout_
+  commentId: Overload:GRILO.Bootloader.BootStyle.BootStyleManager.RenderSelectTimeout
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderSelectTimeout
+  nameWithType: BootStyleManager.RenderSelectTimeout
 - uid: GRILO.Bootloader.BootStyle.IBootStyle
   name: IBootStyle
   href: api/GRILO.Bootloader.BootStyle.IBootStyle.html
   commentId: T:GRILO.Bootloader.BootStyle.IBootStyle
   fullName: GRILO.Bootloader.BootStyle.IBootStyle
   nameWithType: IBootStyle
+- uid: GRILO.Bootloader.BootStyle.IBootStyle.ClearSelectTimeout
+  name: ClearSelectTimeout()
+  href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_ClearSelectTimeout
+  commentId: M:GRILO.Bootloader.BootStyle.IBootStyle.ClearSelectTimeout
+  fullName: GRILO.Bootloader.BootStyle.IBootStyle.ClearSelectTimeout()
+  nameWithType: IBootStyle.ClearSelectTimeout()
+- uid: GRILO.Bootloader.BootStyle.IBootStyle.ClearSelectTimeout*
+  name: ClearSelectTimeout
+  href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_ClearSelectTimeout_
+  commentId: Overload:GRILO.Bootloader.BootStyle.IBootStyle.ClearSelectTimeout
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootStyle.IBootStyle.ClearSelectTimeout
+  nameWithType: IBootStyle.ClearSelectTimeout
 - uid: GRILO.Bootloader.BootStyle.IBootStyle.CustomKeys
   name: CustomKeys
   href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_CustomKeys
@@ -508,6 +560,19 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderModalDialog
   nameWithType: IBootStyle.RenderModalDialog
+- uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderSelectTimeout(System.Int32)
+  name: RenderSelectTimeout(Int32)
+  href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderSelectTimeout_System_Int32_
+  commentId: M:GRILO.Bootloader.BootStyle.IBootStyle.RenderSelectTimeout(System.Int32)
+  fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderSelectTimeout(System.Int32)
+  nameWithType: IBootStyle.RenderSelectTimeout(Int32)
+- uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderSelectTimeout*
+  name: RenderSelectTimeout
+  href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderSelectTimeout_
+  commentId: Overload:GRILO.Bootloader.BootStyle.IBootStyle.RenderSelectTimeout
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderSelectTimeout
+  nameWithType: IBootStyle.RenderSelectTimeout
 - uid: GRILO.Bootloader.Configuration
   name: GRILO.Bootloader.Configuration
   href: api/GRILO.Bootloader.Configuration.html
@@ -584,6 +649,32 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.Configuration.Instance.ConfigInstance.AdditionalScanFolders
   nameWithType: ConfigInstance.AdditionalScanFolders
+- uid: GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootSelect
+  name: BootSelect
+  href: api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.html#GRILO_Bootloader_Configuration_Instance_ConfigInstance_BootSelect
+  commentId: P:GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootSelect
+  fullName: GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootSelect
+  nameWithType: ConfigInstance.BootSelect
+- uid: GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootSelect*
+  name: BootSelect
+  href: api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.html#GRILO_Bootloader_Configuration_Instance_ConfigInstance_BootSelect_
+  commentId: Overload:GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootSelect
+  isSpec: "True"
+  fullName: GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootSelect
+  nameWithType: ConfigInstance.BootSelect
+- uid: GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootSelectTimeoutSeconds
+  name: BootSelectTimeoutSeconds
+  href: api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.html#GRILO_Bootloader_Configuration_Instance_ConfigInstance_BootSelectTimeoutSeconds
+  commentId: P:GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootSelectTimeoutSeconds
+  fullName: GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootSelectTimeoutSeconds
+  nameWithType: ConfigInstance.BootSelectTimeoutSeconds
+- uid: GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootSelectTimeoutSeconds*
+  name: BootSelectTimeoutSeconds
+  href: api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.html#GRILO_Bootloader_Configuration_Instance_ConfigInstance_BootSelectTimeoutSeconds_
+  commentId: Overload:GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootSelectTimeoutSeconds
+  isSpec: "True"
+  fullName: GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootSelectTimeoutSeconds
+  nameWithType: ConfigInstance.BootSelectTimeoutSeconds
 - uid: GRILO.Bootloader.Configuration.Instance.ConfigInstance.BootStyleName
   name: BootStyleName
   href: api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.html#GRILO_Bootloader_Configuration_Instance_ConfigInstance_BootStyleName

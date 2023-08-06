@@ -124,6 +124,17 @@
   </h3>
   
   
+  <a id="GRILO_Bootloader_BootStyle_IBootStyle_ClearSelectTimeout_" data-uid="GRILO.Bootloader.BootStyle.IBootStyle.ClearSelectTimeout*"></a>
+  <h4 id="GRILO_Bootloader_BootStyle_IBootStyle_ClearSelectTimeout" data-uid="GRILO.Bootloader.BootStyle.IBootStyle.ClearSelectTimeout">ClearSelectTimeout()</h4>
+  <div class="markdown level1 summary"><p>Clears the timeout for selection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ClearSelectTimeout()</code></pre>
+  </div>
+  
+  
   <a id="GRILO_Bootloader_BootStyle_IBootStyle_Render_" data-uid="GRILO.Bootloader.BootStyle.IBootStyle.Render*"></a>
   <h4 id="GRILO_Bootloader_BootStyle_IBootStyle_Render" data-uid="GRILO.Bootloader.BootStyle.IBootStyle.Render">Render()</h4>
   <div class="markdown level1 summary"><p>Renders the bootloader style</p>
@@ -245,6 +256,35 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">content</span></td>
         <td><p>Message to display in the box</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="GRILO_Bootloader_BootStyle_IBootStyle_RenderSelectTimeout_" data-uid="GRILO.Bootloader.BootStyle.IBootStyle.RenderSelectTimeout*"></a>
+  <h4 id="GRILO_Bootloader_BootStyle_IBootStyle_RenderSelectTimeout_System_Int32_" data-uid="GRILO.Bootloader.BootStyle.IBootStyle.RenderSelectTimeout(System.Int32)">RenderSelectTimeout(Int32)</h4>
+  <div class="markdown level1 summary"><p>Renders the timeout for selection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RenderSelectTimeout(int timeout)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">timeout</span></td>
+        <td><p>Target timeout in seconds to count down from</p>
 </td>
       </tr>
     </tbody>
