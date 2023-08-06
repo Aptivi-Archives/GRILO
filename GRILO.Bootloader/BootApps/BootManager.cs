@@ -32,6 +32,7 @@ using System.Reflection;
 using System.Linq;
 using GRILO.Bootloader.Diagnostics;
 using GRILO.Bootloader.Configuration;
+using Terminaux.Writer.ConsoleWriters;
 
 namespace GRILO.Bootloader.BootApps
 {
@@ -145,7 +146,7 @@ namespace GRILO.Bootloader.BootApps
                             // Either the boot file is invalid or can't be loaded.
                             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Can't load boot app. {0}", ex.Message);
                             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Stack trace:\n{0}", ex.StackTrace);
-                            throw new GRILOException($"Failed to parse boot file {bootFile}: {ex.Message}", ex);
+                            TextWriterColor.Write($"Failed to parse boot file {bootFile}: {ex.Message}");
                         }
                     }
                 }
@@ -154,7 +155,7 @@ namespace GRILO.Bootloader.BootApps
                     // Boot ID invalid
                     DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Unknown error when loading boot ID {0}: {1}", bootId, ex.Message);
                     DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Stack trace:\n{0}", ex.StackTrace);
-                    throw new GRILOException($"Unknown error when parsing boot ID {bootId}: {ex.Message}", ex);
+                    TextWriterColor.Write($"Unknown error when parsing boot ID {bootId}: {ex.Message}");
                 }
             }
         }

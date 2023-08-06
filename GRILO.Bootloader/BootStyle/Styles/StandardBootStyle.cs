@@ -50,7 +50,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
             {
                 string bootApp = BootManager.GetBootAppNameByIndex(i);
                 bootEntryPositions.Add((Console.CursorLeft, Console.CursorTop));
-                TextWriterColor.Write(" [{0}] {1}", true, new Color(bootEntry), i + 1, bootApp);
+                TextWriterColor.Write(" [{0}] {1}", true, new Color(bootEntry), vars: new object[] { i + 1, bootApp });
             }
         }
 
@@ -61,7 +61,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
 
             // Highlight the chosen entry
             string bootApp = BootManager.GetBootAppNameByIndex(chosenBootEntry);
-            TextWriterWhereColor.WriteWhere(" [{0}] {1}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, new Color(highlightedEntry), chosenBootEntry + 1, bootApp);
+            TextWriterWhereColor.WriteWhere(" [{0}] {1}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, new Color(highlightedEntry), vars: new object[] { chosenBootEntry + 1, bootApp });
         }
 
         public override void RenderModalDialog(string content)
@@ -73,7 +73,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
             Console.Clear();
         }
 
-        public override void RenderBootingMessage(string chosenBootName) => TextWriterColor.Write("Booting {0}...", true, chosenBootName);
+        public override void RenderBootingMessage(string chosenBootName) => TextWriterColor.Write("Booting {0}...", chosenBootName);
 
         public override void RenderBootFailedMessage(string content) => RenderModalDialog(content);
 

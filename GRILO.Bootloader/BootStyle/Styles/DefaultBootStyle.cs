@@ -99,10 +99,10 @@ namespace GRILO.Bootloader.BootStyle.Styles
         }
 
         public override void RenderBootingMessage(string chosenBootName) =>
-            TextWriterColor.Write("Booting {0}...", true, chosenBootName);
+            TextWriterColor.Write("Booting {0}...", chosenBootName);
 
         public override void RenderBootFailedMessage(string content) =>
-            TextWriterColor.Write(content, true);
+            TextWriterColor.Write(content);
 
         public override void RenderSelectTimeout(int timeout) =>
             TextWriterWhereColor.WriteWhere($"{timeout} ", 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White));
