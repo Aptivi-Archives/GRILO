@@ -24,6 +24,7 @@
 
 using GRILO.Boot;
 using System;
+using Terminaux.Writer.ConsoleWriters;
 
 namespace GRILO.Bootloader.BootApps.CommonApps
 {
@@ -35,7 +36,7 @@ namespace GRILO.Bootloader.BootApps.CommonApps
 
         public void Boot(string[] args)
         {
-            Console.WriteLine("Shutting down...");
+            TextWriterColor.Write("Shutting down...");
             ShutdownRequested = true;
         }
     }

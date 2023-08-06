@@ -26,49 +26,51 @@ using GRILO.Bootloader.BootApps;
 using GRILO.Bootloader.Configuration;
 using System;
 using System.Collections.Generic;
-using System.Threading;
+using System.Linq;
 using Terminaux.Colors;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
 
 namespace GRILO.Bootloader.BootStyle.Styles
 {
-    internal class DefaultBootStyle : BaseBootStyle, IBootStyle
+    internal class GrubLegacyBootStyle : BaseBootStyle, IBootStyle
     {
         public override Dictionary<ConsoleKeyInfo, Action<BootAppInfo>> CustomKeys { get; }
 
         public override void Render()
         {
             // Populate colors
-            ConsoleColor sectionTitle = ConsoleColor.Green;
+            ConsoleColor sectionTitle = ConsoleColor.Gray;
             ConsoleColor boxBorderColor = ConsoleColor.DarkGray;
 
             // Write the section title
-            string finalRenderedSection = "-- Select boot entry --";
+            string finalRenderedSection = "GNU GRUB  version 0.97  (638K lower / 1046784K upper memory)";
             int halfX = (Console.WindowWidth / 2) - (finalRenderedSection.Length / 2);
             TextWriterWhereColor.WriteWhere(finalRenderedSection, halfX, 2, new Color(sectionTitle));
 
             // Now, render a box
-            BorderColor.WriteBorder(2, 4, Console.WindowWidth - 6, Console.WindowHeight - 9, new Color(boxBorderColor));
+            BorderColor.WriteBorder(2, 4, Console.WindowWidth - 6, Console.WindowHeight - 15, new Color(boxBorderColor));
 
             // Offer help for new users
-            string help = $"SHIFT + H for help. Version {GRILO.griloVersion}";
-            TextWriterWhereColor.WriteWhere(help, Console.WindowWidth - help.Length - 2, Console.WindowHeight - 2, new Color(ConsoleColor.White));
+            string help =
+                $"Use the ↑ and ↓ keys to select which entry is highlighted.\n" +
+                $"Press enter to boot the selected OS, `e' to edit the\n" +
+                $"commands before booting or `c' for a command line.";
+            int longest = help.Split(new[] { '\n' }).Max((text) => text.Length);
+            TextWriterWhereColor.WriteWhere(help, (Console.WindowWidth / 2) - (longest / 2) - 2, Console.WindowHeight - 8, new Color(sectionTitle));
         }
 
         public override void RenderHighlight(int chosenBootEntry)
         {
             // Populate colors
-            ConsoleColor highlightedEntry = ConsoleColor.DarkGreen;
-            ConsoleColor normalEntry = ConsoleColor.Gray;
-            ConsoleColor pageNumberColor = ConsoleColor.Gray;
+            ConsoleColor highlightedEntry = ConsoleColor.Gray;
+            ConsoleColor normalEntry = ConsoleColor.Black;
 
             // Populate boot entries inside the box
             var bootApps = BootManager.GetBootApps();
-            (int, int) upperLeftCornerInterior = (4, 6);
-            (int, int) lowerLeftCornerInterior = (4, Console.WindowHeight - 6);
-            int maxItemsPerPage = lowerLeftCornerInterior.Item2 - upperLeftCornerInterior.Item2;
-            int pages = (int)Math.Truncate(bootApps.Count / (double)maxItemsPerPage);
+            (int, int) upperLeftCornerInterior = (3, 5);
+            (int, int) lowerLeftCornerInterior = (3, Console.WindowHeight - 9);
+            int maxItemsPerPage = lowerLeftCornerInterior.Item2 - upperLeftCornerInterior.Item2 - 1;
             int currentPage = (int)Math.Truncate(chosenBootEntry / (double)maxItemsPerPage);
             int startIndex = maxItemsPerPage * currentPage;
             int endIndex = maxItemsPerPage * (currentPage + 1) - 1;
@@ -78,16 +80,12 @@ namespace GRILO.Bootloader.BootStyle.Styles
                 if (i + 1 > bootApps.Count)
                     break;
                 string bootApp = BootManager.GetBootAppNameByIndex(i);
-                string rendered = $" >> {bootApp}";
-                var finalColor = i == chosenBootEntry ? highlightedEntry : normalEntry;
-                TextWriterWhereColor.WriteWhere(rendered, upperLeftCornerInterior.Item1, upperLeftCornerInterior.Item2 + renderedAnswers, new Color(finalColor));
+                string rendered = $" {bootApp}";
+                var finalColorBg = i == chosenBootEntry ? highlightedEntry : normalEntry;
+                var finalColorFg = i == chosenBootEntry ? normalEntry : highlightedEntry;
+                TextWriterWhereColor.WriteWhere(rendered + new string(' ', Console.WindowWidth - 6 - rendered.Length), upperLeftCornerInterior.Item1, upperLeftCornerInterior.Item2 + renderedAnswers, false, new Color(finalColorFg), new Color(finalColorBg));
                 renderedAnswers++;
             }
-
-            // Populate page number
-            string renderedNumber = $"[{chosenBootEntry + 1}/{bootApps.Count}]═[{currentPage + 1}/{pages}]";
-            (int, int) lowerRightCornerToWrite = (Console.WindowWidth - renderedNumber.Length - 3, Console.WindowHeight - 4);
-            TextWriterWhereColor.WriteWhere(renderedNumber, lowerRightCornerToWrite.Item1, lowerRightCornerToWrite.Item2, new Color(pageNumberColor));
         }
 
         public override void RenderModalDialog(string content)
@@ -95,26 +93,28 @@ namespace GRILO.Bootloader.BootStyle.Styles
             // Populate colors
             ConsoleColor dialogBG = ConsoleColor.Black;
             ConsoleColor dialogFG = ConsoleColor.DarkGray;
-            InfoBoxColor.WriteInfoBox(content, new Color(dialogFG), new Color(dialogBG));
-            Console.Clear();
+            TextWriterColor.Write(content, true, new Color(dialogFG), new Color(dialogBG));
         }
 
         public override void RenderBootingMessage(string chosenBootName) =>
-            TextWriterColor.Write("Booting {0}...", true, chosenBootName);
+            TextWriterColor.Write(
+                $"  Booting '{chosenBootName}'\n\n" +
+                $" Filesystem type is fat, partition type 0x0C"
+            );
 
         public override void RenderBootFailedMessage(string content) =>
-            TextWriterColor.Write(content, true);
+            RenderModalDialog(content);
 
-        public override void RenderSelectTimeout(int timeout) =>
-            TextWriterWhereColor.WriteWhere($"{timeout} ", 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White));
+        public override void RenderSelectTimeout(int timeout)
+        {
+            string help = $"The highlighted entry will be executed automatically in {timeout}s. ";
+            TextWriterWhereColor.WriteWhere(help, 4, Console.WindowHeight - 5, true, new Color(ConsoleColor.White));
+        }
 
         public override void ClearSelectTimeout()
         {
-            string spaces = new(' ', GetDigits(GetDigits(Config.Instance.BootSelectTimeoutSeconds)));
-            TextWriterWhereColor.WriteWhere(spaces, 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White));
+            string help = $"The highlighted entry will be executed automatically in {Config.Instance.BootSelectTimeoutSeconds}s. ";
+            TextWriterWhereColor.WriteWhere(new string(' ', help.Length), 4, Console.WindowHeight - 5, true, new Color(ConsoleColor.White));
         }
-
-        internal static int GetDigits(int Number) =>
-            Number == 0 ? 1 : (int)Math.Log10(Math.Abs(Number)) + 1;
     }
 }

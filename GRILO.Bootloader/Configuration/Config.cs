@@ -33,7 +33,7 @@ namespace GRILO.Bootloader.Configuration
     /// </summary>
     public static class Config
     {
-        internal static ConfigInstance instance;
+        internal static ConfigInstance instance = new();
 
         public static ConfigInstance Instance =>
             instance;
@@ -48,8 +48,16 @@ namespace GRILO.Bootloader.Configuration
                 SaveConfigFile();
 
             // Now, open the file and save the values from the config to the program
-            string fileContents = File.ReadAllText(GRILOPaths.GRILOConfigPath);
-            instance = (ConfigInstance)JsonConvert.DeserializeObject(fileContents, typeof(ConfigInstance));
+            try
+            {
+                string fileContents = File.ReadAllText(GRILOPaths.GRILOConfigPath);
+                instance = (ConfigInstance)JsonConvert.DeserializeObject(fileContents, typeof(ConfigInstance));
+            }
+            catch
+            {
+                // Try to fix configuration
+                SaveConfigFile();
+            }
         }
 
         /// <summary>

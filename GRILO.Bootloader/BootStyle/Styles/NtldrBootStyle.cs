@@ -26,6 +26,9 @@ using GRILO.Bootloader.BootApps;
 using GRILO.Bootloader.Diagnostics;
 using System;
 using System.Collections.Generic;
+using Terminaux.Colors;
+using Terminaux.Reader.Inputs;
+using Terminaux.Writer.ConsoleWriters;
 
 namespace GRILO.Bootloader.BootStyle.Styles
 {
@@ -38,16 +41,16 @@ namespace GRILO.Bootloader.BootStyle.Styles
         {
             // Prompt the user for selection
             var bootApps = BootManager.GetBootApps();
-            Console.WriteLine("\n\nPlease select the operating system to start:\n\n");
+            TextWriterColor.Write("\n\nPlease select the operating system to start:\n\n");
             for (int i = 0; i < bootApps.Count; i++)
             {
                 string bootApp = BootManager.GetBootAppNameByIndex(i);
                 bootEntryPositions.Add((Console.CursorLeft, Console.CursorTop));
-                Console.WriteLine("    {0}", bootApp);
+                TextWriterColor.Write("    {0}", bootApp);
             }
-            Console.WriteLine("\nUse the up and down arrow keys to move the highlight to your choice.");
-            Console.WriteLine("Press ENTER to choose.\n\n\n");
-            Console.WriteLine("For troubleshooting and advanced startup options for Windows, press F8.");
+            TextWriterColor.Write("\nUse the up and down arrow keys to move the highlight to your choice.");
+            TextWriterColor.Write("Press ENTER to choose.\n\n\n");
+            TextWriterColor.Write("For troubleshooting and advanced startup options for Windows, press F8.");
         }
 
         public override void RenderHighlight(int chosenBootEntry)
@@ -58,11 +61,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
 
             // Highlight the chosen entry
             string bootApp = BootManager.GetBootAppNameByIndex(chosenBootEntry);
-            Console.ForegroundColor = highlightedEntryForeground;
-            Console.BackgroundColor = highlightedEntryBackground;
-            Console.CursorLeft = bootEntryPositions[chosenBootEntry].Item1;
-            Console.CursorTop =  bootEntryPositions[chosenBootEntry].Item2;
-            Console.WriteLine("    {0}", bootApp);
+            TextWriterWhereColor.WriteWhere("    {0}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground), bootApp);
         }
 
         public override void RenderModalDialog(string content)
@@ -71,15 +70,12 @@ namespace GRILO.Bootloader.BootStyle.Styles
             ConsoleColor highlightedEntryForeground = ConsoleColor.Black;
             ConsoleColor highlightedEntryBackground = ConsoleColor.Gray;
 
-            Console.WriteLine($"""
+            TextWriterColor.Write($"""
                 
                 {content}
                 """);
-            Console.ForegroundColor = highlightedEntryForeground;
-            Console.BackgroundColor = highlightedEntryBackground;
-            Console.WriteLine("    Continue");
-            Console.ResetColor();
-            Console.WriteLine("\nUse the up and down arrow keys to move the highlight to your choice.");
+            TextWriterColor.Write("    Continue", new Color(highlightedEntryForeground), new Color(highlightedEntryBackground));
+            TextWriterColor.Write("\nUse the up and down arrow keys to move the highlight to your choice.");
         }
 
         public override void RenderBootingMessage(string chosenBootName) { }
@@ -87,12 +83,11 @@ namespace GRILO.Bootloader.BootStyle.Styles
         public override void RenderBootFailedMessage(string content)
         {
             bool exiting = false;
-            int choiceNum = 6;
-            int excludeChoice = 4;
+            int choiceNum = 7;
             while (!exiting)
             {
                 ShowBootFailure(choiceNum);
-                var cki = Console.ReadKey(true);
+                var cki = Input.DetectKeypress();
                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Key pressed: {0}", cki.Key.ToString());
                 switch (cki.Key)
                 {
@@ -101,20 +96,38 @@ namespace GRILO.Bootloader.BootStyle.Styles
                         break;
                     case ConsoleKey.UpArrow:
                         choiceNum--;
-                        if (choiceNum == excludeChoice)
+                        if (choiceNum == 4 || choiceNum == 6)
                             choiceNum--;
                         if (choiceNum == 0)
-                            choiceNum = 6;
+                            choiceNum = 7;
                         break;
                     case ConsoleKey.DownArrow:
                         choiceNum++;
-                        if (choiceNum == excludeChoice)
+                        if (choiceNum == 4 || choiceNum == 6)
                             choiceNum++;
-                        if (choiceNum == 7)
+                        if (choiceNum == 8)
                             choiceNum = 0;
                         break;
                 }
             }
+        }
+
+        public override void RenderSelectTimeout(int timeout)
+        {
+            ConsoleColor hintColor = ConsoleColor.Gray;
+            int marginX = 2;
+            int optionHelpY = 17;
+            TextWriterWhereColor.WriteWhere("Seconds until the highlighted choice will be started automatically:", marginX, optionHelpY, true, new Color(hintColor));
+            int timeoutX = marginX + "Seconds until the highlighted choice will be started automatically: ".Length;
+            TextWriterWhereColor.WriteWhere($"{timeout} ", timeoutX, optionHelpY, true, new Color(hintColor));
+        }
+
+        public override void ClearSelectTimeout()
+        {
+            int marginX = 2;
+            int timeoutY = 17;
+            ConsoleColor hintColor = ConsoleColor.Gray;
+            TextWriterWhereColor.WriteWhere(new string(' ', Console.WindowWidth - 2), marginX, timeoutY, true, new Color(hintColor));
         }
 
         private void ShowBootFailure(int choiceNum)
@@ -132,11 +145,12 @@ namespace GRILO.Bootloader.BootStyle.Styles
                 "Safe Mode with Command Prompt",
                 "",
                 "Last Known Good Configuration (your most recent settings that worked)",
+                "",
                 "Start Windows Normally",
             };
 
             // Print the message
-            Console.WriteLine("""
+            TextWriterColor.Write("""
 
                 We apologize for the inconvenience, but Windows did not start successfully.  A
                 recent hardware or software change might have caused this.
@@ -154,15 +168,12 @@ namespace GRILO.Bootloader.BootStyle.Styles
             {
                 string choice = choices[i];
                 if (i == choiceNum - 1)
-                {
-                    Console.ForegroundColor = highlightedEntryForeground;
-                    Console.BackgroundColor = highlightedEntryBackground;
-                }
-                Console.Write($"    {choice}");
-                Console.ResetColor();
-                Console.WriteLine();
+                    TextWriterColor.Write($"    {choice}", false, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground));
+                else
+                    TextWriterColor.Write($"    {choice}", false);
+                TextWriterColor.Write();
             }
-            Console.WriteLine("\nUse the up and down arrow keys to move the highlight to your choice.");
+            TextWriterColor.Write("\nUse the up and down arrow keys to move the highlight to your choice.");
         }
     }
 }

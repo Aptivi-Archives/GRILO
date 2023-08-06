@@ -40,5 +40,11 @@ namespace GRILO.Bootloader.Configuration.Instance
 
         [JsonProperty("Additional bootable folders", Required = Required.Always)]
         public string[] AdditionalScanFolders { get; set; } = Array.Empty<string>();
+
+        [JsonProperty("Timeout to boot to selection", Required = Required.Always)]
+        public int BootSelectTimeoutSeconds { get; set; } = 10;
+
+        [JsonProperty("Default boot entry selection", Required = Required.Always)]
+        public int BootSelect { get; set; } = 0;
     }
 }

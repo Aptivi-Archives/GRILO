@@ -61,5 +61,14 @@ namespace GRILO.Bootloader.BootStyle
         /// </summary>
         /// <param name="content">Message to display</param>
         void RenderBootFailedMessage(string content);
+        /// <summary>
+        /// Renders the timeout for selection
+        /// </summary>
+        /// <param name="timeout">Target timeout in seconds to count down from</param>
+        void RenderSelectTimeout(int timeout);
+        /// <summary>
+        /// Clears the timeout for selection
+        /// </summary>
+        void ClearSelectTimeout();
     }
 }

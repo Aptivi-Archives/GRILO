@@ -30,6 +30,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
+using Terminaux.Reader.Inputs;
+using Terminaux.Writer.ConsoleWriters;
 
 namespace GRILO.Bootloader.BootStyle
 {
@@ -38,11 +41,16 @@ namespace GRILO.Bootloader.BootStyle
     /// </summary>
     public static class BootStyleManager
     {
+        private static readonly Thread timeoutThread = new((timeout) => SelectTimeoutHandler((int)timeout));
         private static readonly Dictionary<string, BaseBootStyle> bootStyles = new()
         {
             { "Default", new DefaultBootStyle() },
             { "Standard", new StandardBootStyle() },
-            { "Ntldr", new NtldrBootStyle() }
+            { "Ntldr", new NtldrBootStyle() },
+            { "GRUB", new GrubBootStyle() },
+            { "GRUBLegacy", new GrubLegacyBootStyle() },
+            { "LILO", new LiloBootStyle() },
+            { "BootMgr", new BootMgrBootStyle() },
         };
         private static readonly Dictionary<string, BaseBootStyle> customBootStyles = new();
 
@@ -112,7 +120,7 @@ namespace GRILO.Bootloader.BootStyle
             if (bootStyle == null)
             {
                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Warning, "Still nothing. Using the default...");
-                customBootStyles.TryGetValue("Default", out bootStyle);
+                bootStyle = bootStyles["Default"];
             }
 
             // Return it.
@@ -155,7 +163,7 @@ namespace GRILO.Bootloader.BootStyle
 
             // Wait for input
             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Waiting for user to press any key...");
-            Console.ReadKey(true);
+            Input.DetectKeypress();
         }
 
         /// <summary>
@@ -193,8 +201,14 @@ namespace GRILO.Bootloader.BootStyle
 
             // Wait for input
             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Waiting for user to press any key...");
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey(true);
+            TextWriterColor.Write("Press any key to continue...");
+            Input.DetectKeypress();
+        }
+
+        public static void RenderSelectTimeout(int timeout)
+        {
+            if (!timeoutThread.IsAlive && timeout > 0 && GRILO.waitingForFirstBootKey)
+                timeoutThread.Start(timeout);
         }
 
         /// <summary>
@@ -207,6 +221,26 @@ namespace GRILO.Bootloader.BootStyle
             var bootStyle = GetBootStyle(bootStyleStr);
             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Got boot style from {0}...", bootStyleStr);
             return bootStyle;
+        }
+
+        private static void SelectTimeoutHandler(int timeout)
+        {
+            var style = GetCurrentBootStyle();
+            int timeoutElapsed = 0;
+            try
+            {
+                while (timeoutElapsed < timeout && GRILO.waitingForFirstBootKey)
+                {
+                    style.RenderSelectTimeout(timeout - timeoutElapsed);
+                    Thread.Sleep(1000);
+                    timeoutElapsed += 1;
+                }
+                style.ClearSelectTimeout();
+            }
+            catch
+            {
+                style.ClearSelectTimeout();
+            }
         }
     }
 }

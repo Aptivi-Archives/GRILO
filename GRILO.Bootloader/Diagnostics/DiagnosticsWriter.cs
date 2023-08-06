@@ -25,6 +25,7 @@
 using GRILO.Bootloader.Configuration;
 using System;
 using System.IO;
+using Terminaux.Writer.ConsoleWriters;
 
 namespace GRILO.Bootloader.Diagnostics
 {
@@ -45,7 +46,7 @@ namespace GRILO.Bootloader.Diagnostics
             {
                 // Print diagnostic messages to the console
                 if (Config.Instance.PrintDiagnosticMessages)
-                    Console.WriteLine($"[{level.ToString()[0]}] {content}", args);
+                    TextWriterColor.Write($"[{level.ToString()[0]}] {content}", args);
 
                 // Print diagnostic messages to the debug file
                 var writer = File.AppendText(GRILOPaths.GRILODebugPath);

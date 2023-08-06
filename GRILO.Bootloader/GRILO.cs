@@ -30,6 +30,8 @@ using System.Reflection;
 using GRILO.Bootloader.Diagnostics;
 using GRILO.Bootloader.KeyHandler;
 using System.Linq;
+using Terminaux.Reader.Inputs;
+using Terminaux.Writer.ConsoleWriters;
 
 namespace GRILO.Bootloader
 {
@@ -37,6 +39,7 @@ namespace GRILO.Bootloader
     {
         internal static bool shutdownRequested = false;
         internal static bool waitingForBootKey = true;
+        internal static bool waitingForFirstBootKey = true;
         internal static string griloVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
         static void Main()
@@ -45,7 +48,7 @@ namespace GRILO.Bootloader
             {
                 // Preload bootloader
                 Console.CursorVisible = false;
-                Console.WriteLine("Starting GRILO v{0}...", Assembly.GetExecutingAssembly().GetName().Version.ToString());
+                TextWriterColor.Write("Starting GRILO v{0}...", Assembly.GetExecutingAssembly().GetName().Version.ToString());
 
                 // Populate GRILO folders (if any)
                 GRILOPaths.MakePaths();
@@ -64,7 +67,7 @@ namespace GRILO.Bootloader
                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Bootable apps read successfully.");
 
                 // Now, draw the boot menu. Note that the chosen boot entry counts from zero.
-                int chosenBootEntry = 0;
+                int chosenBootEntry = Config.Instance.BootSelect;
                 while (!shutdownRequested)
                 {
                     while (waitingForBootKey)
@@ -79,7 +82,23 @@ namespace GRILO.Bootloader
                         BootStyleManager.RenderMenu(chosenBootEntry);
 
                         // Wait for a key and parse it
-                        var cki = Console.ReadKey(true);
+                        int timeout = Config.Instance.BootSelectTimeoutSeconds;
+                        BootStyleManager.RenderSelectTimeout(timeout);
+                        ConsoleKeyInfo cki;
+                        if (timeout > 0 && waitingForFirstBootKey)
+                        {
+                            try
+                            {
+                                cki = Input.ReadKeyTimeout(true, TimeSpan.FromSeconds(Config.Instance.BootSelectTimeoutSeconds));
+                            }
+                            catch
+                            {
+                                cki = new('\x0A', ConsoleKey.Enter, false, false, false);
+                            }
+                        }
+                        else
+                            cki = Input.DetectKeypress();
+                        waitingForFirstBootKey = false;
                         DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Key pressed: {0}", cki.Key.ToString());
                         switch (cki.Key)
                         {
@@ -192,10 +211,10 @@ namespace GRILO.Bootloader
                 // Failed trying to preload the bootloader
                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Preload bootloader failed: {0}", ex.Message);
                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Stack trace:\n{0}", ex.StackTrace);
-                Console.WriteLine("Failed to preload bootloader: {0}", ex.Message);
-                Console.WriteLine(ex.StackTrace);
-                Console.WriteLine("Press any key to exit.");
-                Console.ReadKey(true);
+                TextWriterColor.Write("Failed to preload bootloader: {0}", ex.Message);
+                TextWriterColor.Write(ex.StackTrace);
+                TextWriterColor.Write("Press any key to exit.");
+                Input.DetectKeypress();
             }
         }
     }

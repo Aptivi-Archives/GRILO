@@ -42,6 +42,8 @@ namespace GRILO.Bootloader.KeyHandler
         internal static void HandleKey(ConsoleKeyInfo cki, BootAppInfo chosenBootApp)
         {
             var bootStyle = BootStyleManager.GetBootStyle(Config.Instance.BootStyleName);
+            if (bootStyle.CustomKeys is null || bootStyle.CustomKeys.Count == 0)
+                return;
             if (bootStyle.CustomKeys.TryGetValue(cki, out var action))
                 action.Invoke(chosenBootApp);
         }
