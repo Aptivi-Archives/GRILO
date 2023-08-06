@@ -23,7 +23,6 @@
  */
 
 using GRILO.Boot;
-using System;
 using Terminaux.Writer.ConsoleWriters;
 
 namespace GRILO.Bootloader.BootApps.CommonApps

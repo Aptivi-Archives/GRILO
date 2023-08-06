@@ -23,10 +23,8 @@
  */
 
 using GRILO.Bootloader.BootApps;
-using GRILO.Bootloader.Diagnostics;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using Terminaux.Colors;
 using Terminaux.Reader.Inputs;
 using Terminaux.Writer.ConsoleWriters;

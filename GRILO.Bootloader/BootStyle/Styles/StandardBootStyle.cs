@@ -26,9 +26,7 @@ using GRILO.Bootloader.BootApps;
 using GRILO.Bootloader.Configuration;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Terminaux.Colors;
-using Terminaux.Reader.Inputs;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
 

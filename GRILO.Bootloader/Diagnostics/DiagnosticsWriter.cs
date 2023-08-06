@@ -23,7 +23,6 @@
  */
 
 using GRILO.Bootloader.Configuration;
-using System;
 using System.IO;
 using Terminaux.Writer.ConsoleWriters;
 
