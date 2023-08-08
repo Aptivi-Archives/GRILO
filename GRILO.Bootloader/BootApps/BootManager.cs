@@ -28,7 +28,6 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Linq;
 using GRILO.Bootloader.Diagnostics;
 using GRILO.Bootloader.Configuration;
@@ -142,6 +141,7 @@ namespace GRILO.Bootloader.BootApps
                                         bootArgs = metadata["Arguments"]?.ToObject<string[]>() ?? Array.Empty<string>();
                                         bootApp = new(bootFile, bootOverrideTitle, bootArgs, bootable);
                                         bootApps.Add(bootOverrideTitle, bootApp);
+                                        loads.Add(bootContext);
                                     }
                                 }
                                 else
@@ -157,10 +157,10 @@ namespace GRILO.Bootloader.BootApps
                                 continue;
                             }
 #else
-                            assemblyLoader.bytes = File.ReadAllBytes(bootFile);
+                            assemblyLoader.lookupPath = bootDir;
 
                             // Now, check the metadata
-                            if (assemblyLoader.VerifyBoot())
+                            if (assemblyLoader.VerifyBoot(File.ReadAllBytes(bootFile)))
                             {
                                 // We found it! Now, populate info from the metadata file
                                 string metadataFile = Path.Combine(GRILOPaths.GRILOBootablesPath, bootId, "BootMetadata.json");
@@ -189,6 +189,7 @@ namespace GRILO.Bootloader.BootApps
                                         bootArgs = metadata["Arguments"]?.ToObject<string[]>() ?? Array.Empty<string>();
                                         bootApp = new(bootFile, bootOverrideTitle, bootArgs, proxy);
                                         bootApps.Add(bootOverrideTitle, bootApp);
+                                        loads.Add(assemblyLoader);
                                     }
                                  }
                                  else

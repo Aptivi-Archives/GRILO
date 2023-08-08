@@ -22,12 +22,12 @@
  * SOFTWARE.
  */
 
+#if !NETCOREAPP
 using GRILO.Boot;
 using System;
 
 namespace GRILO.Bootloader.BootApps
 {
-#if !NETCOREAPP
     public class BootProxy : IBootable
     {
         internal BootLoader loader = null;
@@ -43,5 +43,5 @@ namespace GRILO.Bootloader.BootApps
             ShutdownRequested = loader.shutting;
         }
     }
-#endif
 }
+#endif
