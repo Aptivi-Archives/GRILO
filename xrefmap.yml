@@ -201,12 +201,15 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootApps.BootLoader.ProxyExecuteBootable
   nameWithType: BootLoader.ProxyExecuteBootable
-- uid: GRILO.Bootloader.BootApps.BootLoader.VerifyBoot
-  name: VerifyBoot()
-  href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_VerifyBoot
-  commentId: M:GRILO.Bootloader.BootApps.BootLoader.VerifyBoot
-  fullName: GRILO.Bootloader.BootApps.BootLoader.VerifyBoot()
-  nameWithType: BootLoader.VerifyBoot()
+- uid: GRILO.Bootloader.BootApps.BootLoader.VerifyBoot(System.Byte[])
+  name: VerifyBoot(Byte[])
+  href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_VerifyBoot_System_Byte___
+  commentId: M:GRILO.Bootloader.BootApps.BootLoader.VerifyBoot(System.Byte[])
+  name.vb: VerifyBoot(Byte())
+  fullName: GRILO.Bootloader.BootApps.BootLoader.VerifyBoot(System.Byte[])
+  fullName.vb: GRILO.Bootloader.BootApps.BootLoader.VerifyBoot(System.Byte())
+  nameWithType: BootLoader.VerifyBoot(Byte[])
+  nameWithType.vb: BootLoader.VerifyBoot(Byte())
 - uid: GRILO.Bootloader.BootApps.BootLoader.VerifyBoot*
   name: VerifyBoot
   href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_VerifyBoot_
