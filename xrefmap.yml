@@ -179,6 +179,41 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootApps.BootAppInfo.OverriddenTitle
   nameWithType: BootAppInfo.OverriddenTitle
+- uid: GRILO.Bootloader.BootApps.BootLoader
+  name: BootLoader
+  href: api/GRILO.Bootloader.BootApps.BootLoader.html
+  commentId: T:GRILO.Bootloader.BootApps.BootLoader
+  fullName: GRILO.Bootloader.BootApps.BootLoader
+  nameWithType: BootLoader
+- uid: GRILO.Bootloader.BootApps.BootLoader.ProxyExecuteBootable(System.String[])
+  name: ProxyExecuteBootable(String[])
+  href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_ProxyExecuteBootable_System_String___
+  commentId: M:GRILO.Bootloader.BootApps.BootLoader.ProxyExecuteBootable(System.String[])
+  name.vb: ProxyExecuteBootable(String())
+  fullName: GRILO.Bootloader.BootApps.BootLoader.ProxyExecuteBootable(System.String[])
+  fullName.vb: GRILO.Bootloader.BootApps.BootLoader.ProxyExecuteBootable(System.String())
+  nameWithType: BootLoader.ProxyExecuteBootable(String[])
+  nameWithType.vb: BootLoader.ProxyExecuteBootable(String())
+- uid: GRILO.Bootloader.BootApps.BootLoader.ProxyExecuteBootable*
+  name: ProxyExecuteBootable
+  href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_ProxyExecuteBootable_
+  commentId: Overload:GRILO.Bootloader.BootApps.BootLoader.ProxyExecuteBootable
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootApps.BootLoader.ProxyExecuteBootable
+  nameWithType: BootLoader.ProxyExecuteBootable
+- uid: GRILO.Bootloader.BootApps.BootLoader.VerifyBoot
+  name: VerifyBoot()
+  href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_VerifyBoot
+  commentId: M:GRILO.Bootloader.BootApps.BootLoader.VerifyBoot
+  fullName: GRILO.Bootloader.BootApps.BootLoader.VerifyBoot()
+  nameWithType: BootLoader.VerifyBoot()
+- uid: GRILO.Bootloader.BootApps.BootLoader.VerifyBoot*
+  name: VerifyBoot
+  href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_VerifyBoot_
+  commentId: Overload:GRILO.Bootloader.BootApps.BootLoader.VerifyBoot
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootApps.BootLoader.VerifyBoot
+  nameWithType: BootLoader.VerifyBoot
 - uid: GRILO.Bootloader.BootApps.BootManager
   name: BootManager
   href: api/GRILO.Bootloader.BootApps.BootManager.html
@@ -237,6 +272,54 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootApps.BootManager.PopulateBootApps
   nameWithType: BootManager.PopulateBootApps
+- uid: GRILO.Bootloader.BootApps.BootProxy
+  name: BootProxy
+  href: api/GRILO.Bootloader.BootApps.BootProxy.html
+  commentId: T:GRILO.Bootloader.BootApps.BootProxy
+  fullName: GRILO.Bootloader.BootApps.BootProxy
+  nameWithType: BootProxy
+- uid: GRILO.Bootloader.BootApps.BootProxy.Boot(System.String[])
+  name: Boot(String[])
+  href: api/GRILO.Bootloader.BootApps.BootProxy.html#GRILO_Bootloader_BootApps_BootProxy_Boot_System_String___
+  commentId: M:GRILO.Bootloader.BootApps.BootProxy.Boot(System.String[])
+  name.vb: Boot(String())
+  fullName: GRILO.Bootloader.BootApps.BootProxy.Boot(System.String[])
+  fullName.vb: GRILO.Bootloader.BootApps.BootProxy.Boot(System.String())
+  nameWithType: BootProxy.Boot(String[])
+  nameWithType.vb: BootProxy.Boot(String())
+- uid: GRILO.Bootloader.BootApps.BootProxy.Boot*
+  name: Boot
+  href: api/GRILO.Bootloader.BootApps.BootProxy.html#GRILO_Bootloader_BootApps_BootProxy_Boot_
+  commentId: Overload:GRILO.Bootloader.BootApps.BootProxy.Boot
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootApps.BootProxy.Boot
+  nameWithType: BootProxy.Boot
+- uid: GRILO.Bootloader.BootApps.BootProxy.ShutdownRequested
+  name: ShutdownRequested
+  href: api/GRILO.Bootloader.BootApps.BootProxy.html#GRILO_Bootloader_BootApps_BootProxy_ShutdownRequested
+  commentId: P:GRILO.Bootloader.BootApps.BootProxy.ShutdownRequested
+  fullName: GRILO.Bootloader.BootApps.BootProxy.ShutdownRequested
+  nameWithType: BootProxy.ShutdownRequested
+- uid: GRILO.Bootloader.BootApps.BootProxy.ShutdownRequested*
+  name: ShutdownRequested
+  href: api/GRILO.Bootloader.BootApps.BootProxy.html#GRILO_Bootloader_BootApps_BootProxy_ShutdownRequested_
+  commentId: Overload:GRILO.Bootloader.BootApps.BootProxy.ShutdownRequested
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootApps.BootProxy.ShutdownRequested
+  nameWithType: BootProxy.ShutdownRequested
+- uid: GRILO.Bootloader.BootApps.BootProxy.Title
+  name: Title
+  href: api/GRILO.Bootloader.BootApps.BootProxy.html#GRILO_Bootloader_BootApps_BootProxy_Title
+  commentId: P:GRILO.Bootloader.BootApps.BootProxy.Title
+  fullName: GRILO.Bootloader.BootApps.BootProxy.Title
+  nameWithType: BootProxy.Title
+- uid: GRILO.Bootloader.BootApps.BootProxy.Title*
+  name: Title
+  href: api/GRILO.Bootloader.BootApps.BootProxy.html#GRILO_Bootloader_BootApps_BootProxy_Title_
+  commentId: Overload:GRILO.Bootloader.BootApps.BootProxy.Title
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootApps.BootProxy.Title
+  nameWithType: BootProxy.Title
 - uid: GRILO.Bootloader.BootStyle
   name: GRILO.Bootloader.BootStyle
   href: api/GRILO.Bootloader.BootStyle.html

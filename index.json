@@ -24,15 +24,25 @@
     "title": "Class BootAppInfo | GRILO API - Aptivi",
     "keywords": "Class BootAppInfo Bootable application information Inheritance System.Object BootAppInfo Namespace : GRILO.Bootloader.BootApps Assembly : GRILO.Bootloader.dll Syntax public class BootAppInfo : object Properties Arguments Arguments to inject to the boot file Declaration public string[] Arguments { get; } Property Value Type Description System.String [] Bootable Gets the bootable Declaration public IBootable Bootable { get; } Property Value Type Description IBootable BootFile Bootable file path Declaration public string BootFile { get; } Property Value Type Description System.String OverriddenTitle Boot app title (overrides one found in IBootable) Declaration public string OverriddenTitle { get; } Property Value Type Description System.String"
   },
+  "api/GRILO.Bootloader.BootApps.BootLoader.html": {
+    "href": "api/GRILO.Bootloader.BootApps.BootLoader.html",
+    "title": "Class BootLoader | GRILO API - Aptivi",
+    "keywords": "Class BootLoader Inheritance System.Object BootLoader Namespace : GRILO.Bootloader.BootApps Assembly : GRILO.Bootloader.dll Syntax public class BootLoader : MarshalByRefObject Methods ProxyExecuteBootable(String[]) Declaration public void ProxyExecuteBootable(params string[] args) Parameters Type Name Description System.String [] args VerifyBoot() Declaration public bool VerifyBoot() Returns Type Description System.Boolean"
+  },
   "api/GRILO.Bootloader.BootApps.BootManager.html": {
     "href": "api/GRILO.Bootloader.BootApps.BootManager.html",
     "title": "Class BootManager | GRILO API - Aptivi",
     "keywords": "Class BootManager Bootable application manager Inheritance System.Object BootManager Namespace : GRILO.Bootloader.BootApps Assembly : GRILO.Bootloader.dll Syntax public static class BootManager : object Methods GetBootApp(String) Gets boot application by name Declaration public static BootAppInfo GetBootApp(string name) Parameters Type Name Description System.String name Returns Type Description BootAppInfo GetBootAppNameByIndex(Int32) Gets boot application name by index Declaration public static string GetBootAppNameByIndex(int index) Parameters Type Name Description System.Int32 index Returns Type Description System.String GetBootApps() Gets boot applications Declaration public static Dictionary<string, BootAppInfo> GetBootApps() Returns Type Description Dictionary < System.String , BootAppInfo > PopulateBootApps() Adds all bootable applications to the bootloader Declaration public static void PopulateBootApps()"
   },
+  "api/GRILO.Bootloader.BootApps.BootProxy.html": {
+    "href": "api/GRILO.Bootloader.BootApps.BootProxy.html",
+    "title": "Class BootProxy | GRILO API - Aptivi",
+    "keywords": "Class BootProxy Inheritance System.Object BootProxy Implements IBootable Namespace : GRILO.Bootloader.BootApps Assembly : GRILO.Bootloader.dll Syntax public class BootProxy : object, IBootable Properties ShutdownRequested Declaration public bool ShutdownRequested { get; set; } Property Value Type Description System.Boolean Title Declaration public string Title { get; } Property Value Type Description System.String Methods Boot(String[]) Declaration public void Boot(string[] args) Parameters Type Name Description System.String [] args Implements IBootable"
+  },
   "api/GRILO.Bootloader.BootApps.html": {
     "href": "api/GRILO.Bootloader.BootApps.html",
     "title": "Namespace GRILO.Bootloader.BootApps | GRILO API - Aptivi",
-    "keywords": "Namespace GRILO.Bootloader.BootApps Classes BootAppInfo Bootable application information BootManager Bootable application manager"
+    "keywords": "Namespace GRILO.Bootloader.BootApps Classes BootAppInfo Bootable application information BootLoader BootManager Bootable application manager BootProxy"
   },
   "api/GRILO.Bootloader.BootStyle.BaseBootStyle.html": {
     "href": "api/GRILO.Bootloader.BootStyle.BaseBootStyle.html",
