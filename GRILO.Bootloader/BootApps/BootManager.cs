@@ -34,6 +34,10 @@ using GRILO.Bootloader.Diagnostics;
 using GRILO.Bootloader.Configuration;
 using Terminaux.Writer.ConsoleWriters;
 
+#if NET6_0_OR_GREATER
+using System.Runtime.Loader;
+#endif
+
 namespace GRILO.Bootloader.BootApps
 {
     /// <summary>
@@ -45,6 +49,11 @@ namespace GRILO.Bootloader.BootApps
         {
             { "Shutdown the system", new BootAppInfo("", "", Array.Empty<string>(), new Shutdown()) }
         };
+#if NET6_0_OR_GREATER
+        private static readonly List<AssemblyLoadContext> loads = new();
+#else
+        private static readonly List<BootLoader> loads = new();
+#endif
 
         /// <summary>
         /// Adds all bootable applications to the bootloader
@@ -60,6 +69,12 @@ namespace GRILO.Bootloader.BootApps
             {
                 // Get the boot ID
                 string bootId = Path.GetFileName(bootDir);
+#if NET6_0_OR_GREATER
+                var bootContext = new AssemblyLoadContext($"Boot context for {bootId}", true);
+#else
+                AppDomain ad2 = AppDomain.CreateDomain($"Boot context for {bootId}", null, bootId, bootId, false);
+                var assemblyLoader = (BootLoader)ad2.CreateInstanceFromAndUnwrap(typeof(BootLoader).Assembly.CodeBase, typeof(BootLoader).FullName);
+#endif
                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Boot ID: {0}", bootId);
                 try
                 {
@@ -80,9 +95,10 @@ namespace GRILO.Bootloader.BootApps
                             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Processing boot file {0}...", bootFile);
 
                             // Load the boot assembly file and check to see if it implements IBootable.
-                            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Loading assembly...");
-                            var asm = Assembly.LoadFrom(bootFile);
                             BootAppInfo bootApp;
+                            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Loading assembly...");
+#if NET6_0_OR_GREATER
+                            var asm = bootContext.LoadFromAssemblyPath(bootFile);
                             IBootable bootable = null;
 
                             // Get the implemented types of the assembly so that we can check every type found in this assembly for implementation of the
@@ -140,15 +156,59 @@ namespace GRILO.Bootloader.BootApps
                                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Warning, "Skipping boot ID {0} because it is an invalid boot file...", bootFile);
                                 continue;
                             }
+#else
+                            assemblyLoader.bytes = File.ReadAllBytes(bootFile);
+
+                            // Now, check the metadata
+                            if (assemblyLoader.VerifyBoot())
+                            {
+                                // We found it! Now, populate info from the metadata file
+                                string metadataFile = Path.Combine(GRILOPaths.GRILOBootablesPath, bootId, "BootMetadata.json");
+                                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Trying to find metadata file {0}...", metadataFile);
+
+                                // Let's put some variables here
+                                string bootOverrideTitle = "";
+                                string[] bootArgs = Array.Empty<string>();
+                                
+                                // Now, check for metadata existence
+                                if (File.Exists(metadataFile))
+                                {
+                                    // Metadata file exists! Now, parse it.
+                                    DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Metadata found! Parsing JSON...");
+                                    var metadataToken = JArray.Parse(File.ReadAllText(metadataFile));
+                                
+                                    // Enumerate through metadata array
+                                    foreach (var metadata in metadataToken)
+                                    {
+                                        DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Filling entries...");
+                                        
+                                        // Fill them
+                                        var proxy = new BootProxy();
+                                        proxy.loader = assemblyLoader;
+                                        bootOverrideTitle = metadata["OverrideTitle"]?.ToString() ?? Path.GetFileNameWithoutExtension(bootFile);
+                                        bootArgs = metadata["Arguments"]?.ToObject<string[]>() ?? Array.Empty<string>();
+                                        bootApp = new(bootFile, bootOverrideTitle, bootArgs, proxy);
+                                        bootApps.Add(bootOverrideTitle, bootApp);
+                                    }
+                                 }
+                                 else
+                                 {
+                                    // Skip boot ID as metadata is not found.
+                                    DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Warning, "Skipping boot ID {0} because {1} is not found...", bootFile, metadataFile);
+                                    break;
+                                 }
+                            }
+#endif
                         }
                         catch (Exception ex)
                         {
                             // Either the boot file is invalid or can't be loaded.
-                            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Can't load boot app. {0}", ex.Message);
+                            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Can't load boot app. {0}: {1}", ex.GetType().Name, ex.Message);
                             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Stack trace:\n{0}", ex.StackTrace);
                             TextWriterColor.Write($"Failed to parse boot file {bootFile}: {ex.Message}");
                         }
                     }
+                    
                 }
                 catch (Exception ex)
                 {
@@ -157,6 +217,9 @@ namespace GRILO.Bootloader.BootApps
                     DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Stack trace:\n{0}", ex.StackTrace);
                     TextWriterColor.Write($"Unknown error when parsing boot ID {bootId}: {ex.Message}");
                 }
+#if NET6_0_OR_GREATER
+                loads.Add(bootContext);
+#endif
             }
         }
 
