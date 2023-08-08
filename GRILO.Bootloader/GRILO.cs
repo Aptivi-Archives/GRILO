@@ -30,6 +30,7 @@ using System.Reflection;
 using GRILO.Bootloader.Diagnostics;
 using GRILO.Bootloader.KeyHandler;
 using System.Linq;
+using Terminaux.Sequences.Builder;
 using Terminaux.Reader.Inputs;
 using Terminaux.Writer.ConsoleWriters;
 
@@ -41,6 +42,7 @@ namespace GRILO.Bootloader
         internal static bool waitingForBootKey = true;
         internal static bool waitingForFirstBootKey = true;
         internal static string griloVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        internal static bool isOnAlternativeBuffer = false;
 
         static void Main()
         {
@@ -65,6 +67,13 @@ namespace GRILO.Bootloader
                 BootManager.PopulateBootApps();
                 var bootApps = BootManager.GetBootApps();
                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Bootable apps read successfully.");
+
+                // Switch to alternative buffer
+                if (!GRILOPlatform.IsOnWindows())
+                {
+                    TextWriterColor.WritePlain($"{VtSequenceBasicChars.EscapeChar}7{VtSequenceBasicChars.EscapeChar}[?47h", false);
+                    isOnAlternativeBuffer = true;
+                }
 
                 // Now, draw the boot menu. Note that the chosen boot entry counts from zero.
                 int chosenBootEntry = Config.Instance.BootSelect;
@@ -215,6 +224,12 @@ namespace GRILO.Bootloader
                 TextWriterColor.Write(ex.StackTrace);
                 TextWriterColor.Write("Press any key to exit.");
                 Input.DetectKeypress();
+            }
+            finally
+            {
+                if (isOnAlternativeBuffer)
+                    TextWriterColor.WritePlain($"{VtSequenceBasicChars.EscapeChar}[2J{VtSequenceBasicChars.EscapeChar}[?47l{VtSequenceBasicChars.EscapeChar}8", false);
+                Console.CursorVisible = true;
             }
         }
     }
