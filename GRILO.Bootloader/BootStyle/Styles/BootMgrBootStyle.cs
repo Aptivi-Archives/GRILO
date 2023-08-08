@@ -91,7 +91,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
             }
         }
 
-        public override void RenderModalDialog(string content)
+        public override void RenderBootFailedMessage(string content)
         {
             // Render the header and footer
             int marginX = 2;
@@ -127,8 +127,8 @@ namespace GRILO.Bootloader.BootStyle.Styles
 
         public override void RenderBootingMessage(string chosenBootName) { }
 
-        public override void RenderBootFailedMessage(string content) =>
-            RenderModalDialog(content);
+        public override void RenderModalDialog(string content) =>
+            TextWriterColor.Write(content);
 
         public override void RenderSelectTimeout(int timeout)
         {

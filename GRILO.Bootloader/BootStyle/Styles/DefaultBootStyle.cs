@@ -40,7 +40,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
         {
             // Populate colors
             ConsoleColor sectionTitle = ConsoleColor.Green;
-            ConsoleColor boxBorderColor = ConsoleColor.DarkGray;
+            ConsoleColor boxBorderColor = ConsoleColor.Gray;
 
             // Write the section title
             string finalRenderedSection = "-- Select boot entry --";
@@ -93,7 +93,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
         {
             // Populate colors
             ConsoleColor dialogBG = ConsoleColor.Black;
-            ConsoleColor dialogFG = ConsoleColor.DarkGray;
+            ConsoleColor dialogFG = ConsoleColor.Gray;
             InfoBoxColor.WriteInfoBox(content, new Color(dialogFG), new Color(dialogBG));
             Console.Clear();
         }

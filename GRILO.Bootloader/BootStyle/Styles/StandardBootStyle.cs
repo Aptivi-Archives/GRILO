@@ -68,7 +68,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
         {
             // Populate colors
             ConsoleColor dialogBG = ConsoleColor.Black;
-            ConsoleColor dialogFG = ConsoleColor.DarkGray;
+            ConsoleColor dialogFG = ConsoleColor.Gray;
             InfoBoxColor.WriteInfoBox(content, new Color(dialogFG), new Color(dialogBG));
             Console.Clear();
         }

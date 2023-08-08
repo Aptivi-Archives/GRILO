@@ -67,14 +67,16 @@ namespace GRILO.Bootloader.BootStyle.Styles
         public override void RenderModalDialog(string content)
         {
             // Populate colors
+            ColorTools.LoadBack(0);
             ConsoleColor highlightedEntryForeground = ConsoleColor.Black;
             ConsoleColor highlightedEntryBackground = ConsoleColor.Gray;
 
             TextWriterColor.Write($"""
                 
                 {content}
+                
                 """);
-            TextWriterColor.Write("    Continue", new Color(highlightedEntryForeground), new Color(highlightedEntryBackground));
+            TextWriterColor.Write("    Continue", true, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground));
             TextWriterColor.Write("\nUse the up and down arrow keys to move the highlight to your choice.");
         }
 

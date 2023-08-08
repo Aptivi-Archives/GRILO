@@ -91,9 +91,8 @@ namespace GRILO.Bootloader.BootStyle.Styles
         public override void RenderModalDialog(string content)
         {
             // Populate colors
-            ConsoleColor dialogBG = ConsoleColor.Black;
-            ConsoleColor dialogFG = ConsoleColor.DarkGray;
-            TextWriterColor.Write(content, true, new Color(dialogFG), new Color(dialogBG));
+            ConsoleColor dialogFG = ConsoleColor.Gray;
+            TextWriterColor.Write(content, true, new Color(dialogFG));
         }
 
         public override void RenderBootingMessage(string chosenBootName) { }
