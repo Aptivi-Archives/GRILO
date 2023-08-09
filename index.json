@@ -27,7 +27,7 @@
   "api/GRILO.Bootloader.BootApps.BootLoader.html": {
     "href": "api/GRILO.Bootloader.BootApps.BootLoader.html",
     "title": "Class BootLoader | GRILO API - Aptivi",
-    "keywords": "Class BootLoader Inheritance System.Object BootLoader Namespace : GRILO.Bootloader.BootApps Assembly : GRILO.Bootloader.dll Syntax public class BootLoader : MarshalByRefObject Methods ProxyExecuteBootable(String[]) Declaration public void ProxyExecuteBootable(params string[] args) Parameters Type Name Description System.String [] args VerifyBoot(Byte[]) Declaration public bool VerifyBoot(byte[] bootBytes) Parameters Type Name Description System.Byte [] bootBytes Returns Type Description System.Boolean"
+    "keywords": "Class BootLoader Inheritance System.Object BootLoader Namespace : GRILO.Bootloader.BootApps Assembly : GRILO.Bootloader.dll Syntax public class BootLoader : MarshalByRefObject Fields bytes Declaration public byte[] bytes Field Value Type Description System.Byte [] lookupPath Declaration public string lookupPath Field Value Type Description System.String shutting Declaration public bool shutting Field Value Type Description System.Boolean Methods ProxyExecuteBootable(String[]) Declaration public void ProxyExecuteBootable(params string[] args) Parameters Type Name Description System.String [] args VerifyBoot(Byte[]) Declaration public bool VerifyBoot(byte[] bootBytes) Parameters Type Name Description System.Byte [] bootBytes Returns Type Description System.Boolean"
   },
   "api/GRILO.Bootloader.BootApps.BootManager.html": {
     "href": "api/GRILO.Bootloader.BootApps.BootManager.html",

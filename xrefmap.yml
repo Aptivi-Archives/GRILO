@@ -185,6 +185,18 @@ references:
   commentId: T:GRILO.Bootloader.BootApps.BootLoader
   fullName: GRILO.Bootloader.BootApps.BootLoader
   nameWithType: BootLoader
+- uid: GRILO.Bootloader.BootApps.BootLoader.bytes
+  name: bytes
+  href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_bytes
+  commentId: F:GRILO.Bootloader.BootApps.BootLoader.bytes
+  fullName: GRILO.Bootloader.BootApps.BootLoader.bytes
+  nameWithType: BootLoader.bytes
+- uid: GRILO.Bootloader.BootApps.BootLoader.lookupPath
+  name: lookupPath
+  href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_lookupPath
+  commentId: F:GRILO.Bootloader.BootApps.BootLoader.lookupPath
+  fullName: GRILO.Bootloader.BootApps.BootLoader.lookupPath
+  nameWithType: BootLoader.lookupPath
 - uid: GRILO.Bootloader.BootApps.BootLoader.ProxyExecuteBootable(System.String[])
   name: ProxyExecuteBootable(String[])
   href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_ProxyExecuteBootable_System_String___
@@ -201,6 +213,12 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootApps.BootLoader.ProxyExecuteBootable
   nameWithType: BootLoader.ProxyExecuteBootable
+- uid: GRILO.Bootloader.BootApps.BootLoader.shutting
+  name: shutting
+  href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_shutting
+  commentId: F:GRILO.Bootloader.BootApps.BootLoader.shutting
+  fullName: GRILO.Bootloader.BootApps.BootLoader.shutting
+  nameWithType: BootLoader.shutting
 - uid: GRILO.Bootloader.BootApps.BootLoader.VerifyBoot(System.Byte[])
   name: VerifyBoot(Byte[])
   href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_VerifyBoot_System_Byte___
