@@ -33,9 +33,9 @@ namespace GRILO.Bootloader.BootApps
 {
     public class BootLoader : MarshalByRefObject
     {
-        internal byte[] bytes = Array.Empty<byte>();
-        internal string lookupPath = "";
-        internal bool shutting = false;
+        public byte[] bytes = Array.Empty<byte>();
+        public string lookupPath = "";
+        public bool shutting = false;
 
         public void ProxyExecuteBootable(params string[] args)
         {

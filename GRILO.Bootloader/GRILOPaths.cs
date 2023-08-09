@@ -77,10 +77,17 @@ namespace GRILO.Bootloader
         public static string GRILOBootablesPath {
             get
             {
+#if NETCOREAPP
                 if (GRILOPlatform.IsOnWindows())
                     return Path.Combine(Environment.GetEnvironmentVariable("LOCALAPPDATA"), "GRILO/Bootables");
                 else
                     return Path.Combine(Environment.GetEnvironmentVariable("HOME"), ".config/GRILO/Bootables");
+#else
+                if (GRILOPlatform.IsOnWindows())
+                    return Path.Combine(Environment.GetEnvironmentVariable("LOCALAPPDATA"), "GRILO/Bootables_DotNetFx");
+                else
+                    return Path.Combine(Environment.GetEnvironmentVariable("HOME"), ".config/GRILO/Bootables_DotNetFx");
+#endif
             }
         }
 

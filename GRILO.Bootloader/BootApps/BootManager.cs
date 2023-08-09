@@ -32,6 +32,7 @@ using System.Linq;
 using GRILO.Bootloader.Diagnostics;
 using GRILO.Bootloader.Configuration;
 using Terminaux.Writer.ConsoleWriters;
+using System.Reflection;
 
 #if NET6_0_OR_GREATER
 using System.Runtime.Loader;
@@ -48,11 +49,6 @@ namespace GRILO.Bootloader.BootApps
         {
             { "Shutdown the system", new BootAppInfo("", "", Array.Empty<string>(), new Shutdown()) }
         };
-#if NET6_0_OR_GREATER
-        private static readonly List<AssemblyLoadContext> loads = new();
-#else
-        private static readonly List<BootLoader> loads = new();
-#endif
 
         /// <summary>
         /// Adds all bootable applications to the bootloader
@@ -68,20 +64,49 @@ namespace GRILO.Bootloader.BootApps
             {
                 // Get the boot ID
                 string bootId = Path.GetFileName(bootDir);
+
+                // Create boot context
 #if NET6_0_OR_GREATER
-                var bootContext = new AssemblyLoadContext($"Boot context for {bootId}", true);
+                var bootContext = new BootLoadContext
+                {
+                    bootPath = bootDir
+                };
 #else
                 AppDomain ad2 = AppDomain.CreateDomain($"Boot context for {bootId}", null, bootId, bootId, false);
                 var assemblyLoader = (BootLoader)ad2.CreateInstanceFromAndUnwrap(typeof(BootLoader).Assembly.CodeBase, typeof(BootLoader).FullName);
 #endif
+
+                // Now, check the metadata to get a bootable file path
+                string metadataFile = Path.Combine(GRILOPaths.GRILOBootablesPath, bootId, "BootMetadata.json");
+                List<string> paths = new();
+                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Trying to find metadata file {0} to get bootable file path...", metadataFile);
+
+                // Now, check for metadata existence
+                if (File.Exists(metadataFile))
+                {
+                    // Metadata file exists! Now, parse it.
+                    DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Metadata found! Parsing JSON...");
+                    var metadataToken = JArray.Parse(File.ReadAllText(metadataFile));
+
+                    // Enumerate through metadata array
+                    foreach (var metadata in metadataToken)
+                    {
+                        string path = metadata["BootFilePath"]?.ToString() is not null ? Path.Combine(GRILOPaths.GRILOBootablesPath, bootId, metadata["BootFilePath"]?.ToString()) : "";
+                        if (!paths.Contains(path) && !string.IsNullOrEmpty(path))
+                            paths.Add(path);
+                        DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Boot path {0}.", path);
+                    }
+                }
+
+                // Process boot files
                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Boot ID: {0}", bootId);
                 try
                 {
                     // Using the boot ID, check for executable files
 #if NETCOREAPP
-                    var bootFiles = Directory.EnumerateFiles(bootDir, "*.dll");
+                    var bootFiles = paths.Count > 0 ? paths : Directory.EnumerateFiles(bootDir, "*.dll");
 #else
-                    var bootFiles = Directory.EnumerateFiles(bootDir, "*.exe");
+                    var bootFiles = paths.Count > 0 ? paths : Directory.EnumerateFiles(bootDir, "*.exe");
 #endif
                     foreach (var bootFile in bootFiles)
                     {
@@ -97,6 +122,7 @@ namespace GRILO.Bootloader.BootApps
                             BootAppInfo bootApp;
                             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Loading assembly...");
 #if NET6_0_OR_GREATER
+                            bootContext.resolver = new AssemblyDependencyResolver(bootFile);
                             var asm = bootContext.LoadFromAssemblyPath(bootFile);
                             IBootable bootable = null;
 
@@ -117,7 +143,6 @@ namespace GRILO.Bootloader.BootApps
                             if (bootable != null)
                             {
                                 // We found it! Now, populate info from the metadata file
-                                string metadataFile = Path.Combine(GRILOPaths.GRILOBootablesPath, bootId, "BootMetadata.json");
                                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Trying to find metadata file {0}...", metadataFile);
 
                                 // Let's put some variables here
@@ -141,7 +166,6 @@ namespace GRILO.Bootloader.BootApps
                                         bootArgs = metadata["Arguments"]?.ToObject<string[]>() ?? Array.Empty<string>();
                                         bootApp = new(bootFile, bootOverrideTitle, bootArgs, bootable);
                                         bootApps.Add(bootOverrideTitle, bootApp);
-                                        loads.Add(bootContext);
                                     }
                                 }
                                 else
@@ -163,7 +187,6 @@ namespace GRILO.Bootloader.BootApps
                             if (assemblyLoader.VerifyBoot(File.ReadAllBytes(bootFile)))
                             {
                                 // We found it! Now, populate info from the metadata file
-                                string metadataFile = Path.Combine(GRILOPaths.GRILOBootablesPath, bootId, "BootMetadata.json");
                                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Trying to find metadata file {0}...", metadataFile);
 
                                 // Let's put some variables here
@@ -189,7 +212,6 @@ namespace GRILO.Bootloader.BootApps
                                         bootArgs = metadata["Arguments"]?.ToObject<string[]>() ?? Array.Empty<string>();
                                         bootApp = new(bootFile, bootOverrideTitle, bootArgs, proxy);
                                         bootApps.Add(bootOverrideTitle, bootApp);
-                                        loads.Add(assemblyLoader);
                                     }
                                  }
                                  else
@@ -218,16 +240,14 @@ namespace GRILO.Bootloader.BootApps
                     DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Stack trace:\n{0}", ex.StackTrace);
                     TextWriterColor.Write($"Unknown error when parsing boot ID {bootId}: {ex.Message}");
                 }
-#if NET6_0_OR_GREATER
-                loads.Add(bootContext);
-#endif
             }
         }
 
         /// <summary>
         /// Gets boot applications
         /// </summary>
-        public static Dictionary<string, BootAppInfo> GetBootApps() => new(bootApps);
+        public static Dictionary<string, BootAppInfo> GetBootApps() =>
+            new(bootApps);
 
         /// <summary>
         /// Gets boot application by name
