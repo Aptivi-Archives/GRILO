@@ -5,6 +5,8 @@
     <TargetFrameworks>net7.0;net6.0;net48</TargetFrameworks>
     <ApplicationIcon>OfficialAppIcon-GRILO.ico</ApplicationIcon>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <IncludeSymbols>True</IncludeSymbols>
     <Version>1.1.0</Version>
     <PackageVersion>1.1.0</PackageVersion>
     <Authors>Aptivi</Authors>
