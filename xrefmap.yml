@@ -14,13 +14,13 @@ references:
   fullName: GRILO.Boot.IBootable
   nameWithType: IBootable
 - uid: GRILO.Boot.IBootable.Boot(System.String[])
-  name: Boot(String[])
+  name: Boot(string[])
   href: api/GRILO.Boot.IBootable.html#GRILO_Boot_IBootable_Boot_System_String___
   commentId: M:GRILO.Boot.IBootable.Boot(System.String[])
   name.vb: Boot(String())
-  fullName: GRILO.Boot.IBootable.Boot(System.String[])
-  fullName.vb: GRILO.Boot.IBootable.Boot(System.String())
-  nameWithType: IBootable.Boot(String[])
+  fullName: GRILO.Boot.IBootable.Boot(string[])
+  fullName.vb: GRILO.Boot.IBootable.Boot(String())
+  nameWithType: IBootable.Boot(string[])
   nameWithType.vb: IBootable.Boot(String())
 - uid: GRILO.Boot.IBootable.Boot*
   name: Boot
@@ -68,13 +68,13 @@ references:
   fullName: GRILO.BootableAppDemo.BootClass
   nameWithType: BootClass
 - uid: GRILO.BootableAppDemo.BootClass.Boot(System.String[])
-  name: Boot(String[])
+  name: Boot(string[])
   href: api/GRILO.BootableAppDemo.BootClass.html#GRILO_BootableAppDemo_BootClass_Boot_System_String___
   commentId: M:GRILO.BootableAppDemo.BootClass.Boot(System.String[])
   name.vb: Boot(String())
-  fullName: GRILO.BootableAppDemo.BootClass.Boot(System.String[])
-  fullName.vb: GRILO.BootableAppDemo.BootClass.Boot(System.String())
-  nameWithType: BootClass.Boot(String[])
+  fullName: GRILO.BootableAppDemo.BootClass.Boot(string[])
+  fullName.vb: GRILO.BootableAppDemo.BootClass.Boot(String())
+  nameWithType: BootClass.Boot(string[])
   nameWithType.vb: BootClass.Boot(String())
 - uid: GRILO.BootableAppDemo.BootClass.Boot*
   name: Boot
@@ -140,19 +140,6 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootApps.BootAppInfo.Arguments
   nameWithType: BootAppInfo.Arguments
-- uid: GRILO.Bootloader.BootApps.BootAppInfo.Bootable
-  name: Bootable
-  href: api/GRILO.Bootloader.BootApps.BootAppInfo.html#GRILO_Bootloader_BootApps_BootAppInfo_Bootable
-  commentId: P:GRILO.Bootloader.BootApps.BootAppInfo.Bootable
-  fullName: GRILO.Bootloader.BootApps.BootAppInfo.Bootable
-  nameWithType: BootAppInfo.Bootable
-- uid: GRILO.Bootloader.BootApps.BootAppInfo.Bootable*
-  name: Bootable
-  href: api/GRILO.Bootloader.BootApps.BootAppInfo.html#GRILO_Bootloader_BootApps_BootAppInfo_Bootable_
-  commentId: Overload:GRILO.Bootloader.BootApps.BootAppInfo.Bootable
-  isSpec: "True"
-  fullName: GRILO.Bootloader.BootApps.BootAppInfo.Bootable
-  nameWithType: BootAppInfo.Bootable
 - uid: GRILO.Bootloader.BootApps.BootAppInfo.BootFile
   name: BootFile
   href: api/GRILO.Bootloader.BootApps.BootAppInfo.html#GRILO_Bootloader_BootApps_BootAppInfo_BootFile
@@ -166,6 +153,19 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootApps.BootAppInfo.BootFile
   nameWithType: BootAppInfo.BootFile
+- uid: GRILO.Bootloader.BootApps.BootAppInfo.Bootable
+  name: Bootable
+  href: api/GRILO.Bootloader.BootApps.BootAppInfo.html#GRILO_Bootloader_BootApps_BootAppInfo_Bootable
+  commentId: P:GRILO.Bootloader.BootApps.BootAppInfo.Bootable
+  fullName: GRILO.Bootloader.BootApps.BootAppInfo.Bootable
+  nameWithType: BootAppInfo.Bootable
+- uid: GRILO.Bootloader.BootApps.BootAppInfo.Bootable*
+  name: Bootable
+  href: api/GRILO.Bootloader.BootApps.BootAppInfo.html#GRILO_Bootloader_BootApps_BootAppInfo_Bootable_
+  commentId: Overload:GRILO.Bootloader.BootApps.BootAppInfo.Bootable
+  isSpec: "True"
+  fullName: GRILO.Bootloader.BootApps.BootAppInfo.Bootable
+  nameWithType: BootAppInfo.Bootable
 - uid: GRILO.Bootloader.BootApps.BootAppInfo.OverriddenTitle
   name: OverriddenTitle
   href: api/GRILO.Bootloader.BootApps.BootAppInfo.html#GRILO_Bootloader_BootApps_BootAppInfo_OverriddenTitle
@@ -179,62 +179,41 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootApps.BootAppInfo.OverriddenTitle
   nameWithType: BootAppInfo.OverriddenTitle
-- uid: GRILO.Bootloader.BootApps.BootLoader
-  name: BootLoader
-  href: api/GRILO.Bootloader.BootApps.BootLoader.html
-  commentId: T:GRILO.Bootloader.BootApps.BootLoader
-  fullName: GRILO.Bootloader.BootApps.BootLoader
-  nameWithType: BootLoader
-- uid: GRILO.Bootloader.BootApps.BootLoader.bytes
-  name: bytes
-  href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_bytes
-  commentId: F:GRILO.Bootloader.BootApps.BootLoader.bytes
-  fullName: GRILO.Bootloader.BootApps.BootLoader.bytes
-  nameWithType: BootLoader.bytes
-- uid: GRILO.Bootloader.BootApps.BootLoader.lookupPath
-  name: lookupPath
-  href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_lookupPath
-  commentId: F:GRILO.Bootloader.BootApps.BootLoader.lookupPath
-  fullName: GRILO.Bootloader.BootApps.BootLoader.lookupPath
-  nameWithType: BootLoader.lookupPath
-- uid: GRILO.Bootloader.BootApps.BootLoader.ProxyExecuteBootable(System.String[])
-  name: ProxyExecuteBootable(String[])
-  href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_ProxyExecuteBootable_System_String___
-  commentId: M:GRILO.Bootloader.BootApps.BootLoader.ProxyExecuteBootable(System.String[])
-  name.vb: ProxyExecuteBootable(String())
-  fullName: GRILO.Bootloader.BootApps.BootLoader.ProxyExecuteBootable(System.String[])
-  fullName.vb: GRILO.Bootloader.BootApps.BootLoader.ProxyExecuteBootable(System.String())
-  nameWithType: BootLoader.ProxyExecuteBootable(String[])
-  nameWithType.vb: BootLoader.ProxyExecuteBootable(String())
-- uid: GRILO.Bootloader.BootApps.BootLoader.ProxyExecuteBootable*
-  name: ProxyExecuteBootable
-  href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_ProxyExecuteBootable_
-  commentId: Overload:GRILO.Bootloader.BootApps.BootLoader.ProxyExecuteBootable
+- uid: GRILO.Bootloader.BootApps.BootLoadContext
+  name: BootLoadContext
+  href: api/GRILO.Bootloader.BootApps.BootLoadContext.html
+  commentId: T:GRILO.Bootloader.BootApps.BootLoadContext
+  fullName: GRILO.Bootloader.BootApps.BootLoadContext
+  nameWithType: BootLoadContext
+- uid: GRILO.Bootloader.BootApps.BootLoadContext.Load(System.Reflection.AssemblyName)
+  name: Load(AssemblyName)
+  href: api/GRILO.Bootloader.BootApps.BootLoadContext.html#GRILO_Bootloader_BootApps_BootLoadContext_Load_System_Reflection_AssemblyName_
+  commentId: M:GRILO.Bootloader.BootApps.BootLoadContext.Load(System.Reflection.AssemblyName)
+  fullName: GRILO.Bootloader.BootApps.BootLoadContext.Load(System.Reflection.AssemblyName)
+  nameWithType: BootLoadContext.Load(AssemblyName)
+- uid: GRILO.Bootloader.BootApps.BootLoadContext.Load*
+  name: Load
+  href: api/GRILO.Bootloader.BootApps.BootLoadContext.html#GRILO_Bootloader_BootApps_BootLoadContext_Load_
+  commentId: Overload:GRILO.Bootloader.BootApps.BootLoadContext.Load
   isSpec: "True"
-  fullName: GRILO.Bootloader.BootApps.BootLoader.ProxyExecuteBootable
-  nameWithType: BootLoader.ProxyExecuteBootable
-- uid: GRILO.Bootloader.BootApps.BootLoader.shutting
-  name: shutting
-  href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_shutting
-  commentId: F:GRILO.Bootloader.BootApps.BootLoader.shutting
-  fullName: GRILO.Bootloader.BootApps.BootLoader.shutting
-  nameWithType: BootLoader.shutting
-- uid: GRILO.Bootloader.BootApps.BootLoader.VerifyBoot(System.Byte[])
-  name: VerifyBoot(Byte[])
-  href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_VerifyBoot_System_Byte___
-  commentId: M:GRILO.Bootloader.BootApps.BootLoader.VerifyBoot(System.Byte[])
-  name.vb: VerifyBoot(Byte())
-  fullName: GRILO.Bootloader.BootApps.BootLoader.VerifyBoot(System.Byte[])
-  fullName.vb: GRILO.Bootloader.BootApps.BootLoader.VerifyBoot(System.Byte())
-  nameWithType: BootLoader.VerifyBoot(Byte[])
-  nameWithType.vb: BootLoader.VerifyBoot(Byte())
-- uid: GRILO.Bootloader.BootApps.BootLoader.VerifyBoot*
-  name: VerifyBoot
-  href: api/GRILO.Bootloader.BootApps.BootLoader.html#GRILO_Bootloader_BootApps_BootLoader_VerifyBoot_
-  commentId: Overload:GRILO.Bootloader.BootApps.BootLoader.VerifyBoot
+  fullName: GRILO.Bootloader.BootApps.BootLoadContext.Load
+  nameWithType: BootLoadContext.Load
+- uid: GRILO.Bootloader.BootApps.BootLoadContext.LoadUnmanagedDll(System.String)
+  name: LoadUnmanagedDll(string)
+  href: api/GRILO.Bootloader.BootApps.BootLoadContext.html#GRILO_Bootloader_BootApps_BootLoadContext_LoadUnmanagedDll_System_String_
+  commentId: M:GRILO.Bootloader.BootApps.BootLoadContext.LoadUnmanagedDll(System.String)
+  name.vb: LoadUnmanagedDll(String)
+  fullName: GRILO.Bootloader.BootApps.BootLoadContext.LoadUnmanagedDll(string)
+  fullName.vb: GRILO.Bootloader.BootApps.BootLoadContext.LoadUnmanagedDll(String)
+  nameWithType: BootLoadContext.LoadUnmanagedDll(string)
+  nameWithType.vb: BootLoadContext.LoadUnmanagedDll(String)
+- uid: GRILO.Bootloader.BootApps.BootLoadContext.LoadUnmanagedDll*
+  name: LoadUnmanagedDll
+  href: api/GRILO.Bootloader.BootApps.BootLoadContext.html#GRILO_Bootloader_BootApps_BootLoadContext_LoadUnmanagedDll_
+  commentId: Overload:GRILO.Bootloader.BootApps.BootLoadContext.LoadUnmanagedDll
   isSpec: "True"
-  fullName: GRILO.Bootloader.BootApps.BootLoader.VerifyBoot
-  nameWithType: BootLoader.VerifyBoot
+  fullName: GRILO.Bootloader.BootApps.BootLoadContext.LoadUnmanagedDll
+  nameWithType: BootLoadContext.LoadUnmanagedDll
 - uid: GRILO.Bootloader.BootApps.BootManager
   name: BootManager
   href: api/GRILO.Bootloader.BootApps.BootManager.html
@@ -242,11 +221,14 @@ references:
   fullName: GRILO.Bootloader.BootApps.BootManager
   nameWithType: BootManager
 - uid: GRILO.Bootloader.BootApps.BootManager.GetBootApp(System.String)
-  name: GetBootApp(String)
+  name: GetBootApp(string)
   href: api/GRILO.Bootloader.BootApps.BootManager.html#GRILO_Bootloader_BootApps_BootManager_GetBootApp_System_String_
   commentId: M:GRILO.Bootloader.BootApps.BootManager.GetBootApp(System.String)
-  fullName: GRILO.Bootloader.BootApps.BootManager.GetBootApp(System.String)
-  nameWithType: BootManager.GetBootApp(String)
+  name.vb: GetBootApp(String)
+  fullName: GRILO.Bootloader.BootApps.BootManager.GetBootApp(string)
+  fullName.vb: GRILO.Bootloader.BootApps.BootManager.GetBootApp(String)
+  nameWithType: BootManager.GetBootApp(string)
+  nameWithType.vb: BootManager.GetBootApp(String)
 - uid: GRILO.Bootloader.BootApps.BootManager.GetBootApp*
   name: GetBootApp
   href: api/GRILO.Bootloader.BootApps.BootManager.html#GRILO_Bootloader_BootApps_BootManager_GetBootApp_
@@ -255,11 +237,14 @@ references:
   fullName: GRILO.Bootloader.BootApps.BootManager.GetBootApp
   nameWithType: BootManager.GetBootApp
 - uid: GRILO.Bootloader.BootApps.BootManager.GetBootAppNameByIndex(System.Int32)
-  name: GetBootAppNameByIndex(Int32)
+  name: GetBootAppNameByIndex(int)
   href: api/GRILO.Bootloader.BootApps.BootManager.html#GRILO_Bootloader_BootApps_BootManager_GetBootAppNameByIndex_System_Int32_
   commentId: M:GRILO.Bootloader.BootApps.BootManager.GetBootAppNameByIndex(System.Int32)
-  fullName: GRILO.Bootloader.BootApps.BootManager.GetBootAppNameByIndex(System.Int32)
-  nameWithType: BootManager.GetBootAppNameByIndex(Int32)
+  name.vb: GetBootAppNameByIndex(Integer)
+  fullName: GRILO.Bootloader.BootApps.BootManager.GetBootAppNameByIndex(int)
+  fullName.vb: GRILO.Bootloader.BootApps.BootManager.GetBootAppNameByIndex(Integer)
+  nameWithType: BootManager.GetBootAppNameByIndex(int)
+  nameWithType.vb: BootManager.GetBootAppNameByIndex(Integer)
 - uid: GRILO.Bootloader.BootApps.BootManager.GetBootAppNameByIndex*
   name: GetBootAppNameByIndex
   href: api/GRILO.Bootloader.BootApps.BootManager.html#GRILO_Bootloader_BootApps_BootManager_GetBootAppNameByIndex_
@@ -293,54 +278,6 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootApps.BootManager.PopulateBootApps
   nameWithType: BootManager.PopulateBootApps
-- uid: GRILO.Bootloader.BootApps.BootProxy
-  name: BootProxy
-  href: api/GRILO.Bootloader.BootApps.BootProxy.html
-  commentId: T:GRILO.Bootloader.BootApps.BootProxy
-  fullName: GRILO.Bootloader.BootApps.BootProxy
-  nameWithType: BootProxy
-- uid: GRILO.Bootloader.BootApps.BootProxy.Boot(System.String[])
-  name: Boot(String[])
-  href: api/GRILO.Bootloader.BootApps.BootProxy.html#GRILO_Bootloader_BootApps_BootProxy_Boot_System_String___
-  commentId: M:GRILO.Bootloader.BootApps.BootProxy.Boot(System.String[])
-  name.vb: Boot(String())
-  fullName: GRILO.Bootloader.BootApps.BootProxy.Boot(System.String[])
-  fullName.vb: GRILO.Bootloader.BootApps.BootProxy.Boot(System.String())
-  nameWithType: BootProxy.Boot(String[])
-  nameWithType.vb: BootProxy.Boot(String())
-- uid: GRILO.Bootloader.BootApps.BootProxy.Boot*
-  name: Boot
-  href: api/GRILO.Bootloader.BootApps.BootProxy.html#GRILO_Bootloader_BootApps_BootProxy_Boot_
-  commentId: Overload:GRILO.Bootloader.BootApps.BootProxy.Boot
-  isSpec: "True"
-  fullName: GRILO.Bootloader.BootApps.BootProxy.Boot
-  nameWithType: BootProxy.Boot
-- uid: GRILO.Bootloader.BootApps.BootProxy.ShutdownRequested
-  name: ShutdownRequested
-  href: api/GRILO.Bootloader.BootApps.BootProxy.html#GRILO_Bootloader_BootApps_BootProxy_ShutdownRequested
-  commentId: P:GRILO.Bootloader.BootApps.BootProxy.ShutdownRequested
-  fullName: GRILO.Bootloader.BootApps.BootProxy.ShutdownRequested
-  nameWithType: BootProxy.ShutdownRequested
-- uid: GRILO.Bootloader.BootApps.BootProxy.ShutdownRequested*
-  name: ShutdownRequested
-  href: api/GRILO.Bootloader.BootApps.BootProxy.html#GRILO_Bootloader_BootApps_BootProxy_ShutdownRequested_
-  commentId: Overload:GRILO.Bootloader.BootApps.BootProxy.ShutdownRequested
-  isSpec: "True"
-  fullName: GRILO.Bootloader.BootApps.BootProxy.ShutdownRequested
-  nameWithType: BootProxy.ShutdownRequested
-- uid: GRILO.Bootloader.BootApps.BootProxy.Title
-  name: Title
-  href: api/GRILO.Bootloader.BootApps.BootProxy.html#GRILO_Bootloader_BootApps_BootProxy_Title
-  commentId: P:GRILO.Bootloader.BootApps.BootProxy.Title
-  fullName: GRILO.Bootloader.BootApps.BootProxy.Title
-  nameWithType: BootProxy.Title
-- uid: GRILO.Bootloader.BootApps.BootProxy.Title*
-  name: Title
-  href: api/GRILO.Bootloader.BootApps.BootProxy.html#GRILO_Bootloader_BootApps_BootProxy_Title_
-  commentId: Overload:GRILO.Bootloader.BootApps.BootProxy.Title
-  isSpec: "True"
-  fullName: GRILO.Bootloader.BootApps.BootProxy.Title
-  nameWithType: BootProxy.Title
 - uid: GRILO.Bootloader.BootStyle
   name: GRILO.Bootloader.BootStyle
   href: api/GRILO.Bootloader.BootStyle.html
@@ -393,11 +330,14 @@ references:
   fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.Render
   nameWithType: BaseBootStyle.Render
 - uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootFailedMessage(System.String)
-  name: RenderBootFailedMessage(String)
+  name: RenderBootFailedMessage(string)
   href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderBootFailedMessage_System_String_
   commentId: M:GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootFailedMessage(System.String)
-  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootFailedMessage(System.String)
-  nameWithType: BaseBootStyle.RenderBootFailedMessage(String)
+  name.vb: RenderBootFailedMessage(String)
+  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootFailedMessage(string)
+  fullName.vb: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootFailedMessage(String)
+  nameWithType: BaseBootStyle.RenderBootFailedMessage(string)
+  nameWithType.vb: BaseBootStyle.RenderBootFailedMessage(String)
 - uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootFailedMessage*
   name: RenderBootFailedMessage
   href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderBootFailedMessage_
@@ -406,11 +346,14 @@ references:
   fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootFailedMessage
   nameWithType: BaseBootStyle.RenderBootFailedMessage
 - uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootingMessage(System.String)
-  name: RenderBootingMessage(String)
+  name: RenderBootingMessage(string)
   href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderBootingMessage_System_String_
   commentId: M:GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootingMessage(System.String)
-  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootingMessage(System.String)
-  nameWithType: BaseBootStyle.RenderBootingMessage(String)
+  name.vb: RenderBootingMessage(String)
+  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootingMessage(string)
+  fullName.vb: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootingMessage(String)
+  nameWithType: BaseBootStyle.RenderBootingMessage(string)
+  nameWithType.vb: BaseBootStyle.RenderBootingMessage(String)
 - uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootingMessage*
   name: RenderBootingMessage
   href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderBootingMessage_
@@ -419,11 +362,14 @@ references:
   fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderBootingMessage
   nameWithType: BaseBootStyle.RenderBootingMessage
 - uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderHighlight(System.Int32)
-  name: RenderHighlight(Int32)
+  name: RenderHighlight(int)
   href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderHighlight_System_Int32_
   commentId: M:GRILO.Bootloader.BootStyle.BaseBootStyle.RenderHighlight(System.Int32)
-  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderHighlight(System.Int32)
-  nameWithType: BaseBootStyle.RenderHighlight(Int32)
+  name.vb: RenderHighlight(Integer)
+  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderHighlight(int)
+  fullName.vb: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderHighlight(Integer)
+  nameWithType: BaseBootStyle.RenderHighlight(int)
+  nameWithType.vb: BaseBootStyle.RenderHighlight(Integer)
 - uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderHighlight*
   name: RenderHighlight
   href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderHighlight_
@@ -432,11 +378,14 @@ references:
   fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderHighlight
   nameWithType: BaseBootStyle.RenderHighlight
 - uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderModalDialog(System.String)
-  name: RenderModalDialog(String)
+  name: RenderModalDialog(string)
   href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderModalDialog_System_String_
   commentId: M:GRILO.Bootloader.BootStyle.BaseBootStyle.RenderModalDialog(System.String)
-  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderModalDialog(System.String)
-  nameWithType: BaseBootStyle.RenderModalDialog(String)
+  name.vb: RenderModalDialog(String)
+  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderModalDialog(string)
+  fullName.vb: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderModalDialog(String)
+  nameWithType: BaseBootStyle.RenderModalDialog(string)
+  nameWithType.vb: BaseBootStyle.RenderModalDialog(String)
 - uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderModalDialog*
   name: RenderModalDialog
   href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderModalDialog_
@@ -445,11 +394,14 @@ references:
   fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderModalDialog
   nameWithType: BaseBootStyle.RenderModalDialog
 - uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderSelectTimeout(System.Int32)
-  name: RenderSelectTimeout(Int32)
+  name: RenderSelectTimeout(int)
   href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderSelectTimeout_System_Int32_
   commentId: M:GRILO.Bootloader.BootStyle.BaseBootStyle.RenderSelectTimeout(System.Int32)
-  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderSelectTimeout(System.Int32)
-  nameWithType: BaseBootStyle.RenderSelectTimeout(Int32)
+  name.vb: RenderSelectTimeout(Integer)
+  fullName: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderSelectTimeout(int)
+  fullName.vb: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderSelectTimeout(Integer)
+  nameWithType: BaseBootStyle.RenderSelectTimeout(int)
+  nameWithType.vb: BaseBootStyle.RenderSelectTimeout(Integer)
 - uid: GRILO.Bootloader.BootStyle.BaseBootStyle.RenderSelectTimeout*
   name: RenderSelectTimeout
   href: api/GRILO.Bootloader.BootStyle.BaseBootStyle.html#GRILO_Bootloader_BootStyle_BaseBootStyle_RenderSelectTimeout_
@@ -464,11 +416,14 @@ references:
   fullName: GRILO.Bootloader.BootStyle.BootStyleManager
   nameWithType: BootStyleManager
 - uid: GRILO.Bootloader.BootStyle.BootStyleManager.GetBootStyle(System.String)
-  name: GetBootStyle(String)
+  name: GetBootStyle(string)
   href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_GetBootStyle_System_String_
   commentId: M:GRILO.Bootloader.BootStyle.BootStyleManager.GetBootStyle(System.String)
-  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.GetBootStyle(System.String)
-  nameWithType: BootStyleManager.GetBootStyle(String)
+  name.vb: GetBootStyle(String)
+  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.GetBootStyle(string)
+  fullName.vb: GRILO.Bootloader.BootStyle.BootStyleManager.GetBootStyle(String)
+  nameWithType: BootStyleManager.GetBootStyle(string)
+  nameWithType.vb: BootStyleManager.GetBootStyle(String)
 - uid: GRILO.Bootloader.BootStyle.BootStyleManager.GetBootStyle*
   name: GetBootStyle
   href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_GetBootStyle_
@@ -503,11 +458,14 @@ references:
   fullName: GRILO.Bootloader.BootStyle.BootStyleManager.PopulateCustomBootStyles
   nameWithType: BootStyleManager.PopulateCustomBootStyles
 - uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootFailedMessage(System.String)
-  name: RenderBootFailedMessage(String)
+  name: RenderBootFailedMessage(string)
   href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderBootFailedMessage_System_String_
   commentId: M:GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootFailedMessage(System.String)
-  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootFailedMessage(System.String)
-  nameWithType: BootStyleManager.RenderBootFailedMessage(String)
+  name.vb: RenderBootFailedMessage(String)
+  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootFailedMessage(string)
+  fullName.vb: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootFailedMessage(String)
+  nameWithType: BootStyleManager.RenderBootFailedMessage(string)
+  nameWithType.vb: BootStyleManager.RenderBootFailedMessage(String)
 - uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootFailedMessage*
   name: RenderBootFailedMessage
   href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderBootFailedMessage_
@@ -516,11 +474,14 @@ references:
   fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootFailedMessage
   nameWithType: BootStyleManager.RenderBootFailedMessage
 - uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootingMessage(System.String)
-  name: RenderBootingMessage(String)
+  name: RenderBootingMessage(string)
   href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderBootingMessage_System_String_
   commentId: M:GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootingMessage(System.String)
-  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootingMessage(System.String)
-  nameWithType: BootStyleManager.RenderBootingMessage(String)
+  name.vb: RenderBootingMessage(String)
+  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootingMessage(string)
+  fullName.vb: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootingMessage(String)
+  nameWithType: BootStyleManager.RenderBootingMessage(string)
+  nameWithType.vb: BootStyleManager.RenderBootingMessage(String)
 - uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootingMessage*
   name: RenderBootingMessage
   href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderBootingMessage_
@@ -529,11 +490,14 @@ references:
   fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderBootingMessage
   nameWithType: BootStyleManager.RenderBootingMessage
 - uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderDialog(System.String)
-  name: RenderDialog(String)
+  name: RenderDialog(string)
   href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderDialog_System_String_
   commentId: M:GRILO.Bootloader.BootStyle.BootStyleManager.RenderDialog(System.String)
-  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderDialog(System.String)
-  nameWithType: BootStyleManager.RenderDialog(String)
+  name.vb: RenderDialog(String)
+  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderDialog(string)
+  fullName.vb: GRILO.Bootloader.BootStyle.BootStyleManager.RenderDialog(String)
+  nameWithType: BootStyleManager.RenderDialog(string)
+  nameWithType.vb: BootStyleManager.RenderDialog(String)
 - uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderDialog*
   name: RenderDialog
   href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderDialog_
@@ -542,11 +506,14 @@ references:
   fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderDialog
   nameWithType: BootStyleManager.RenderDialog
 - uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderMenu(System.Int32)
-  name: RenderMenu(Int32)
+  name: RenderMenu(int)
   href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderMenu_System_Int32_
   commentId: M:GRILO.Bootloader.BootStyle.BootStyleManager.RenderMenu(System.Int32)
-  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderMenu(System.Int32)
-  nameWithType: BootStyleManager.RenderMenu(Int32)
+  name.vb: RenderMenu(Integer)
+  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderMenu(int)
+  fullName.vb: GRILO.Bootloader.BootStyle.BootStyleManager.RenderMenu(Integer)
+  nameWithType: BootStyleManager.RenderMenu(int)
+  nameWithType.vb: BootStyleManager.RenderMenu(Integer)
 - uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderMenu*
   name: RenderMenu
   href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderMenu_
@@ -555,11 +522,14 @@ references:
   fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderMenu
   nameWithType: BootStyleManager.RenderMenu
 - uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderSelectTimeout(System.Int32)
-  name: RenderSelectTimeout(Int32)
+  name: RenderSelectTimeout(int)
   href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderSelectTimeout_System_Int32_
   commentId: M:GRILO.Bootloader.BootStyle.BootStyleManager.RenderSelectTimeout(System.Int32)
-  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderSelectTimeout(System.Int32)
-  nameWithType: BootStyleManager.RenderSelectTimeout(Int32)
+  name.vb: RenderSelectTimeout(Integer)
+  fullName: GRILO.Bootloader.BootStyle.BootStyleManager.RenderSelectTimeout(int)
+  fullName.vb: GRILO.Bootloader.BootStyle.BootStyleManager.RenderSelectTimeout(Integer)
+  nameWithType: BootStyleManager.RenderSelectTimeout(int)
+  nameWithType.vb: BootStyleManager.RenderSelectTimeout(Integer)
 - uid: GRILO.Bootloader.BootStyle.BootStyleManager.RenderSelectTimeout*
   name: RenderSelectTimeout
   href: api/GRILO.Bootloader.BootStyle.BootStyleManager.html#GRILO_Bootloader_BootStyle_BootStyleManager_RenderSelectTimeout_
@@ -613,11 +583,14 @@ references:
   fullName: GRILO.Bootloader.BootStyle.IBootStyle.Render
   nameWithType: IBootStyle.Render
 - uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootFailedMessage(System.String)
-  name: RenderBootFailedMessage(String)
+  name: RenderBootFailedMessage(string)
   href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderBootFailedMessage_System_String_
   commentId: M:GRILO.Bootloader.BootStyle.IBootStyle.RenderBootFailedMessage(System.String)
-  fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootFailedMessage(System.String)
-  nameWithType: IBootStyle.RenderBootFailedMessage(String)
+  name.vb: RenderBootFailedMessage(String)
+  fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootFailedMessage(string)
+  fullName.vb: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootFailedMessage(String)
+  nameWithType: IBootStyle.RenderBootFailedMessage(string)
+  nameWithType.vb: IBootStyle.RenderBootFailedMessage(String)
 - uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootFailedMessage*
   name: RenderBootFailedMessage
   href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderBootFailedMessage_
@@ -626,11 +599,14 @@ references:
   fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootFailedMessage
   nameWithType: IBootStyle.RenderBootFailedMessage
 - uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootingMessage(System.String)
-  name: RenderBootingMessage(String)
+  name: RenderBootingMessage(string)
   href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderBootingMessage_System_String_
   commentId: M:GRILO.Bootloader.BootStyle.IBootStyle.RenderBootingMessage(System.String)
-  fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootingMessage(System.String)
-  nameWithType: IBootStyle.RenderBootingMessage(String)
+  name.vb: RenderBootingMessage(String)
+  fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootingMessage(string)
+  fullName.vb: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootingMessage(String)
+  nameWithType: IBootStyle.RenderBootingMessage(string)
+  nameWithType.vb: IBootStyle.RenderBootingMessage(String)
 - uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootingMessage*
   name: RenderBootingMessage
   href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderBootingMessage_
@@ -639,11 +615,14 @@ references:
   fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderBootingMessage
   nameWithType: IBootStyle.RenderBootingMessage
 - uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderHighlight(System.Int32)
-  name: RenderHighlight(Int32)
+  name: RenderHighlight(int)
   href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderHighlight_System_Int32_
   commentId: M:GRILO.Bootloader.BootStyle.IBootStyle.RenderHighlight(System.Int32)
-  fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderHighlight(System.Int32)
-  nameWithType: IBootStyle.RenderHighlight(Int32)
+  name.vb: RenderHighlight(Integer)
+  fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderHighlight(int)
+  fullName.vb: GRILO.Bootloader.BootStyle.IBootStyle.RenderHighlight(Integer)
+  nameWithType: IBootStyle.RenderHighlight(int)
+  nameWithType.vb: IBootStyle.RenderHighlight(Integer)
 - uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderHighlight*
   name: RenderHighlight
   href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderHighlight_
@@ -652,11 +631,14 @@ references:
   fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderHighlight
   nameWithType: IBootStyle.RenderHighlight
 - uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderModalDialog(System.String)
-  name: RenderModalDialog(String)
+  name: RenderModalDialog(string)
   href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderModalDialog_System_String_
   commentId: M:GRILO.Bootloader.BootStyle.IBootStyle.RenderModalDialog(System.String)
-  fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderModalDialog(System.String)
-  nameWithType: IBootStyle.RenderModalDialog(String)
+  name.vb: RenderModalDialog(String)
+  fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderModalDialog(string)
+  fullName.vb: GRILO.Bootloader.BootStyle.IBootStyle.RenderModalDialog(String)
+  nameWithType: IBootStyle.RenderModalDialog(string)
+  nameWithType.vb: IBootStyle.RenderModalDialog(String)
 - uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderModalDialog*
   name: RenderModalDialog
   href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderModalDialog_
@@ -665,11 +647,14 @@ references:
   fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderModalDialog
   nameWithType: IBootStyle.RenderModalDialog
 - uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderSelectTimeout(System.Int32)
-  name: RenderSelectTimeout(Int32)
+  name: RenderSelectTimeout(int)
   href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderSelectTimeout_System_Int32_
   commentId: M:GRILO.Bootloader.BootStyle.IBootStyle.RenderSelectTimeout(System.Int32)
-  fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderSelectTimeout(System.Int32)
-  nameWithType: IBootStyle.RenderSelectTimeout(Int32)
+  name.vb: RenderSelectTimeout(Integer)
+  fullName: GRILO.Bootloader.BootStyle.IBootStyle.RenderSelectTimeout(int)
+  fullName.vb: GRILO.Bootloader.BootStyle.IBootStyle.RenderSelectTimeout(Integer)
+  nameWithType: IBootStyle.RenderSelectTimeout(int)
+  nameWithType.vb: IBootStyle.RenderSelectTimeout(Integer)
 - uid: GRILO.Bootloader.BootStyle.IBootStyle.RenderSelectTimeout*
   name: RenderSelectTimeout
   href: api/GRILO.Bootloader.BootStyle.IBootStyle.html#GRILO_Bootloader_BootStyle_IBootStyle_RenderSelectTimeout_
@@ -855,14 +840,14 @@ references:
   fullName: GRILO.Bootloader.Diagnostics.DiagnosticsWriter
   nameWithType: DiagnosticsWriter
 - uid: GRILO.Bootloader.Diagnostics.DiagnosticsWriter.WriteDiag(GRILO.Bootloader.Diagnostics.DiagnosticsLevel,System.String,System.Object[])
-  name: WriteDiag(DiagnosticsLevel, String, Object[])
+  name: WriteDiag(DiagnosticsLevel, string, params object[])
   href: api/GRILO.Bootloader.Diagnostics.DiagnosticsWriter.html#GRILO_Bootloader_Diagnostics_DiagnosticsWriter_WriteDiag_GRILO_Bootloader_Diagnostics_DiagnosticsLevel_System_String_System_Object___
   commentId: M:GRILO.Bootloader.Diagnostics.DiagnosticsWriter.WriteDiag(GRILO.Bootloader.Diagnostics.DiagnosticsLevel,System.String,System.Object[])
-  name.vb: WriteDiag(DiagnosticsLevel, String, Object())
-  fullName: GRILO.Bootloader.Diagnostics.DiagnosticsWriter.WriteDiag(GRILO.Bootloader.Diagnostics.DiagnosticsLevel, System.String, System.Object[])
-  fullName.vb: GRILO.Bootloader.Diagnostics.DiagnosticsWriter.WriteDiag(GRILO.Bootloader.Diagnostics.DiagnosticsLevel, System.String, System.Object())
-  nameWithType: DiagnosticsWriter.WriteDiag(DiagnosticsLevel, String, Object[])
-  nameWithType.vb: DiagnosticsWriter.WriteDiag(DiagnosticsLevel, String, Object())
+  name.vb: WriteDiag(DiagnosticsLevel, String, ParamArray Object())
+  fullName: GRILO.Bootloader.Diagnostics.DiagnosticsWriter.WriteDiag(GRILO.Bootloader.Diagnostics.DiagnosticsLevel, string, params object[])
+  fullName.vb: GRILO.Bootloader.Diagnostics.DiagnosticsWriter.WriteDiag(GRILO.Bootloader.Diagnostics.DiagnosticsLevel, String, ParamArray Object())
+  nameWithType: DiagnosticsWriter.WriteDiag(DiagnosticsLevel, string, params object[])
+  nameWithType.vb: DiagnosticsWriter.WriteDiag(DiagnosticsLevel, String, ParamArray Object())
 - uid: GRILO.Bootloader.Diagnostics.DiagnosticsWriter.WriteDiag*
   name: WriteDiag
   href: api/GRILO.Bootloader.Diagnostics.DiagnosticsWriter.html#GRILO_Bootloader_Diagnostics_DiagnosticsWriter_WriteDiag_
@@ -880,27 +865,39 @@ references:
   name: GRILOException()
   href: api/GRILO.Bootloader.GRILOException.html#GRILO_Bootloader_GRILOException__ctor
   commentId: M:GRILO.Bootloader.GRILOException.#ctor
+  name.vb: New()
   fullName: GRILO.Bootloader.GRILOException.GRILOException()
+  fullName.vb: GRILO.Bootloader.GRILOException.New()
   nameWithType: GRILOException.GRILOException()
+  nameWithType.vb: GRILOException.New()
 - uid: GRILO.Bootloader.GRILOException.#ctor(System.String)
-  name: GRILOException(String)
+  name: GRILOException(string)
   href: api/GRILO.Bootloader.GRILOException.html#GRILO_Bootloader_GRILOException__ctor_System_String_
   commentId: M:GRILO.Bootloader.GRILOException.#ctor(System.String)
-  fullName: GRILO.Bootloader.GRILOException.GRILOException(System.String)
-  nameWithType: GRILOException.GRILOException(String)
-- uid: GRILO.Bootloader.GRILOException.#ctor(System.String,Exception)
-  name: GRILOException(String, Exception)
-  href: api/GRILO.Bootloader.GRILOException.html#GRILO_Bootloader_GRILOException__ctor_System_String_Exception_
-  commentId: M:GRILO.Bootloader.GRILOException.#ctor(System.String,Exception)
-  fullName: GRILO.Bootloader.GRILOException.GRILOException(System.String, Exception)
-  nameWithType: GRILOException.GRILOException(String, Exception)
+  name.vb: New(String)
+  fullName: GRILO.Bootloader.GRILOException.GRILOException(string)
+  fullName.vb: GRILO.Bootloader.GRILOException.New(String)
+  nameWithType: GRILOException.GRILOException(string)
+  nameWithType.vb: GRILOException.New(String)
+- uid: GRILO.Bootloader.GRILOException.#ctor(System.String,System.Exception)
+  name: GRILOException(string, Exception)
+  href: api/GRILO.Bootloader.GRILOException.html#GRILO_Bootloader_GRILOException__ctor_System_String_System_Exception_
+  commentId: M:GRILO.Bootloader.GRILOException.#ctor(System.String,System.Exception)
+  name.vb: New(String, Exception)
+  fullName: GRILO.Bootloader.GRILOException.GRILOException(string, System.Exception)
+  fullName.vb: GRILO.Bootloader.GRILOException.New(String, System.Exception)
+  nameWithType: GRILOException.GRILOException(string, Exception)
+  nameWithType.vb: GRILOException.New(String, Exception)
 - uid: GRILO.Bootloader.GRILOException.#ctor*
   name: GRILOException
   href: api/GRILO.Bootloader.GRILOException.html#GRILO_Bootloader_GRILOException__ctor_
   commentId: Overload:GRILO.Bootloader.GRILOException.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: GRILO.Bootloader.GRILOException.GRILOException
+  fullName.vb: GRILO.Bootloader.GRILOException.New
   nameWithType: GRILOException.GRILOException
+  nameWithType.vb: GRILOException.New
 - uid: GRILO.Bootloader.GRILOPaths
   name: GRILOPaths
   href: api/GRILO.Bootloader.GRILOPaths.html
