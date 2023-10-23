@@ -48,19 +48,19 @@ namespace GRILO.Bootloader.BootStyle.Styles
             int headerTextX = (Console.WindowWidth / 2) - (header.Length / 2);
             ConsoleColor barColor = ConsoleColor.Gray;
             ConsoleColor barForeground = ConsoleColor.Black;
-            TextWriterWhereColor.WriteWhere(new string(' ', barLength), marginX, headerY, new Color(barForeground), new Color(barColor));
-            TextWriterWhereColor.WriteWhere(new string(' ', barLength), marginX, footerY, new Color(barForeground), new Color(barColor));
-            TextWriterWhereColor.WriteWhere(header, headerTextX, headerY, new Color(barForeground), new Color(barColor));
-            TextWriterWhereColor.WriteWhere(footer, 3, footerY, new Color(barForeground), new Color(barColor));
+            TextWriterWhereColor.WriteWhereColorBack(new string(' ', barLength), marginX, headerY, new Color(barForeground), new Color(barColor));
+            TextWriterWhereColor.WriteWhereColorBack(new string(' ', barLength), marginX, footerY, new Color(barForeground), new Color(barColor));
+            TextWriterWhereColor.WriteWhereColorBack(header, headerTextX, headerY, new Color(barForeground), new Color(barColor));
+            TextWriterWhereColor.WriteWhereColorBack(footer, 3, footerY, new Color(barForeground), new Color(barColor));
 
             // Render the hints first
             ConsoleColor promptColor = ConsoleColor.White;
             ConsoleColor hintColor = ConsoleColor.Gray;
             int chooseHelpY = 2;
             int optionHelpY = 12;
-            TextWriterWhereColor.WriteWhere("Choose an operating system to start, or press TAB to select a tool:", marginX, chooseHelpY, new Color(promptColor));
-            TextWriterWhereColor.WriteWhere("(Use the arrow keys to highlight your choice, then press ENTER.)", marginX, chooseHelpY + 1, new Color(hintColor));
-            TextWriterWhereColor.WriteWhere("To specify an advanced option for this choice, press F8.", marginX, optionHelpY, new Color(promptColor));
+            TextWriterWhereColor.WriteWhereColor("Choose an operating system to start, or press TAB to select a tool:", marginX, chooseHelpY, new Color(promptColor));
+            TextWriterWhereColor.WriteWhereColor("(Use the arrow keys to highlight your choice, then press ENTER.)", marginX, chooseHelpY + 1, new Color(hintColor));
+            TextWriterWhereColor.WriteWhereColor("To specify an advanced option for this choice, press F8.", marginX, optionHelpY, new Color(promptColor));
         }
 
         public override void RenderHighlight(int chosenBootEntry)
@@ -86,7 +86,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
                 string rendered = $"{bootApp}";
                 var finalColorBg = i == chosenBootEntry ? selectedEntryBg : normalEntryBg;
                 var finalColorFg = i == chosenBootEntry ? selectedEntryFg : normalEntryFg;
-                TextWriterWhereColor.WriteWhere(rendered + new string(' ', Console.WindowWidth - 15 - rendered.Length) + (i == chosenBootEntry ? '>' : ' '), 6, 5 + renderedAnswers, false, new Color(finalColorFg), new Color(finalColorBg));
+                TextWriterWhereColor.WriteWhereColorBack(rendered + new string(' ', Console.WindowWidth - 15 - rendered.Length) + (i == chosenBootEntry ? '>' : ' '), 6, 5 + renderedAnswers, false, new Color(finalColorFg), new Color(finalColorBg));
                 renderedAnswers++;
             }
         }
@@ -103,24 +103,24 @@ namespace GRILO.Bootloader.BootStyle.Styles
             int headerTextX = (Console.WindowWidth / 2) - (header.Length / 2);
             ConsoleColor barColor = ConsoleColor.Gray;
             ConsoleColor barForeground = ConsoleColor.Black;
-            TextWriterWhereColor.WriteWhere(new string(' ', barLength), marginX, headerY, new Color(barForeground), new Color(barColor));
-            TextWriterWhereColor.WriteWhere(new string(' ', barLength), marginX, footerY, new Color(barForeground), new Color(barColor));
-            TextWriterWhereColor.WriteWhere(header, headerTextX, headerY, new Color(barForeground), new Color(barColor));
-            TextWriterWhereColor.WriteWhere(footer, 3, footerY, new Color(barForeground), new Color(barColor));
+            TextWriterWhereColor.WriteWhereColorBack(new string(' ', barLength), marginX, headerY, new Color(barForeground), new Color(barColor));
+            TextWriterWhereColor.WriteWhereColorBack(new string(' ', barLength), marginX, footerY, new Color(barForeground), new Color(barColor));
+            TextWriterWhereColor.WriteWhereColorBack(header, headerTextX, headerY, new Color(barForeground), new Color(barColor));
+            TextWriterWhereColor.WriteWhereColorBack(footer, 3, footerY, new Color(barForeground), new Color(barColor));
 
             // Render the hints first
             ConsoleColor promptColor = ConsoleColor.White;
             ConsoleColor hintColor = ConsoleColor.Gray;
             int failedHelpY = 2;
-            TextWriterWhereColor.WriteWhere("Windows failed to start. A recent hardware or software change might be the\ncause. To fix the problem:", marginX, failedHelpY, new Color(hintColor));
-            TextWriterWhereColor.WriteWhere("1. Insert your Windows installation disc and restart your computer.", marginX + 2, failedHelpY + 3, new Color(hintColor));
-            TextWriterWhereColor.WriteWhere("2. Choose your language settings, and then click \"Next.\"", marginX + 2, failedHelpY + 4, new Color(hintColor));
-            TextWriterWhereColor.WriteWhere("3. Click \"Repair your computer.\"", marginX + 2, failedHelpY + 5, new Color(hintColor));
-            TextWriterWhereColor.WriteWhere("If you do not have this disc, contact your system administrator or computer\nmanufacturer for assistance.", marginX, failedHelpY + 7, new Color(hintColor));
-            TextWriterWhereColor.WriteWhere($"File: {new Color(promptColor).VTSequenceForeground}\\Boot\\BCD", marginX + 4, failedHelpY + 10, new Color(hintColor));
-            TextWriterWhereColor.WriteWhere($"Status: {new Color(promptColor).VTSequenceForeground}0xc000000f", marginX + 4, failedHelpY + 12, new Color(hintColor));
-            TextWriterWhereColor.WriteWhere($"Info:", marginX + 4, failedHelpY + 14, new Color(hintColor));
-            TextWriterWhereColor.WriteWhere(content, marginX + 10, failedHelpY + 14, new Color(promptColor));
+            TextWriterWhereColor.WriteWhereColor("Windows failed to start. A recent hardware or software change might be the\ncause. To fix the problem:", marginX, failedHelpY, new Color(hintColor));
+            TextWriterWhereColor.WriteWhereColor("1. Insert your Windows installation disc and restart your computer.", marginX + 2, failedHelpY + 3, new Color(hintColor));
+            TextWriterWhereColor.WriteWhereColor("2. Choose your language settings, and then click \"Next.\"", marginX + 2, failedHelpY + 4, new Color(hintColor));
+            TextWriterWhereColor.WriteWhereColor("3. Click \"Repair your computer.\"", marginX + 2, failedHelpY + 5, new Color(hintColor));
+            TextWriterWhereColor.WriteWhereColor("If you do not have this disc, contact your system administrator or computer\nmanufacturer for assistance.", marginX, failedHelpY + 7, new Color(hintColor));
+            TextWriterWhereColor.WriteWhereColor($"File: {new Color(promptColor).VTSequenceForeground}\\Boot\\BCD", marginX + 4, failedHelpY + 10, new Color(hintColor));
+            TextWriterWhereColor.WriteWhereColor($"Status: {new Color(promptColor).VTSequenceForeground}0xc000000f", marginX + 4, failedHelpY + 12, new Color(hintColor));
+            TextWriterWhereColor.WriteWhereColor($"Info:", marginX + 4, failedHelpY + 14, new Color(hintColor));
+            TextWriterWhereColor.WriteWhereColor(content, marginX + 10, failedHelpY + 14, new Color(promptColor));
             Input.DetectKeypress();
             Console.Clear();
         }
@@ -135,10 +135,10 @@ namespace GRILO.Bootloader.BootStyle.Styles
             ConsoleColor hintColor = ConsoleColor.Gray;
             int marginX = 2;
             int optionHelpY = 12;
-            TextWriterWhereColor.WriteWhere("Seconds until the highlighted choice will be started automatically:", marginX, optionHelpY + 1, true, new Color(hintColor));
+            TextWriterWhereColor.WriteWhereColor("Seconds until the highlighted choice will be started automatically:", marginX, optionHelpY + 1, true, new Color(hintColor));
             int timeoutX = marginX + "Seconds until the highlighted choice will be started automatically: ".Length;
             int timeoutY = 13;
-            TextWriterWhereColor.WriteWhere($"{timeout} ", timeoutX, timeoutY, true, new Color(hintColor));
+            TextWriterWhereColor.WriteWhereColor($"{timeout} ", timeoutX, timeoutY, true, new Color(hintColor));
         }
 
         public override void ClearSelectTimeout()
@@ -146,7 +146,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
             int marginX = 2;
             int timeoutY = 13;
             ConsoleColor hintColor = ConsoleColor.Gray;
-            TextWriterWhereColor.WriteWhere(new string(' ', Console.WindowWidth - 2), marginX, timeoutY, true, new Color(hintColor));
+            TextWriterWhereColor.WriteWhereColor(new string(' ', Console.WindowWidth - 2), marginX, timeoutY, true, new Color(hintColor));
         }
     }
 }

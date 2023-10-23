@@ -50,7 +50,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
             {
                 string bootApp = BootManager.GetBootAppNameByIndex(i);
                 bootEntryPositions.Add((Console.CursorLeft, Console.CursorTop));
-                TextWriterColor.Write(" [{0}] {1}", true, new Color(bootEntry), vars: new object[] { i + 1, bootApp });
+                TextWriterColor.WriteColor(" [{0}] {1}", true, new Color(bootEntry), i + 1, bootApp);
             }
         }
 
@@ -61,7 +61,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
 
             // Highlight the chosen entry
             string bootApp = BootManager.GetBootAppNameByIndex(chosenBootEntry);
-            TextWriterWhereColor.WriteWhere(" [{0}] {1}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, new Color(highlightedEntry), vars: new object[] { chosenBootEntry + 1, bootApp });
+            TextWriterWhereColor.WriteWhereColor(" [{0}] {1}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, new Color(highlightedEntry), chosenBootEntry + 1, bootApp);
         }
 
         public override void RenderModalDialog(string content)
@@ -69,21 +69,23 @@ namespace GRILO.Bootloader.BootStyle.Styles
             // Populate colors
             ConsoleColor dialogBG = ConsoleColor.Black;
             ConsoleColor dialogFG = ConsoleColor.Gray;
-            InfoBoxColor.WriteInfoBox(content, new Color(dialogFG), new Color(dialogBG));
+            InfoBoxColor.WriteInfoBoxColorBack(content, new Color(dialogFG), new Color(dialogBG));
             Console.Clear();
         }
 
-        public override void RenderBootingMessage(string chosenBootName) => TextWriterColor.Write("Booting {0}...", chosenBootName);
+        public override void RenderBootingMessage(string chosenBootName) =>
+            TextWriterColor.Write("Booting {0}...", chosenBootName);
 
-        public override void RenderBootFailedMessage(string content) => RenderModalDialog(content);
+        public override void RenderBootFailedMessage(string content) =>
+            RenderModalDialog(content);
 
         public override void RenderSelectTimeout(int timeout) =>
-            TextWriterWhereColor.WriteWhere($" {timeout}", Console.WindowWidth - $" {timeout}".Length - 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White));
+            TextWriterWhereColor.WriteWhereColor($" {timeout}", Console.WindowWidth - $" {timeout}".Length - 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White));
 
         public override void ClearSelectTimeout()
         {
             string spaces = new(' ', DefaultBootStyle.GetDigits(Config.Instance.BootSelectTimeoutSeconds));
-            TextWriterWhereColor.WriteWhere(spaces, Console.WindowWidth - spaces.Length - 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White));
+            TextWriterWhereColor.WriteWhereColor(spaces, Console.WindowWidth - spaces.Length - 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White));
         }
     }
 }

@@ -61,7 +61,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
 
             // Highlight the chosen entry
             string bootApp = BootManager.GetBootAppNameByIndex(chosenBootEntry);
-            TextWriterWhereColor.WriteWhere("    {0}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground), bootApp);
+            TextWriterWhereColor.WriteWhereColorBack("    {0}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground), bootApp);
         }
 
         public override void RenderModalDialog(string content)
@@ -76,7 +76,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
                 {content}
                 
                 """);
-            TextWriterColor.Write("    Continue", true, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground));
+            TextWriterColor.WriteColorBack("    Continue", true, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground));
             TextWriterColor.Write("\nUse the up and down arrow keys to move the highlight to your choice.");
         }
 
@@ -119,9 +119,9 @@ namespace GRILO.Bootloader.BootStyle.Styles
             ConsoleColor hintColor = ConsoleColor.Gray;
             int marginX = 2;
             int optionHelpY = 17;
-            TextWriterWhereColor.WriteWhere("Seconds until the highlighted choice will be started automatically:", marginX, optionHelpY, true, new Color(hintColor));
+            TextWriterWhereColor.WriteWhereColor("Seconds until the highlighted choice will be started automatically:", marginX, optionHelpY, true, new Color(hintColor));
             int timeoutX = marginX + "Seconds until the highlighted choice will be started automatically: ".Length;
-            TextWriterWhereColor.WriteWhere($"{timeout} ", timeoutX, optionHelpY, true, new Color(hintColor));
+            TextWriterWhereColor.WriteWhereColor($"{timeout} ", timeoutX, optionHelpY, true, new Color(hintColor));
         }
 
         public override void ClearSelectTimeout()
@@ -129,7 +129,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
             int marginX = 2;
             int timeoutY = 17;
             ConsoleColor hintColor = ConsoleColor.Gray;
-            TextWriterWhereColor.WriteWhere(new string(' ', Console.WindowWidth - 2), marginX, timeoutY, true, new Color(hintColor));
+            TextWriterWhereColor.WriteWhereColor(new string(' ', Console.WindowWidth - 2), marginX, timeoutY, true, new Color(hintColor));
         }
 
         private void ShowBootFailure(int choiceNum)
@@ -170,7 +170,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
             {
                 string choice = choices[i];
                 if (i == choiceNum - 1)
-                    TextWriterColor.Write($"    {choice}", false, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground));
+                    TextWriterColor.WriteColorBack($"    {choice}", false, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground));
                 else
                     TextWriterColor.Write($"    {choice}", false);
                 TextWriterColor.Write();

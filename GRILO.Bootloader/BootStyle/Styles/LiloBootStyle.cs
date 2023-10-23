@@ -57,26 +57,26 @@ namespace GRILO.Bootloader.BootStyle.Styles
                 '╓', '╙', '╖', '╜', '─', '─', '║', '║', new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
             for (int y = startY; y < endY; y++)
             {
-                TextWriterWhereColor.WriteWhere(" ", extraStartX, y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
-                TextWriterWhereColor.WriteWhere(" ", extraEndX, y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
+                TextWriterWhereColor.WriteWhereColorBack(" ", extraStartX, y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
+                TextWriterWhereColor.WriteWhereColorBack(" ", extraEndX, y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
             }
 
             // Offer the boot prompt
-            TextWriterWhereColor.WriteWhere("boot: ", 0, bootPrompt, new Color(promptColor));
+            TextWriterWhereColor.WriteWhereColor("boot: ", 0, bootPrompt, new Color(promptColor));
 
             // Now, fill the box with usual things, starting from the title
             string title = "LILO 22.7  Boot Menu";
             int titleX = (Console.WindowWidth / 2) - (title.Length / 2);
             int titleY = 3;
-            TextWriterWhereColor.WriteWhere(title, titleX, titleY, new Color(sectionTitle), new Color(boxBorderBackgroundColor));
+            TextWriterWhereColor.WriteWhereColorBack(title, titleX, titleY, new Color(sectionTitle), new Color(boxBorderBackgroundColor));
 
             // The two separators
             int separator1Y = 5;
             int separator2Y = 10;
             string separator1 = "╟──┬─────────────────╥──┬─────────────────╢";
             string separator2 = "╟──┴─────────────────╨──┴─────────────────╢";
-            TextWriterWhereColor.WriteWhere(separator1, halfX, separator1Y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
-            TextWriterWhereColor.WriteWhere(separator2, halfX, separator2Y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
+            TextWriterWhereColor.WriteWhereColorBack(separator1, halfX, separator1Y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
+            TextWriterWhereColor.WriteWhereColorBack(separator2, halfX, separator2Y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
 
             // Connecting the separators
             int startSepY = 6;
@@ -84,7 +84,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
             int connectX = halfX + 1;
             string separator = "  │                 ║  │                 ";
             for (int y = startSepY; y <= endSepY; y++)
-                TextWriterWhereColor.WriteWhere(separator, connectX, y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
+                TextWriterWhereColor.WriteWhereColorBack(separator, connectX, y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
 
             // Write the help text
             int textY = 11;
@@ -93,7 +93,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
                 "Hit any key to cancel timeout\n" +
                 "Use arrow keys to make selection\n" +
                 "Enter choice & options, hit CR to boot";
-            TextWriterWhereColor.WriteWhere(help, textX, textY, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
+            TextWriterWhereColor.WriteWhereColorBack(help, textX, textY, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
         }
 
         public override void RenderHighlight(int chosenBootEntry)
@@ -123,7 +123,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
                 rendered = rendered.Length > 16 ? $" {rendered.Substring(1, 15)} " : rendered;
                 var finalColorBg = i == chosenBootEntry ? selectedEntryBg : normalEntryBg;
                 var finalColorFg = i == chosenBootEntry ? selectedEntryFg : normalEntryFg;
-                TextWriterWhereColor.WriteWhere(rendered, upperLeftCornerInterior.Item1, upperLeftCornerInterior.Item2 + renderedAnswers, false, new Color(finalColorFg), new Color(finalColorBg));
+                TextWriterWhereColor.WriteWhereColorBack(rendered, upperLeftCornerInterior.Item1, upperLeftCornerInterior.Item2 + renderedAnswers, false, new Color(finalColorFg), new Color(finalColorBg));
                 renderedAnswers++;
             }
         }
@@ -133,7 +133,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
             // Populate colors
             ColorTools.LoadBack(0);
             ConsoleColor dialogFG = ConsoleColor.Gray;
-            TextWriterColor.Write(content, true, new Color(dialogFG));
+            TextWriterColor.WriteColor(content, true, new Color(dialogFG));
         }
 
         public override void RenderBootingMessage(string chosenBootName) { }
@@ -147,7 +147,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
             int textY = 11;
             int interiorWidth = 41;
             int extraEndX = (Console.WindowWidth / 2) + ((interiorWidth) / 2) - help.Length;
-            TextWriterWhereColor.WriteWhere(help, extraEndX, textY, true, new Color(ConsoleColor.Gray), new Color(ConsoleColor.DarkRed));
+            TextWriterWhereColor.WriteWhereColorBack(help, extraEndX, textY, true, new Color(ConsoleColor.Gray), new Color(ConsoleColor.DarkRed));
         }
 
         public override void ClearSelectTimeout()
@@ -156,7 +156,7 @@ namespace GRILO.Bootloader.BootStyle.Styles
             int textY = 11;
             int interiorWidth = 41;
             int extraEndX = (Console.WindowWidth / 2) + ((interiorWidth) / 2) - help.Length;
-            TextWriterWhereColor.WriteWhere(new string(' ', help.Length), extraEndX, textY, true, new Color(ConsoleColor.Gray), new Color(ConsoleColor.DarkRed));
+            TextWriterWhereColor.WriteWhereColorBack(new string(' ', help.Length), extraEndX, textY, true, new Color(ConsoleColor.Gray), new Color(ConsoleColor.DarkRed));
         }
     }
 }
