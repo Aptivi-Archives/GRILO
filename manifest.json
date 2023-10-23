@@ -65,16 +65,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.BootApps.BootLoadContext.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GRILO.Bootloader.BootApps.BootLoadContext.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/GRILO.Bootloader.BootApps.BootManager.yml",
       "output": {
         ".html": {

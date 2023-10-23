@@ -179,41 +179,6 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.BootApps.BootAppInfo.OverriddenTitle
   nameWithType: BootAppInfo.OverriddenTitle
-- uid: GRILO.Bootloader.BootApps.BootLoadContext
-  name: BootLoadContext
-  href: api/GRILO.Bootloader.BootApps.BootLoadContext.html
-  commentId: T:GRILO.Bootloader.BootApps.BootLoadContext
-  fullName: GRILO.Bootloader.BootApps.BootLoadContext
-  nameWithType: BootLoadContext
-- uid: GRILO.Bootloader.BootApps.BootLoadContext.Load(System.Reflection.AssemblyName)
-  name: Load(AssemblyName)
-  href: api/GRILO.Bootloader.BootApps.BootLoadContext.html#GRILO_Bootloader_BootApps_BootLoadContext_Load_System_Reflection_AssemblyName_
-  commentId: M:GRILO.Bootloader.BootApps.BootLoadContext.Load(System.Reflection.AssemblyName)
-  fullName: GRILO.Bootloader.BootApps.BootLoadContext.Load(System.Reflection.AssemblyName)
-  nameWithType: BootLoadContext.Load(AssemblyName)
-- uid: GRILO.Bootloader.BootApps.BootLoadContext.Load*
-  name: Load
-  href: api/GRILO.Bootloader.BootApps.BootLoadContext.html#GRILO_Bootloader_BootApps_BootLoadContext_Load_
-  commentId: Overload:GRILO.Bootloader.BootApps.BootLoadContext.Load
-  isSpec: "True"
-  fullName: GRILO.Bootloader.BootApps.BootLoadContext.Load
-  nameWithType: BootLoadContext.Load
-- uid: GRILO.Bootloader.BootApps.BootLoadContext.LoadUnmanagedDll(System.String)
-  name: LoadUnmanagedDll(string)
-  href: api/GRILO.Bootloader.BootApps.BootLoadContext.html#GRILO_Bootloader_BootApps_BootLoadContext_LoadUnmanagedDll_System_String_
-  commentId: M:GRILO.Bootloader.BootApps.BootLoadContext.LoadUnmanagedDll(System.String)
-  name.vb: LoadUnmanagedDll(String)
-  fullName: GRILO.Bootloader.BootApps.BootLoadContext.LoadUnmanagedDll(string)
-  fullName.vb: GRILO.Bootloader.BootApps.BootLoadContext.LoadUnmanagedDll(String)
-  nameWithType: BootLoadContext.LoadUnmanagedDll(string)
-  nameWithType.vb: BootLoadContext.LoadUnmanagedDll(String)
-- uid: GRILO.Bootloader.BootApps.BootLoadContext.LoadUnmanagedDll*
-  name: LoadUnmanagedDll
-  href: api/GRILO.Bootloader.BootApps.BootLoadContext.html#GRILO_Bootloader_BootApps_BootLoadContext_LoadUnmanagedDll_
-  commentId: Overload:GRILO.Bootloader.BootApps.BootLoadContext.LoadUnmanagedDll
-  isSpec: "True"
-  fullName: GRILO.Bootloader.BootApps.BootLoadContext.LoadUnmanagedDll
-  nameWithType: BootLoadContext.LoadUnmanagedDll
 - uid: GRILO.Bootloader.BootApps.BootManager
   name: BootManager
   href: api/GRILO.Bootloader.BootApps.BootManager.html
