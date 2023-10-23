@@ -33,6 +33,7 @@ using System.Linq;
 using Terminaux.Sequences.Builder;
 using Terminaux.Reader.Inputs;
 using Terminaux.Writer.ConsoleWriters;
+using Terminaux.Base;
 
 namespace GRILO.Bootloader
 {
@@ -87,6 +88,7 @@ namespace GRILO.Bootloader
 
                         // Render the menu
                         DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Rendering menu...");
+                        ConsoleWrappers.ActionCursorVisible(false);
                         Console.Clear();
                         BootStyleManager.RenderMenu(chosenBootEntry);
 
