@@ -35,6 +35,9 @@ namespace GRILO.Bootloader.Configuration
     {
         internal static ConfigInstance instance = new();
 
+        /// <summary>
+        /// Configuration instance
+        /// </summary>
         public static ConfigInstance Instance =>
             instance;
 

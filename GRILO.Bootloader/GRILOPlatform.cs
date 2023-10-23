@@ -26,6 +26,9 @@ using System;
 
 namespace GRILO.Bootloader
 {
+    /// <summary>
+    /// Platform helpers
+    /// </summary>
     public static class GRILOPlatform
     {
 		/// <summary>

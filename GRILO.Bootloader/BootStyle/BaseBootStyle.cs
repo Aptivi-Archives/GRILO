@@ -28,15 +28,33 @@ using System.Collections.Generic;
 
 namespace GRILO.Bootloader.BootStyle
 {
+    /// <summary>
+    /// Base boot style
+    /// </summary>
     public abstract class BaseBootStyle : IBootStyle
     {
+        /// <inheritdoc/>
         public abstract Dictionary<ConsoleKeyInfo, Action<BootAppInfo>> CustomKeys { get; }
+
+        /// <inheritdoc/>
         public abstract void Render();
+
+        /// <inheritdoc/>
         public abstract void RenderHighlight(int chosenBootEntry);
+
+        /// <inheritdoc/>
         public abstract void RenderModalDialog(string content);
+
+        /// <inheritdoc/>
         public abstract void RenderBootingMessage(string chosenBootName);
+
+        /// <inheritdoc/>
         public abstract void RenderBootFailedMessage(string content);
+
+        /// <inheritdoc/>
         public abstract void RenderSelectTimeout(int timeout);
+
+        /// <inheritdoc/>
         public abstract void ClearSelectTimeout();
     }
 }

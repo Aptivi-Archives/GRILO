@@ -27,23 +27,44 @@ using System;
 
 namespace GRILO.Bootloader.Configuration.Instance
 {
+    /// <summary>
+    /// Configuration instance
+    /// </summary>
     public class ConfigInstance
     {
+        /// <summary>
+        /// The boot style name
+        /// </summary>
         [JsonProperty("Boot style", Required = Required.Always)]
         public string BootStyleName { get; set; } = "Default";
 
+        /// <summary>
+        /// Whether to create a file containing diagnostic messages
+        /// </summary>
         [JsonProperty("Diagnostic messages", Required = Required.Always)]
         public bool DiagnosticMessages { get; set; }
 
+        /// <summary>
+        /// Whether to also print diagnostic messages to the console
+        /// </summary>
         [JsonProperty("Print diagnostic messages to console", Required = Required.Always)]
         public bool PrintDiagnosticMessages { get; set; }
 
+        /// <summary>
+        /// Additional bootable folders to scan for bootable applications
+        /// </summary>
         [JsonProperty("Additional bootable folders", Required = Required.Always)]
         public string[] AdditionalScanFolders { get; set; } = Array.Empty<string>();
 
+        /// <summary>
+        /// Timeout to boot to the default selection
+        /// </summary>
         [JsonProperty("Timeout to boot to selection", Required = Required.Always)]
         public int BootSelectTimeoutSeconds { get; set; } = 10;
 
+        /// <summary>
+        /// The default boot entry selection. This number is zero-based, so the first element is index 0, and so on.
+        /// </summary>
         [JsonProperty("Default boot entry selection", Required = Required.Always)]
         public int BootSelect { get; set; } = 0;
     }

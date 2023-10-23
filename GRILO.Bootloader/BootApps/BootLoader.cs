@@ -31,13 +31,13 @@ using System.Reflection;
 
 namespace GRILO.Bootloader.BootApps
 {
-    public class BootLoader : MarshalByRefObject
+    internal class BootLoader : MarshalByRefObject
     {
-        public byte[] bytes = Array.Empty<byte>();
         public string lookupPath = "";
         public bool shutting = false;
+        internal byte[] bytes = Array.Empty<byte>();
 
-        public void ProxyExecuteBootable(params string[] args)
+        internal void ProxyExecuteBootable(params string[] args)
         {
             AppDomain.CurrentDomain.AssemblyResolve += this.ResolveDependency;
             var asm = Assembly.Load(bytes);
@@ -55,7 +55,7 @@ namespace GRILO.Bootloader.BootApps
             shutting = proxy.ShutdownRequested;
         }
 
-        public bool VerifyBoot(byte[] bootBytes)
+        internal bool VerifyBoot(byte[] bootBytes)
         {
             AppDomain.CurrentDomain.AssemblyResolve += this.ResolveDependency;
             var asm = Assembly.Load(bootBytes);

@@ -28,7 +28,7 @@ using System;
 
 namespace GRILO.Bootloader.BootApps
 {
-    public class BootProxy : IBootable
+    internal class BootProxy : IBootable
     {
         internal BootLoader loader = null;
 

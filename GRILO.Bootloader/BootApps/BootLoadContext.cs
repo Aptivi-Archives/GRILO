@@ -30,7 +30,7 @@ using System.Runtime.Loader;
 
 namespace GRILO.Bootloader.BootApps
 {
-    public class BootLoadContext : AssemblyLoadContext
+    internal class BootLoadContext : AssemblyLoadContext
     {
         internal AssemblyDependencyResolver resolver;
         internal string bootPath = "";

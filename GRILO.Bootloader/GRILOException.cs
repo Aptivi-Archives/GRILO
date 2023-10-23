@@ -31,16 +31,28 @@ namespace GRILO.Bootloader
     /// </summary>
     public class GRILOException : Exception
     {
-        public GRILOException() : base("Unknown bootloader error!")
-        {
-        }
+        /// <summary>
+        /// Makes a new instance of GRILO exception
+        /// </summary>
+        public GRILOException() :
+            base("Unknown bootloader error!")
+        { }
 
-        public GRILOException(string message) : base("Internal bootloader error: " + message)
-        {
-        }
+        /// <summary>
+        /// Makes a new instance of GRILO exception
+        /// </summary>
+        /// <param name="message">Error message to use while creating a new instance of the exception</param>
+        public GRILOException(string message) :
+            base("Internal bootloader error: " + message)
+        { }
 
-        public GRILOException(string message, Exception innerException) : base("Internal bootloader error: " + message, innerException)
-        {
-        }
+        /// <summary>
+        /// Makes a new instance of GRILO exception
+        /// </summary>
+        /// <param name="message">Error message to use while creating a new instance of the exception</param>
+        /// <param name="innerException">Inner exception to use</param>
+        public GRILOException(string message, Exception innerException) :
+            base("Internal bootloader error: " + message, innerException)
+        { }
     }
 }
