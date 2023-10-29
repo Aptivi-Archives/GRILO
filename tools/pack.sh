@@ -8,29 +8,29 @@ if [ -z $releaseconf ]; then
 fi
 
 # Check for dependencies
-rarpath=`which rar`
+zippath=`which zip`
 if [ ! $? == 0 ]; then
-	echo rar is not found.
+	echo zip is not found.
 	exit 1
 fi
 
 # Pack binary
 echo Packing binary...
-"$rarpath" a -ep1 -r -m5 /tmp/$version-bin.rar "../GRILO.Bootloader/bin/$releaseconf/net6.0/"
-"$rarpath" a -ep1 -r -m5 /tmp/$version-bin48.rar "../GRILO.Bootloader/bin/$releaseconf/net48/"
-"$rarpath" a -ep1 -r -m5 /tmp/$version-demo.rar "../GRILO.BootableAppDemo/bin/$releaseconf/net6.0/"
-"$rarpath" a -ep1 -r -m5 /tmp/$version-demo48.rar "../GRILO.BootableAppDemo/bin/$releaseconf/net48/"
-"$rarpath" a -ep1 -r -m5 /tmp/$version-boot.rar "../GRILO.Boot/bin/$releaseconf/netstandard2.0/"
+cd "../GRILO.Bootloader/bin/$releaseconf/net6.0/" && "$zippath" -r /tmp/$version-bin.zip . && cd -
+cd "../GRILO.Bootloader/bin/$releaseconf/net48/" && "$zippath" -r /tmp/$version-bin48.zip . && cd -
+cd "../GRILO.BootableAppDemo/bin/$releaseconf/net6.0/" && "$zippath" -r /tmp/$version-demo.zip . && cd -
+cd "../GRILO.BootableAppDemo/bin/$releaseconf/net48/" && "$zippath" -r /tmp/$version-demo48.zip . && cd -
+cd "../GRILO.Boot/bin/$releaseconf/netstandard2.0/" && "$zippath" -r /tmp/$version-boot.zip . && cd -
 if [ ! $? == 0 ]; then
-	echo Packing using rar failed.
+	echo Packing using zip failed.
 	exit 1
 fi
 
 # Inform success
-mv ~/tmp/$version-bin.rar .
-mv ~/tmp/$version-demo.rar .
-mv ~/tmp/$version-bin48.rar .
-mv ~/tmp/$version-demo48.rar .
-mv ~/tmp/$version-boot.rar .
+mv ~/tmp/$version-bin.zip .
+mv ~/tmp/$version-demo.zip .
+mv ~/tmp/$version-bin48.zip .
+mv ~/tmp/$version-demo48.zip .
+mv ~/tmp/$version-boot.zip .
 echo Build and pack successful.
 exit 0
