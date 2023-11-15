@@ -20,15 +20,15 @@ echo There was an error trying to pack binary (%errorlevel%).
 goto :finished
 
 :complete
-move %temp%\%version%-bin6.rar
-move %temp%\%version%-demo6.rar
-move %temp%\%version%-bin7.rar
-move %temp%\%version%-demo7.rar
-move %temp%\%version%-bin.rar
-move %temp%\%version%-demo.rar
-move %temp%\%version%-bin48.rar
-move %temp%\%version%-demo48.rar
-move %temp%\%version%-boot.rar
+move %temp%\%version%-bin6.zip
+move %temp%\%version%-demo6.zip
+move %temp%\%version%-bin7.zip
+move %temp%\%version%-demo7.zip
+move %temp%\%version%-bin.zip
+move %temp%\%version%-demo.zip
+move %temp%\%version%-bin48.zip
+move %temp%\%version%-demo48.zip
+move %temp%\%version%-boot.zip
 
 echo Pack successful.
 :finished
