@@ -16,9 +16,13 @@ fi
 
 # Pack binary
 echo Packing binary...
-cd "../GRILO.Bootloader/bin/$releaseconf/net6.0/" && "$zippath" -r /tmp/$version-bin.zip . && cd -
+cd "../GRILO.Bootloader/bin/$releaseconf/net6.0/" && "$zippath" -r /tmp/$version-bin6.zip . && cd -
+cd "../GRILO.Bootloader/bin/$releaseconf/net7.0/" && "$zippath" -r /tmp/$version-bin7.zip . && cd -
+cd "../GRILO.Bootloader/bin/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-bin.zip . && cd -
 cd "../GRILO.Bootloader/bin/$releaseconf/net48/" && "$zippath" -r /tmp/$version-bin48.zip . && cd -
-cd "../GRILO.BootableAppDemo/bin/$releaseconf/net6.0/" && "$zippath" -r /tmp/$version-demo.zip . && cd -
+cd "../GRILO.BootableAppDemo/bin/$releaseconf/net6.0/" && "$zippath" -r /tmp/$version-demo6.zip . && cd -
+cd "../GRILO.BootableAppDemo/bin/$releaseconf/net7.0/" && "$zippath" -r /tmp/$version-demo7.zip . && cd -
+cd "../GRILO.BootableAppDemo/bin/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-demo.zip . && cd -
 cd "../GRILO.BootableAppDemo/bin/$releaseconf/net48/" && "$zippath" -r /tmp/$version-demo48.zip . && cd -
 cd "../GRILO.Boot/bin/$releaseconf/netstandard2.0/" && "$zippath" -r /tmp/$version-boot.zip . && cd -
 if [ ! $? == 0 ]; then
@@ -27,6 +31,10 @@ if [ ! $? == 0 ]; then
 fi
 
 # Inform success
+mv ~/tmp/$version-bin6.zip .
+mv ~/tmp/$version-demo6.zip .
+mv ~/tmp/$version-bin7.zip .
+mv ~/tmp/$version-demo7.zip .
 mv ~/tmp/$version-bin.zip .
 mv ~/tmp/$version-demo.zip .
 mv ~/tmp/$version-bin48.zip .
