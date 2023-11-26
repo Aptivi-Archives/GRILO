@@ -16,11 +16,11 @@ fi
 
 # Pack binary
 echo Packing binary...
-cd "../GRILO.Bootloader/bin/$releaseconf/net6.0/" && "$zippath" -r /tmp/$version-bin6.zip . && cd -
+cd "../GRILO.Bootloader/bin/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-bin6.zip . && cd -
 cd "../GRILO.Bootloader/bin/$releaseconf/net7.0/" && "$zippath" -r /tmp/$version-bin7.zip . && cd -
 cd "../GRILO.Bootloader/bin/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-bin.zip . && cd -
 cd "../GRILO.Bootloader/bin/$releaseconf/net48/" && "$zippath" -r /tmp/$version-bin48.zip . && cd -
-cd "../GRILO.BootableAppDemo/bin/$releaseconf/net6.0/" && "$zippath" -r /tmp/$version-demo6.zip . && cd -
+cd "../GRILO.BootableAppDemo/bin/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-demo6.zip . && cd -
 cd "../GRILO.BootableAppDemo/bin/$releaseconf/net7.0/" && "$zippath" -r /tmp/$version-demo7.zip . && cd -
 cd "../GRILO.BootableAppDemo/bin/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-demo.zip . && cd -
 cd "../GRILO.BootableAppDemo/bin/$releaseconf/net48/" && "$zippath" -r /tmp/$version-demo48.zip . && cd -
