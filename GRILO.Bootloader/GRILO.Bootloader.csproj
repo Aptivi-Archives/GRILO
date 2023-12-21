@@ -7,8 +7,8 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <IncludeSymbols>True</IncludeSymbols>
-    <Version>1.1.3</Version>
-    <PackageVersion>1.1.3</PackageVersion>
+    <Version>1.1.4</Version>
+    <PackageVersion>1.1.4</PackageVersion>
     <Authors>Aptivi</Authors>
     <Product>GRILO</Product>
     <Description>Bootloader simulator for .NET</Description>
