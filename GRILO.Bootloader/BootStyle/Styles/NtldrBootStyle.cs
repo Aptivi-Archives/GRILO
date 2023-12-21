@@ -27,7 +27,7 @@ using GRILO.Bootloader.Diagnostics;
 using System;
 using System.Collections.Generic;
 using Terminaux.Colors;
-using Terminaux.Reader.Inputs;
+using Terminaux.Inputs;
 using Terminaux.Writer.ConsoleWriters;
 
 namespace GRILO.Bootloader.BootStyle.Styles

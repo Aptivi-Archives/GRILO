@@ -31,7 +31,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
-using Terminaux.Reader.Inputs;
+using Terminaux.Inputs;
 using Terminaux.Writer.ConsoleWriters;
 
 namespace GRILO.Bootloader.BootStyle
