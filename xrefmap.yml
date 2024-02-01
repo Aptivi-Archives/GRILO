@@ -934,16 +934,3 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.GRILOPaths.GRILOStylesPath
   nameWithType: GRILOPaths.GRILOStylesPath
-- uid: GRILO.Bootloader.GRILOPaths.MakePaths
-  name: MakePaths()
-  href: api/GRILO.Bootloader.GRILOPaths.html#GRILO_Bootloader_GRILOPaths_MakePaths
-  commentId: M:GRILO.Bootloader.GRILOPaths.MakePaths
-  fullName: GRILO.Bootloader.GRILOPaths.MakePaths()
-  nameWithType: GRILOPaths.MakePaths()
-- uid: GRILO.Bootloader.GRILOPaths.MakePaths*
-  name: MakePaths
-  href: api/GRILO.Bootloader.GRILOPaths.html#GRILO_Bootloader_GRILOPaths_MakePaths_
-  commentId: Overload:GRILO.Bootloader.GRILOPaths.MakePaths
-  isSpec: "True"
-  fullName: GRILO.Bootloader.GRILOPaths.MakePaths
-  nameWithType: GRILOPaths.MakePaths
