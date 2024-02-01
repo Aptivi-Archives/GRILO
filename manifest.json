@@ -165,6 +165,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/GRILO.Bootloader.Common.BootloaderState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GRILO.Bootloader.Common.BootloaderState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/GRILO.Bootloader.Common.Configuration.Config.yml",
       "output": {
         ".html": {

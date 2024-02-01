@@ -74,6 +74,11 @@
     "title": "Class BootloaderException | GRILO API - Aptivi",
     "keywords": "Class BootloaderException Internal bootloader error Inheritance object Exception BootloaderException Namespace: GRILO.Bootloader.Common Assembly: GRILO.Bootloader.dll Syntax public class BootloaderException : Exception Constructors | Edit this page View Source BootloaderException() Makes a new instance of GRILO exception Declaration public BootloaderException() | Edit this page View Source BootloaderException(string) Makes a new instance of GRILO exception Declaration public BootloaderException(string message) Parameters Type Name Description string message Error message to use while creating a new instance of the exception | Edit this page View Source BootloaderException(string, Exception) Makes a new instance of GRILO exception Declaration public BootloaderException(string message, Exception innerException) Parameters Type Name Description string message Error message to use while creating a new instance of the exception Exception innerException Inner exception to use"
   },
+  "api/GRILO.Bootloader.Common.BootloaderState.html": {
+    "href": "api/GRILO.Bootloader.Common.BootloaderState.html",
+    "title": "Class BootloaderState | GRILO API - Aptivi",
+    "keywords": "Class BootloaderState Stores the bootloader state Inheritance object BootloaderState Namespace: GRILO.Bootloader.Common Assembly: GRILO.Bootloader.dll Syntax public static class BootloaderState Properties | Edit this page View Source WaitingForBootKey Specifies whether the bootloader is waiting for any key to be pressed Declaration public static bool WaitingForBootKey { get; } Property Value Type Description bool | Edit this page View Source WaitingForFirstBootKey Specifies whether the bootloader is waiting for any key to be pressed for the first time Declaration public static bool WaitingForFirstBootKey { get; } Property Value Type Description bool"
+  },
   "api/GRILO.Bootloader.Common.Configuration.Config.html": {
     "href": "api/GRILO.Bootloader.Common.Configuration.Config.html",
     "title": "Class Config | GRILO API - Aptivi",
@@ -102,7 +107,7 @@
   "api/GRILO.Bootloader.Common.html": {
     "href": "api/GRILO.Bootloader.Common.html",
     "title": "Namespace GRILO.Bootloader.Common | GRILO API - Aptivi",
-    "keywords": "Namespace GRILO.Bootloader.Common Classes BootloaderException Internal bootloader error"
+    "keywords": "Namespace GRILO.Bootloader.Common Classes BootloaderException Internal bootloader error BootloaderState Stores the bootloader state"
   },
   "index.html": {
     "href": "index.html",

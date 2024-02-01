@@ -722,6 +722,38 @@ references:
   fullName.vb: GRILO.Bootloader.Common.BootloaderException.New
   nameWithType: BootloaderException.BootloaderException
   nameWithType.vb: BootloaderException.New
+- uid: GRILO.Bootloader.Common.BootloaderState
+  name: BootloaderState
+  href: api/GRILO.Bootloader.Common.BootloaderState.html
+  commentId: T:GRILO.Bootloader.Common.BootloaderState
+  fullName: GRILO.Bootloader.Common.BootloaderState
+  nameWithType: BootloaderState
+- uid: GRILO.Bootloader.Common.BootloaderState.WaitingForBootKey
+  name: WaitingForBootKey
+  href: api/GRILO.Bootloader.Common.BootloaderState.html#GRILO_Bootloader_Common_BootloaderState_WaitingForBootKey
+  commentId: P:GRILO.Bootloader.Common.BootloaderState.WaitingForBootKey
+  fullName: GRILO.Bootloader.Common.BootloaderState.WaitingForBootKey
+  nameWithType: BootloaderState.WaitingForBootKey
+- uid: GRILO.Bootloader.Common.BootloaderState.WaitingForBootKey*
+  name: WaitingForBootKey
+  href: api/GRILO.Bootloader.Common.BootloaderState.html#GRILO_Bootloader_Common_BootloaderState_WaitingForBootKey_
+  commentId: Overload:GRILO.Bootloader.Common.BootloaderState.WaitingForBootKey
+  isSpec: "True"
+  fullName: GRILO.Bootloader.Common.BootloaderState.WaitingForBootKey
+  nameWithType: BootloaderState.WaitingForBootKey
+- uid: GRILO.Bootloader.Common.BootloaderState.WaitingForFirstBootKey
+  name: WaitingForFirstBootKey
+  href: api/GRILO.Bootloader.Common.BootloaderState.html#GRILO_Bootloader_Common_BootloaderState_WaitingForFirstBootKey
+  commentId: P:GRILO.Bootloader.Common.BootloaderState.WaitingForFirstBootKey
+  fullName: GRILO.Bootloader.Common.BootloaderState.WaitingForFirstBootKey
+  nameWithType: BootloaderState.WaitingForFirstBootKey
+- uid: GRILO.Bootloader.Common.BootloaderState.WaitingForFirstBootKey*
+  name: WaitingForFirstBootKey
+  href: api/GRILO.Bootloader.Common.BootloaderState.html#GRILO_Bootloader_Common_BootloaderState_WaitingForFirstBootKey_
+  commentId: Overload:GRILO.Bootloader.Common.BootloaderState.WaitingForFirstBootKey
+  isSpec: "True"
+  fullName: GRILO.Bootloader.Common.BootloaderState.WaitingForFirstBootKey
+  nameWithType: BootloaderState.WaitingForFirstBootKey
 - uid: GRILO.Bootloader.Common.Configuration
   name: GRILO.Bootloader.Common.Configuration
   href: api/GRILO.Bootloader.Common.Configuration.html
