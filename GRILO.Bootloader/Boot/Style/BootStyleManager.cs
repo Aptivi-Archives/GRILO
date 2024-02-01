@@ -207,7 +207,7 @@ namespace GRILO.Bootloader.Boot.Style
         /// <param name="timeout">Timeout interval in seconds</param>
         public static void RenderSelectTimeout(int timeout)
         {
-            if (!timeoutThread.IsAlive && timeout > 0 && Entry.waitingForFirstBootKey)
+            if (!timeoutThread.IsAlive && timeout > 0 && BootloaderState.WaitingForFirstBootKey)
                 timeoutThread.Start(timeout);
         }
 
@@ -229,7 +229,7 @@ namespace GRILO.Bootloader.Boot.Style
             int timeoutElapsed = 0;
             try
             {
-                while (timeoutElapsed < timeout && Entry.waitingForFirstBootKey)
+                while (timeoutElapsed < timeout && BootloaderState.WaitingForFirstBootKey)
                 {
                     style.RenderSelectTimeout(timeout - timeoutElapsed);
                     Thread.Sleep(1000);

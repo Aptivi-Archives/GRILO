@@ -35,11 +35,9 @@ namespace GRILO.Bootloader.Common
 {
     internal class Entry
     {
-        internal static bool shutdownRequested = false;
-        internal static bool waitingForBootKey = true;
-        internal static bool waitingForFirstBootKey = true;
         internal static string griloVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-        internal static bool isOnAlternativeBuffer = false;
+        private static bool shutdownRequested = false;
+        private static bool isOnAlternativeBuffer = false;
 
         static void Main()
         {
@@ -76,7 +74,7 @@ namespace GRILO.Bootloader.Common
                 int chosenBootEntry = Config.Instance.BootSelect;
                 while (!shutdownRequested)
                 {
-                    while (waitingForBootKey)
+                    while (BootloaderState.WaitingForBootKey)
                     {
                         // Reset console colors in case app or boot style didn't reset them
                         Console.BackgroundColor = ConsoleColor.Black;
@@ -92,7 +90,7 @@ namespace GRILO.Bootloader.Common
                         int timeout = Config.Instance.BootSelectTimeoutSeconds;
                         BootStyleManager.RenderSelectTimeout(timeout);
                         ConsoleKeyInfo cki;
-                        if (timeout > 0 && waitingForFirstBootKey)
+                        if (timeout > 0 && BootloaderState.WaitingForFirstBootKey)
                         {
                             var result = Input.ReadKeyTimeout(true, TimeSpan.FromSeconds(Config.Instance.BootSelectTimeoutSeconds));
                             if (!result.provided)
@@ -102,7 +100,7 @@ namespace GRILO.Bootloader.Common
                         }
                         else
                             cki = Input.DetectKeypress();
-                        waitingForFirstBootKey = false;
+                        BootloaderState.waitingForFirstBootKey = false;
                         DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Key pressed: {0}", cki.Key.ToString());
                         switch (cki.Key)
                         {
@@ -165,7 +163,7 @@ namespace GRILO.Bootloader.Common
                             case ConsoleKey.Enter:
                                 // We're no longer waiting for boot key
                                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Booting...");
-                                waitingForBootKey = false;
+                                BootloaderState.waitingForBootKey = false;
                                 break;
                             default:
                                 string chosenBootName = BootManager.GetBootAppNameByIndex(chosenBootEntry);
@@ -179,7 +177,7 @@ namespace GRILO.Bootloader.Common
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Clear();
-                    waitingForBootKey = true;
+                    BootloaderState.waitingForBootKey = true;
 
                     // Boot the system
                     Exception bootFailureException = new BootloaderException("Boot program failed.");
