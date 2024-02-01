@@ -17,7 +17,7 @@
     <RepositoryUrl>https://github.com/Aptivi/GRILO</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>bootloader;boot;csharp;dotnet</PackageTags>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\aptivi_snk.snk</AssemblyOriginatorKeyFile>
