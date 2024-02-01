@@ -45,7 +45,7 @@ namespace GRILO.Bootloader.Common
             {
                 // Preload bootloader
                 Console.CursorVisible = false;
-                TextWriterColor.Write("Starting GRILO v{0}...", Assembly.GetExecutingAssembly().GetName().Version.ToString());
+                TextWriterColor.Write("Starting GRILO v{0}...", griloVersion);
 
                 // Populate GRILO folders (if any)
                 ConfigPaths.MakePaths();
