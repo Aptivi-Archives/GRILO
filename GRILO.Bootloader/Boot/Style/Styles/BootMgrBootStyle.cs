@@ -18,7 +18,6 @@
 //
 
 using GRILO.Bootloader.Boot.Apps;
-using GRILO.Bootloader.Boot.Style;
 using System;
 using System.Collections.Generic;
 using Terminaux.Colors;

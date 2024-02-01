@@ -19,19 +19,15 @@
 
 using System;
 using System.Reflection;
-using System.Linq;
 using Terminaux.Writer.ConsoleWriters;
 using Textify.Sequences.Builder;
 using Terminaux.Inputs;
-using Terminaux.Base;
 using SpecProbe.Platform;
 using GRILO.Bootloader.Boot.Apps;
 using GRILO.Bootloader.Boot.Diagnostics;
-using GRILO.Bootloader.Common.KeyHandler;
 using GRILO.Bootloader.Common.Configuration;
 using GRILO.Bootloader.Boot.Style;
 using Terminaux.ResizeListener;
-using Textify.Sequences.Tools;
 
 namespace GRILO.Bootloader.Common
 {

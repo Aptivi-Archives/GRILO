@@ -18,7 +18,6 @@
 //
 
 using GRILO.Bootloader.Boot.Apps;
-using GRILO.Bootloader.Boot.Style;
 using GRILO.Bootloader.Common;
 using GRILO.Bootloader.Common.Configuration;
 using System;
