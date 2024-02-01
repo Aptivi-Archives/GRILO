@@ -215,16 +215,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.GRILOPlatform.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GRILO.Bootloader.GRILOPlatform.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/GRILO.Bootloader.yml",
       "output": {
         ".html": {

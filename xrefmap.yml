@@ -947,35 +947,3 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.GRILOPaths.MakePaths
   nameWithType: GRILOPaths.MakePaths
-- uid: GRILO.Bootloader.GRILOPlatform
-  name: GRILOPlatform
-  href: api/GRILO.Bootloader.GRILOPlatform.html
-  commentId: T:GRILO.Bootloader.GRILOPlatform
-  fullName: GRILO.Bootloader.GRILOPlatform
-  nameWithType: GRILOPlatform
-- uid: GRILO.Bootloader.GRILOPlatform.IsOnUnix
-  name: IsOnUnix()
-  href: api/GRILO.Bootloader.GRILOPlatform.html#GRILO_Bootloader_GRILOPlatform_IsOnUnix
-  commentId: M:GRILO.Bootloader.GRILOPlatform.IsOnUnix
-  fullName: GRILO.Bootloader.GRILOPlatform.IsOnUnix()
-  nameWithType: GRILOPlatform.IsOnUnix()
-- uid: GRILO.Bootloader.GRILOPlatform.IsOnUnix*
-  name: IsOnUnix
-  href: api/GRILO.Bootloader.GRILOPlatform.html#GRILO_Bootloader_GRILOPlatform_IsOnUnix_
-  commentId: Overload:GRILO.Bootloader.GRILOPlatform.IsOnUnix
-  isSpec: "True"
-  fullName: GRILO.Bootloader.GRILOPlatform.IsOnUnix
-  nameWithType: GRILOPlatform.IsOnUnix
-- uid: GRILO.Bootloader.GRILOPlatform.IsOnWindows
-  name: IsOnWindows()
-  href: api/GRILO.Bootloader.GRILOPlatform.html#GRILO_Bootloader_GRILOPlatform_IsOnWindows
-  commentId: M:GRILO.Bootloader.GRILOPlatform.IsOnWindows
-  fullName: GRILO.Bootloader.GRILOPlatform.IsOnWindows()
-  nameWithType: GRILOPlatform.IsOnWindows()
-- uid: GRILO.Bootloader.GRILOPlatform.IsOnWindows*
-  name: IsOnWindows
-  href: api/GRILO.Bootloader.GRILOPlatform.html#GRILO_Bootloader_GRILOPlatform_IsOnWindows_
-  commentId: Overload:GRILO.Bootloader.GRILOPlatform.IsOnWindows
-  isSpec: "True"
-  fullName: GRILO.Bootloader.GRILOPlatform.IsOnWindows
-  nameWithType: GRILOPlatform.IsOnWindows

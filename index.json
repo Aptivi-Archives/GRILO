@@ -99,15 +99,10 @@
     "title": "Class GRILOPaths | GRILO API - Aptivi",
     "keywords": "Class GRILOPaths GRILO paths module Inheritance object GRILOPaths Namespace: GRILO.Bootloader Assembly: GRILO.Bootloader.dll Syntax public static class GRILOPaths Properties | Edit this page View Source GRILOBootablesPath Path to GRILO bootable apps list folder Declaration public static string GRILOBootablesPath { get; } Property Value Type Description string | Edit this page View Source GRILOConfigPath Path to GRILO configuration file Declaration public static string GRILOConfigPath { get; } Property Value Type Description string | Edit this page View Source GRILODebugPath Path to GRILO debug file Declaration public static string GRILODebugPath { get; } Property Value Type Description string | Edit this page View Source GRILOPath Path to GRILO folder Declaration public static string GRILOPath { get; } Property Value Type Description string | Edit this page View Source GRILOStylesPath Path to GRILO boot styles folder Declaration public static string GRILOStylesPath { get; } Property Value Type Description string Methods | Edit this page View Source MakePaths() Makes directories for GRILO Declaration public static void MakePaths()"
   },
-  "api/GRILO.Bootloader.GRILOPlatform.html": {
-    "href": "api/GRILO.Bootloader.GRILOPlatform.html",
-    "title": "Class GRILOPlatform | GRILO API - Aptivi",
-    "keywords": "Class GRILOPlatform Platform helpers Inheritance object GRILOPlatform Namespace: GRILO.Bootloader Assembly: GRILO.Bootloader.dll Syntax public static class GRILOPlatform Methods | Edit this page View Source IsOnUnix() Is this system a Unix system? True for macOS, too! Declaration public static bool IsOnUnix() Returns Type Description bool | Edit this page View Source IsOnWindows() Is this system a Windows system? Declaration public static bool IsOnWindows() Returns Type Description bool"
-  },
   "api/GRILO.Bootloader.html": {
     "href": "api/GRILO.Bootloader.html",
     "title": "Namespace GRILO.Bootloader | GRILO API - Aptivi",
-    "keywords": "Namespace GRILO.Bootloader Classes GRILOException Internal bootloader error GRILOPaths GRILO paths module GRILOPlatform Platform helpers"
+    "keywords": "Namespace GRILO.Bootloader Classes GRILOException Internal bootloader error GRILOPaths GRILO paths module"
   },
   "index.html": {
     "href": "index.html",
