@@ -55,170 +55,170 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.BootApps.BootAppInfo.yml",
+      "source_relative_path": "api/GRILO.Bootloader.Boot.Apps.BootAppInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GRILO.Bootloader.BootApps.BootAppInfo.html"
+          "relative_path": "api/GRILO.Bootloader.Boot.Apps.BootAppInfo.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.BootApps.BootManager.yml",
+      "source_relative_path": "api/GRILO.Bootloader.Boot.Apps.BootManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GRILO.Bootloader.BootApps.BootManager.html"
+          "relative_path": "api/GRILO.Bootloader.Boot.Apps.BootManager.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.BootApps.yml",
+      "source_relative_path": "api/GRILO.Bootloader.Boot.Apps.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GRILO.Bootloader.BootApps.html"
+          "relative_path": "api/GRILO.Bootloader.Boot.Apps.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.BootStyle.BaseBootStyle.yml",
+      "source_relative_path": "api/GRILO.Bootloader.Boot.Diagnostics.DiagnosticsLevel.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GRILO.Bootloader.BootStyle.BaseBootStyle.html"
+          "relative_path": "api/GRILO.Bootloader.Boot.Diagnostics.DiagnosticsLevel.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.BootStyle.BootStyleManager.yml",
+      "source_relative_path": "api/GRILO.Bootloader.Boot.Diagnostics.DiagnosticsWriter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GRILO.Bootloader.BootStyle.BootStyleManager.html"
+          "relative_path": "api/GRILO.Bootloader.Boot.Diagnostics.DiagnosticsWriter.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.BootStyle.IBootStyle.yml",
+      "source_relative_path": "api/GRILO.Bootloader.Boot.Diagnostics.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GRILO.Bootloader.BootStyle.IBootStyle.html"
+          "relative_path": "api/GRILO.Bootloader.Boot.Diagnostics.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.BootStyle.yml",
+      "source_relative_path": "api/GRILO.Bootloader.Boot.Style.BaseBootStyle.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GRILO.Bootloader.BootStyle.html"
+          "relative_path": "api/GRILO.Bootloader.Boot.Style.BaseBootStyle.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.Configuration.Config.yml",
+      "source_relative_path": "api/GRILO.Bootloader.Boot.Style.BootStyleManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GRILO.Bootloader.Configuration.Config.html"
+          "relative_path": "api/GRILO.Bootloader.Boot.Style.BootStyleManager.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.yml",
+      "source_relative_path": "api/GRILO.Bootloader.Boot.Style.IBootStyle.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GRILO.Bootloader.Configuration.Instance.ConfigInstance.html"
+          "relative_path": "api/GRILO.Bootloader.Boot.Style.IBootStyle.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.Configuration.Instance.yml",
+      "source_relative_path": "api/GRILO.Bootloader.Boot.Style.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GRILO.Bootloader.Configuration.Instance.html"
+          "relative_path": "api/GRILO.Bootloader.Boot.Style.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.Configuration.yml",
+      "source_relative_path": "api/GRILO.Bootloader.Common.BootloaderException.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GRILO.Bootloader.Configuration.html"
+          "relative_path": "api/GRILO.Bootloader.Common.BootloaderException.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.Diagnostics.DiagnosticsLevel.yml",
+      "source_relative_path": "api/GRILO.Bootloader.Common.Configuration.Config.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GRILO.Bootloader.Diagnostics.DiagnosticsLevel.html"
+          "relative_path": "api/GRILO.Bootloader.Common.Configuration.Config.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.Diagnostics.DiagnosticsWriter.yml",
+      "source_relative_path": "api/GRILO.Bootloader.Common.Configuration.ConfigPaths.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GRILO.Bootloader.Diagnostics.DiagnosticsWriter.html"
+          "relative_path": "api/GRILO.Bootloader.Common.Configuration.ConfigPaths.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.Diagnostics.yml",
+      "source_relative_path": "api/GRILO.Bootloader.Common.Configuration.Instance.ConfigInstance.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GRILO.Bootloader.Diagnostics.html"
+          "relative_path": "api/GRILO.Bootloader.Common.Configuration.Instance.ConfigInstance.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.GRILOException.yml",
+      "source_relative_path": "api/GRILO.Bootloader.Common.Configuration.Instance.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GRILO.Bootloader.GRILOException.html"
+          "relative_path": "api/GRILO.Bootloader.Common.Configuration.Instance.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.GRILOPaths.yml",
+      "source_relative_path": "api/GRILO.Bootloader.Common.Configuration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GRILO.Bootloader.GRILOPaths.html"
+          "relative_path": "api/GRILO.Bootloader.Common.Configuration.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GRILO.Bootloader.yml",
+      "source_relative_path": "api/GRILO.Bootloader.Common.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GRILO.Bootloader.html"
+          "relative_path": "api/GRILO.Bootloader.Common.html"
         }
       },
       "version": ""
