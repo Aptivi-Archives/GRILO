@@ -34,6 +34,7 @@ using Terminaux.Writer.ConsoleWriters;
 using Textify.Sequences.Builder;
 using Terminaux.Inputs;
 using Terminaux.Base;
+using SpecProbe.Platform;
 
 namespace GRILO.Bootloader
 {
@@ -70,7 +71,7 @@ namespace GRILO.Bootloader
                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Bootable apps read successfully.");
 
                 // Switch to alternative buffer
-                if (!GRILOPlatform.IsOnWindows())
+                if (!PlatformHelper.IsOnWindows())
                 {
                     TextWriterColor.WritePlain($"{VtSequenceBasicChars.EscapeChar}7{VtSequenceBasicChars.EscapeChar}[?47h", false);
                     isOnAlternativeBuffer = true;

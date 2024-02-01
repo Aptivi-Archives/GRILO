@@ -22,6 +22,7 @@
 // SOFTWARE.
 //
 
+using SpecProbe.Platform;
 using System;
 using System.IO;
 
@@ -35,10 +36,11 @@ namespace GRILO.Bootloader
         /// <summary>
         /// Path to GRILO folder
         /// </summary>
-        public static string GRILOPath {
+        public static string GRILOPath
+        {
             get
             {
-                if (GRILOPlatform.IsOnWindows())
+                if (PlatformHelper.IsOnWindows())
                     return Path.Combine(Environment.GetEnvironmentVariable("LOCALAPPDATA"), "GRILO");
                 else
                     return Path.Combine(Environment.GetEnvironmentVariable("HOME"), ".config/GRILO");
@@ -48,10 +50,11 @@ namespace GRILO.Bootloader
         /// <summary>
         /// Path to GRILO configuration file
         /// </summary>
-        public static string GRILOConfigPath {
+        public static string GRILOConfigPath
+        {
             get
             {
-                if (GRILOPlatform.IsOnWindows())
+                if (PlatformHelper.IsOnWindows())
                     return Path.Combine(Environment.GetEnvironmentVariable("LOCALAPPDATA"), "GRILO/BootloaderConfig.json");
                 else
                     return Path.Combine(Environment.GetEnvironmentVariable("HOME"), ".config/GRILO/BootloaderConfig.json");
@@ -61,10 +64,11 @@ namespace GRILO.Bootloader
         /// <summary>
         /// Path to GRILO boot styles folder
         /// </summary>
-        public static string GRILOStylesPath {
+        public static string GRILOStylesPath
+        {
             get
             {
-                if (GRILOPlatform.IsOnWindows())
+                if (PlatformHelper.IsOnWindows())
                     return Path.Combine(Environment.GetEnvironmentVariable("LOCALAPPDATA"), "GRILO/Styles");
                 else
                     return Path.Combine(Environment.GetEnvironmentVariable("HOME"), ".config/GRILO/Styles");
@@ -74,16 +78,17 @@ namespace GRILO.Bootloader
         /// <summary>
         /// Path to GRILO bootable apps list folder
         /// </summary>
-        public static string GRILOBootablesPath {
+        public static string GRILOBootablesPath
+        {
             get
             {
 #if NETCOREAPP
-                if (GRILOPlatform.IsOnWindows())
+                if (PlatformHelper.IsOnWindows())
                     return Path.Combine(Environment.GetEnvironmentVariable("LOCALAPPDATA"), "GRILO/Bootables");
                 else
                     return Path.Combine(Environment.GetEnvironmentVariable("HOME"), ".config/GRILO/Bootables");
 #else
-                if (GRILOPlatform.IsOnWindows())
+                if (PlatformHelper.IsOnWindows())
                     return Path.Combine(Environment.GetEnvironmentVariable("LOCALAPPDATA"), "GRILO/Bootables_DotNetFx");
                 else
                     return Path.Combine(Environment.GetEnvironmentVariable("HOME"), ".config/GRILO/Bootables_DotNetFx");
@@ -98,7 +103,7 @@ namespace GRILO.Bootloader
         {
             get
             {
-                if (GRILOPlatform.IsOnWindows())
+                if (PlatformHelper.IsOnWindows())
                     return Path.Combine(Environment.GetEnvironmentVariable("LOCALAPPDATA"), "GRILO/BootloaderDebug.log");
                 else
                     return Path.Combine(Environment.GetEnvironmentVariable("HOME"), ".config/GRILO/BootloaderDebug.log");
