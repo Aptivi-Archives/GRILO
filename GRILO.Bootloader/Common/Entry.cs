@@ -50,10 +50,6 @@ namespace GRILO.Bootloader.Common
                 // Populate GRILO folders (if any)
                 ConfigPaths.MakePaths();
 
-                // Read the configuration (or make one if not found)
-                Config.ReadConfig();
-                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Config read successfully.");
-
                 // Populate custom boot styles
                 BootStyleManager.PopulateCustomBootStyles();
                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Custom boot styles read successfully.");
@@ -69,6 +65,10 @@ namespace GRILO.Bootloader.Common
                     TextWriterColor.WritePlain($"{VtSequenceBasicChars.EscapeChar}7{VtSequenceBasicChars.EscapeChar}[?47h", false);
                     isOnAlternativeBuffer = true;
                 }
+
+                // Read the configuration (or make one if not found)
+                Config.ReadConfig();
+                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Config read successfully.");
 
                 // Now, draw the boot menu. Note that the chosen boot entry counts from zero.
                 int chosenBootEntry = Config.Instance.BootSelect;

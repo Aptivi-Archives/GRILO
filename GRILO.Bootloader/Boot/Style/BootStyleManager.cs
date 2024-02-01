@@ -26,6 +26,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading;
 using Terminaux.Inputs;
 using Terminaux.Writer.ConsoleWriters;
@@ -57,9 +58,13 @@ namespace GRILO.Bootloader.Boot.Style
         {
             // Custom boot styles usually have a .DLL extension
             List<string> styles = Directory.EnumerateFiles(ConfigPaths.GRILOStylesPath, "*.dll").ToList();
+            List<(string, Exception)> failedStyles = [];
             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Custom boot styles: {0}", styles.Count);
+
+            // Iterate through all found possible boot style .dll files
             foreach (var style in styles)
             {
+                // Get the file name
                 string styleName = Path.GetFileName(style);
                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Style name: {0}", styleName);
                 try
@@ -89,8 +94,18 @@ namespace GRILO.Bootloader.Boot.Style
                     // Either the boot style is invalid or can't be loaded.
                     DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Can't load custom boot style. {0}", ex.Message);
                     DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Stack trace:\n{0}", ex.StackTrace);
-                    throw new BootloaderException($"Can't load custom boot style {styleName}: {ex.Message}", ex);
+                    failedStyles.Add((styleName, new BootloaderException($"Can't load custom boot style {styleName}: {ex.Message}", ex)));
                 }
+            }
+
+            // Check to see if there are any errors
+            if (failedStyles.Count > 0)
+            {
+                var message = new StringBuilder();
+                message.AppendLine($"GRILO failed to load {failedStyles.Count} custom boot styles.\n");
+                foreach (var style in failedStyles)
+                    message.AppendLine($"  - {style.Item1}: {style.Item2.Message}\n{style.Item2.StackTrace}");
+                throw new BootloaderException(message.ToString());
             }
         }
 
