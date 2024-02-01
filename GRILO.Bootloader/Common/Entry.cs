@@ -31,6 +31,7 @@ using GRILO.Bootloader.Common.KeyHandler;
 using GRILO.Bootloader.Common.Configuration;
 using GRILO.Bootloader.Boot.Style;
 using Terminaux.ResizeListener;
+using Textify.Sequences.Tools;
 
 namespace GRILO.Bootloader.Common
 {
@@ -62,7 +63,8 @@ namespace GRILO.Bootloader.Common
                 // Switch to alternative buffer
                 if (!PlatformHelper.IsOnWindows())
                 {
-                    TextWriterColor.WritePlain($"{VtSequenceBasicChars.EscapeChar}7{VtSequenceBasicChars.EscapeChar}[?47h", false);
+                    TextWriterColor.WritePlain(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.EscSaveCursor), false);
+                    TextWriterColor.WritePlain(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.CsiSetMode, "?47"), false);
                     isOnAlternativeBuffer = true;
                 }
 
@@ -73,7 +75,7 @@ namespace GRILO.Bootloader.Common
                 // Run the console resize listener
                 ConsoleResizeListener.StartResizeListener();
 
-                // Now, draw the boot menu. Note that the chosen boot entry counts from zero.
+                // Now, enter the main loop.
                 isOnMainLoop = true;
                 BootloaderMain.MainLoop();
             }
@@ -99,7 +101,11 @@ namespace GRILO.Bootloader.Common
             finally
             {
                 if (isOnAlternativeBuffer)
-                    TextWriterColor.WritePlain($"{VtSequenceBasicChars.EscapeChar}[2J{VtSequenceBasicChars.EscapeChar}[?47l{VtSequenceBasicChars.EscapeChar}8", false);
+                {
+                    TextWriterColor.WritePlain(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.CsiEraseInDisplay), false);
+                    TextWriterColor.WritePlain(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.CsiResetMode, "?47"), false);
+                    TextWriterColor.WritePlain(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.EscRestoreCursor), false);
+                }
                 Console.CursorVisible = true;
             }
         }
