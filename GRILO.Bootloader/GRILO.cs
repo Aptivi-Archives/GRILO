@@ -98,14 +98,11 @@ namespace GRILO.Bootloader
                         ConsoleKeyInfo cki;
                         if (timeout > 0 && waitingForFirstBootKey)
                         {
-                            try
-                            {
-                                cki = Input.ReadKeyTimeout(true, TimeSpan.FromSeconds(Config.Instance.BootSelectTimeoutSeconds));
-                            }
-                            catch
-                            {
+                            var result = Input.ReadKeyTimeout(true, TimeSpan.FromSeconds(Config.Instance.BootSelectTimeoutSeconds));
+                            if (!result.provided)
                                 cki = new('\x0A', ConsoleKey.Enter, false, false, false);
-                            }
+                            else
+                                cki = result.result;
                         }
                         else
                             cki = Input.DetectKeypress();

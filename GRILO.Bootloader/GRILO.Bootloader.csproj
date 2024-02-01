@@ -46,7 +46,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Terminaux" Version="2.1.0" />
+    <PackageReference Include="Terminaux" Version="2.7.2" />
   </ItemGroup>
 
   <ItemGroup>
