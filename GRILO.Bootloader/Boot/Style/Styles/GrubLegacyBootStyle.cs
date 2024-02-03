@@ -32,7 +32,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
     {
         public override Dictionary<ConsoleKeyInfo, Action<BootAppInfo>> CustomKeys { get; }
 
-        public override void Render()
+        public override string Render()
         {
             // Populate colors
             ConsoleColor sectionTitle = ConsoleColor.Gray;
@@ -55,7 +55,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             TextWriterWhereColor.WriteWhereColor(help, Console.WindowWidth / 2 - longest / 2 - 2, Console.WindowHeight - 8, new Color(sectionTitle));
         }
 
-        public override void RenderHighlight(int chosenBootEntry)
+        public override string RenderHighlight(int chosenBootEntry)
         {
             // Populate colors
             ConsoleColor highlightedEntry = ConsoleColor.Gray;
@@ -83,7 +83,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             }
         }
 
-        public override void RenderModalDialog(string content)
+        public override string RenderModalDialog(string content)
         {
             // Populate colors
             ColorTools.LoadBack(0);
@@ -91,22 +91,22 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             TextWriterColor.WriteColor(content, true, new Color(dialogFG));
         }
 
-        public override void RenderBootingMessage(string chosenBootName) =>
+        public override string RenderBootingMessage(string chosenBootName) =>
             TextWriterColor.Write(
                 $"  Booting '{chosenBootName}'\n\n" +
                 $" Filesystem type is fat, partition type 0x0C"
             );
 
-        public override void RenderBootFailedMessage(string content) =>
+        public override string RenderBootFailedMessage(string content) =>
             RenderModalDialog(content);
 
-        public override void RenderSelectTimeout(int timeout)
+        public override string RenderSelectTimeout(int timeout)
         {
             string help = $"The highlighted entry will be executed automatically in {timeout}s. ";
             TextWriterWhereColor.WriteWhereColor(help, 4, Console.WindowHeight - 5, true, new Color(ConsoleColor.White));
         }
 
-        public override void ClearSelectTimeout()
+        public override string ClearSelectTimeout()
         {
             string help = $"The highlighted entry will be executed automatically in {Config.Instance.BootSelectTimeoutSeconds}s. ";
             TextWriterWhereColor.WriteWhereColor(new string(' ', help.Length), 4, Console.WindowHeight - 5, true, new Color(ConsoleColor.White));

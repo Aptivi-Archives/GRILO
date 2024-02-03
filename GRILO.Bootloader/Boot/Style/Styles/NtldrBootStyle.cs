@@ -32,7 +32,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
         internal List<(int, int)> bootEntryPositions = new();
         public override Dictionary<ConsoleKeyInfo, Action<BootAppInfo>> CustomKeys { get; }
 
-        public override void Render()
+        public override string Render()
         {
             // Prompt the user for selection
             var bootApps = BootManager.GetBootApps();
@@ -48,7 +48,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             TextWriterColor.Write("For troubleshooting and advanced startup options for Windows, press F8.");
         }
 
-        public override void RenderHighlight(int chosenBootEntry)
+        public override string RenderHighlight(int chosenBootEntry)
         {
             // Populate colors
             ConsoleColor highlightedEntryForeground = ConsoleColor.Black;
@@ -59,7 +59,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             TextWriterWhereColor.WriteWhereColorBack("    {0}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground), bootApp);
         }
 
-        public override void RenderModalDialog(string content)
+        public override string RenderModalDialog(string content)
         {
             // Populate colors
             ColorTools.LoadBack(0);
@@ -75,9 +75,9 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             TextWriterColor.Write("\nUse the up and down arrow keys to move the highlight to your choice.");
         }
 
-        public override void RenderBootingMessage(string chosenBootName) { }
+        public override string RenderBootingMessage(string chosenBootName) { }
 
-        public override void RenderBootFailedMessage(string content)
+        public override string RenderBootFailedMessage(string content)
         {
             bool exiting = false;
             int choiceNum = 7;
@@ -109,7 +109,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             }
         }
 
-        public override void RenderSelectTimeout(int timeout)
+        public override string RenderSelectTimeout(int timeout)
         {
             ConsoleColor hintColor = ConsoleColor.Gray;
             int marginX = 2;
@@ -119,7 +119,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             TextWriterWhereColor.WriteWhereColor($"{timeout} ", timeoutX, optionHelpY, true, new Color(hintColor));
         }
 
-        public override void ClearSelectTimeout()
+        public override string ClearSelectTimeout()
         {
             int marginX = 2;
             int timeoutY = 17;

@@ -28,6 +28,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
+using Terminaux.Base.Buffered;
 using Terminaux.Inputs;
 using Terminaux.Writer.ConsoleWriters;
 
@@ -142,78 +143,57 @@ namespace GRILO.Bootloader.Boot.Style
         /// Renders the boot menu
         /// </summary>
         /// <param name="chosenBootEntry">Chosen boot entry index (from 0)</param>
-        public static void RenderMenu(int chosenBootEntry)
+        public static string RenderMenu(int chosenBootEntry)
         {
-            // Get the base boot style from the current boot style name
-            string bootStyleStr = Config.Instance.BootStyleName;
-            var bootStyle = GetBootStyle(bootStyleStr);
-            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Got boot style from {0}...", bootStyleStr);
-
             // Render it.
+            var bootStyle = GetCurrentBootStyle();
+            var rendered = new StringBuilder();
             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Rendering menu with chosen boot entry {0}...", chosenBootEntry);
-            bootStyle.Render();
-            bootStyle.RenderHighlight(chosenBootEntry);
-        }
-
-        /// <summary>
-        /// Renders the modal dialog box
-        /// </summary>
-        /// <param name="content">Message to display in the box</param>
-        public static void RenderDialog(string content)
-        {
-            Console.Clear();
-
-            // Get the base boot style from the current boot style name
-            string bootStyleStr = Config.Instance.BootStyleName;
-            var bootStyle = GetBootStyle(bootStyleStr);
-            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Got boot style from {0}...", bootStyleStr);
-
-            // Render it.
-            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Rendering modal dialog with content: {0}...", content);
-            bootStyle.RenderModalDialog(content);
-
-            // Wait for input
-            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Waiting for user to press any key...");
-            Input.DetectKeypress();
+            rendered.Append(
+                bootStyle.Render() +
+                bootStyle.RenderHighlight(chosenBootEntry)
+            );
+            return rendered.ToString();
         }
 
         /// <summary>
         /// Renders the boot message
         /// </summary>
         /// <param name="chosenBootName">Chosen boot name</param>
-        public static void RenderBootingMessage(string chosenBootName)
+        public static string RenderBootingMessage(string chosenBootName)
         {
-            // Get the base boot style from the current boot style name
-            string bootStyleStr = Config.Instance.BootStyleName;
-            var bootStyle = GetBootStyle(bootStyleStr);
-            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Got boot style from {0}...", bootStyleStr);
+            // Render it.
+            var bootStyle = GetCurrentBootStyle();
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Rendering booting message with chosen boot name {0}...", chosenBootName);
+            return bootStyle.RenderBootingMessage(chosenBootName);
+        }
+
+        /// <summary>
+        /// Renders the modal dialog box
+        /// </summary>
+        /// <param name="content">Message to display in the box</param>
+        public static string RenderDialog(string content)
+        {
+            Console.Clear();
 
             // Render it.
-            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Rendering booting message with chosen boot name {0}...", chosenBootName);
-            bootStyle.RenderBootingMessage(chosenBootName);
+            var bootStyle = GetCurrentBootStyle();
+            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Rendering modal dialog with content: {0}...", content);
+            return bootStyle.RenderModalDialog(content);
         }
 
         /// <summary>
         /// Renders the boot failed message
         /// </summary>
         /// <param name="content">Message to display</param>
-        public static void RenderBootFailedMessage(string content)
+        public static string RenderBootFailedMessage(string content)
         {
             Console.Clear();
 
-            // Get the base boot style from the current boot style name
-            string bootStyleStr = Config.Instance.BootStyleName;
-            var bootStyle = GetBootStyle(bootStyleStr);
-            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Got boot style from {0}...", bootStyleStr);
-
             // Render it.
+            var bootStyle = GetCurrentBootStyle();
             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Rendering boot failed message with content: {0}...", content);
-            bootStyle.RenderBootFailedMessage(content);
-
-            // Wait for input
-            DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Waiting for user to press any key...");
-            TextWriterColor.Write("Press any key to continue...");
-            Input.DetectKeypress();
+            return bootStyle.RenderBootFailedMessage(content);
         }
 
         /// <summary>
@@ -242,20 +222,31 @@ namespace GRILO.Bootloader.Boot.Style
         {
             var style = GetCurrentBootStyle();
             int timeoutElapsed = 0;
+            var bufferClear = new ScreenPart();
             try
             {
                 while (timeoutElapsed < timeout && BootloaderState.WaitingForFirstBootKey)
                 {
-                    style.RenderSelectTimeout(timeout - timeoutElapsed);
+                    // Render the timeout area since it isn't elapsed
+                    var buffer = new ScreenPart();
+                    buffer.AddDynamicText(() => style.RenderSelectTimeout(timeout - timeoutElapsed));
+                    BootloaderMain.bootloaderScreen.AddBufferedPart("Timeout", buffer);
+                    ScreenTools.Render();
                     Thread.Sleep(1000);
+                    BootloaderMain.bootloaderScreen.RemoveBufferedPart("Timeout");
                     timeoutElapsed += 1;
                 }
-                style.ClearSelectTimeout();
             }
             catch
             {
-                style.ClearSelectTimeout();
+                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Warning, "Failed to render select timeout.");
             }
+
+            // Clear the timeout area
+            bufferClear.AddDynamicText(style.ClearSelectTimeout);
+            BootloaderMain.bootloaderScreen.AddBufferedPart("Clear timeout", bufferClear);
+            ScreenTools.Render();
+            BootloaderMain.bootloaderScreen.RemoveBufferedPart("Clear timeout");
         }
     }
 }

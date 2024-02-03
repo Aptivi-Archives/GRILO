@@ -33,7 +33,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
 
         public override Dictionary<ConsoleKeyInfo, Action<BootAppInfo>> CustomKeys { get; }
 
-        public override void Render()
+        public override string Render()
         {
             // Populate colors
             ConsoleColor bootEntry = ConsoleColor.Blue;
@@ -49,7 +49,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             }
         }
 
-        public override void RenderHighlight(int chosenBootEntry)
+        public override string RenderHighlight(int chosenBootEntry)
         {
             // Populate colors
             ConsoleColor highlightedEntry = ConsoleColor.Cyan;
@@ -59,7 +59,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             TextWriterWhereColor.WriteWhereColor(" [{0}] {1}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, new Color(highlightedEntry), chosenBootEntry + 1, bootApp);
         }
 
-        public override void RenderModalDialog(string content)
+        public override string RenderModalDialog(string content)
         {
             // Populate colors
             ConsoleColor dialogBG = ConsoleColor.Black;
@@ -68,16 +68,16 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             Console.Clear();
         }
 
-        public override void RenderBootingMessage(string chosenBootName) =>
+        public override string RenderBootingMessage(string chosenBootName) =>
             TextWriterColor.Write("Booting {0}...", chosenBootName);
 
-        public override void RenderBootFailedMessage(string content) =>
+        public override string RenderBootFailedMessage(string content) =>
             RenderModalDialog(content);
 
-        public override void RenderSelectTimeout(int timeout) =>
+        public override string RenderSelectTimeout(int timeout) =>
             TextWriterWhereColor.WriteWhereColor($" {timeout}", Console.WindowWidth - $" {timeout}".Length - 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White));
 
-        public override void ClearSelectTimeout()
+        public override string ClearSelectTimeout()
         {
             string spaces = new(' ', DefaultBootStyle.GetDigits(Config.Instance.BootSelectTimeoutSeconds));
             TextWriterWhereColor.WriteWhereColor(spaces, Console.WindowWidth - spaces.Length - 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White));

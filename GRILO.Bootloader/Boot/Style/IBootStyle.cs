@@ -35,35 +35,35 @@ namespace GRILO.Bootloader.Boot.Style
         /// <summary>
         /// Renders the bootloader style
         /// </summary>
-        void Render();
+        string Render();
         /// <summary>
         /// Renders the highlighted boot entry
         /// </summary>
         /// <param name="chosenBootEntry">Chosen boot entry index (from 0)</param>
-        void RenderHighlight(int chosenBootEntry);
+        string RenderHighlight(int chosenBootEntry);
         /// <summary>
         /// Renders the modal dialog box with content
         /// </summary>
         /// <param name="content">Message to display in the box</param>
-        void RenderModalDialog(string content);
+        string RenderModalDialog(string content);
         /// <summary>
         /// Renders the booting message
         /// </summary>
         /// <param name="chosenBootName">Chosen boot name</param>
-        void RenderBootingMessage(string chosenBootName);
+        string RenderBootingMessage(string chosenBootName);
         /// <summary>
         /// Renders the boot failed message
         /// </summary>
         /// <param name="content">Message to display</param>
-        void RenderBootFailedMessage(string content);
+        string RenderBootFailedMessage(string content);
         /// <summary>
         /// Renders the timeout for selection
         /// </summary>
         /// <param name="timeout">Target timeout in seconds to count down from</param>
-        void RenderSelectTimeout(int timeout);
+        string RenderSelectTimeout(int timeout);
         /// <summary>
         /// Clears the timeout for selection
         /// </summary>
-        void ClearSelectTimeout();
+        string ClearSelectTimeout();
     }
 }

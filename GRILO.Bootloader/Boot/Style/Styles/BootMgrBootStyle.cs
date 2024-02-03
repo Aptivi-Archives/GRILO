@@ -20,6 +20,7 @@
 using GRILO.Bootloader.Boot.Apps;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Terminaux.Colors;
 using Terminaux.Inputs;
 using Terminaux.Writer.ConsoleWriters;
@@ -31,7 +32,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
         internal List<(int, int)> bootEntryPositions = new();
         public override Dictionary<ConsoleKeyInfo, Action<BootAppInfo>> CustomKeys { get; }
 
-        public override void Render()
+        public override string Render()
         {
             // Render the header and footer
             int marginX = 2;
@@ -41,6 +42,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             string header = "Windows Boot Manager";
             string footer = "ENTER=Choose";
             int headerTextX = Console.WindowWidth / 2 - header.Length / 2;
+            var builder = new StringBuilder();
             ConsoleColor barColor = ConsoleColor.Gray;
             ConsoleColor barForeground = ConsoleColor.Black;
             TextWriterWhereColor.WriteWhereColorBack(new string(' ', barLength), marginX, headerY, new Color(barForeground), new Color(barColor));
@@ -58,7 +60,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             TextWriterWhereColor.WriteWhereColor("To specify an advanced option for this choice, press F8.", marginX, optionHelpY, new Color(promptColor));
         }
 
-        public override void RenderHighlight(int chosenBootEntry)
+        public override string RenderHighlight(int chosenBootEntry)
         {
             // Populate colors
             ConsoleColor normalEntryFg = ConsoleColor.Gray;
@@ -86,7 +88,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             }
         }
 
-        public override void RenderBootFailedMessage(string content)
+        public override string RenderBootFailedMessage(string content)
         {
             // Render the header and footer
             int marginX = 2;
@@ -120,12 +122,12 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             Console.Clear();
         }
 
-        public override void RenderBootingMessage(string chosenBootName) { }
+        public override string RenderBootingMessage(string chosenBootName) { }
 
-        public override void RenderModalDialog(string content) =>
+        public override string RenderModalDialog(string content) =>
             TextWriterColor.Write(content);
 
-        public override void RenderSelectTimeout(int timeout)
+        public override string RenderSelectTimeout(int timeout)
         {
             ConsoleColor hintColor = ConsoleColor.Gray;
             int marginX = 2;
@@ -136,7 +138,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             TextWriterWhereColor.WriteWhereColor($"{timeout} ", timeoutX, timeoutY, true, new Color(hintColor));
         }
 
-        public override void ClearSelectTimeout()
+        public override string ClearSelectTimeout()
         {
             int marginX = 2;
             int timeoutY = 13;

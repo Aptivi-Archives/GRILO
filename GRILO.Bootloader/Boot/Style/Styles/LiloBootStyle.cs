@@ -31,7 +31,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
     {
         public override Dictionary<ConsoleKeyInfo, Action<BootAppInfo>> CustomKeys { get; }
 
-        public override void Render()
+        public override string Render()
         {
             // Populate colors
             ConsoleColor sectionTitle = ConsoleColor.Yellow;
@@ -91,7 +91,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             TextWriterWhereColor.WriteWhereColorBack(help, textX, textY, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
         }
 
-        public override void RenderHighlight(int chosenBootEntry)
+        public override string RenderHighlight(int chosenBootEntry)
         {
             // Populate colors
             ConsoleColor normalEntryFg = ConsoleColor.Gray;
@@ -123,7 +123,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             }
         }
 
-        public override void RenderModalDialog(string content)
+        public override string RenderModalDialog(string content)
         {
             // Populate colors
             ColorTools.LoadBack(0);
@@ -131,12 +131,12 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             TextWriterColor.WriteColor(content, true, new Color(dialogFG));
         }
 
-        public override void RenderBootingMessage(string chosenBootName) { }
+        public override string RenderBootingMessage(string chosenBootName) { }
 
-        public override void RenderBootFailedMessage(string content) =>
+        public override string RenderBootFailedMessage(string content) =>
             RenderModalDialog(content);
 
-        public override void RenderSelectTimeout(int timeout)
+        public override string RenderSelectTimeout(int timeout)
         {
             string help = $"{TimeSpan.FromSeconds(timeout):mm}:{TimeSpan.FromSeconds(timeout):ss}";
             int textY = 11;
@@ -145,7 +145,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             TextWriterWhereColor.WriteWhereColorBack(help, extraEndX, textY, true, new Color(ConsoleColor.Gray), new Color(ConsoleColor.DarkRed));
         }
 
-        public override void ClearSelectTimeout()
+        public override string ClearSelectTimeout()
         {
             string help = $"{TimeSpan.FromSeconds(Config.Instance.BootSelectTimeoutSeconds):mm}:{TimeSpan.FromSeconds(Config.Instance.BootSelectTimeoutSeconds):ss}";
             int textY = 11;

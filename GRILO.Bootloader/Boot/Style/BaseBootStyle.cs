@@ -32,24 +32,24 @@ namespace GRILO.Bootloader.Boot.Style
         public abstract Dictionary<ConsoleKeyInfo, Action<BootAppInfo>> CustomKeys { get; }
 
         /// <inheritdoc/>
-        public abstract void Render();
+        public abstract string Render();
 
         /// <inheritdoc/>
-        public abstract void RenderHighlight(int chosenBootEntry);
+        public abstract string RenderHighlight(int chosenBootEntry);
 
         /// <inheritdoc/>
-        public abstract void RenderModalDialog(string content);
+        public abstract string RenderModalDialog(string content);
 
         /// <inheritdoc/>
-        public abstract void RenderBootingMessage(string chosenBootName);
+        public abstract string RenderBootingMessage(string chosenBootName);
 
         /// <inheritdoc/>
-        public abstract void RenderBootFailedMessage(string content);
+        public abstract string RenderBootFailedMessage(string content);
 
         /// <inheritdoc/>
-        public abstract void RenderSelectTimeout(int timeout);
+        public abstract string RenderSelectTimeout(int timeout);
 
         /// <inheritdoc/>
-        public abstract void ClearSelectTimeout();
+        public abstract string ClearSelectTimeout();
     }
 }
