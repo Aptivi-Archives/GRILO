@@ -104,25 +104,6 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             return builder.ToString();
         }
 
-        public override string RenderModalDialog(string content)
-        {
-            // Populate colors
-            ConsoleColor dialogBG = ConsoleColor.Black;
-            ConsoleColor dialogFG = ConsoleColor.Gray;
-            ColorTools.LoadBack();
-
-            var splitLines = content.SplitNewLines();
-            int maxWidth = splitLines.Max((str) => str.Length);
-            int maxHeight = splitLines.Length;
-            if (maxWidth >= ConsoleWrapper.WindowWidth)
-                maxWidth = ConsoleWrapper.WindowWidth - 4;
-            if (maxHeight >= ConsoleWrapper.WindowHeight)
-                maxHeight = ConsoleWrapper.WindowHeight - 4;
-            int borderX = ConsoleWrapper.WindowWidth / 2 - maxWidth / 2 - 1;
-            int borderY = ConsoleWrapper.WindowHeight / 2 - maxHeight / 2 - 1;
-            return BorderTextColor.RenderBorder(content, borderX, borderY, maxWidth, maxHeight, new Color(dialogFG), new Color(dialogBG));
-        }
-
         public override string RenderBootingMessage(string chosenBootName) =>
             $"Booting {chosenBootName}...";
 

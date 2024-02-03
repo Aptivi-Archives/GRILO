@@ -20,6 +20,11 @@
 using GRILO.Bootloader.Boot.Apps;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Terminaux.Base;
+using Terminaux.Colors;
+using Terminaux.Writer.FancyWriters;
+using Textify.General;
 
 namespace GRILO.Bootloader.Boot.Style
 {
@@ -40,8 +45,24 @@ namespace GRILO.Bootloader.Boot.Style
             "";
 
         /// <inheritdoc/>
-        public virtual string RenderModalDialog(string content) =>
-            "";
+        public virtual string RenderModalDialog(string content)
+        {
+            // Populate colors
+            ConsoleColor dialogBG = ConsoleColor.Black;
+            ConsoleColor dialogFG = ConsoleColor.Gray;
+            ColorTools.LoadBack();
+
+            var splitLines = content.SplitNewLines();
+            int maxWidth = splitLines.Max((str) => str.Length);
+            int maxHeight = splitLines.Length;
+            if (maxWidth >= ConsoleWrapper.WindowWidth)
+                maxWidth = ConsoleWrapper.WindowWidth - 4;
+            if (maxHeight >= ConsoleWrapper.WindowHeight)
+                maxHeight = ConsoleWrapper.WindowHeight - 4;
+            int borderX = ConsoleWrapper.WindowWidth / 2 - maxWidth / 2 - 1;
+            int borderY = ConsoleWrapper.WindowHeight / 2 - maxHeight / 2 - 1;
+            return BorderTextColor.RenderBorder(content, borderX, borderY, maxWidth, maxHeight, new Color(dialogFG), new Color(dialogBG));
+        }
 
         /// <inheritdoc/>
         public virtual string RenderBootingMessage(string chosenBootName) =>

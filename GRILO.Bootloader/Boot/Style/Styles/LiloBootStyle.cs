@@ -146,13 +146,6 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             return builder.ToString();
         }
 
-        public override string RenderModalDialog(string content)
-        {
-            // Populate colors
-            ConsoleColor dialogFG = ConsoleColor.Gray;
-            return $"{new Color(dialogFG).VTSequenceForeground}{content}";
-        }
-
         public override string RenderBootFailedMessage(string content) =>
             RenderModalDialog(content);
 

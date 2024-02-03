@@ -42,7 +42,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             for (int i = 0; i < bootApps.Count; i++)
             {
                 string bootApp = BootManager.GetBootAppNameByIndex(i);
-                bootEntryPositions.Add((Console.CursorLeft, Console.CursorTop));
+                bootEntryPositions.Add((0, 5 + i));
                 builder.AppendLine($"    {bootApp}");
             }
             builder.AppendLine("\nUse the up and down arrow keys to move the highlight to your choice.");
@@ -59,7 +59,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
 
             // Highlight the chosen entry
             string bootApp = BootManager.GetBootAppNameByIndex(chosenBootEntry);
-            return TextWriterWhereColor.RenderWhere("    {0}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground), bootApp);
+            return TextWriterWhereColor.RenderWhere("    {0}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, true, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground), bootApp);
         }
 
         public override string RenderModalDialog(string content)
@@ -126,7 +126,10 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             ConsoleColor hintColor = ConsoleColor.Gray;
             var builder = new StringBuilder();
             int marginX = 2;
-            int optionHelpY = 17;
+            int optionHelpY =
+                bootEntryPositions.Count > 0 ?
+                bootEntryPositions[bootEntryPositions.Count - 1].Item2 + 9 :
+                17;
             int timeoutX = marginX + "Seconds until the highlighted choice will be started automatically: ".Length;
             builder.Append(
                 TextWriterWhereColor.RenderWhere("Seconds until the highlighted choice will be started automatically:", marginX, optionHelpY, true, new Color(hintColor), ColorTools.CurrentBackgroundColor) +
@@ -138,7 +141,10 @@ namespace GRILO.Bootloader.Boot.Style.Styles
         public override string ClearSelectTimeout()
         {
             int marginX = 2;
-            int timeoutY = 17;
+            int timeoutY =
+                bootEntryPositions.Count > 0 ?
+                bootEntryPositions[bootEntryPositions.Count - 1].Item2 + 9 :
+                17;
             ConsoleColor hintColor = ConsoleColor.Gray;
             return TextWriterWhereColor.RenderWhere(new string(' ', Console.WindowWidth - 2), marginX, timeoutY, true, new Color(hintColor), ColorTools.CurrentBackgroundColor);
         }

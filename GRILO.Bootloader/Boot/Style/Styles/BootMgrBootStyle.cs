@@ -20,10 +20,14 @@
 using GRILO.Bootloader.Boot.Apps;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using Terminaux.Base;
 using Terminaux.Colors;
 using Terminaux.Inputs;
 using Terminaux.Writer.ConsoleWriters;
+using Terminaux.Writer.FancyWriters;
+using Textify.General;
 
 namespace GRILO.Bootloader.Boot.Style.Styles
 {
@@ -136,9 +140,6 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             );
             return builder.ToString();
         }
-
-        public override string RenderModalDialog(string content) =>
-            content;
 
         public override string RenderSelectTimeout(int timeout)
         {
