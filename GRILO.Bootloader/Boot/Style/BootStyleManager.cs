@@ -29,6 +29,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using Terminaux.Base.Buffered;
+using Terminaux.Colors;
 using Terminaux.Inputs;
 using Terminaux.Writer.ConsoleWriters;
 
@@ -174,8 +175,6 @@ namespace GRILO.Bootloader.Boot.Style
         /// <param name="content">Message to display in the box</param>
         public static string RenderDialog(string content)
         {
-            Console.Clear();
-
             // Render it.
             var bootStyle = GetCurrentBootStyle();
             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Rendering modal dialog with content: {0}...", content);
@@ -188,8 +187,6 @@ namespace GRILO.Bootloader.Boot.Style
         /// <param name="content">Message to display</param>
         public static string RenderBootFailedMessage(string content)
         {
-            Console.Clear();
-
             // Render it.
             var bootStyle = GetCurrentBootStyle();
             DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Rendering boot failed message with content: {0}...", content);

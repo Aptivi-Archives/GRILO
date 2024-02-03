@@ -29,27 +29,34 @@ namespace GRILO.Bootloader.Boot.Style
     public abstract class BaseBootStyle : IBootStyle
     {
         /// <inheritdoc/>
-        public abstract Dictionary<ConsoleKeyInfo, Action<BootAppInfo>> CustomKeys { get; }
+        public virtual Dictionary<ConsoleKeyInfo, Action<BootAppInfo>> CustomKeys { get; }
 
         /// <inheritdoc/>
-        public abstract string Render();
+        public virtual string Render() =>
+            "";
 
         /// <inheritdoc/>
-        public abstract string RenderHighlight(int chosenBootEntry);
+        public virtual string RenderHighlight(int chosenBootEntry) =>
+            "";
 
         /// <inheritdoc/>
-        public abstract string RenderModalDialog(string content);
+        public virtual string RenderModalDialog(string content) =>
+            "";
 
         /// <inheritdoc/>
-        public abstract string RenderBootingMessage(string chosenBootName);
+        public virtual string RenderBootingMessage(string chosenBootName) =>
+            "";
 
         /// <inheritdoc/>
-        public abstract string RenderBootFailedMessage(string content);
+        public virtual string RenderBootFailedMessage(string content) =>
+            "";
 
         /// <inheritdoc/>
-        public abstract string RenderSelectTimeout(int timeout);
+        public virtual string RenderSelectTimeout(int timeout) =>
+            "";
 
         /// <inheritdoc/>
-        public abstract string ClearSelectTimeout();
+        public virtual string ClearSelectTimeout() =>
+            "";
     }
 }

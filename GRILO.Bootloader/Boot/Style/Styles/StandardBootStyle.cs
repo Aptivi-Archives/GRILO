@@ -21,6 +21,7 @@ using GRILO.Bootloader.Boot.Apps;
 using GRILO.Bootloader.Common.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Terminaux.Colors;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;
@@ -39,14 +40,16 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             ConsoleColor bootEntry = ConsoleColor.Blue;
 
             // Prompt the user for selection
+            var builder = new StringBuilder();
             var bootApps = BootManager.GetBootApps();
-            TextWriterColor.Write("\n  Select boot entry:\n", true);
+            builder.AppendLine("\n  Select boot entry:\n");
             for (int i = 0; i < bootApps.Count; i++)
             {
                 string bootApp = BootManager.GetBootAppNameByIndex(i);
-                bootEntryPositions.Add((Console.CursorLeft, Console.CursorTop));
-                TextWriterColor.WriteColor(" [{0}] {1}", true, new Color(bootEntry), i + 1, bootApp);
+                bootEntryPositions.Add((0, 3 + i));
+                builder.AppendLine($"{new Color(bootEntry).VTSequenceForeground} [{i + 1}] {bootApp}");
             }
+            return builder.ToString();
         }
 
         public override string RenderHighlight(int chosenBootEntry)
@@ -56,7 +59,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
 
             // Highlight the chosen entry
             string bootApp = BootManager.GetBootAppNameByIndex(chosenBootEntry);
-            TextWriterWhereColor.WriteWhereColor(" [{0}] {1}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, new Color(highlightedEntry), chosenBootEntry + 1, bootApp);
+            return TextWriterWhereColor.RenderWhere(" [{0}] {1}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, true, new Color(highlightedEntry), ColorTools.CurrentBackgroundColor, chosenBootEntry + 1, bootApp);
         }
 
         public override string RenderModalDialog(string content)
@@ -65,22 +68,23 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             ConsoleColor dialogBG = ConsoleColor.Black;
             ConsoleColor dialogFG = ConsoleColor.Gray;
             InfoBoxColor.WriteInfoBoxColorBack(content, new Color(dialogFG), new Color(dialogBG));
-            Console.Clear();
+            ColorTools.LoadBack();
+            return "";
         }
 
         public override string RenderBootingMessage(string chosenBootName) =>
-            TextWriterColor.Write("Booting {0}...", chosenBootName);
+            $"Booting {chosenBootName}...";
 
         public override string RenderBootFailedMessage(string content) =>
             RenderModalDialog(content);
 
         public override string RenderSelectTimeout(int timeout) =>
-            TextWriterWhereColor.WriteWhereColor($" {timeout}", Console.WindowWidth - $" {timeout}".Length - 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White));
+            TextWriterWhereColor.RenderWhere($" {timeout}", Console.WindowWidth - $" {timeout}".Length - 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White), ColorTools.CurrentBackgroundColor);
 
         public override string ClearSelectTimeout()
         {
             string spaces = new(' ', DefaultBootStyle.GetDigits(Config.Instance.BootSelectTimeoutSeconds));
-            TextWriterWhereColor.WriteWhereColor(spaces, Console.WindowWidth - spaces.Length - 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White));
+            return TextWriterWhereColor.RenderWhere(spaces, Console.WindowWidth - spaces.Length - 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White), ColorTools.CurrentBackgroundColor);
         }
     }
 }

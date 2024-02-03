@@ -21,6 +21,7 @@ using GRILO.Bootloader.Boot.Apps;
 using GRILO.Bootloader.Common.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Terminaux.Colors;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
@@ -40,6 +41,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             ConsoleColor promptColor = ConsoleColor.Gray;
 
             // Write the box
+            var builder = new StringBuilder();
             int interiorWidth = 41;
             int interiorHeight = 12;
             int bootPrompt = 16;
@@ -48,30 +50,40 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             int extraEndX = Console.WindowWidth / 2 + (interiorWidth + 4) / 2;
             int startY = 1;
             int endY = bootPrompt + startY - 2;
-            BorderColor.WriteBorder(halfX, startY, interiorWidth, interiorHeight,
-                '╓', '╙', '╖', '╜', '─', '─', '║', '║', new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
+            builder.Append(
+                BorderColor.RenderBorder(halfX, startY, interiorWidth, interiorHeight,
+                    '╓', '╙', '╖', '╜', '─', '─', '║', '║', new Color(boxBorderColor), new Color(boxBorderBackgroundColor))
+            );
             for (int y = startY; y < endY; y++)
             {
-                TextWriterWhereColor.WriteWhereColorBack(" ", extraStartX, y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
-                TextWriterWhereColor.WriteWhereColorBack(" ", extraEndX, y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
+                builder.Append(
+                    TextWriterWhereColor.RenderWhere(" ", extraStartX, y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor)) +
+                    TextWriterWhereColor.RenderWhere(" ", extraEndX, y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor))
+                );
             }
 
             // Offer the boot prompt
-            TextWriterWhereColor.WriteWhereColor("boot: ", 0, bootPrompt, new Color(promptColor));
+            builder.Append(
+                TextWriterWhereColor.RenderWhere("boot: ", 0, bootPrompt, new Color(promptColor), ColorTools.CurrentBackgroundColor)
+            );
 
             // Now, fill the box with usual things, starting from the title
             string title = "LILO 22.7  Boot Menu";
             int titleX = Console.WindowWidth / 2 - title.Length / 2;
             int titleY = 3;
-            TextWriterWhereColor.WriteWhereColorBack(title, titleX, titleY, new Color(sectionTitle), new Color(boxBorderBackgroundColor));
+            builder.Append(
+                TextWriterWhereColor.RenderWhere(title, titleX, titleY, new Color(sectionTitle), new Color(boxBorderBackgroundColor))
+            );
 
             // The two separators
             int separator1Y = 5;
             int separator2Y = 10;
             string separator1 = "╟──┬─────────────────╥──┬─────────────────╢";
             string separator2 = "╟──┴─────────────────╨──┴─────────────────╢";
-            TextWriterWhereColor.WriteWhereColorBack(separator1, halfX, separator1Y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
-            TextWriterWhereColor.WriteWhereColorBack(separator2, halfX, separator2Y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
+            builder.Append(
+                TextWriterWhereColor.RenderWhere(separator1, halfX, separator1Y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor)) +
+                TextWriterWhereColor.RenderWhere(separator2, halfX, separator2Y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor))
+            );
 
             // Connecting the separators
             int startSepY = 6;
@@ -79,7 +91,11 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             int connectX = halfX + 1;
             string separator = "  │                 ║  │                 ";
             for (int y = startSepY; y <= endSepY; y++)
-                TextWriterWhereColor.WriteWhereColorBack(separator, connectX, y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
+            {
+                builder.Append(
+                    TextWriterWhereColor.RenderWhere(separator, connectX, y, new Color(boxBorderColor), new Color(boxBorderBackgroundColor))
+                );
+            }
 
             // Write the help text
             int textY = 11;
@@ -88,7 +104,10 @@ namespace GRILO.Bootloader.Boot.Style.Styles
                 "Hit any key to cancel timeout\n" +
                 "Use arrow keys to make selection\n" +
                 "Enter choice & options, hit CR to boot";
-            TextWriterWhereColor.WriteWhereColorBack(help, textX, textY, new Color(boxBorderColor), new Color(boxBorderBackgroundColor));
+            builder.Append(
+                TextWriterWhereColor.RenderWhere(help, textX, textY, new Color(boxBorderColor), new Color(boxBorderBackgroundColor))
+            );
+            return builder.ToString();
         }
 
         public override string RenderHighlight(int chosenBootEntry)
@@ -100,6 +119,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             ConsoleColor selectedEntryBg = normalEntryFg;
 
             // Populate boot entries inside the box
+            var builder = new StringBuilder();
             var bootApps = BootManager.GetBootApps();
             int interiorWidth = 41;
             int halfX = Console.WindowWidth / 2 - (interiorWidth + 2) / 2 + 4;
@@ -118,20 +138,20 @@ namespace GRILO.Bootloader.Boot.Style.Styles
                 rendered = rendered.Length > 16 ? $" {rendered.Substring(1, 15)} " : rendered;
                 var finalColorBg = i == chosenBootEntry ? selectedEntryBg : normalEntryBg;
                 var finalColorFg = i == chosenBootEntry ? selectedEntryFg : normalEntryFg;
-                TextWriterWhereColor.WriteWhereColorBack(rendered, upperLeftCornerInterior.Item1, upperLeftCornerInterior.Item2 + renderedAnswers, false, new Color(finalColorFg), new Color(finalColorBg));
+                builder.Append(
+                    TextWriterWhereColor.RenderWhere(rendered, upperLeftCornerInterior.Item1, upperLeftCornerInterior.Item2 + renderedAnswers, false, new Color(finalColorFg), new Color(finalColorBg))
+                );
                 renderedAnswers++;
             }
+            return builder.ToString();
         }
 
         public override string RenderModalDialog(string content)
         {
             // Populate colors
-            ColorTools.LoadBack(0);
             ConsoleColor dialogFG = ConsoleColor.Gray;
-            TextWriterColor.WriteColor(content, true, new Color(dialogFG));
+            return $"{new Color(dialogFG).VTSequenceForeground}{content}";
         }
-
-        public override string RenderBootingMessage(string chosenBootName) { }
 
         public override string RenderBootFailedMessage(string content) =>
             RenderModalDialog(content);
@@ -142,7 +162,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             int textY = 11;
             int interiorWidth = 41;
             int extraEndX = Console.WindowWidth / 2 + interiorWidth / 2 - help.Length;
-            TextWriterWhereColor.WriteWhereColorBack(help, extraEndX, textY, true, new Color(ConsoleColor.Gray), new Color(ConsoleColor.DarkRed));
+            return TextWriterWhereColor.RenderWhere(help, extraEndX, textY, true, new Color(ConsoleColor.Gray), new Color(ConsoleColor.DarkRed));
         }
 
         public override string ClearSelectTimeout()
@@ -151,7 +171,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             int textY = 11;
             int interiorWidth = 41;
             int extraEndX = Console.WindowWidth / 2 + interiorWidth / 2 - help.Length;
-            TextWriterWhereColor.WriteWhereColorBack(new string(' ', help.Length), extraEndX, textY, true, new Color(ConsoleColor.Gray), new Color(ConsoleColor.DarkRed));
+            return TextWriterWhereColor.RenderWhere(new string(' ', help.Length), extraEndX, textY, true, new Color(ConsoleColor.Gray), new Color(ConsoleColor.DarkRed));
         }
     }
 }

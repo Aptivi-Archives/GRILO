@@ -19,7 +19,7 @@
 
 #if !NETCOREAPP
 using GRILO.Boot;
-using System;
+using Terminaux.Colors;
 
 namespace GRILO.Bootloader.Boot.Apps.Marshaling
 {
@@ -33,7 +33,7 @@ namespace GRILO.Bootloader.Boot.Apps.Marshaling
 
         public void Boot(string[] args)
         {
-            Console.Clear();
+            ColorTools.LoadBack();
             loader.ProxyExecuteBootable(args);
             ShutdownRequested = loader.shutting;
         }

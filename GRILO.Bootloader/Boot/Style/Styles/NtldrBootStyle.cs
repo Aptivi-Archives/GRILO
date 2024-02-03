@@ -21,6 +21,7 @@ using GRILO.Bootloader.Boot.Apps;
 using GRILO.Bootloader.Boot.Diagnostics;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Terminaux.Colors;
 using Terminaux.Inputs;
 using Terminaux.Writer.ConsoleWriters;
@@ -36,16 +37,18 @@ namespace GRILO.Bootloader.Boot.Style.Styles
         {
             // Prompt the user for selection
             var bootApps = BootManager.GetBootApps();
-            TextWriterColor.Write("\n\nPlease select the operating system to start:\n\n");
+            var builder = new StringBuilder();
+            builder.AppendLine("\n\nPlease select the operating system to start:\n\n");
             for (int i = 0; i < bootApps.Count; i++)
             {
                 string bootApp = BootManager.GetBootAppNameByIndex(i);
                 bootEntryPositions.Add((Console.CursorLeft, Console.CursorTop));
-                TextWriterColor.Write("    {0}", bootApp);
+                builder.AppendLine($"    {bootApp}");
             }
-            TextWriterColor.Write("\nUse the up and down arrow keys to move the highlight to your choice.");
-            TextWriterColor.Write("Press ENTER to choose.\n\n\n");
-            TextWriterColor.Write("For troubleshooting and advanced startup options for Windows, press F8.");
+            builder.AppendLine("\nUse the up and down arrow keys to move the highlight to your choice.");
+            builder.AppendLine("Press ENTER to choose.\n\n\n");
+            builder.AppendLine("For troubleshooting and advanced startup options for Windows, press F8.");
+            return builder.ToString();
         }
 
         public override string RenderHighlight(int chosenBootEntry)
@@ -56,7 +59,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
 
             // Highlight the chosen entry
             string bootApp = BootManager.GetBootAppNameByIndex(chosenBootEntry);
-            TextWriterWhereColor.WriteWhereColorBack("    {0}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground), bootApp);
+            return TextWriterWhereColor.RenderWhere("    {0}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground), bootApp);
         }
 
         public override string RenderModalDialog(string content)
@@ -65,17 +68,25 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             ColorTools.LoadBack(0);
             ConsoleColor highlightedEntryForeground = ConsoleColor.Black;
             ConsoleColor highlightedEntryBackground = ConsoleColor.Gray;
+            var builder = new StringBuilder();
 
-            TextWriterColor.Write($"""
+            builder.AppendLine(
+               $"""
                 
                 {content}
                 
-                """);
-            TextWriterColor.WriteColorBack("    Continue", true, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground));
-            TextWriterColor.Write("\nUse the up and down arrow keys to move the highlight to your choice.");
+                """
+            );
+            builder.AppendLine(
+                $"{new Color(highlightedEntryForeground).VTSequenceForeground}" +
+                $"{new Color(highlightedEntryBackground).VTSequenceBackground}" +
+                 "    Continue" +
+                $"{ColorTools.CurrentForegroundColor.VTSequenceForeground}" +
+                $"{ColorTools.CurrentBackgroundColor.VTSequenceBackground}"
+            );
+            builder.AppendLine("\nUse the up and down arrow keys to move the highlight to your choice.");
+            return builder.ToString();
         }
-
-        public override string RenderBootingMessage(string chosenBootName) { }
 
         public override string RenderBootFailedMessage(string content)
         {
@@ -83,7 +94,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             int choiceNum = 7;
             while (!exiting)
             {
-                ShowBootFailure(choiceNum);
+                TextWriterColor.WritePlain(ShowBootFailure(choiceNum));
                 var cki = Input.DetectKeypress();
                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Key pressed: {0}", cki.Key.ToString());
                 switch (cki.Key)
@@ -107,16 +118,21 @@ namespace GRILO.Bootloader.Boot.Style.Styles
                         break;
                 }
             }
+            return "";
         }
 
         public override string RenderSelectTimeout(int timeout)
         {
             ConsoleColor hintColor = ConsoleColor.Gray;
+            var builder = new StringBuilder();
             int marginX = 2;
             int optionHelpY = 17;
-            TextWriterWhereColor.WriteWhereColor("Seconds until the highlighted choice will be started automatically:", marginX, optionHelpY, true, new Color(hintColor));
             int timeoutX = marginX + "Seconds until the highlighted choice will be started automatically: ".Length;
-            TextWriterWhereColor.WriteWhereColor($"{timeout} ", timeoutX, optionHelpY, true, new Color(hintColor));
+            builder.Append(
+                TextWriterWhereColor.RenderWhere("Seconds until the highlighted choice will be started automatically:", marginX, optionHelpY, true, new Color(hintColor), ColorTools.CurrentBackgroundColor) +
+                TextWriterWhereColor.RenderWhere($"{timeout} ", timeoutX, optionHelpY, true, new Color(hintColor), ColorTools.CurrentBackgroundColor)
+            );
+            return builder.ToString();
         }
 
         public override string ClearSelectTimeout()
@@ -124,19 +140,19 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             int marginX = 2;
             int timeoutY = 17;
             ConsoleColor hintColor = ConsoleColor.Gray;
-            TextWriterWhereColor.WriteWhereColor(new string(' ', Console.WindowWidth - 2), marginX, timeoutY, true, new Color(hintColor));
+            return TextWriterWhereColor.RenderWhere(new string(' ', Console.WindowWidth - 2), marginX, timeoutY, true, new Color(hintColor), ColorTools.CurrentBackgroundColor);
         }
 
-        private void ShowBootFailure(int choiceNum)
+        private string ShowBootFailure(int choiceNum)
         {
             // Populate colors
             ConsoleColor highlightedEntryForeground = ConsoleColor.Black;
             ConsoleColor highlightedEntryBackground = ConsoleColor.Gray;
-            Console.Clear();
+            ColorTools.LoadBack();
 
             // Populate choices
-            string[] choices = new[]
-            {
+            string[] choices =
+            [
                 "Safe Mode",
                 "Safe Mode with Networking",
                 "Safe Mode with Command Prompt",
@@ -144,10 +160,12 @@ namespace GRILO.Bootloader.Boot.Style.Styles
                 "Last Known Good Configuration (your most recent settings that worked)",
                 "",
                 "Start Windows Normally",
-            };
+            ];
 
             // Print the message
-            TextWriterColor.Write("""
+            var builder = new StringBuilder();
+            builder.AppendLine(
+                """
 
                 We apologize for the inconvenience, but Windows did not start successfully.  A
                 recent hardware or software change might have caused this.
@@ -165,12 +183,21 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             {
                 string choice = choices[i];
                 if (i == choiceNum - 1)
-                    TextWriterColor.WriteColorBack($"    {choice}", false, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground));
+                {
+                    builder.Append(
+                        $"{new Color(highlightedEntryForeground).VTSequenceForeground}" +
+                        $"{new Color(highlightedEntryBackground).VTSequenceBackground}" +
+                        $"    {choice}" +
+                        $"{ColorTools.CurrentForegroundColor.VTSequenceForeground}" +
+                        $"{ColorTools.CurrentBackgroundColor.VTSequenceBackground}"
+                    );
+                }
                 else
-                    TextWriterColor.Write($"    {choice}", false);
-                TextWriterColor.Write();
+                    builder.Append($"    {choice}");
+                builder.AppendLine();
             }
-            TextWriterColor.Write("\nUse the up and down arrow keys to move the highlight to your choice.");
+            builder.AppendLine("\nUse the up and down arrow keys to move the highlight to your choice.");
+            return builder.ToString();
         }
     }
 }
