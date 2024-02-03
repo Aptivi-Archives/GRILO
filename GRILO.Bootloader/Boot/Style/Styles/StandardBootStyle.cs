@@ -21,10 +21,13 @@ using GRILO.Bootloader.Boot.Apps;
 using GRILO.Bootloader.Common.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using Terminaux.Base;
 using Terminaux.Colors;
-using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;
+using Terminaux.Writer.FancyWriters;
+using Textify.General;
 
 namespace GRILO.Bootloader.Boot.Style.Styles
 {
@@ -67,9 +70,18 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             // Populate colors
             ConsoleColor dialogBG = ConsoleColor.Black;
             ConsoleColor dialogFG = ConsoleColor.Gray;
-            InfoBoxColor.WriteInfoBoxColorBack(content, new Color(dialogFG), new Color(dialogBG));
             ColorTools.LoadBack();
-            return "";
+
+            var splitLines = content.SplitNewLines();
+            int maxWidth = splitLines.Max((str) => str.Length);
+            int maxHeight = splitLines.Length;
+            if (maxWidth >= ConsoleWrapper.WindowWidth)
+                maxWidth = ConsoleWrapper.WindowWidth - 4;
+            if (maxHeight >= ConsoleWrapper.WindowHeight)
+                maxHeight = ConsoleWrapper.WindowHeight - 4;
+            int borderX = ConsoleWrapper.WindowWidth / 2 - maxWidth / 2 - 1;
+            int borderY = ConsoleWrapper.WindowHeight / 2 - maxHeight / 2 - 1;
+            return BorderTextColor.RenderBorder(content, borderX, borderY, maxWidth, maxHeight, new Color(dialogFG), new Color(dialogBG));
         }
 
         public override string RenderBootingMessage(string chosenBootName) =>

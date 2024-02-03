@@ -28,6 +28,8 @@ using GRILO.Bootloader.Boot.Diagnostics;
 using GRILO.Bootloader.Common.Configuration;
 using GRILO.Bootloader.Boot.Style;
 using Terminaux.ResizeListener;
+using Terminaux.Base;
+using Terminaux.Base.Buffered;
 
 namespace GRILO.Bootloader.Common
 {
@@ -69,7 +71,8 @@ namespace GRILO.Bootloader.Common
                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Config read successfully.");
 
                 // Run the console resize listener
-                ConsoleResizeListener.StartResizeListener();
+                ConsoleResizeHandler.RunEssentialHandler = false;
+                ConsoleResizeListener.StartResizeListener((_, _, _, _) => ScreenTools.Render());
 
                 // Now, enter the main loop.
                 isOnMainLoop = true;

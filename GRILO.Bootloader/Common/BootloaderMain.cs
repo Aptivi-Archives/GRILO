@@ -42,7 +42,6 @@ namespace GRILO.Bootloader.Common
             // Get the boot apps
             var bootApps = BootManager.GetBootApps();
             int chosenBootEntry = Config.Instance.BootSelect;
-            bool firstDraw = true;
 
             // Set the bootloader screen as a default
             ScreenTools.SetCurrent(bootloaderScreen);
@@ -51,8 +50,10 @@ namespace GRILO.Bootloader.Common
             while (!shutdownRequested)
             {
                 // Make a buffer
+                bool firstDraw = true;
                 var bootloaderBuffer = new ScreenPart();
                 var postBootloaderBuffer = new ScreenPart();
+                var postBootBuffer = new ScreenPart();
                 bootloaderScreen.AddBufferedPart("Bootloader Screen", bootloaderBuffer);
 
                 // Wait for a boot key
@@ -76,6 +77,7 @@ namespace GRILO.Bootloader.Common
 
                     // Actually render the thing
                     ScreenTools.Render();
+                    firstDraw = false;
 
                     // Wait for a key and parse it
                     int timeout = Config.Instance.BootSelectTimeoutSeconds;
@@ -159,6 +161,7 @@ namespace GRILO.Bootloader.Common
                                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Waiting for user to press any key...");
                                 ScreenTools.Render();
                                 Input.DetectKeypress();
+                                firstDraw = true;
                             }
                             break;
                         case ConsoleKey.Enter:
@@ -172,6 +175,7 @@ namespace GRILO.Bootloader.Common
                             Handler.HandleKey(cki, chosenBootApp);
                             break;
                     }
+                    bootloaderBuffer.Clear();
                 }
 
                 // Remove the bootloader buffer
@@ -200,6 +204,8 @@ namespace GRILO.Bootloader.Common
 
                     postBootloaderBuffer.AddDynamicText(() => BootStyleManager.RenderBootingMessage(chosenBootName));
                     ScreenTools.Render();
+                    firstDraw = false;
+                    bootloaderScreen.RemoveBufferedPart("Post-Bootloader Screen");
                     chosenBootApp.Bootable.Boot(chosenBootApp.Arguments);
 
                     shutdownRequested = chosenBootApp.Bootable.ShutdownRequested;
@@ -214,20 +220,30 @@ namespace GRILO.Bootloader.Common
 
                 // Set the bootloader screen as a default in case some bootable app set another screen
                 ScreenTools.SetCurrent(bootloaderScreen);
+                bootloaderScreen.AddBufferedPart("Post-Boot Screen", postBootBuffer);
+                firstDraw = true;
+                postBootBuffer.AddDynamicText(() =>
+                {
+                    if (ConsoleResizeHandler.WasResized(false) || firstDraw)
+                        ColorTools.LoadBack();
+                    return "";
+                });
 
                 // Check to see if we experienced boot failure
                 if (!shutdownRequested)
                 {
                     DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Warning, "Boot failed: {0}", bootFailureException.Message);
-                    postBootloaderBuffer.AddDynamicText(() => BootStyleManager.RenderBootFailedMessage($"Encountered boot failure.\nReason: {bootFailureException.Message}"));
+                    postBootBuffer.AddDynamicText(() => BootStyleManager.RenderBootFailedMessage($"Encountered boot failure.\nReason: {bootFailureException.Message}"));
                     ScreenTools.Render();
+                    firstDraw = false;
 
                     // Wait for input
                     DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Waiting for user to press any key...");
-                    TextWriterColor.Write("Press any key to continue...");
                     Input.DetectKeypress();
                 }
-                bootloaderScreen.RemoveBufferedPart("Post-Bootloader Screen");
+
+                // Remove the post-boot buffer
+                bootloaderScreen.RemoveBufferedPart("Post-Boot Screen");
             }
         }
     }
