@@ -229,7 +229,7 @@ namespace GRILO.Bootloader.Boot.Style
                     buffer.AddDynamicText(() => style.RenderSelectTimeout(timeout - timeoutElapsed));
                     BootloaderMain.bootloaderScreen.AddBufferedPart("Timeout", buffer);
                     ScreenTools.Render();
-                    Thread.Sleep(1000);
+                    SpinWait.SpinUntil(() => !BootloaderState.WaitingForFirstBootKey, 1000);
                     BootloaderMain.bootloaderScreen.RemoveBufferedPart("Timeout");
                     timeoutElapsed += 1;
                 }
