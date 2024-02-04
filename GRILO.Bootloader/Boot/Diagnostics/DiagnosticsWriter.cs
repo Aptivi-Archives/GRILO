@@ -38,10 +38,6 @@ namespace GRILO.Bootloader.Boot.Diagnostics
         {
             if (Config.Instance.DiagnosticMessages)
             {
-                // Print diagnostic messages to the console
-                if (Config.Instance.PrintDiagnosticMessages)
-                    TextWriterColor.Write($"[{level.ToString()[0]}] {content}", args);
-
                 // Print diagnostic messages to the debug file
                 var writer = File.AppendText(ConfigPaths.GRILODebugPath);
                 writer.WriteLine(string.Format($"[{level.ToString()[0]}] {content}", args));

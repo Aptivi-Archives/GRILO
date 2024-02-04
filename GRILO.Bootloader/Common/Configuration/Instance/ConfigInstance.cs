@@ -40,12 +40,6 @@ namespace GRILO.Bootloader.Common.Configuration.Instance
         public bool DiagnosticMessages { get; set; }
 
         /// <summary>
-        /// Whether to also print diagnostic messages to the console
-        /// </summary>
-        [JsonProperty("Print diagnostic messages to console", Required = Required.Always)]
-        public bool PrintDiagnosticMessages { get; set; }
-
-        /// <summary>
         /// Additional bootable folders to scan for bootable applications
         /// </summary>
         [JsonProperty("Additional bootable folders", Required = Required.Always)]
