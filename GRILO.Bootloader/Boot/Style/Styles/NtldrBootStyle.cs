@@ -65,7 +65,6 @@ namespace GRILO.Bootloader.Boot.Style.Styles
         public override string RenderModalDialog(string content)
         {
             // Populate colors
-            ColorTools.LoadBack(0);
             ConsoleColor highlightedEntryForeground = ConsoleColor.Black;
             ConsoleColor highlightedEntryBackground = ConsoleColor.Gray;
             var builder = new StringBuilder();
@@ -88,38 +87,8 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             return builder.ToString();
         }
 
-        public override string RenderBootFailedMessage(string content)
-        {
-            bool exiting = false;
-            int choiceNum = 7;
-            while (!exiting)
-            {
-                TextWriterColor.WritePlain(ShowBootFailure(choiceNum));
-                var cki = Input.DetectKeypress();
-                DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Key pressed: {0}", cki.Key.ToString());
-                switch (cki.Key)
-                {
-                    case ConsoleKey.Enter:
-                        exiting = true;
-                        break;
-                    case ConsoleKey.UpArrow:
-                        choiceNum--;
-                        if (choiceNum == 4 || choiceNum == 6)
-                            choiceNum--;
-                        if (choiceNum == 0)
-                            choiceNum = 7;
-                        break;
-                    case ConsoleKey.DownArrow:
-                        choiceNum++;
-                        if (choiceNum == 4 || choiceNum == 6)
-                            choiceNum++;
-                        if (choiceNum == 8)
-                            choiceNum = 0;
-                        break;
-                }
-            }
-            return "";
-        }
+        public override string RenderBootFailedMessage(string content) =>
+            ShowBootFailure(7);
 
         public override string RenderSelectTimeout(int timeout)
         {

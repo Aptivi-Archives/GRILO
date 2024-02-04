@@ -132,6 +132,7 @@ namespace GRILO.Bootloader.Common
                             {
                                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Opening controls page...");
                                 var style = BootStyleManager.GetCurrentBootStyle();
+                                bootloaderBuffer.Clear();
                                 bootloaderBuffer.AddDynamicText(() =>
                                 {
                                     return BootStyleManager.RenderDialog(
@@ -159,7 +160,7 @@ namespace GRILO.Bootloader.Common
 
                                 // Wait for input
                                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Waiting for user to press any key...");
-                                ScreenTools.Render();
+                                ScreenTools.Render(true);
                                 Input.DetectKeypress();
                                 firstDraw = true;
                             }
