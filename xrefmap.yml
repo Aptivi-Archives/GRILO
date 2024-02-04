@@ -953,16 +953,3 @@ references:
   isSpec: "True"
   fullName: GRILO.Bootloader.Common.Configuration.Instance.ConfigInstance.DiagnosticMessages
   nameWithType: ConfigInstance.DiagnosticMessages
-- uid: GRILO.Bootloader.Common.Configuration.Instance.ConfigInstance.PrintDiagnosticMessages
-  name: PrintDiagnosticMessages
-  href: api/GRILO.Bootloader.Common.Configuration.Instance.ConfigInstance.html#GRILO_Bootloader_Common_Configuration_Instance_ConfigInstance_PrintDiagnosticMessages
-  commentId: P:GRILO.Bootloader.Common.Configuration.Instance.ConfigInstance.PrintDiagnosticMessages
-  fullName: GRILO.Bootloader.Common.Configuration.Instance.ConfigInstance.PrintDiagnosticMessages
-  nameWithType: ConfigInstance.PrintDiagnosticMessages
-- uid: GRILO.Bootloader.Common.Configuration.Instance.ConfigInstance.PrintDiagnosticMessages*
-  name: PrintDiagnosticMessages
-  href: api/GRILO.Bootloader.Common.Configuration.Instance.ConfigInstance.html#GRILO_Bootloader_Common_Configuration_Instance_ConfigInstance_PrintDiagnosticMessages_
-  commentId: Overload:GRILO.Bootloader.Common.Configuration.Instance.ConfigInstance.PrintDiagnosticMessages
-  isSpec: "True"
-  fullName: GRILO.Bootloader.Common.Configuration.Instance.ConfigInstance.PrintDiagnosticMessages
-  nameWithType: ConfigInstance.PrintDiagnosticMessages
