@@ -18,11 +18,15 @@
 //
 
 using GRILO.Bootloader.Boot.Apps;
+using GRILO.Bootloader.Common;
+using GRILO.Bootloader.Common.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Terminaux.Base;
 using Terminaux.Colors;
+using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
 using Textify.General;
 
@@ -37,12 +41,73 @@ namespace GRILO.Bootloader.Boot.Style
         public virtual Dictionary<ConsoleKeyInfo, Action<BootAppInfo>> CustomKeys { get; }
 
         /// <inheritdoc/>
-        public virtual string Render() =>
-            "";
+        public virtual string Render()
+        {
+            // Populate colors
+            ConsoleColor sectionTitle = ConsoleColor.Green;
+            ConsoleColor boxBorderColor = ConsoleColor.Gray;
+
+            // Write the section title
+            var builder = new StringBuilder();
+            string finalRenderedSection = "-- Select boot entry --";
+            int halfX = Console.WindowWidth / 2 - finalRenderedSection.Length / 2;
+            builder.Append(
+                TextWriterWhereColor.RenderWhere(finalRenderedSection, halfX, 2, new Color(sectionTitle), ColorTools.CurrentBackgroundColor)
+            );
+
+            // Now, render a box
+            builder.Append(
+                BorderColor.RenderBorder(2, 4, Console.WindowWidth - 6, Console.WindowHeight - 9, new Color(boxBorderColor), ColorTools.CurrentBackgroundColor)
+            );
+
+            // Offer help for new users
+            string help = $"SHIFT + H for help. Version {Entry.griloVersion}";
+            builder.Append(
+                TextWriterWhereColor.RenderWhere(help, Console.WindowWidth - help.Length - 2, Console.WindowHeight - 2, new Color(ConsoleColor.White), ColorTools.CurrentBackgroundColor)
+            );
+            return builder.ToString();
+        }
 
         /// <inheritdoc/>
-        public virtual string RenderHighlight(int chosenBootEntry) =>
-            "";
+        public virtual string RenderHighlight(int chosenBootEntry)
+        {
+            // Populate colors
+            ConsoleColor highlightedEntry = ConsoleColor.DarkGreen;
+            ConsoleColor normalEntry = ConsoleColor.Gray;
+            ConsoleColor pageNumberColor = ConsoleColor.Gray;
+
+            // Populate boot entries inside the box
+            var builder = new StringBuilder();
+            var bootApps = BootManager.GetBootApps();
+            (int, int) upperLeftCornerInterior = (4, 6);
+            (int, int) lowerLeftCornerInterior = (4, Console.WindowHeight - 6);
+            int maxItemsPerPage = lowerLeftCornerInterior.Item2 - upperLeftCornerInterior.Item2;
+            int pages = (int)Math.Truncate(bootApps.Count / (double)maxItemsPerPage);
+            int currentPage = (int)Math.Truncate(chosenBootEntry / (double)maxItemsPerPage);
+            int startIndex = maxItemsPerPage * currentPage;
+            int endIndex = maxItemsPerPage * (currentPage + 1) - 1;
+            int renderedAnswers = 0;
+            for (int i = startIndex; i < endIndex; i++)
+            {
+                if (i + 1 > bootApps.Count)
+                    break;
+                string bootApp = BootManager.GetBootAppNameByIndex(i);
+                string rendered = $" >> {bootApp}";
+                var finalColor = i == chosenBootEntry ? highlightedEntry : normalEntry;
+                builder.Append(
+                    TextWriterWhereColor.RenderWhere(rendered, upperLeftCornerInterior.Item1, upperLeftCornerInterior.Item2 + renderedAnswers, new Color(finalColor), ColorTools.CurrentBackgroundColor)
+                );
+                renderedAnswers++;
+            }
+
+            // Populate page number
+            string renderedNumber = $"[{chosenBootEntry + 1}/{bootApps.Count}]═[{currentPage + 1}/{pages}]";
+            (int, int) lowerRightCornerToWrite = (Console.WindowWidth - renderedNumber.Length - 3, Console.WindowHeight - 4);
+            builder.Append(
+                TextWriterWhereColor.RenderWhere(renderedNumber, lowerRightCornerToWrite.Item1, lowerRightCornerToWrite.Item2, new Color(pageNumberColor), ColorTools.CurrentBackgroundColor)
+            );
+            return builder.ToString();
+        }
 
         /// <inheritdoc/>
         public virtual string RenderModalDialog(string content)
@@ -66,18 +131,24 @@ namespace GRILO.Bootloader.Boot.Style
 
         /// <inheritdoc/>
         public virtual string RenderBootingMessage(string chosenBootName) =>
-            "";
+            $"Booting {chosenBootName}...";
 
         /// <inheritdoc/>
         public virtual string RenderBootFailedMessage(string content) =>
-            "";
+            content;
 
         /// <inheritdoc/>
         public virtual string RenderSelectTimeout(int timeout) =>
-            "";
+            TextWriterWhereColor.RenderWhere($"{timeout} ", 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White), ColorTools.CurrentBackgroundColor);
 
         /// <inheritdoc/>
-        public virtual string ClearSelectTimeout() =>
-            "";
+        public virtual string ClearSelectTimeout()
+        {
+            string spaces = new(' ', GetDigits(Config.Instance.BootSelectTimeoutSeconds));
+            return TextWriterWhereColor.RenderWhere(spaces, 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White), ColorTools.CurrentBackgroundColor);
+        }
+
+        internal static int GetDigits(int Number) =>
+            Number == 0 ? 1 : (int)Math.Log10(Math.Abs(Number)) + 1;
     }
 }
