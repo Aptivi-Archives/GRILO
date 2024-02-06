@@ -5,8 +5,9 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <IncludeSymbols>True</IncludeSymbols>
-    <Version>0.1.0.3</Version>
-    <PackageVersion>0.1.0.3</PackageVersion>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Version>0.1.0.4</Version>
+    <PackageVersion>0.1.0.4</PackageVersion>
     <Authors>Aptivi</Authors>
     <Product>GRILO</Product>
     <Description>Bootloader simulator for .NET</Description>
