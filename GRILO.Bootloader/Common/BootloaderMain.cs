@@ -28,6 +28,7 @@ using Terminaux.Base;
 using Terminaux.Base.Buffered;
 using Terminaux.Colors;
 using Terminaux.Inputs;
+using Terminaux.Reader;
 using Terminaux.Writer.ConsoleWriters;
 
 namespace GRILO.Bootloader.Common
@@ -50,7 +51,6 @@ namespace GRILO.Bootloader.Common
             while (!shutdownRequested)
             {
                 // Make a buffer
-                bool firstDraw = true;
                 var bootloaderBuffer = new ScreenPart();
                 var postBootloaderBuffer = new ScreenPart();
                 var postBootBuffer = new ScreenPart();
@@ -59,14 +59,6 @@ namespace GRILO.Bootloader.Common
                 // Wait for a boot key
                 while (BootloaderState.WaitingForBootKey)
                 {
-                    // Refresh if resize is detected or drawing for the first time
-                    bootloaderBuffer.AddDynamicText(() =>
-                    {
-                        if (ConsoleResizeHandler.WasResized(false) || firstDraw)
-                            ColorTools.LoadBack();
-                        return "";
-                    });
-
                     // Render the menu
                     DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Rendering menu...");
                     bootloaderBuffer.AddDynamicText(() =>
@@ -77,7 +69,6 @@ namespace GRILO.Bootloader.Common
 
                     // Actually render the thing
                     ScreenTools.Render();
-                    firstDraw = false;
 
                     // Wait for a key and parse it
                     int timeout = Config.Instance.BootSelectTimeoutSeconds;
@@ -85,14 +76,14 @@ namespace GRILO.Bootloader.Common
                     ConsoleKeyInfo cki;
                     if (timeout > 0 && BootloaderState.WaitingForFirstBootKey)
                     {
-                        var result = Input.ReadKeyTimeout(true, TimeSpan.FromSeconds(Config.Instance.BootSelectTimeoutSeconds));
+                        var result = TermReader.ReadKeyTimeout(true, TimeSpan.FromSeconds(Config.Instance.BootSelectTimeoutSeconds));
                         if (!result.provided)
                             cki = new('\x0A', ConsoleKey.Enter, false, false, false);
                         else
                             cki = result.result;
                     }
                     else
-                        cki = Input.DetectKeypress();
+                        cki = TermReader.ReadKey();
                     BootloaderState.waitingForFirstBootKey = false;
                     DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Key pressed: {0}", cki.Key.ToString());
                     switch (cki.Key)
@@ -160,9 +151,9 @@ namespace GRILO.Bootloader.Common
 
                                 // Wait for input
                                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Waiting for user to press any key...");
-                                ScreenTools.Render(true);
-                                Input.DetectKeypress();
-                                firstDraw = true;
+                                ScreenTools.Render();
+                                TermReader.ReadKey();
+                                bootloaderScreen.RequireRefresh();
                             }
                             break;
                         case ConsoleKey.Enter:
@@ -184,13 +175,7 @@ namespace GRILO.Bootloader.Common
 
                 // Add the post-bootloader screen buffer
                 bootloaderScreen.AddBufferedPart("Post-Bootloader Screen", postBootloaderBuffer);
-                firstDraw = true;
-                postBootloaderBuffer.AddDynamicText(() =>
-                {
-                    if (ConsoleResizeHandler.WasResized(false) || firstDraw)
-                        ColorTools.LoadBack();
-                    return "";
-                });
+                bootloaderScreen.RequireRefresh();
 
                 // Reset the states
                 BootloaderState.waitingForBootKey = true;
@@ -205,7 +190,7 @@ namespace GRILO.Bootloader.Common
 
                     postBootloaderBuffer.AddDynamicText(() => BootStyleManager.RenderBootingMessage(chosenBootName));
                     ScreenTools.Render();
-                    firstDraw = false;
+                    bootloaderScreen.RequireRefresh();
                     bootloaderScreen.RemoveBufferedPart("Post-Bootloader Screen");
                     chosenBootApp.Bootable.Boot(chosenBootApp.Arguments);
 
@@ -222,13 +207,7 @@ namespace GRILO.Bootloader.Common
                 // Set the bootloader screen as a default in case some bootable app set another screen
                 ScreenTools.SetCurrent(bootloaderScreen);
                 bootloaderScreen.AddBufferedPart("Post-Boot Screen", postBootBuffer);
-                firstDraw = true;
-                postBootBuffer.AddDynamicText(() =>
-                {
-                    if (ConsoleResizeHandler.WasResized(false) || firstDraw)
-                        ColorTools.LoadBack();
-                    return "";
-                });
+                bootloaderScreen.RequireRefresh();
 
                 // Check to see if we experienced boot failure
                 if (!shutdownRequested)
@@ -236,11 +215,11 @@ namespace GRILO.Bootloader.Common
                     DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Warning, "Boot failed: {0}", bootFailureException.Message);
                     postBootBuffer.AddDynamicText(() => BootStyleManager.RenderBootFailedMessage($"Encountered boot failure.\nReason: {bootFailureException.Message}"));
                     ScreenTools.Render();
-                    firstDraw = false;
+                    bootloaderScreen.RequireRefresh();
 
                     // Wait for input
                     DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Waiting for user to press any key...");
-                    Input.DetectKeypress();
+                    TermReader.ReadKey();
                 }
 
                 // Remove the post-boot buffer

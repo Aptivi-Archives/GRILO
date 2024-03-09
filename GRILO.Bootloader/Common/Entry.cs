@@ -20,7 +20,7 @@
 using System;
 using System.Reflection;
 using Terminaux.Writer.ConsoleWriters;
-using Textify.Sequences.Builder;
+using Terminaux.Sequences.Builder;
 using Terminaux.Inputs;
 using SpecProbe.Platform;
 using GRILO.Bootloader.Boot.Apps;
@@ -30,6 +30,7 @@ using GRILO.Bootloader.Boot.Style;
 using Terminaux.ResizeListener;
 using Terminaux.Base;
 using Terminaux.Base.Buffered;
+using Terminaux.Reader;
 
 namespace GRILO.Bootloader.Common
 {
@@ -44,7 +45,7 @@ namespace GRILO.Bootloader.Common
             try
             {
                 // Preload bootloader
-                Console.CursorVisible = false;
+                ConsoleWrapper.CursorVisible = false;
                 TextWriterColor.Write("Starting GRILO v{0}...", griloVersion);
 
                 // Populate GRILO folders (if any)
@@ -61,8 +62,8 @@ namespace GRILO.Bootloader.Common
                 // Switch to alternative buffer
                 if (!PlatformHelper.IsOnWindows())
                 {
-                    TextWriterColor.WritePlain(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.EscSaveCursor), false);
-                    TextWriterColor.WritePlain(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.CsiSetMode, "?47"), false);
+                    TextWriterRaw.WriteRaw(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.EscSaveCursor), false);
+                    TextWriterRaw.WriteRaw(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.CsiSetMode, "?47"), false);
                     isOnAlternativeBuffer = true;
                 }
 
@@ -95,17 +96,17 @@ namespace GRILO.Bootloader.Common
                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Error, "Stack trace:\n{0}", ex.StackTrace);
                 TextWriterColor.Write(ex.StackTrace);
                 TextWriterColor.Write("Press any key to exit.");
-                Input.DetectKeypress();
+                TermReader.ReadKey();
             }
             finally
             {
                 if (isOnAlternativeBuffer)
                 {
-                    TextWriterColor.WritePlain(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.CsiEraseInDisplay), false);
-                    TextWriterColor.WritePlain(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.CsiResetMode, "?47"), false);
-                    TextWriterColor.WritePlain(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.EscRestoreCursor), false);
+                    TextWriterRaw.WriteRaw(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.CsiEraseInDisplay), false);
+                    TextWriterRaw.WriteRaw(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.CsiResetMode, "?47"), false);
+                    TextWriterRaw.WriteRaw(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.EscRestoreCursor), false);
                 }
-                Console.CursorVisible = true;
+                ConsoleWrapper.CursorVisible = true;
             }
         }
     }
