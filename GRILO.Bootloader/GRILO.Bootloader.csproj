@@ -47,8 +47,8 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Terminaux" Version="3.1.5" />
-    <PackageReference Include="Terminaux.ResizeListener" Version="3.1.5" />
+    <PackageReference Include="Terminaux" Version="3.1.6" />
+    <PackageReference Include="Terminaux.ResizeListener" Version="3.1.6" />
     <PackageReference Include="Textify.Offline" Version="1.4.0" />
   </ItemGroup>
 
