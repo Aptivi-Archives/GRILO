@@ -31,6 +31,7 @@ using Terminaux.ResizeListener;
 using Terminaux.Base;
 using Terminaux.Base.Buffered;
 using Terminaux.Reader;
+using Terminaux.Colors;
 
 namespace GRILO.Bootloader.Common
 {
@@ -75,6 +76,10 @@ namespace GRILO.Bootloader.Common
                 ConsoleResizeHandler.RunEssentialHandler = false;
                 ConsoleResizeListener.StartResizeListener((_, _, _, _) => ScreenTools.Render());
 
+                // Set the foreground and the background color
+                ColorTools.AllowForeground = true;
+                ColorTools.AllowBackground = true;
+
                 // Now, enter the main loop.
                 isOnMainLoop = true;
                 BootloaderMain.MainLoop();
@@ -106,6 +111,11 @@ namespace GRILO.Bootloader.Common
                     TextWriterRaw.WriteRaw(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.CsiResetMode, "?47"), false);
                     TextWriterRaw.WriteRaw(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.EscRestoreCursor), false);
                 }
+
+                // Set the foreground and the background color
+                ColorTools.AllowForeground = false;
+                ColorTools.AllowBackground = false;
+                ColorTools.LoadBack();
                 ConsoleWrapper.CursorVisible = true;
             }
         }

@@ -50,7 +50,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             {
                 string bootApp = BootManager.GetBootAppNameByIndex(i);
                 bootEntryPositions.Add((0, 3 + i));
-                builder.AppendLine($"{new Color(bootEntry).VTSequenceForeground} [{i + 1}] {bootApp}");
+                builder.AppendLine($"{ColorTools.RenderSetConsoleColor(new Color(bootEntry))} [{i + 1}] {bootApp}");
             }
             return builder.ToString();
         }
@@ -62,7 +62,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
 
             // Highlight the chosen entry
             string bootApp = BootManager.GetBootAppNameByIndex(chosenBootEntry);
-            return TextWriterWhereColor.RenderWhere(" [{0}] {1}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, true, new Color(highlightedEntry), ColorTools.CurrentBackgroundColor, chosenBootEntry + 1, bootApp);
+            return TextWriterWhereColor.RenderWhereColor(" [{0}] {1}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, true, new Color(highlightedEntry), chosenBootEntry + 1, bootApp);
         }
 
         public override string RenderBootingMessage(string chosenBootName) =>
@@ -72,12 +72,12 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             RenderModalDialog(content);
 
         public override string RenderSelectTimeout(int timeout) =>
-            TextWriterWhereColor.RenderWhere($" {timeout}", Console.WindowWidth - $" {timeout}".Length - 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White), ColorTools.CurrentBackgroundColor);
+            TextWriterWhereColor.RenderWhereColor($" {timeout}", Console.WindowWidth - $" {timeout}".Length - 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White));
 
         public override string ClearSelectTimeout()
         {
-            string spaces = new(' ', DefaultBootStyle.GetDigits(Config.Instance.BootSelectTimeoutSeconds));
-            return TextWriterWhereColor.RenderWhere(spaces, Console.WindowWidth - spaces.Length - 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White), ColorTools.CurrentBackgroundColor);
+            string spaces = new(' ', GetDigits(Config.Instance.BootSelectTimeoutSeconds));
+            return TextWriterWhereColor.RenderWhereColor(spaces, Console.WindowWidth - spaces.Length - 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White));
         }
     }
 }

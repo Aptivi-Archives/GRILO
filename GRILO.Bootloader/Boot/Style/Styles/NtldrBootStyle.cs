@@ -59,7 +59,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
 
             // Highlight the chosen entry
             string bootApp = BootManager.GetBootAppNameByIndex(chosenBootEntry);
-            return TextWriterWhereColor.RenderWhere("    {0}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, true, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground), bootApp);
+            return TextWriterWhereColor.RenderWhereColorBack("    {0}", bootEntryPositions[chosenBootEntry].Item1, bootEntryPositions[chosenBootEntry].Item2, true, new Color(highlightedEntryForeground), new Color(highlightedEntryBackground), bootApp);
         }
 
         public override string RenderModalDialog(string content)
@@ -77,11 +77,11 @@ namespace GRILO.Bootloader.Boot.Style.Styles
                 """
             );
             builder.AppendLine(
-                $"{new Color(highlightedEntryForeground).VTSequenceForeground}" +
-                $"{new Color(highlightedEntryBackground).VTSequenceBackground}" +
+                $"{ColorTools.RenderSetConsoleColor(new Color(highlightedEntryForeground))}" +
+                $"{ColorTools.RenderSetConsoleColor(new Color(highlightedEntryBackground), true)}" +
                  "    Continue" +
-                $"{ColorTools.CurrentForegroundColor.VTSequenceForeground}" +
-                $"{ColorTools.CurrentBackgroundColor.VTSequenceBackground}"
+                $"{ColorTools.RenderSetConsoleColor(ColorTools.CurrentForegroundColor)}" +
+                $"{ColorTools.RenderSetConsoleColor(ColorTools.CurrentBackgroundColor, true)}"
             );
             builder.AppendLine("\nUse the up and down arrow keys to move the highlight to your choice.");
             return builder.ToString();
@@ -101,8 +101,8 @@ namespace GRILO.Bootloader.Boot.Style.Styles
                 17;
             int timeoutX = marginX + "Seconds until the highlighted choice will be started automatically: ".Length;
             builder.Append(
-                TextWriterWhereColor.RenderWhere("Seconds until the highlighted choice will be started automatically:", marginX, optionHelpY, true, new Color(hintColor), ColorTools.CurrentBackgroundColor) +
-                TextWriterWhereColor.RenderWhere($"{timeout} ", timeoutX, optionHelpY, true, new Color(hintColor), ColorTools.CurrentBackgroundColor)
+                TextWriterWhereColor.RenderWhereColor("Seconds until the highlighted choice will be started automatically:", marginX, optionHelpY, true, new Color(hintColor)) +
+                TextWriterWhereColor.RenderWhereColor($"{timeout} ", timeoutX, optionHelpY, true, new Color(hintColor))
             );
             return builder.ToString();
         }
@@ -115,7 +115,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
                 bootEntryPositions[bootEntryPositions.Count - 1].Item2 + 9 :
                 17;
             ConsoleColor hintColor = ConsoleColor.Gray;
-            return TextWriterWhereColor.RenderWhere(new string(' ', Console.WindowWidth - 2), marginX, timeoutY, true, new Color(hintColor), ColorTools.CurrentBackgroundColor);
+            return TextWriterWhereColor.RenderWhereColor(new string(' ', Console.WindowWidth - 2), marginX, timeoutY, true, new Color(hintColor));
         }
 
         private string ShowBootFailure(int choiceNum)
@@ -160,11 +160,11 @@ namespace GRILO.Bootloader.Boot.Style.Styles
                 if (i == choiceNum - 1)
                 {
                     builder.Append(
-                        $"{new Color(highlightedEntryForeground).VTSequenceForeground}" +
-                        $"{new Color(highlightedEntryBackground).VTSequenceBackground}" +
+                        $"{ColorTools.RenderSetConsoleColor(new Color(highlightedEntryForeground))}" +
+                        $"{ColorTools.RenderSetConsoleColor(new Color(highlightedEntryBackground), true)}" +
                         $"    {choice}" +
-                        $"{ColorTools.CurrentForegroundColor.VTSequenceForeground}" +
-                        $"{ColorTools.CurrentBackgroundColor.VTSequenceBackground}"
+                        $"{ColorTools.RenderSetConsoleColor(ColorTools.CurrentForegroundColor)}" +
+                        $"{ColorTools.RenderSetConsoleColor(ColorTools.CurrentBackgroundColor, true)}"
                     );
                 }
                 else

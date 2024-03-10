@@ -52,18 +52,18 @@ namespace GRILO.Bootloader.Boot.Style
             string finalRenderedSection = "-- Select boot entry --";
             int halfX = Console.WindowWidth / 2 - finalRenderedSection.Length / 2;
             builder.Append(
-                TextWriterWhereColor.RenderWhere(finalRenderedSection, halfX, 2, new Color(sectionTitle), ColorTools.CurrentBackgroundColor)
+                TextWriterWhereColor.RenderWhereColor(finalRenderedSection, halfX, 2, new Color(sectionTitle))
             );
 
             // Now, render a box
             builder.Append(
-                BorderColor.RenderBorder(2, 4, Console.WindowWidth - 6, Console.WindowHeight - 9, new Color(boxBorderColor), ColorTools.CurrentBackgroundColor)
+                BorderColor.RenderBorder(2, 4, Console.WindowWidth - 6, Console.WindowHeight - 9, new Color(boxBorderColor))
             );
 
             // Offer help for new users
             string help = $"SHIFT + H for help. Version {Entry.griloVersion}";
             builder.Append(
-                TextWriterWhereColor.RenderWhere(help, Console.WindowWidth - help.Length - 2, Console.WindowHeight - 2, new Color(ConsoleColor.White), ColorTools.CurrentBackgroundColor)
+                TextWriterWhereColor.RenderWhereColor(help, Console.WindowWidth - help.Length - 2, Console.WindowHeight - 2, new Color(ConsoleColor.White))
             );
             return builder.ToString();
         }
@@ -95,7 +95,7 @@ namespace GRILO.Bootloader.Boot.Style
                 string rendered = $" >> {bootApp}";
                 var finalColor = i == chosenBootEntry ? highlightedEntry : normalEntry;
                 builder.Append(
-                    TextWriterWhereColor.RenderWhere(rendered, upperLeftCornerInterior.Item1, upperLeftCornerInterior.Item2 + renderedAnswers, new Color(finalColor), ColorTools.CurrentBackgroundColor)
+                    TextWriterWhereColor.RenderWhereColor(rendered, upperLeftCornerInterior.Item1, upperLeftCornerInterior.Item2 + renderedAnswers, new Color(finalColor))
                 );
                 renderedAnswers++;
             }
@@ -104,7 +104,7 @@ namespace GRILO.Bootloader.Boot.Style
             string renderedNumber = $"[{chosenBootEntry + 1}/{bootApps.Count}]═[{currentPage + 1}/{pages}]";
             (int, int) lowerRightCornerToWrite = (Console.WindowWidth - renderedNumber.Length - 3, Console.WindowHeight - 4);
             builder.Append(
-                TextWriterWhereColor.RenderWhere(renderedNumber, lowerRightCornerToWrite.Item1, lowerRightCornerToWrite.Item2, new Color(pageNumberColor), ColorTools.CurrentBackgroundColor)
+                TextWriterWhereColor.RenderWhereColor(renderedNumber, lowerRightCornerToWrite.Item1, lowerRightCornerToWrite.Item2, new Color(pageNumberColor))
             );
             return builder.ToString();
         }
@@ -139,13 +139,13 @@ namespace GRILO.Bootloader.Boot.Style
 
         /// <inheritdoc/>
         public virtual string RenderSelectTimeout(int timeout) =>
-            TextWriterWhereColor.RenderWhere($"{timeout} ", 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White), ColorTools.CurrentBackgroundColor);
+            TextWriterWhereColor.RenderWhereColor($"{timeout} ", 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White));
 
         /// <inheritdoc/>
         public virtual string ClearSelectTimeout()
         {
             string spaces = new(' ', GetDigits(Config.Instance.BootSelectTimeoutSeconds));
-            return TextWriterWhereColor.RenderWhere(spaces, 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White), ColorTools.CurrentBackgroundColor);
+            return TextWriterWhereColor.RenderWhereColor(spaces, 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White));
         }
 
         internal static int GetDigits(int Number) =>

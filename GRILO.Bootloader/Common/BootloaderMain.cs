@@ -188,19 +188,28 @@ namespace GRILO.Bootloader.Common
                     var chosenBootApp = BootManager.GetBootApp(chosenBootName);
                     DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Boot name {0} at index {1}", chosenBootName, chosenBootEntry);
 
+                    // Render the booting message
                     postBootloaderBuffer.AddDynamicText(() => BootStyleManager.RenderBootingMessage(chosenBootName));
                     ScreenTools.Render();
                     bootloaderScreen.RequireRefresh();
                     bootloaderScreen.RemoveBufferedPart("Post-Bootloader Screen");
+
+                    // Now, boot the app
 #if NET6_0_OR_GREATER
-                    using (chosenBootApp.context.EnterContextualReflection())
+                    if (chosenBootApp.context is not null)
                     {
-                        chosenBootApp.Bootable.Boot(chosenBootApp.Arguments);
+                        using (chosenBootApp.context.EnterContextualReflection())
+                        {
+                            chosenBootApp.Bootable.Boot(chosenBootApp.Arguments);
+                        }
                     }
+                    else
+                        chosenBootApp.Bootable.Boot(chosenBootApp.Arguments);
 #else
                     chosenBootApp.Bootable.Boot(chosenBootApp.Arguments);
 #endif
 
+                    // Update the shutdown requested variable
                     shutdownRequested = chosenBootApp.Bootable.ShutdownRequested;
                     DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Boot app done and shutdown requested is {0}", shutdownRequested);
                 }
