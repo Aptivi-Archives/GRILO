@@ -50,7 +50,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
 
             // Now, render a box
             builder.Append(
-                BorderColor.RenderBorder(2, 4, ConsoleWrapper.WindowWidth - 6, Console.WindowHeight - 15, new Color(boxBorderColor))
+                BorderColor.RenderBorder(2, 4, ConsoleWrapper.WindowWidth - 6, ConsoleWrapper.WindowHeight - 15, new Color(boxBorderColor))
             );
 
             // Offer help for new users
@@ -60,7 +60,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
                 $"before booting or `c' for a command line.";
             int longest = help.Split(['\n']).Max((text) => text.Length);
             builder.Append(
-                TextWriterWhereColor.RenderWhereColor(help, Console.WindowWidth / 2 - longest / 2 - 2, Console.WindowHeight - 8, new Color(sectionTitle))
+                TextWriterWhereColor.RenderWhereColor(help, ConsoleWrapper.WindowWidth / 2 - longest / 2 - 2, ConsoleWrapper.WindowHeight - 8, new Color(sectionTitle))
             );
             return builder.ToString();
         }
@@ -75,7 +75,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             // Populate boot entries inside the box
             var bootApps = BootManager.GetBootApps();
             (int, int) upperLeftCornerInterior = (3, 5);
-            (int, int) lowerLeftCornerInterior = (3, Console.WindowHeight - 9);
+            (int, int) lowerLeftCornerInterior = (3, ConsoleWrapper.WindowHeight - 9);
             int maxItemsPerPage = lowerLeftCornerInterior.Item2 - upperLeftCornerInterior.Item2 - 1;
             int currentPage = (int)Math.Truncate(chosenBootEntry / (double)maxItemsPerPage);
             int startIndex = maxItemsPerPage * currentPage;
@@ -90,7 +90,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
                 var finalColorBg = i == chosenBootEntry ? highlightedEntry : normalEntry;
                 var finalColorFg = i == chosenBootEntry ? normalEntry : highlightedEntry;
                 builder.Append(
-                    TextWriterWhereColor.RenderWhereColorBack(rendered + new string(' ', Console.WindowWidth - 6 - rendered.Length), upperLeftCornerInterior.Item1, upperLeftCornerInterior.Item2 + renderedAnswers, false, new Color(finalColorFg), new Color(finalColorBg))
+                    TextWriterWhereColor.RenderWhereColorBack(rendered + new string(' ', ConsoleWrapper.WindowWidth - 6 - rendered.Length), upperLeftCornerInterior.Item1, upperLeftCornerInterior.Item2 + renderedAnswers, false, new Color(finalColorFg), new Color(finalColorBg))
                 );
                 renderedAnswers++;
             }
@@ -103,13 +103,13 @@ namespace GRILO.Bootloader.Boot.Style.Styles
         public override string RenderSelectTimeout(int timeout)
         {
             string help = $"The highlighted entry will be executed automatically in {timeout}s. ";
-            return TextWriterWhereColor.RenderWhereColor(help, 4, Console.WindowHeight - 5, true, new Color(ConsoleColor.White));
+            return TextWriterWhereColor.RenderWhereColor(help, 4, ConsoleWrapper.WindowHeight - 5, true, new Color(ConsoleColor.White));
         }
 
         public override string ClearSelectTimeout()
         {
             string help = $"The highlighted entry will be executed automatically in {Config.Instance.BootSelectTimeoutSeconds}s. ";
-            return TextWriterWhereColor.RenderWhereColor(new string(' ', help.Length), 4, Console.WindowHeight - 5, true, new Color(ConsoleColor.White));
+            return TextWriterWhereColor.RenderWhereColor(new string(' ', help.Length), 4, ConsoleWrapper.WindowHeight - 5, true, new Color(ConsoleColor.White));
         }
     }
 }

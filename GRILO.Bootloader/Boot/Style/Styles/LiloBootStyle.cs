@@ -48,7 +48,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             int bootPrompt = 16;
             int halfX = ConsoleWrapper.WindowWidth / 2 - (interiorWidth + 2) / 2;
             int extraStartX = ConsoleWrapper.WindowWidth / 2 - (interiorWidth + 4) / 2;
-            int extraEndX = Console.WindowWidth / 2 + (interiorWidth + 4) / 2;
+            int extraEndX = ConsoleWrapper.WindowWidth / 2 + (interiorWidth + 4) / 2;
             int startY = 1;
             int endY = bootPrompt + startY - 2;
             builder.Append(
@@ -70,7 +70,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
 
             // Now, fill the box with usual things, starting from the title
             string title = "LILO 22.7  Boot Menu";
-            int titleX = Console.WindowWidth / 2 - title.Length / 2;
+            int titleX = ConsoleWrapper.WindowWidth / 2 - title.Length / 2;
             int titleY = 3;
             builder.Append(
                 TextWriterWhereColor.RenderWhereColorBack(title, titleX, titleY, new Color(sectionTitle), new Color(boxBorderBackgroundColor))
@@ -123,7 +123,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             var builder = new StringBuilder();
             var bootApps = BootManager.GetBootApps();
             int interiorWidth = 41;
-            int halfX = Console.WindowWidth / 2 - (interiorWidth + 2) / 2 + 4;
+            int halfX = ConsoleWrapper.WindowWidth / 2 - (interiorWidth + 2) / 2 + 4;
             (int, int) upperLeftCornerInterior = (halfX, 6);
             int maxItemsPerPage = 4;
             int currentPage = (int)Math.Truncate(chosenBootEntry / (double)maxItemsPerPage);
@@ -155,7 +155,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             string help = $"{TimeSpan.FromSeconds(timeout):mm}:{TimeSpan.FromSeconds(timeout):ss}";
             int textY = 11;
             int interiorWidth = 41;
-            int extraEndX = Console.WindowWidth / 2 + interiorWidth / 2 - help.Length;
+            int extraEndX = ConsoleWrapper.WindowWidth / 2 + interiorWidth / 2 - help.Length;
             return TextWriterWhereColor.RenderWhereColorBack(help, extraEndX, textY, true, new Color(ConsoleColor.Gray), new Color(ConsoleColor.DarkRed));
         }
 
@@ -164,7 +164,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             string help = $"{TimeSpan.FromSeconds(Config.Instance.BootSelectTimeoutSeconds):mm}:{TimeSpan.FromSeconds(Config.Instance.BootSelectTimeoutSeconds):ss}";
             int textY = 11;
             int interiorWidth = 41;
-            int extraEndX = Console.WindowWidth / 2 + interiorWidth / 2 - help.Length;
+            int extraEndX = ConsoleWrapper.WindowWidth / 2 + interiorWidth / 2 - help.Length;
             return TextWriterWhereColor.RenderWhereColorBack(new string(' ', help.Length), extraEndX, textY, true, new Color(ConsoleColor.Gray), new Color(ConsoleColor.DarkRed));
         }
     }
