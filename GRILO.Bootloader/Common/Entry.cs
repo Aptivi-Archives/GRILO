@@ -73,8 +73,7 @@ namespace GRILO.Bootloader.Common
                 DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Config read successfully.");
 
                 // Run the console resize listener
-                ConsoleResizeHandler.RunEssentialHandler = false;
-                ConsoleResizeListener.StartResizeListener((_, _, _, _) => ScreenTools.Render());
+                ConsoleResizeListener.StartResizeListener();
 
                 // Set the foreground and the background color
                 ColorTools.AllowForeground = true;
