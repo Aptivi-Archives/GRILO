@@ -26,6 +26,7 @@ using System.Text;
 using Terminaux.Colors;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
+using Terminaux.Base;
 
 namespace GRILO.Bootloader.Boot.Style.Styles
 {
@@ -42,14 +43,14 @@ namespace GRILO.Bootloader.Boot.Style.Styles
 
             // Write the section title
             string finalRenderedSection = "GNU GRUB  version 2.06";
-            int halfX = Console.WindowWidth / 2 - finalRenderedSection.Length / 2;
+            int halfX = ConsoleWrapper.WindowWidth / 2 - finalRenderedSection.Length / 2;
             builder.Append(
                 TextWriterWhereColor.RenderWhereColor(finalRenderedSection, halfX, 2, new Color(sectionTitle))
             );
 
             // Now, render a box
             builder.Append(
-                BorderColor.RenderBorder(2, 4, Console.WindowWidth - 6, Console.WindowHeight - 15, new Color(boxBorderColor))
+                BorderColor.RenderBorder(2, 4, ConsoleWrapper.WindowWidth - 6, Console.WindowHeight - 15, new Color(boxBorderColor))
             );
 
             // Offer help for new users

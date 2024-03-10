@@ -25,6 +25,7 @@ using System.Text;
 using Terminaux.Colors;
 using Terminaux.Inputs;
 using Terminaux.Writer.ConsoleWriters;
+using Terminaux.Base;
 
 namespace GRILO.Bootloader.Boot.Style.Styles
 {
@@ -115,7 +116,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
                 bootEntryPositions[bootEntryPositions.Count - 1].Item2 + 9 :
                 17;
             ConsoleColor hintColor = ConsoleColor.Gray;
-            return TextWriterWhereColor.RenderWhereColor(new string(' ', Console.WindowWidth - 2), marginX, timeoutY, true, new Color(hintColor));
+            return TextWriterWhereColor.RenderWhereColor(new string(' ', ConsoleWrapper.WindowWidth - 2), marginX, timeoutY, true, new Color(hintColor));
         }
 
         private string ShowBootFailure(int choiceNum)

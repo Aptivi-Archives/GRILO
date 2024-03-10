@@ -41,11 +41,11 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             // Render the header and footer
             int marginX = 2;
             int headerY = 0;
-            int footerY = Console.WindowHeight - 1;
-            int barLength = Console.WindowWidth - 4;
+            int footerY = ConsoleWrapper.WindowHeight - 1;
+            int barLength = ConsoleWrapper.WindowWidth - 4;
             string header = "Windows Boot Manager";
             string footer = "ENTER=Choose";
-            int headerTextX = Console.WindowWidth / 2 - header.Length / 2;
+            int headerTextX = ConsoleWrapper.WindowWidth / 2 - header.Length / 2;
             var builder = new StringBuilder();
             ConsoleColor barColor = ConsoleColor.Gray;
             ConsoleColor barForeground = ConsoleColor.Black;
@@ -96,7 +96,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
                 var finalColorBg = i == chosenBootEntry ? selectedEntryBg : normalEntryBg;
                 var finalColorFg = i == chosenBootEntry ? selectedEntryFg : normalEntryFg;
                 builder.Append(
-                    TextWriterWhereColor.RenderWhereColorBack(rendered + new string(' ', Console.WindowWidth - 15 - rendered.Length) + (i == chosenBootEntry ? '>' : ' '), 6, 5 + renderedAnswers, false, new Color(finalColorFg), new Color(finalColorBg))
+                    TextWriterWhereColor.RenderWhereColorBack(rendered + new string(' ', ConsoleWrapper.WindowWidth - 15 - rendered.Length) + (i == chosenBootEntry ? '>' : ' '), 6, 5 + renderedAnswers, false, new Color(finalColorFg), new Color(finalColorBg))
                 );
                 renderedAnswers++;
             }
@@ -108,11 +108,11 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             // Render the header and footer
             int marginX = 2;
             int headerY = 0;
-            int footerY = Console.WindowHeight - 1;
-            int barLength = Console.WindowWidth - 4;
+            int footerY = ConsoleWrapper.WindowHeight - 1;
+            int barLength = ConsoleWrapper.WindowWidth - 4;
             string header = "Windows Boot Manager";
             string footer = "ENTER=Continue";
-            int headerTextX = Console.WindowWidth / 2 - header.Length / 2;
+            int headerTextX = ConsoleWrapper.WindowWidth / 2 - header.Length / 2;
             var builder = new StringBuilder();
             ConsoleColor barColor = ConsoleColor.Gray;
             ConsoleColor barForeground = ConsoleColor.Black;
@@ -165,7 +165,7 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             int timeoutY = 13;
             ConsoleColor hintColor = ConsoleColor.Gray;
             builder.Append(
-                TextWriterWhereColor.RenderWhereColor(new string(' ', Console.WindowWidth - 2), marginX, timeoutY, true, new Color(hintColor))
+                TextWriterWhereColor.RenderWhereColor(new string(' ', ConsoleWrapper.WindowWidth - 2), marginX, timeoutY, true, new Color(hintColor))
             );
             return builder.ToString();
         }

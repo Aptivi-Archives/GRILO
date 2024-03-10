@@ -25,6 +25,7 @@ using System.Text;
 using Terminaux.Colors;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
+using Terminaux.Base;
 
 namespace GRILO.Bootloader.Boot.Style.Styles
 {
@@ -45,8 +46,8 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             int interiorWidth = 41;
             int interiorHeight = 12;
             int bootPrompt = 16;
-            int halfX = Console.WindowWidth / 2 - (interiorWidth + 2) / 2;
-            int extraStartX = Console.WindowWidth / 2 - (interiorWidth + 4) / 2;
+            int halfX = ConsoleWrapper.WindowWidth / 2 - (interiorWidth + 2) / 2;
+            int extraStartX = ConsoleWrapper.WindowWidth / 2 - (interiorWidth + 4) / 2;
             int extraEndX = Console.WindowWidth / 2 + (interiorWidth + 4) / 2;
             int startY = 1;
             int endY = bootPrompt + startY - 2;

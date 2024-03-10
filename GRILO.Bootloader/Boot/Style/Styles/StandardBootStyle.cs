@@ -72,12 +72,12 @@ namespace GRILO.Bootloader.Boot.Style.Styles
             RenderModalDialog(content);
 
         public override string RenderSelectTimeout(int timeout) =>
-            TextWriterWhereColor.RenderWhereColor($" {timeout}", Console.WindowWidth - $" {timeout}".Length - 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White));
+            TextWriterWhereColor.RenderWhereColor($" {timeout}", ConsoleWrapper.WindowWidth - $" {timeout}".Length - 2, ConsoleWrapper.WindowHeight - 2, true, new Color(ConsoleColor.White));
 
         public override string ClearSelectTimeout()
         {
             string spaces = new(' ', GetDigits(Config.Instance.BootSelectTimeoutSeconds));
-            return TextWriterWhereColor.RenderWhereColor(spaces, Console.WindowWidth - spaces.Length - 2, Console.WindowHeight - 2, true, new Color(ConsoleColor.White));
+            return TextWriterWhereColor.RenderWhereColor(spaces, ConsoleWrapper.WindowWidth - spaces.Length - 2, ConsoleWrapper.WindowHeight - 2, true, new Color(ConsoleColor.White));
         }
     }
 }
