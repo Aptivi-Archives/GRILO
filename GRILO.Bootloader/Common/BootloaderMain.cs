@@ -192,7 +192,14 @@ namespace GRILO.Bootloader.Common
                     ScreenTools.Render();
                     bootloaderScreen.RequireRefresh();
                     bootloaderScreen.RemoveBufferedPart("Post-Bootloader Screen");
+#if NET6_0_OR_GREATER
+                    using (chosenBootApp.context.EnterContextualReflection())
+                    {
+                        chosenBootApp.Bootable.Boot(chosenBootApp.Arguments);
+                    }
+#else
                     chosenBootApp.Bootable.Boot(chosenBootApp.Arguments);
+#endif
 
                     shutdownRequested = chosenBootApp.Bootable.ShutdownRequested;
                     DiagnosticsWriter.WriteDiag(DiagnosticsLevel.Info, "Boot app done and shutdown requested is {0}", shutdownRequested);

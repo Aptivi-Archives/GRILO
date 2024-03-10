@@ -160,6 +160,7 @@ namespace GRILO.Bootloader.Boot.Apps
                                         bootOverrideTitle = metadata["OverrideTitle"]?.ToString() ?? bootable.Title ?? asm.GetName().Name;
                                         bootArgs = metadata["Arguments"]?.ToObject<string[]>() ?? Array.Empty<string>();
                                         bootApp = new(bootFile, bootOverrideTitle, bootArgs, bootable);
+                                        bootApp.context = bootContext;
                                         bootApps.Add(bootOverrideTitle, bootApp);
                                     }
                                 }

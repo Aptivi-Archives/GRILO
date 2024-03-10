@@ -18,6 +18,7 @@
 //
 
 using GRILO.Boot;
+using GRILO.Bootloader.Boot.Apps.Marshaling;
 using GRILO.Bootloader.Boot.Diagnostics;
 
 namespace GRILO.Bootloader.Boot.Apps
@@ -27,6 +28,9 @@ namespace GRILO.Bootloader.Boot.Apps
     /// </summary>
     public class BootAppInfo
     {
+#if NET6_0_OR_GREATER
+        internal BootLoadContext context;
+#endif
 
         /// <summary>
         /// Bootable file path
