@@ -7,11 +7,7 @@
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <Version>0.1.0.4</Version>
-    <PackageVersion>0.1.0.4</PackageVersion>
-    <Authors>Aptivi</Authors>
-    <Product>GRILO</Product>
     <Description>Bootloader simulator for .NET</Description>
-    <Copyright>Copyright (c) 2022 Aptivi</Copyright>
     <PackageProjectUrl>https://github.com/Aptivi/GRILO</PackageProjectUrl>
     <PackageIcon>OfficialAppIcon-GRILO-512.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -20,8 +16,6 @@
     <PackageTags>bootloader;boot;csharp;dotnet</PackageTags>
     <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\aptivi_snk.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,15 +30,6 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-  </ItemGroup>
-
-  <PropertyGroup>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
