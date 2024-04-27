@@ -1,6 +1,7 @@
 @echo off
 
-for /f "tokens=* USEBACKQ" %%f in (`type version`) do set version=%%f
+for /f "tokens=*" %%g in ('findstr "<Version>" ..\Directory.Build.props') do (set MIDVER=%%g)
+for /f "tokens=1 delims=<" %%a in ("%MIDVER:~9%") do (set version=%%a)
 set releaseconfig=%1
 if "%releaseconfig%" == "" set releaseconfig=Release
 
