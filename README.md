@@ -16,6 +16,8 @@
     
 *A bootloader simulator.*
 
+*WARNING: GRILO has been replaced with its own implementation in Nitrocid 0.1.1.*
+
 <br>
 <br>
 
